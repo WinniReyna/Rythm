@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 541d037485a7e914c828fad3330bfecf
+guid: 464172fbca0b4184c9b6ed8bfed5a597
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1889298373513270771
-    second: Captura de pantalla 2025-09-23 102940_0
+      213: 2777085941790614288
+    second: everytexture.com-stock-fabric-texture-00100_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
-    sRGBTexture: 1
+    enableMipMap: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -55,9 +55,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 1
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Captura de pantalla 2025-09-23 102940_0
+      name: everytexture.com-stock-fabric-texture-00100_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 376
-        height: 373
+        width: 2448
+        height: 3264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f55bfb5cd2283a10800000000000000
-      internalID: 1889298373513270771
+      spriteID: 013292f43f03a8620800000000000000
+      internalID: 2777085941790614288
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      everytexture.com-stock-fabric-texture-00100_0: 2777085941790614288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
