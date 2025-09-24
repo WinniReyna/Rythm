@@ -1046,7 +1046,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1298135143}
         m_TargetAssemblyTypeName: DifficultyUI, Assembly-CSharp
-        m_MethodName: SetDifficulty
+        m_MethodName: ChooseDifficulty
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: ba36b7682e1bdb142845a01dd0c71dc3, type: 2}
@@ -1656,12 +1656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteSpawner: {fileID: 812214975}
-  easy: {fileID: 11400000, guid: 2cb3cd52f7f60ae47923dc81bd8d198f, type: 2}
-  medium: {fileID: 11400000, guid: ba36b7682e1bdb142845a01dd0c71dc3, type: 2}
-  hard: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
-  btnEasy: {fileID: 2115869904}
-  btnMedium: {fileID: 708032155}
-  btnHard: {fileID: 2075473587}
   difficultyPanel: {fileID: 142493660}
 --- !u!1 &1317287587
 GameObject:
@@ -2242,7 +2236,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1298135143}
         m_TargetAssemblyTypeName: DifficultyUI, Assembly-CSharp
-        m_MethodName: SetDifficulty
+        m_MethodName: ChooseDifficulty
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
@@ -2375,7 +2369,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1298135143}
         m_TargetAssemblyTypeName: DifficultyUI, Assembly-CSharp
-        m_MethodName: SetDifficulty
+        m_MethodName: ChooseDifficulty
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 2cb3cd52f7f60ae47923dc81bd8d198f, type: 2}

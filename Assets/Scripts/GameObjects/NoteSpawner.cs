@@ -4,20 +4,20 @@ using UnityEngine;
 public class NoteSpawner : MonoBehaviour
 {
     [Header("Prefabs de notas")]
-    public GameObject notePrefab;
-    public GameObject spaceNotePrefab;
+    [SerializeField] private GameObject notePrefab;
+    [SerializeField] private GameObject spaceNotePrefab;
 
     [Header("Puntos de aparición")]
-    public Transform spawnPointA;
-    public Transform spawnPointS;
-    public Transform spawnPointD;
-    public Transform spawnPointSpace;
+    [SerializeField] private Transform spawnPointA;
+    [SerializeField] private Transform spawnPointS;
+    [SerializeField] private Transform spawnPointD;
+    [SerializeField] private Transform spawnPointSpace;
 
     [Header("Lista de notas (nivel)")]
     public List<NoteData> notes = new List<NoteData>();
 
     [Header("Dificultad")]
-    public DifficultySettings currentDifficulty;
+    [SerializeField] private DifficultySettings currentDifficulty;
 
     private float songTimer;
     private bool gameStarted = false;

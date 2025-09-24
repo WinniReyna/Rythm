@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class DifficultyUI : MonoBehaviour
 {
-    public NoteSpawner noteSpawner;
+    [SerializeField] private NoteSpawner noteSpawner;
 
-    public GameObject difficultyPanel; // Panel que contiene los botones
+    [SerializeField] private GameObject difficultyPanel; // Panel que contiene los botones
 
     public void ChooseDifficulty(DifficultySettings difficulty)
     {
