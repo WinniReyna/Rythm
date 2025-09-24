@@ -4,33 +4,65 @@ using UnityEngine;
 public class NoteSpawner : MonoBehaviour
 {
     [Header("Prefabs de notas")]
-    public GameObject notePrefab;       // notas normales
-    public GameObject spaceNotePrefab;  // nota especial (Space)
+    public GameObject notePrefab;
+    public GameObject spaceNotePrefab;
 
     [Header("Puntos de aparición")]
     public Transform spawnPointA;
     public Transform spawnPointS;
     public Transform spawnPointD;
-    public Transform spawnPointSpace;   // zona especial para Space
+    public Transform spawnPointSpace;
 
     [Header("Lista de notas (nivel)")]
     public List<NoteData> notes = new List<NoteData>();
 
+    [Header("Dificultad")]
+    public DifficultySettings currentDifficulty;
+
     private float songTimer;
+    private bool gameStarted = false;
+
+    // Lista interna de notas que se van a spawnear según la dificultad
+    private List<NoteData> activeNotes = new List<NoteData>();
 
     void Update()
     {
+        if (!gameStarted) return;
+
         songTimer += Time.deltaTime;
 
-        for (int i = 0; i < notes.Count; i++)
+        for (int i = 0; i < activeNotes.Count; i++)
         {
-            if (songTimer >= notes[i].time)
+            if (songTimer >= activeNotes[i].time)
             {
-                SpawnNote(notes[i]);
-                notes.RemoveAt(i);
+                SpawnNote(activeNotes[i]);
+                activeNotes.RemoveAt(i);
                 i--;
             }
         }
+    }
+
+    /// <summary>
+    /// Inicia el juego y aplica la dificultad seleccionada
+    /// </summary>
+    public void StartGame(DifficultySettings difficulty)
+    {
+        currentDifficulty = difficulty;
+        gameStarted = true;
+        songTimer = 0f;
+
+        // Crear lista interna según spawnRateMultiplier
+        activeNotes.Clear();
+
+        int notesToSpawn = Mathf.CeilToInt(notes.Count * currentDifficulty.spawnRateMultiplier);
+        notesToSpawn = Mathf.Clamp(notesToSpawn, 1, notes.Count);
+
+        for (int i = 0; i < notesToSpawn; i++)
+        {
+            activeNotes.Add(notes[i]);
+        }
+
+        Debug.Log($"Juego iniciado con dificultad {difficulty.name}. Notas a spawnear: {activeNotes.Count}");
     }
 
     void SpawnNote(NoteData data)
@@ -53,8 +85,6 @@ public class NoteSpawner : MonoBehaviour
         {
             var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
-            // Usamos la clase concreta Note (no la interfaz INote) 
-            // porque necesitamos pasar más datos al Initialize
             var note = obj.GetComponent<Note>();
             note?.Initialize(
                 data.key,
@@ -63,6 +93,9 @@ public class NoteSpawner : MonoBehaviour
                 data.paintColor,
                 data.allowEmptyPaint
             );
+
+            // Aplicar velocidad desde la dificultad
+            note.speed = currentDifficulty.noteSpeed;
         }
         else
         {
@@ -70,6 +103,8 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 }
+
+
 
 
 
