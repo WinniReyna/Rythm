@@ -22,8 +22,13 @@ public class NoteSpawner : MonoBehaviour
     private float songTimer;
     private bool gameStarted = false;
 
-    // Lista interna de notas que se van a spawnear según la dificultad
+    // Notas a spawnear según dificultad
     private List<NoteData> activeNotes = new List<NoteData>();
+
+    // Notas activas en escena
+    private List<Note> notesInScene = new List<Note>();
+
+    public int ActiveNotesCount => activeNotes.Count;
 
     void Update()
     {
@@ -41,15 +46,12 @@ public class NoteSpawner : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// Inicia el juego y aplica la dificultad seleccionada
-    /// </summary>
     public void StartGame(DifficultySettings difficulty)
     {
         currentDifficulty = difficulty;
         gameStarted = true;
         songTimer = 0f;
+
         activeNotes.Clear();
 
         int notesToSpawn = Mathf.CeilToInt(notes.Count * currentDifficulty.spawnRateMultiplier);
@@ -57,16 +59,15 @@ public class NoteSpawner : MonoBehaviour
 
         if (currentDifficulty.spawnRateMultiplier >= 1f)
         {
-            // Hard usar todas las notas
+            // Hard → usar todas las notas
             activeNotes.AddRange(notes);
         }
         else
         {
-            // Semilla fija basada en el nombre de la dificultad
+            // Semilla fija para que siempre sea el mismo subconjunto
             int seed = difficulty.name.GetHashCode();
             Random.InitState(seed);
 
-            // Copiar y mezclar lista
             List<NoteData> shuffled = new List<NoteData>(notes);
             for (int i = 0; i < shuffled.Count; i++)
             {
@@ -74,14 +75,19 @@ public class NoteSpawner : MonoBehaviour
                 (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
             }
 
-            // Tomar las primeras N del shuffle (siempre será el mismo subconjunto para esa dificultad)
             for (int i = 0; i < notesToSpawn; i++)
             {
                 activeNotes.Add(shuffled[i]);
             }
         }
 
+        // 🔹 Coloca esta línea aquí, después de definir activeNotes
+        FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
+
         Debug.Log($"Juego iniciado con dificultad {difficulty.name}. Notas a spawnear: {activeNotes.Count}");
+
+        // Avisar GameManager que el juego empezó
+        FindObjectOfType<GameManager>()?.OnGameStarted();
     }
 
     void SpawnNote(NoteData data)
@@ -113,18 +119,33 @@ public class NoteSpawner : MonoBehaviour
                 data.allowEmptyPaint
             );
 
-            // Aplicar velocidad desde la dificultad
             note.speed = currentDifficulty.noteSpeed;
+
+            RegisterSpawnedNote(note);
         }
         else
         {
             Debug.LogWarning($"No se pudo spawnear nota {data.key}, spawnPoint o prefab es null.");
         }
     }
+
+    public void RegisterSpawnedNote(Note note)
+    {
+        if (note != null)
+            notesInScene.Add(note);
+    }
+
+    public void UnregisterNote(Note note)
+    {
+        if (note != null)
+            notesInScene.Remove(note);
+    }
+
+    public bool AllNotesFinished()
+    {
+        return activeNotes.Count == 0 && notesInScene.Count == 0;
+    }
 }
-
-
-
 
 
 
