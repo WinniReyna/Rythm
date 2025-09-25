@@ -50,16 +50,35 @@ public class NoteSpawner : MonoBehaviour
         currentDifficulty = difficulty;
         gameStarted = true;
         songTimer = 0f;
-
-        // Crear lista interna según spawnRateMultiplier
         activeNotes.Clear();
 
         int notesToSpawn = Mathf.CeilToInt(notes.Count * currentDifficulty.spawnRateMultiplier);
         notesToSpawn = Mathf.Clamp(notesToSpawn, 1, notes.Count);
 
-        for (int i = 0; i < notesToSpawn; i++)
+        if (currentDifficulty.spawnRateMultiplier >= 1f)
         {
-            activeNotes.Add(notes[i]);
+            // Hard usar todas las notas
+            activeNotes.AddRange(notes);
+        }
+        else
+        {
+            // Semilla fija basada en el nombre de la dificultad
+            int seed = difficulty.name.GetHashCode();
+            Random.InitState(seed);
+
+            // Copiar y mezclar lista
+            List<NoteData> shuffled = new List<NoteData>(notes);
+            for (int i = 0; i < shuffled.Count; i++)
+            {
+                int randomIndex = Random.Range(i, shuffled.Count);
+                (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
+            }
+
+            // Tomar las primeras N del shuffle (siempre será el mismo subconjunto para esa dificultad)
+            for (int i = 0; i < notesToSpawn; i++)
+            {
+                activeNotes.Add(shuffled[i]);
+            }
         }
 
         Debug.Log($"Juego iniciado con dificultad {difficulty.name}. Notas a spawnear: {activeNotes.Count}");

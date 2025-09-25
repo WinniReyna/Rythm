@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   noteSpeed: 5
-  spawnRateMultiplier: 0.8
+  spawnRateMultiplier: 0.6

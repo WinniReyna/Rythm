@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   noteSpeed: 1
-  spawnRateMultiplier: 0.5
+  spawnRateMultiplier: 0.3
