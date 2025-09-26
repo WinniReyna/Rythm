@@ -13,4 +13,9 @@ public class PlayerAnimator : MonoBehaviour, IPlayerAnimator
     {
         animator.SetFloat("Speed", speed);
     }
+
+    public void SetRunning(bool isRunning)
+    {
+        animator.SetBool("IsRunning", isRunning);
+    }
 }

@@ -43,11 +43,15 @@ public class PlayerMovement : MonoBehaviour
             RotateTowards(direction);
             Vector3 moveDir = Quaternion.Euler(0f, GetTargetAngle(direction), 0f) * Vector3.forward;
             controller.Move(moveDir * currentSpeed * Time.deltaTime);
-            playerAnimator.SetSpeed(currentSpeed / walkSpeed);
+
+            // Animaciones
+            playerAnimator.SetSpeed(direction.magnitude);
+            playerAnimator.SetRunning(isRunning);
         }
         else
         {
             playerAnimator.SetSpeed(0f);
+            playerAnimator.SetRunning(false);
         }
     }
 

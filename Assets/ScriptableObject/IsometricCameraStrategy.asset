@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bf2a0e0ad23024a8494d90bfc487fa, type: 3}
   m_Name: IsometricCameraStrategy
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 10, z: -10}
+  offset: {x: 0, y: 3.5, z: -6.2}
