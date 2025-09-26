@@ -20,5 +20,10 @@ public class NoteData
 
     [Tooltip("¿Esta nota puede pintar aunque no tenga posición/color?")]
     public bool allowEmptyPaint = false;
+
+    [Tooltip("Valor que debe tener el slider para que el hit sea válido (0 o 1)")]
+    [Range(0, 1)]
+    public int requiredSliderValue = 0;
+
 }
 

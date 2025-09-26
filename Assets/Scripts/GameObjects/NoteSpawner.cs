@@ -46,6 +46,7 @@ public class NoteSpawner : MonoBehaviour
             }
         }
     }
+
     public void StartGame(DifficultySettings difficulty)
     {
         currentDifficulty = difficulty;
@@ -81,12 +82,9 @@ public class NoteSpawner : MonoBehaviour
             }
         }
 
-        // 🔹 Coloca esta línea aquí, después de definir activeNotes
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-
         Debug.Log($"Juego iniciado con dificultad {difficulty.name}. Notas a spawnear: {activeNotes.Count}");
 
-        // Avisar GameManager que el juego empezó
         FindObjectOfType<GameManager>()?.OnGameStarted();
     }
 
@@ -109,18 +107,18 @@ public class NoteSpawner : MonoBehaviour
         if (spawnPoint != null && prefab != null)
         {
             var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-
             var note = obj.GetComponent<Note>();
+
             note?.Initialize(
                 data.key,
                 data.gridX,
                 data.gridY,
                 data.paintColor,
-                data.allowEmptyPaint
+                data.allowEmptyPaint,
+                data.requiredSliderValue // ⚡ pasar el valor del slider aquí
             );
 
             note.speed = currentDifficulty.noteSpeed;
-
             RegisterSpawnedNote(note);
         }
         else
@@ -131,14 +129,12 @@ public class NoteSpawner : MonoBehaviour
 
     public void RegisterSpawnedNote(Note note)
     {
-        if (note != null)
-            notesInScene.Add(note);
+        if (note != null) notesInScene.Add(note);
     }
 
     public void UnregisterNote(Note note)
     {
-        if (note != null)
-            notesInScene.Remove(note);
+        if (note != null) notesInScene.Remove(note);
     }
 
     public bool AllNotesFinished()
@@ -146,6 +142,7 @@ public class NoteSpawner : MonoBehaviour
         return activeNotes.Count == 0 && notesInScene.Count == 0;
     }
 }
+
 
 
 

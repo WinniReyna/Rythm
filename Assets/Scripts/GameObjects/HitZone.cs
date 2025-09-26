@@ -5,8 +5,11 @@ public class HitZone : MonoBehaviour
     [Tooltip("Tecla que se debe presionar cuando una nota está dentro de la zona")]
     public NoteKey keyToPress;
 
+    [Tooltip("Slider que controla el valor 0 o 1")]
+    public SliderController slider; // Debes tener un script que devuelva CurrentValue 0 o 1
+
     private IInputHandler inputHandler;
-    private Note currentNote; // guardamos la nota que está dentro
+    private Note currentNote; // nota dentro del hitzone
 
     void Start()
     {
@@ -35,11 +38,19 @@ public class HitZone : MonoBehaviour
     {
         if (currentNote != null && inputHandler.IsKeyPressed(keyToPress))
         {
-            currentNote.Hit();
-            currentNote = null; //evitamos volver a contarla
+            if (slider != null && currentNote.RequiredSliderValue == slider.CurrentValue)
+            {
+                currentNote.Hit();
+                currentNote = null;
+            }
+            else
+            {
+                Debug.Log("Slider en valor incorrecto para esta nota");
+            }
         }
     }
 }
+
 
 
 
