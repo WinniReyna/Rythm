@@ -11,4 +11,8 @@ public class KeyboardInputProvider : IInputProvider
     {
         return Input.GetKey(KeyCode.LeftShift);
     }
+    public bool InteractPressed()
+    {
+        return Input.GetKeyDown(KeyCode.E);
+    }
 }
