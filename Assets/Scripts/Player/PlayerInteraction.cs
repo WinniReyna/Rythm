@@ -1,39 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] private float interactRange = 2f;
-    [SerializeField] private LayerMask interactableMask;
-
-    private Camera cam;
-    private IInputProvider inputProvider;
+    private IInteractable nearbyInteractable;
+    private DialogueManager dialogueManager;
 
     void Start()
     {
-        cam = Camera.main;
-        inputProvider = new KeyboardInputProvider();
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
     void Update()
     {
-        if (inputProvider.InteractPressed())
+        if (nearbyInteractable != null && Input.GetKeyDown(KeyCode.E))
         {
-            TryInteract();
+            nearbyInteractable.Interact();
         }
     }
 
-    private void TryInteract()
+    private void OnTriggerEnter(Collider other)
     {
-        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        if (Physics.Raycast(ray, out RaycastHit hit, interactRange, interactableMask))
+        IInteractable interactable = other.GetComponent<IInteractable>();
+        if (interactable != null)
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            if (interactable != null)
+            nearbyInteractable = interactable;
+            Debug.Log($"Jugador puede interactuar con {other.name}");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (nearbyInteractable != null && other.GetComponent<IInteractable>() == nearbyInteractable)
+        {
+            nearbyInteractable = null;
+            Debug.Log($"Jugador salió del rango de {other.name}");
+
+            //Aquí hacemos desaparecer el texto
+            if (dialogueManager != null)
             {
-                interactable.Interact();
+                dialogueManager.HideDialogue();
             }
         }
     }
 }
-
 
