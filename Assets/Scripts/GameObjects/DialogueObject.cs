@@ -9,7 +9,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
         DialogueManager manager = FindObjectOfType<DialogueManager>();
         if (manager != null && dialogueData != null)
         {
-            manager.ShowDialogue(dialogueData);
+            manager.StartDialogue(dialogueData);
         }
     }
 }

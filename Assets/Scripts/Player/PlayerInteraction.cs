@@ -38,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
             //Aquí hacemos desaparecer el texto
             if (dialogueManager != null)
             {
-                dialogueManager.HideDialogue();
+                DialogueManager.Instance.EndDialogue();
             }
         }
     }

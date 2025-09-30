@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: NPC1
+  m_Name: Answer2
   m_EditorClassIdentifier: 
   npcName: Marianne
   lines:
-  - localizedKey: NPC1
-    icon: {fileID: 2800000, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  - localizedKey: Answer1
+    icon: {fileID: 2800000, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
     npcVoice: {fileID: 0}
-    responses:
-    - localizedKey: NPC2
-      nextDialogue: {fileID: 11400000, guid: 68cded03eda7cf84ea0569754ddce2d7, type: 2}
-    - localizedKey: NPC3
-      nextDialogue: {fileID: 11400000, guid: 63726afe9eb730f48a439b53d7d4e4ed, type: 2}
+    responses: []
