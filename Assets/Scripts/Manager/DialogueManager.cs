@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Lean.Localization; // Asegúrate de tener este using
+using Lean.Localization;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public RawImage npcIcon;
     public Transform responseContainer;
     public GameObject responseButtonPrefab;
+    public TMP_Text continueText; // Texto que indica "Presiona Space para continuar"
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -29,6 +30,20 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Update()
+    {
+        // Avanzar con tecla Space
+        if (dialoguePanel.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentDialogue != null)
+            {
+                if (HasMoreLines())
+                    Debug.Log("Hay más líneas de diálogo...");
+                NextLine();
+            }
+        }
     }
 
     public void StartDialogue(DialogueData dialogue)
@@ -50,15 +65,11 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine line = currentDialogue.lines[currentLineIndex];
 
-        // Texto usando Lean Localization
+        // Texto con Lean Localization
         if (!string.IsNullOrEmpty(line.localizedKey))
-        {
             dialogueText.text = LeanLocalization.GetTranslationText(line.localizedKey);
-        }
         else
-        {
             dialogueText.text = "";
-        }
 
         // Icono opcional
         if (npcIcon != null)
@@ -78,11 +89,11 @@ public class DialogueManager : MonoBehaviour
         if (audioSource != null && line.npcVoice != null)
             audioSource.PlayOneShot(line.npcVoice);
 
-        // Limpiar respuestas anteriores
+        // Limpiar botones de respuesta
         foreach (Transform child in responseContainer)
             Destroy(child.gameObject);
 
-        // Mostrar respuestas si existen
+        // Crear botones si hay respuestas
         if (line.responses != null && line.responses.Length > 0)
         {
             foreach (DialogueResponse response in line.responses)
@@ -101,29 +112,44 @@ public class DialogueManager : MonoBehaviour
                 });
             }
         }
-        else
+
+        // Mostrar aviso de "continuar" si hay más líneas y no hay respuestas
+        if (continueText != null)
         {
-            // Avanzar con clic si no hay respuestas
-            Button panelBtn = dialoguePanel.GetComponent<Button>();
-            if (panelBtn != null)
-            {
-                panelBtn.onClick.RemoveAllListeners();
-                panelBtn.onClick.AddListener(() => NextLine());
-            }
+            if (HasMoreLines() && (line.responses == null || line.responses.Length == 0))
+                continueText.gameObject.SetActive(true);
+            else
+                continueText.gameObject.SetActive(false);
         }
+    }
+
+    private bool HasMoreLines()
+    {
+        return currentDialogue != null && currentLineIndex < currentDialogue.lines.Length - 1;
     }
 
     public void NextLine()
     {
         currentLineIndex++;
-        ShowLine();
+        if (currentLineIndex >= currentDialogue.lines.Length)
+        {
+            EndDialogue(); // Apaga panel, texto e icono
+        }
+        else
+        {
+            ShowLine();
+        }
     }
 
     public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        dialogueText.text = "";
+        if (npcIcon != null) npcIcon.enabled = false;
+        if (continueText != null) continueText.gameObject.SetActive(false);
         currentDialogue = null;
     }
 }
+
 
 
