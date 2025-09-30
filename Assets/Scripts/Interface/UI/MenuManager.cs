@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameScene");
+        LoadingManager.Instance.LoadScene("GameScene");
     }
 
     public void ExitGame()
