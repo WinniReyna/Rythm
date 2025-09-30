@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5cfa74b3a3fcb4caa3b1b3c321af3a, type: 3}
+  m_Name: Map
+  m_EditorClassIdentifier: 
+  itemID: Map
+  itemName: Map
+  description: Mapita para encontrar la casa
+  icon: {fileID: 2800000, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  pickupSound: {fileID: 0}
