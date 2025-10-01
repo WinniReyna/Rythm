@@ -16,4 +16,5 @@ MonoBehaviour:
   itemName: Map
   description: Mapita para encontrar la casa
   icon: {fileID: 2800000, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  prefab: {fileID: 2193280745501467661, guid: b0545d9b0cd638b42acf25aefc0d5d22, type: 3}
   pickupSound: {fileID: 0}

@@ -1,64 +1,42 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InventoryData", menuName = "Inventory/InventoryData")]
+[CreateAssetMenu(fileName = "InventoryData", menuName = "Inventory/InventorySO")]
 public class InventorySO : ScriptableObject
 {
-    [Header("Items guardados")]
     public List<InventoryItem> items = new List<InventoryItem>();
 
-    /// <summary>Agrega un item al inventario</summary>
-    public void AddItem(ItemSO itemSO, int quantity = 1)
+    public void AddItem(string itemID, int amount)
     {
-        if (itemSO == null) return;
-
-        InventoryItem existing = items.Find(i => i.itemID == itemSO.itemID);
+        InventoryItem existing = items.Find(i => i.itemID == itemID);
         if (existing != null)
-        {
-            existing.quantity += quantity;
-        }
+            existing.quantity += amount;
         else
-        {
-            items.Add(new InventoryItem(itemSO.itemID, quantity));
-        }
+            items.Add(new InventoryItem(itemID, amount));
     }
 
-    /// <summary>Quita un item del inventario</summary>
-    public void RemoveItem(ItemSO itemSO, int quantity = 1)
+    public void RemoveItem(string itemID, int amount)
     {
-        if (itemSO == null) return;
-
-        InventoryItem existing = items.Find(i => i.itemID == itemSO.itemID);
+        InventoryItem existing = items.Find(i => i.itemID == itemID);
         if (existing != null)
         {
-            existing.quantity -= quantity;
+            existing.quantity -= amount;
             if (existing.quantity <= 0)
                 items.Remove(existing);
         }
     }
 
-    /// <summary>Serializa la lista de items a JSON</summary>
     public string Serialize()
     {
-        return JsonUtility.ToJson(new InventorySaveData(items));
+        return JsonUtility.ToJson(this, true);
     }
 
-    /// <summary>Deserializa JSON a la lista de items</summary>
     public void Deserialize(string json)
     {
-        InventorySaveData data = JsonUtility.FromJson<InventorySaveData>(json);
-        items = data.items ?? new List<InventoryItem>();
-    }
-
-    [System.Serializable]
-    private class InventorySaveData
-    {
-        public List<InventoryItem> items;
-
-        public InventorySaveData(List<InventoryItem> items)
-        {
-            this.items = items;
-        }
+        JsonUtility.FromJsonOverwrite(json, this);
     }
 }
+
+
 

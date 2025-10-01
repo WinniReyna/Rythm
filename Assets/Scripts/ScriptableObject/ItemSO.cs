@@ -11,6 +11,9 @@ public class ItemSO : ScriptableObject
     [TextArea] public string description;
     public Texture2D icon;
 
+    [Header("Instancia para tirar")]
+    public GameObject prefab;
+
     [Header("Opcional")]
     public AudioClip pickupSound;
 }

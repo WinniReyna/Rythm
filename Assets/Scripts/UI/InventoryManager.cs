@@ -1,95 +1,56 @@
-using System.IO;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    public Inventory inventory = new Inventory();
+    public GameObject inventoryPanel;
+    public InventoryUI inventoryUI;
+    public InventorySO inventorySO;
 
-    [SerializeField] private InventoryUI inventoryUI; // Asignar en inspector
-
-    private string savePath => Path.Combine(Application.persistentDataPath, "inventory.json");
+    private bool isOpen = false;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre escenas
-            LoadInventory(); // Cargar al inicio
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
+
+        if (inventoryPanel != null)
+            inventoryPanel.SetActive(isOpen);
     }
 
     private void Update()
     {
-        // Abrir/cerrar inventario con I
         if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (inventoryUI != null)
-            {
-                bool isActive = inventoryUI.gameObject.activeSelf;
-                inventoryUI.gameObject.SetActive(!isActive);
-
-                if (!isActive)
-                    inventoryUI.RefreshUI(inventory);
-            }
-        }
+            ToggleInventory();
     }
 
-    public void AddItem(string itemID, int quantity)
+    public void ToggleInventory()
     {
-        inventory.AddItem(itemID, quantity);
+        isOpen = !isOpen;
+        if (inventoryPanel != null)
+            inventoryPanel.SetActive(isOpen);
+
+        if (isOpen)
+            RefreshUI();
+    }
+
+    public void RefreshUI()
+    {
         if (inventoryUI != null)
-            inventoryUI.RefreshUI(inventory);
-
-        SaveInventory();
+            inventoryUI.RefreshUI();
     }
 
-    #region JSON Save/Load
-    [System.Serializable]
-    private class InventorySaveData
+    public void AddItem(string itemID, int amount = 1)
     {
-        public string[] itemIDs;
-        public int[] quantities;
+        inventorySO.AddItem(itemID, amount);
+        RefreshUI();
     }
 
-    public void SaveInventory()
+    public void RemoveItem(string itemID, int amount = 1)
     {
-        InventorySaveData data = new InventorySaveData();
-        int count = inventory.items.Count;
-        data.itemIDs = new string[count];
-        data.quantities = new int[count];
-
-        for (int i = 0; i < count; i++)
-        {
-            data.itemIDs[i] = inventory.items[i].itemID;
-            data.quantities[i] = inventory.items[i].quantity;
-        }
-
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(savePath, json);
+        inventorySO.RemoveItem(itemID, amount);
+        RefreshUI();
     }
-
-    public void LoadInventory()
-    {
-        if (!File.Exists(savePath)) return;
-
-        string json = File.ReadAllText(savePath);
-        InventorySaveData data = JsonUtility.FromJson<InventorySaveData>(json);
-
-        inventory.items.Clear();
-        for (int i = 0; i < data.itemIDs.Length; i++)
-        {
-            inventory.AddItem(data.itemIDs[i], data.quantities[i]);
-        }
-
-        if (inventoryUI != null)
-            inventoryUI.RefreshUI(inventory);
-    }
-    #endregion
 }
+

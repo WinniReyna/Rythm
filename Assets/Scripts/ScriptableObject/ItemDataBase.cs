@@ -1,16 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Inventory/ItemDatabase")]
-public class ItemDataBase : ScriptableObject
+public class ItemDatabase : ScriptableObject
 {
-    public ItemSO[] items;
+    [SerializeField] private List<ItemSO> allItems = new List<ItemSO>();
+    private Dictionary<string, ItemSO> itemDict;
+
+    private void OnEnable()
+    {
+        itemDict = new Dictionary<string, ItemSO>();
+        foreach (var item in allItems)
+        {
+            if (!itemDict.ContainsKey(item.itemID))
+                itemDict.Add(item.itemID, item);
+        }
+    }
 
     public ItemSO GetItemByID(string id)
     {
-        foreach (var item in items)
-        {
-            if (item.itemID == id) return item;
-        }
+        if (itemDict != null && itemDict.TryGetValue(id, out ItemSO item))
+            return item;
+
+        Debug.LogWarning($"Item con ID {id} no encontrado.");
         return null;
     }
 }
+
+

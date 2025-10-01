@@ -2,31 +2,30 @@
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private GameObject itemPrefab; // Prefab InventoryUIItem
-    [SerializeField] private Transform contentPanel; // Panel con GridLayoutGroup
+    public Transform itemsParent;
+    public GameObject itemPrefab;
+    public InventorySO inventorySO;
+    public ItemDatabase itemDatabase; // Lista de todos los ItemSO
 
-    public void RefreshUI(Inventory inventory)
+    public void RefreshUI()
     {
-        // Limpiar items actuales
-        foreach (Transform child in contentPanel)
+        // Limpiar Grid
+        foreach (Transform child in itemsParent)
             Destroy(child.gameObject);
 
-        // Crear nuevos items
-        foreach (var invItem in inventory.items)
+        // Instanciar slots
+        foreach (var invItem in inventorySO.items)
         {
-            // Cargar ItemSO desde Resources usando itemID
-            ItemSO itemSO = Resources.Load<ItemSO>($"Items/{invItem.itemID}");
-            if (itemSO != null)
-            {
-                GameObject itemGO = Instantiate(itemPrefab, contentPanel);
-                InventoryUIItem itemUI = itemGO.GetComponent<InventoryUIItem>();
-                itemUI.Setup(itemSO, invItem.quantity);
-            }
-            else
-            {
-                Debug.LogWarning("No se encontró ItemSO para: " + invItem.itemID);
-            }
+            ItemSO itemSO = itemDatabase.GetItemByID(invItem.itemID);
+            if (itemSO == null) continue;
+
+            GameObject go = Instantiate(itemPrefab, itemsParent);
+            InventoryUIItem uiItem = go.GetComponent<InventoryUIItem>();
+            uiItem.Setup(itemSO, invItem.quantity, inventorySO);
         }
     }
 }
+
+
+
 
