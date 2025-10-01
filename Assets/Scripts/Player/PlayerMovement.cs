@@ -1,27 +1,39 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Velocidades")]
     public float walkSpeed = 2f;
     public float runMultiplier = 2f;
     public float turnSmoothTime = 0.1f;
-    public float gravity = -9.81f;
 
-    private CharacterController controller;
+    [Header("Salto")]
+    public float jumpForce = 5f;           // Fuerza de salto
+    public float fallMultiplier = 2.5f;    // Para ca�da m�s r�pida
+
+    [Header("Escalada")]
+    public float climbSpeed = 2f;
+    public LayerMask climbableLayer;
+    public float climbDetectionDistance = 1f;
+
+    private Rigidbody rb;
     private float turnSmoothVelocity;
-    private Vector3 velocity;
+    private Vector3 moveDirection;
 
-    // Dependencias inyectables
     private IInputProvider inputProvider;
     private IPlayerAnimator playerAnimator;
 
+    private bool isClimbing = false;
+    private bool isJumping = false;
+    private bool isGrounded = false;
+
     void Awake()
     {
-        controller = GetComponent<CharacterController>();
-        inputProvider = new KeyboardInputProvider(); // Se puede cambiar f�cilmente
-        playerAnimator = GetComponent<IPlayerAnimator>(); // Animator separado
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation; // Evita que el Rigidbody gire
+        inputProvider = new KeyboardInputProvider();
+        playerAnimator = GetComponent<IPlayerAnimator>();
     }
 
     void Update()
@@ -29,27 +41,34 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = inputProvider.GetMovement();
         bool isRunning = inputProvider.IsRunning();
 
-        Move(input, isRunning);
-        ApplyGravity();
+        CheckGrounded();
+        HandleJump();
+        HandleMove(input, isRunning);
+
+        if (!isClimbing)
+            CheckClimb(input);
+        else
+            HandleClimb(input);
     }
 
-    private void Move(Vector2 input, bool isRunning)
+    #region Movimiento
+    private void HandleMove(Vector2 input, bool isRunning)
     {
-        Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
+        moveDirection = new Vector3(input.x, 0, input.y).normalized;
         float currentSpeed = walkSpeed * (isRunning ? runMultiplier : 1f);
 
-        if (direction.magnitude >= 0.1f)
+        if (moveDirection.magnitude >= 0.1f)
         {
-            RotateTowards(direction);
-            Vector3 moveDir = Quaternion.Euler(0f, GetTargetAngle(direction), 0f) * Vector3.forward;
-            controller.Move(moveDir * currentSpeed * Time.deltaTime);
+            RotateTowards(moveDirection);
+            Vector3 horizontalVelocity = moveDirection * currentSpeed;
+            rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
 
-            // Animaciones
-            playerAnimator.SetSpeed(direction.magnitude);
+            playerAnimator.SetSpeed(moveDirection.magnitude);
             playerAnimator.SetRunning(isRunning);
         }
         else
         {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
             playerAnimator.SetSpeed(0f);
             playerAnimator.SetRunning(false);
         }
@@ -57,22 +76,78 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotateTowards(Vector3 direction)
     {
-        float targetAngle = GetTargetAngle(direction);
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
+    #endregion
 
-    private float GetTargetAngle(Vector3 direction)
+    #region Salto
+    private void HandleJump()
     {
-        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        if (isGrounded && inputProvider.JumpPressed() && !isClimbing)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // reset vertical
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+
+            isJumping = true;
+            playerAnimator.SetTrigger("Jump");
+        }
+
+        // Detecta si está cayendo
+        if (rb.linearVelocity.y < -0.1f && !isGrounded)
+        {
+            playerAnimator.SetFalling(true);
+        }
+        else
+        {
+            playerAnimator.SetFalling(false);
+        }
+
+        // Caída más rápida
+        if (rb.linearVelocity.y < 0)
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
     }
 
-    private void ApplyGravity()
+    private void CheckGrounded()
     {
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        playerAnimator.SetGrounded(isGrounded);
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        if (isGrounded)
+            isJumping = false;
     }
+    #endregion
+    #region Escalada
+    private void CheckClimb(Vector2 input)
+    {
+        if (isJumping) return; // No escalar mientras saltamos
+
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, climbDetectionDistance, climbableLayer))
+        {
+            if (input.y > 0)
+            {
+                isClimbing = true;
+                rb.useGravity = false;
+                rb.linearVelocity = Vector3.zero;
+                playerAnimator.SetClimbing(true);
+            }
+        }
+    }
+
+    private void HandleClimb(Vector2 input)
+    {
+        Vector3 climbMove = Vector3.up * input.y * climbSpeed;
+        rb.MovePosition(rb.position + climbMove * Time.deltaTime);
+
+        playerAnimator.SetClimbSpeed(Mathf.Abs(input.y));
+
+        if (!Physics.Raycast(transform.position, transform.forward, climbDetectionDistance, climbableLayer))
+        {
+            isClimbing = false;
+            rb.useGravity = true;
+            playerAnimator.SetClimbing(false);
+        }
+    }
+    #endregion
 }
