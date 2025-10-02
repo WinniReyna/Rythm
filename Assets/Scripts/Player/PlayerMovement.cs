@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool isGrounded = false;
 
+    // Escalada
+    private Transform climbStartPoint;
+    private Transform climbEndPoint;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,23 +54,21 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         HandleMove(input, isRunning);
 
-        if (isClimbing)
-            CheckExitClimb(); 
-
         if (!isClimbing)
             CheckClimb(input);
         else
             HandleClimb(input);
     }
 
-
     #region Movimiento
     private void HandleMove(Vector2 input, bool isRunning)
     {
+        if (isClimbing) return;
+
         moveDirection = new Vector3(input.x, 0, input.y).normalized;
         float currentSpeed = walkSpeed * (isRunning ? runMultiplier : 1f);
 
-        if (moveDirection.magnitude >= 0.1f && !isClimbing)
+        if (moveDirection.magnitude >= 0.1f)
         {
             RotateTowards(moveDirection);
             Vector3 horizontalVelocity = moveDirection * currentSpeed;
@@ -75,21 +77,11 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetSpeed(moveDirection.magnitude);
             playerAnimator.SetRunning(isRunning);
         }
-        else if (!isClimbing)
+        else
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
             playerAnimator.SetSpeed(0f);
             playerAnimator.SetRunning(false);
-        }
-    }
-    private void CheckExitClimb()
-    {
-        // Si el jugador presiona la barra espaciadora, salir de climbing
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isClimbing = false;
-            rb.useGravity = true;
-            playerAnimator.SetClimbing(false);
         }
     }
 
@@ -114,15 +106,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (rb.linearVelocity.y < -0.1f && !isGrounded)
-        {
             playerAnimator.SetFalling(true);
-        }
         else
-        {
             playerAnimator.SetFalling(false);
-        }
 
-        // caída más rápida
         if (rb.linearVelocity.y < 0 && !isClimbing)
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
     }
@@ -142,14 +129,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping) return;
 
+        // Raycast para detectar objeto escalable
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, climbDetectionDistance, climbableLayer))
         {
             if (input.y > 0)
             {
-                isClimbing = true;
+                // Buscar Start y End Points en el objeto
+                var points = hit.collider.GetComponent<ClimbPoints>();
+                if (points == null) return;
+
+                climbStartPoint = points.startPoint;
+                climbEndPoint = points.endPoint;
+
+                // Anclaje al inicio de la escalada
                 rb.useGravity = false;
                 rb.linearVelocity = Vector3.zero;
-                transform.position = hit.point - transform.forward * 0.5f; // anclaje al muro
+                transform.position = climbStartPoint.position;
+                transform.rotation = climbStartPoint.rotation;
+
+                isClimbing = true;
                 playerAnimator.SetClimbing(true);
             }
         }
@@ -157,17 +155,45 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleClimb(Vector2 input)
     {
-        Vector3 climbMove = Vector3.up * input.y * climbSpeed;
-        rb.MovePosition(rb.position + climbMove * Time.deltaTime);
+        // Salir de climbing con barra espaciadora
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ExitClimb();
+            return;
+        }
+
+        if (climbStartPoint == null || climbEndPoint == null) return;
+
+        // Movimiento vertical manual
+        float verticalMove = input.y * climbSpeed * Time.deltaTime;
+        transform.position += Vector3.up * verticalMove;
+
+        // Rotar suavemente hacia el muro
+        transform.rotation = Quaternion.Slerp(transform.rotation, climbStartPoint.rotation, 10f * Time.deltaTime);
 
         playerAnimator.SetClimbSpeed(Mathf.Abs(input.y));
 
-        if (!Physics.Raycast(transform.position, transform.forward, climbDetectionDistance, climbableLayer))
+        // Ajuste automático al final
+        if (transform.position.y >= climbEndPoint.position.y)
         {
-            isClimbing = false;
-            rb.useGravity = true;
-            playerAnimator.SetClimbing(false);
+            transform.position = climbEndPoint.position;
+            transform.rotation = climbEndPoint.rotation;
+            ExitClimb();
         }
+
+        // Ajuste automático al inicio (por si bajas demasiado)
+        if (transform.position.y <= climbStartPoint.position.y)
+        {
+            transform.position = climbStartPoint.position;
+        }
+    }
+
+
+    private void ExitClimb()
+    {
+        isClimbing = false;
+        rb.useGravity = true;
+        playerAnimator.SetClimbing(false);
     }
     #endregion
 }
