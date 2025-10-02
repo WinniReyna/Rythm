@@ -32,8 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isClimbing = false;
     private bool isJumping = false;
     private bool isGrounded = false;
+    private bool isFinishingClimb = false;
 
-    // Escalada
+    // Puntos de escalada
     private Transform climbStartPoint;
     private Transform climbEndPoint;
 
@@ -51,19 +52,24 @@ public class PlayerMovement : MonoBehaviour
         bool isRunning = inputProvider.IsRunning();
 
         CheckGrounded();
-        HandleJump();
-        HandleMove(input, isRunning);
 
-        if (!isClimbing)
+        if (!isClimbing && !isFinishingClimb)
+        {
+            HandleJump();
+            HandleMove(input, isRunning);
             CheckClimb(input);
-        else
+        }
+        else if (isClimbing && !isFinishingClimb)
+        {
             HandleClimb(input);
+            CheckExitClimb();
+        }
     }
 
     #region Movimiento
     private void HandleMove(Vector2 input, bool isRunning)
     {
-        if (isClimbing) return;
+        if (isClimbing || isFinishingClimb) return;
 
         moveDirection = new Vector3(input.x, 0, input.y).normalized;
         float currentSpeed = walkSpeed * (isRunning ? runMultiplier : 1f);
@@ -129,25 +135,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isJumping) return;
 
-        // Raycast para detectar objeto escalable
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, climbDetectionDistance, climbableLayer))
         {
             if (input.y > 0)
             {
-                // Buscar Start y End Points en el objeto
                 var points = hit.collider.GetComponent<ClimbPoints>();
                 if (points == null) return;
 
                 climbStartPoint = points.startPoint;
                 climbEndPoint = points.endPoint;
 
-                // Anclaje al inicio de la escalada
-                rb.useGravity = false;
                 rb.linearVelocity = Vector3.zero;
                 transform.position = climbStartPoint.position;
                 transform.rotation = climbStartPoint.rotation;
 
                 isClimbing = true;
+                rb.useGravity = false;
                 playerAnimator.SetClimbing(true);
             }
         }
@@ -155,7 +158,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleClimb(Vector2 input)
     {
-        // Salir de climbing con barra espaciadora
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ExitClimb();
@@ -164,36 +166,54 @@ public class PlayerMovement : MonoBehaviour
 
         if (climbStartPoint == null || climbEndPoint == null) return;
 
-        // Movimiento vertical manual
         float verticalMove = input.y * climbSpeed * Time.deltaTime;
         transform.position += Vector3.up * verticalMove;
-
-        // Rotar suavemente hacia el muro
         transform.rotation = Quaternion.Slerp(transform.rotation, climbStartPoint.rotation, 10f * Time.deltaTime);
 
         playerAnimator.SetClimbSpeed(Mathf.Abs(input.y));
-
-        // Ajuste automático al final
-        if (transform.position.y >= climbEndPoint.position.y)
-        {
-            transform.position = climbEndPoint.position;
-            transform.rotation = climbEndPoint.rotation;
-            ExitClimb();
-        }
-
-        // Ajuste automático al inicio (por si bajas demasiado)
-        if (transform.position.y <= climbStartPoint.position.y)
-        {
-            transform.position = climbStartPoint.position;
-        }
     }
 
+    private void CheckExitClimb()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            ExitClimb();
+    }
 
     private void ExitClimb()
     {
         isClimbing = false;
         rb.useGravity = true;
         playerAnimator.SetClimbing(false);
+    }
+    #endregion
+
+    #region Climb Finish Trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ClimbFinish") && isClimbing && !isFinishingClimb)
+        {
+            StartFinishClimb();
+        }
+    }
+
+    private void StartFinishClimb()
+    {
+        isFinishingClimb = true;
+        rb.linearVelocity = Vector3.zero;
+        rb.useGravity = false;
+        playerAnimator.SetClimbing(false);
+        playerAnimator.SetTrigger("ClimbFinish");
+    }
+
+    // Método público para Animation Event
+    public void OnFinishClimbAnimation()
+    {
+        if (climbEndPoint != null)
+            transform.position = climbEndPoint.position;
+
+        rb.useGravity = true;
+        isClimbing = false;
+        isFinishingClimb = false;
     }
     #endregion
 }
