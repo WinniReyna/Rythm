@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InventoryData", menuName = "Inventory/InventorySO")]
+[CreateAssetMenu(fileName = "InventoryDataSO", menuName = "Inventory/InventorySO")]
 public class InventorySO : ScriptableObject
 {
     public List<InventoryItem> items = new List<InventoryItem>();
@@ -27,16 +26,10 @@ public class InventorySO : ScriptableObject
         }
     }
 
-    public string Serialize()
+    public void Clear()
     {
-        return JsonUtility.ToJson(this, true);
-    }
-
-    public void Deserialize(string json)
-    {
-        JsonUtility.FromJsonOverwrite(json, this);
+        items.Clear();
     }
 }
-
 
 

@@ -10413,7 +10413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38eb9da6392930245a9094b53f40ffee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 2c2b1b594347c464bbe28aa0dfbffb3c, type: 2}
+  inventorySO: {fileID: 11400000, guid: 2c2b1b594347c464bbe28aa0dfbffb3c, type: 2}
 --- !u!4 &1805978697
 Transform:
   m_ObjectHideFlags: 0

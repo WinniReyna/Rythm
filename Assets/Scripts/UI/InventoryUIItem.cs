@@ -4,24 +4,22 @@ using UnityEngine.UI;
 
 public class InventoryUIItem : MonoBehaviour
 {
-    [Header("UI Elements")]
     public RawImage icon;
     public TMP_Text itemNameText;
     public TMP_Text descriptionText;
     public TMP_Text quantityText;
 
-    [Header("Database Reference")]
-    public ItemDatabase itemDatabase; // Asignar en Inspector
-
     private string itemID;
     private InventorySO inventorySO;
+    private ItemDatabase itemDatabase;
 
-    public void Setup(ItemSO itemSO, int quantity, InventorySO inventory)
+    public void Setup(ItemSO itemSO, int quantity, InventorySO inventory, ItemDatabase db)
     {
         if (itemSO == null) return;
 
         itemID = itemSO.itemID;
         inventorySO = inventory;
+        itemDatabase = db;
 
         icon.texture = itemSO.icon;
         itemNameText.text = itemSO.itemName;
@@ -32,7 +30,6 @@ public class InventoryUIItem : MonoBehaviour
     public void OnUseButton()
     {
         Debug.Log($"Usaste {itemID}");
-        // Aquí va la lógica de usar el item
     }
 
     public void OnDeleteButton()
@@ -41,6 +38,7 @@ public class InventoryUIItem : MonoBehaviour
         {
             inventorySO.RemoveItem(itemID, 1);
             InventoryManager.Instance.RefreshUI();
+            FindObjectOfType<InventorySaveLoad>().SaveInventory();
         }
     }
 
@@ -48,23 +46,20 @@ public class InventoryUIItem : MonoBehaviour
     {
         if (inventorySO == null || itemDatabase == null) return;
 
-        // Obtener el ItemSO desde la base de datos usando itemID
         ItemSO itemSO = itemDatabase.GetItemByID(itemID);
         if (itemSO != null && itemSO.prefab != null)
         {
-            // Instanciar objeto frente al jugador
             GameObject player = GameObject.FindWithTag("Player");
             Vector3 spawnPos = player != null ? player.transform.position + player.transform.forward : Vector3.zero;
             Instantiate(itemSO.prefab, spawnPos, Quaternion.identity);
 
-            // Quitar 1 del inventario
             inventorySO.RemoveItem(itemID, 1);
             InventoryManager.Instance.RefreshUI();
-
-            Debug.Log($"Soltaste {itemID} en escena");
+            FindObjectOfType<InventorySaveLoad>().SaveInventory();
         }
     }
 }
+
 
 
 

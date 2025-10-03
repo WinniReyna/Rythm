@@ -3,18 +3,25 @@ using System.IO;
 
 public class InventorySaveLoad : MonoBehaviour
 {
-    [SerializeField] private InventorySO inventory;
+    [SerializeField] private InventorySO inventorySO;
 
     private string savePath;
 
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
+        LoadInventory();
     }
 
     public void SaveInventory()
     {
-        string json = inventory.Serialize();
+        InventoryData data = new InventoryData();
+        foreach (var item in inventorySO.items)
+        {
+            data.items.Add(new InventoryItem(item.itemID, item.quantity));
+        }
+
+        string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Inventario guardado en: " + savePath);
     }
@@ -24,8 +31,19 @@ public class InventorySaveLoad : MonoBehaviour
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
-            inventory.Deserialize(json);
+            InventoryData data = JsonUtility.FromJson<InventoryData>(json);
+
+            inventorySO.Clear();
+            foreach (var item in data.items)
+            {
+                inventorySO.AddItem(item.itemID, item.quantity);
+            }
+
             Debug.Log("Inventario cargado desde: " + savePath);
+        }
+        else
+        {
+            Debug.Log("No hay guardado previo, inventario vacío.");
         }
     }
 }

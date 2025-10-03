@@ -7,8 +7,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryPanel;
     public InventoryUI inventoryUI;
     public InventorySO inventorySO;
-
-    private IInputProvider inputProvider;
+    private InventorySaveLoad saveLoad;
 
     private bool isOpen = false;
 
@@ -20,12 +19,12 @@ public class InventoryManager : MonoBehaviour
         if (inventoryPanel != null)
             inventoryPanel.SetActive(isOpen);
 
-        inputProvider = new KeyboardInputProvider();
+        saveLoad = FindObjectOfType<InventorySaveLoad>();
     }
 
     private void Update()
     {
-        if (inputProvider.InventoryPanel())
+        if (Input.GetKeyDown(KeyCode.I))
             ToggleInventory();
     }
 
@@ -49,12 +48,15 @@ public class InventoryManager : MonoBehaviour
     {
         inventorySO.AddItem(itemID, amount);
         RefreshUI();
+        saveLoad.SaveInventory();
     }
 
     public void RemoveItem(string itemID, int amount = 1)
     {
         inventorySO.RemoveItem(itemID, amount);
         RefreshUI();
+        saveLoad.SaveInventory();
     }
 }
+
 
