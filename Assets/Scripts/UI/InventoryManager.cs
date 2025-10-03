@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     public InventoryUI inventoryUI;
     public InventorySO inventorySO;
 
+    private IInputProvider inputProvider;
+
     private bool isOpen = false;
 
     private void Awake()
@@ -17,11 +19,13 @@ public class InventoryManager : MonoBehaviour
 
         if (inventoryPanel != null)
             inventoryPanel.SetActive(isOpen);
+
+        inputProvider = new KeyboardInputProvider();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (inputProvider.InventoryPanel())
             ToggleInventory();
     }
 

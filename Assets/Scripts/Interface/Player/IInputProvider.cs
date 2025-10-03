@@ -5,4 +5,5 @@ public interface IInputProvider
     bool IsRunning();        
     bool JumpPressed();
     bool InteractPressed();
+    bool InventoryPanel();
 }

@@ -4,15 +4,17 @@ public class PlayerInteraction : MonoBehaviour
 {
     private IInteractable nearbyInteractable;
     private DialogueManager dialogueManager;
+    private IInputProvider inputProvider;
 
     void Start()
     {
         dialogueManager = FindObjectOfType<DialogueManager>();
+        inputProvider = new KeyboardInputProvider();
     }
 
     void Update()
     {
-        if (nearbyInteractable != null && Input.GetKeyDown(KeyCode.E))
+        if (nearbyInteractable != null && inputProvider != null && inputProvider.InteractPressed())
         {
             nearbyInteractable.Interact();
         }
@@ -35,12 +37,20 @@ public class PlayerInteraction : MonoBehaviour
             nearbyInteractable = null;
             Debug.Log($"Jugador salió del rango de {other.name}");
 
-            //Aquí hacemos desaparecer el texto
+            // Aquí podemos cerrar el panel de examineObject
+            ExamineObject examineObj = other.GetComponent<ExamineObject>();
+            if (examineObj != null)
+            {
+                examineObj.EndExamine();
+            }
+
+            // Si tenías diálogo
             if (dialogueManager != null)
             {
                 DialogueManager.Instance.EndDialogue();
             }
         }
     }
+
 }
 
