@@ -11727,7 +11727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be383f38e9454bb4fb4fe67c6d3db462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  libraryUIPanel: {fileID: 0}
+  libraryUIPanel: {fileID: 1679737495}
 --- !u!65 &1786805120
 BoxCollider:
   m_ObjectHideFlags: 0
