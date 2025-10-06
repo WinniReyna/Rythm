@@ -9,9 +9,16 @@ public class PauseManager : MonoBehaviour
     private IMenuPanel currentPanel;
     private bool isPaused = false;
 
+    private IInputProvider inputProvider;
+
+    private void Awake()
+    {
+        inputProvider = new KeyboardInputProvider();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (inputProvider.PausePressed())
         {
             if (isPaused) ResumeGame();
             else PauseGame();

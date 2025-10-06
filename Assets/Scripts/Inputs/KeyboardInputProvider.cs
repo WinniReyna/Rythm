@@ -7,4 +7,5 @@ public class KeyboardInputProvider : IInputProvider
     public bool JumpPressed() => Input.GetKeyDown(KeyCode.Space);
     public bool InteractPressed() => Input.GetKeyDown(KeyCode.E);
     public bool InventoryPanel() => Input.GetKeyDown(KeyCode.I);
+    public bool PausePressed() => Input.GetKeyDown(KeyCode.Escape);
 }
