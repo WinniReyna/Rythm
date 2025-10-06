@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using TMPro;
 using Lean.Localization;
 
-public class LibraryUI : MonoBehaviour
+public class LibraryUI : MonoBehaviour, IMenuPanel
 {
     [Header("Referencias UI")]
-    public Transform booksParent;          // Panel donde se instanciarán los botones
-    public GameObject bookButtonPrefab;    // Prefab de cada botón de libro
-    public TMP_Text storyText;             // Texto donde se mostrará la historia
+    public Transform booksParent;
+    public GameObject bookButtonPrefab;
+    public TMP_Text storyText;
 
     [Header("Sistema de guardado")]
     public LibrarySaveLoad librarySaveLoad;
@@ -16,6 +16,17 @@ public class LibraryUI : MonoBehaviour
     private void OnEnable()
     {
         RefreshUI();
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
+        RefreshUI();
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 
     public void RefreshUI()
@@ -32,23 +43,20 @@ public class LibraryUI : MonoBehaviour
             return;
         }
 
-        // Limpiar botones antiguos
         foreach (Transform child in booksParent)
             Destroy(child.gameObject);
 
-        // Crear un botón por cada libro encontrado
         foreach (BookSO book in librarySaveLoad.foundBooks)
         {
             if (book == null) continue;
 
             GameObject go = Instantiate(bookButtonPrefab, booksParent);
 
-            // Asignar texto del botón principal (puede ser título del libro)
             TMP_Text buttonText = go.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
                 buttonText.text = book.bookTitle;
 
-            // Botón para leer el libro
+            // Botón de leer libro
             Transform readBtnTransform = go.transform.Find("ReadButton");
             if (readBtnTransform != null)
             {
@@ -60,18 +68,18 @@ public class LibraryUI : MonoBehaviour
                 }
             }
 
-            // Botón para eliminar el libro
+            // Botón de eliminar libro
             Transform deleteBtnTransform = go.transform.Find("DeleteButton");
             if (deleteBtnTransform != null)
             {
                 Button deleteBtn = deleteBtnTransform.GetComponent<Button>();
+#if UNITY_EDITOR
+                deleteBtn.gameObject.SetActive(Application.isPlaying && Application.isEditor);
+#else
+                deleteBtn.gameObject.SetActive(false);
+#endif
                 if (deleteBtn != null)
                 {
-#if UNITY_EDITOR
-                    deleteBtn.gameObject.SetActive(Application.isPlaying && Application.isEditor);
-#else
-                    deleteBtn.gameObject.SetActive(false);
-#endif
                     deleteBtn.onClick.RemoveAllListeners();
                     deleteBtn.onClick.AddListener(() => RemoveBook(book));
                 }
@@ -79,16 +87,12 @@ public class LibraryUI : MonoBehaviour
         }
     }
 
-    // Mostrar la descripción del libro usando Lean Localization
     public void ShowBook(BookSO book)
     {
         if (book == null) return;
-
-        string localizedText = LeanLocalization.GetTranslationText(book.storyTextKey);
-        storyText.text = localizedText;
+        storyText.text = LeanLocalization.GetTranslationText(book.storyTextKey);
     }
 
-    // Eliminar libro de la biblioteca (solo en Editor)
     private void RemoveBook(BookSO book)
     {
 #if UNITY_EDITOR
@@ -102,3 +106,4 @@ public class LibraryUI : MonoBehaviour
 #endif
     }
 }
+

@@ -3,17 +3,25 @@ using UnityEngine;
 public class LibraryInteractable : MonoBehaviour, IInteractable
 {
     [Header("Referencia a la UI")]
-    [SerializeField] private LibraryUI libraryUI;
+    [SerializeField] private GameObject libraryUIPanel; // Panel con LibraryUI
 
     public void Interact()
     {
-        if (libraryUI == null) return;
+        if (libraryUIPanel == null) return;
 
-        // Activar panel si está cerrado
-        if (!libraryUI.gameObject.activeSelf)
-            libraryUI.gameObject.SetActive(true);
-
-        // Refrescar la lista de libros
-        libraryUI.RefreshUI();
+        PauseManager pauseManager = FindObjectOfType<PauseManager>();
+        if (pauseManager != null)
+        {
+            // Abre la UI usando el sistema de paneles
+            pauseManager.OpenPanel(libraryUIPanel);
+        }
+        else
+        {
+            // Fallback por si no hay PauseManager: solo activar el panel
+            libraryUIPanel.SetActive(true);
+            LibraryUI libraryUI = libraryUIPanel.GetComponent<LibraryUI>();
+            if (libraryUI != null)
+                libraryUI.RefreshUI();
+        }
     }
 }
