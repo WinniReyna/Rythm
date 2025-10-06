@@ -5,7 +5,10 @@ using System.Linq;
 
 public class LibrarySaveLoad : MonoBehaviour
 {
-    [SerializeField] private List<BookSO> allBooks; // Lista de todos los libros del juego
+    [Header("Todos los libros del juego")]
+    [SerializeField] private List<BookSO> allBooks;
+
+    [Header("Libros encontrados")]
     public List<BookSO> foundBooks = new List<BookSO>();
 
     private string savePath;
@@ -23,6 +26,15 @@ public class LibrarySaveLoad : MonoBehaviour
         foundBooks.Add(book);
         foundBooks = foundBooks.OrderBy(b => b.order).ToList();
         SaveLibrary();
+    }
+
+    public void RemoveBook(BookSO book)
+    {
+        if (book == null || !foundBooks.Contains(book)) return;
+
+        foundBooks.Remove(book);
+        SaveLibrary();
+        Debug.Log($"Libro eliminado: {book.bookTitle}");
     }
 
     public void SaveLibrary()
@@ -55,5 +67,10 @@ public class LibrarySaveLoad : MonoBehaviour
 
         foundBooks = foundBooks.OrderBy(b => b.order).ToList();
         Debug.Log("Library cargada desde: " + savePath);
+    }
+
+    public List<BookSO> GetBooks()
+    {
+        return foundBooks;
     }
 }

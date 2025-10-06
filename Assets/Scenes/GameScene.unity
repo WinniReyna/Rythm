@@ -598,7 +598,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6913,7 +6913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Spanish
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -10625,7 +10625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   booksParent: {fileID: 794339204}
-  bookButtonPrefab: {fileID: 1085374884359790735, guid: 89a96b99046caab46b65893fe7374144, type: 3}
+  bookButtonPrefab: {fileID: 513690403037342739, guid: f9620a87a77bb6343b11a35fd6b0ed2d, type: 3}
   storyText: {fileID: 201076604}
   librarySaveLoad: {fileID: 1076914296}
 --- !u!1 &1692790018
