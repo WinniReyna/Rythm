@@ -16,6 +16,9 @@ public class NoteSpawner : MonoBehaviour
     [Header("Lista de notas (nivel)")]
     public List<NoteData> notes = new List<NoteData>();
 
+    [Header("Slider Hit")]
+    public HitSlider hitSlider;
+
     [Header("Dificultad")]
     [SerializeField] private DifficultySettings currentDifficulty;
 
@@ -90,6 +93,15 @@ public class NoteSpawner : MonoBehaviour
 
     void SpawnNote(NoteData data)
     {
+        if (data.isSlider)
+        {
+            // Activar el slider
+            if (hitSlider != null)
+                hitSlider.Activate();
+            return; // No spawneamos nota normal
+        }
+
+        // Código actual para notas normales
         Transform spawnPoint = null;
         GameObject prefab = notePrefab;
 
@@ -106,22 +118,12 @@ public class NoteSpawner : MonoBehaviour
         {
             var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             var note = obj.GetComponent<Note>();
-
-            note?.Initialize(
-                data.key,
-                data.gridX,
-                data.gridY,
-                data.paintSprite
-            );
-
+            note?.Initialize(data.key, data.gridX, data.gridY);
             note.speed = currentDifficulty.noteSpeed;
             RegisterSpawnedNote(note);
         }
-        else
-        {
-            Debug.LogWarning($"No se pudo spawnear nota {data.key}, spawnPoint o prefab es null.");
-        }
     }
+
 
     public void RegisterSpawnedNote(Note note)
     {
@@ -136,6 +138,11 @@ public class NoteSpawner : MonoBehaviour
     public bool AllNotesFinished()
     {
         return activeNotes.Count == 0 && notesInScene.Count == 0;
+    }
+    public void ActivateHitSlider()
+    {
+        if (hitSlider != null)
+            hitSlider.Activate();
     }
 }
 

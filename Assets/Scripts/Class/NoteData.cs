@@ -20,5 +20,8 @@ public class NoteData
 
     [Tooltip("Sprite que pintará al acertar (opcional)")]
     public Sprite paintSprite;
+
+    [Tooltip("Activar el slider")]
+    public bool isSlider = false;
 }
 
