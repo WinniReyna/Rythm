@@ -607,7 +607,6 @@ MonoBehaviour:
   height: 3
   cellSize: 1
   cellPrefab: {fileID: 3664980925402618554, guid: 76438a160f58ca5498cdcf3c9189a358, type: 3}
-  defaultSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &215266668
 Transform:
@@ -2026,8 +2025,8 @@ MonoBehaviour:
     key: 1
     gridX: 1
     gridY: 0
-    allowEmptyPaint: 1
-    paintSprite: {fileID: 5336357159514931838, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
+    allowEmptyPaint: 0
+    paintSprite: {fileID: 1594934104309564394, guid: 4489491e5fee57f45989877729d80f86, type: 3}
   - time: 3
     key: 0
     gridX: 2
