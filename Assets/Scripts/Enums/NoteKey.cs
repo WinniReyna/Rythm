@@ -5,5 +5,6 @@ public enum NoteKey
     A,
     S,
     D,
-    Space
+    Space,
+    ShiftLeft
 }

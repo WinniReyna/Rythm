@@ -5,12 +5,12 @@ public class NoteSpawner : MonoBehaviour
 {
     [Header("Prefabs de notas")]
     [SerializeField] private GameObject notePrefab;
-    [SerializeField] private GameObject spaceNotePrefab;
 
     [Header("Puntos de aparición")]
     [SerializeField] private Transform spawnPointA;
     [SerializeField] private Transform spawnPointS;
     [SerializeField] private Transform spawnPointD;
+    [SerializeField] private Transform spawnPointShiftLeft;
     [SerializeField] private Transform spawnPointSpace;
 
     [Header("Lista de notas (nivel)")]
@@ -60,7 +60,7 @@ public class NoteSpawner : MonoBehaviour
 
         if (currentDifficulty.spawnRateMultiplier >= 1f)
         {
-            // Hard → usar todas las notas
+            // Hard usar todas las notas
             activeNotes.AddRange(notes);
         }
         else
@@ -98,10 +98,8 @@ public class NoteSpawner : MonoBehaviour
             case NoteKey.A: spawnPoint = spawnPointA; break;
             case NoteKey.S: spawnPoint = spawnPointS; break;
             case NoteKey.D: spawnPoint = spawnPointD; break;
-            case NoteKey.Space:
-                spawnPoint = spawnPointSpace;
-                prefab = spaceNotePrefab;
-                break;
+            case NoteKey.ShiftLeft: spawnPoint = spawnPointShiftLeft; break;
+            case NoteKey.Space: spawnPoint = spawnPointSpace; break;
         }
 
         if (spawnPoint != null && prefab != null)
@@ -114,8 +112,7 @@ public class NoteSpawner : MonoBehaviour
                 data.gridX,
                 data.gridY,
                 data.paintColor,
-                data.allowEmptyPaint,
-                data.requiredSliderValue // ⚡ pasar el valor del slider aquí
+                data.allowEmptyPaint
             );
 
             note.speed = currentDifficulty.noteSpeed;

@@ -13,23 +13,18 @@ public class Note : MonoBehaviour, INote
     private Color paintColor = Color.white;
     private bool allowEmptyPaint = false;
 
-    private int requiredSliderValue = 0; // Valor del slider esperado
-
-    public int RequiredSliderValue => requiredSliderValue;
-
     public void Initialize(NoteKey key)
     {
         Initialize(key, 0, 0, Color.white);
     }
 
-    public void Initialize(NoteKey key, int x = -1, int y = -1, Color? color = null, bool allowEmpty = false, int sliderValue = 0)
+    public void Initialize(NoteKey key, int x = -1, int y = -1, Color? color = null, bool allowEmpty = false)
     {
         requiredKey = key;
         gridX = x;
         gridY = y;
         paintColor = color ?? Color.clear;
         allowEmptyPaint = allowEmpty;
-        requiredSliderValue = sliderValue;
 
         scoreManager = FindObjectOfType<ScoreManager>();
         gridPainter = FindObjectOfType<GridPainter>();
@@ -37,7 +32,7 @@ public class Note : MonoBehaviour, INote
 
     void Update()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         if (transform.position.y < -6f)
         {
