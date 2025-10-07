@@ -110,9 +110,7 @@ public class NoteSpawner : MonoBehaviour
             note?.Initialize(
                 data.key,
                 data.gridX,
-                data.gridY,
-                data.paintColor,
-                data.allowEmptyPaint
+                data.gridY
             );
 
             note.speed = currentDifficulty.noteSpeed;

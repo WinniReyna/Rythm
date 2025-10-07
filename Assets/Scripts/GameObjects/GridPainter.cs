@@ -17,6 +17,12 @@ public class GridPainter : MonoBehaviour
 
     void Start()
     {
+        if (cellPrefab == null)
+        {
+            Debug.LogError("GridPainter: No se ha asignado el prefab de celda!");
+            return;
+        }
+
         gridCells = new SpriteRenderer[width, height];
 
         for (int x = 0; x < width; x++)
@@ -30,11 +36,10 @@ public class GridPainter : MonoBehaviour
                 cell.transform.localPosition = localPos;
                 cell.name = $"Cell_{x}_{y}";
 
-                // Asegurar SpriteRenderer
+                // Asegurar que tenga SpriteRenderer
                 var sr = cell.GetComponent<SpriteRenderer>();
                 if (sr == null) sr = cell.AddComponent<SpriteRenderer>();
 
-                // Usar el color que elijas en el inspector
                 sr.color = defaultColor;
 
                 gridCells[x, y] = sr;
@@ -42,14 +47,27 @@ public class GridPainter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pinta una celda con un color (opcional)
+    /// </summary>
     public void PaintCell(int x, int y, Color color)
     {
-        if (x >= 0 && x < width && y >= 0 && y < height)
-        {
+        if (IsValidCell(x, y))
             gridCells[x, y].color = color;
-        }
+    }
+
+    /// <summary>
+    /// Pinta una celda con un sprite
+    /// </summary>
+    public void PaintCellWithSprite(int x, int y, Sprite sprite)
+    {
+        if (IsValidCell(x, y) && sprite != null)
+            gridCells[x, y].sprite = sprite;
+    }
+
+    private bool IsValidCell(int x, int y)
+    {
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 }
-
-
 

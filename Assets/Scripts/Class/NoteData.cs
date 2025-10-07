@@ -15,10 +15,10 @@ public class NoteData
     [Tooltip("Coordenada Y en el grid (si aplica)")]
     public int gridY = -1;
 
-    [Tooltip("Color que pintará (opcional)")]
-    public Color paintColor = Color.clear;
-
     [Tooltip("¿Esta nota puede pintar aunque no tenga posición/color?")]
     public bool allowEmptyPaint = false;
+
+    [Tooltip("Sprite que pintará al acertar (opcional)")]
+    public Sprite paintSprite;
 }
 

@@ -1,32 +1,25 @@
 ﻿using UnityEngine;
 
-public class Note : MonoBehaviour, INote
+public class Note : MonoBehaviour
 {
     public float speed = 5f;
+    public Sprite paintSprite; // sprite que pintará
 
     private NoteKey requiredKey;
-    private ScoreManager scoreManager;
-    private GridPainter gridPainter;
-
     private int gridX;
     private int gridY;
-    private Color paintColor = Color.white;
-    private bool allowEmptyPaint = false;
+    private NoteSpawner spawner;
+    private GridPainter gridPainter;
 
-    public void Initialize(NoteKey key)
-    {
-        Initialize(key, 0, 0, Color.white);
-    }
-
-    public void Initialize(NoteKey key, int x = -1, int y = -1, Color? color = null, bool allowEmpty = false)
+    // Ahora recibe el sprite al inicializar
+    public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
         requiredKey = key;
         gridX = x;
         gridY = y;
-        paintColor = color ?? Color.clear;
-        allowEmptyPaint = allowEmpty;
+        paintSprite = sprite;
 
-        scoreManager = FindObjectOfType<ScoreManager>();
+        spawner = FindObjectOfType<NoteSpawner>();
         gridPainter = FindObjectOfType<GridPainter>();
     }
 
@@ -34,32 +27,29 @@ public class Note : MonoBehaviour, INote
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (transform.position.y < -6f)
-        {
-            Miss();
-        }
+        if (transform.position.y < -6f) Miss();
     }
 
     public void Hit()
     {
-        scoreManager?.AddHit(100);
-
-        if (gridPainter != null && gridX >= 0 && gridY >= 0)
+        if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
         {
-            gridPainter.PaintCell(gridX, gridY, paintColor);
+            gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite);
         }
 
-        FindObjectOfType<NoteSpawner>()?.UnregisterNote(this);
+        spawner?.UnregisterNote(this);
         Destroy(gameObject);
     }
 
     public void Miss()
     {
-        scoreManager?.AddMiss(-50);
-        FindObjectOfType<NoteSpawner>()?.UnregisterNote(this);
+        spawner?.UnregisterNote(this);
         Destroy(gameObject);
     }
 }
+
+
+
 
 
 
