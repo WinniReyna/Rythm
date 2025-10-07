@@ -93,6 +93,9 @@ public class NoteSpawner : MonoBehaviour
 
     void SpawnNote(NoteData data)
     {
+        Transform spawnPoint = null;
+        GameObject prefab = notePrefab;
+
         if (data.isSlider)
         {
             // Activar el slider
@@ -100,10 +103,6 @@ public class NoteSpawner : MonoBehaviour
                 hitSlider.Activate();
             return; // No spawneamos nota normal
         }
-
-        // Código actual para notas normales
-        Transform spawnPoint = null;
-        GameObject prefab = notePrefab;
 
         switch (data.key)
         {
@@ -118,11 +117,22 @@ public class NoteSpawner : MonoBehaviour
         {
             var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             var note = obj.GetComponent<Note>();
-            note?.Initialize(data.key, data.gridX, data.gridY);
-            note.speed = currentDifficulty.noteSpeed;
-            RegisterSpawnedNote(note);
+
+            if (note != null)
+            {
+                note.Initialize(
+                    data.key,
+                    data.gridX,
+                    data.gridY,
+                    data.paintSprite  // <-- aquí pasamos el sprite del NoteData
+                );
+
+                note.speed = currentDifficulty.noteSpeed;
+                RegisterSpawnedNote(note);
+            }
         }
     }
+
 
 
     public void RegisterSpawnedNote(Note note)
