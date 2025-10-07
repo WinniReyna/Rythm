@@ -1,36 +1,53 @@
 using UnityEngine;
-using Lean.Localization;
 
 public class CollectibleBook : MonoBehaviour, IInteractable
 {
-    [SerializeField] private BookSO book; // ScriptableObject del libro
+    [SerializeField] private BookSO book;
     private LibrarySaveLoad library;
 
     private void Awake()
     {
         library = FindObjectOfType<LibrarySaveLoad>();
 
-        if (library == null) Debug.LogError("LibrarySaveLoad not found!");
-        //if (libraryUI == null) Debug.LogError("LibraryUI not found!");
+        if (library == null)
+        {
+            Debug.LogError(" LibrarySaveLoad not found!");
+        }
+    }
+
+    private void Start()
+    {
+        if (library == null || book == null) return;
+
+        // Esperar a que los datos se carguen
+        library.LoadLibrary();
+
+        // Si ya existe el libro en la lista, lo ocultamos
+        if (library.foundBooks.Contains(book))
+        {
+            Debug.Log($" Libro '{book.bookTitle}' ya fue recolectado. Ocultando objeto...");
+            gameObject.SetActive(false);
+        }
     }
 
     public void Interact()
     {
-        if (book == null) return;
+        if (book == null || library == null) return;
 
-        // Agregar libro a la biblioteca si no está ya
-        library.AddBook(book);
+        // Agregar libro solo si no está en la lista
+        if (!library.foundBooks.Contains(book))
+        {
+            library.AddBook(book);
 
-        //libraryUI.RefreshUI();
+            if (book.pickupSound != null)
+                AudioSource.PlayClipAtPoint(book.pickupSound, transform.position);
 
-
-        // Reproducir sonido opcional
-        if (book.pickupSound != null)
-            AudioSource.PlayClipAtPoint(book.pickupSound, transform.position);
-
-        // Destruir objeto del mundo
-        Destroy(gameObject);
-
-        Debug.Log("Libro recogido: " + book.bookTitle);
+            Destroy(gameObject);
+            Debug.Log($" Libro recogido: {book.bookTitle}");
+        }
+        else
+        {
+            Debug.Log($" El libro '{book.bookTitle}' ya fue recogido.");
+        }
     }
 }
