@@ -35,7 +35,7 @@ public class HitZone : MonoBehaviour
     {
         if (currentNote != null && inputHandler.IsKeyPressed(keyToPress))
         {
-            currentNote.Hit();
+            currentNote.Hit();            
         }
     }
 }

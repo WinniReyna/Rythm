@@ -3,7 +3,7 @@
 public class Note : MonoBehaviour
 {
     public float speed = 5f;
-    public Sprite paintSprite; // sprite que pintará
+    public Sprite paintSprite;
 
     private NoteKey requiredKey;
     private int gridX;
@@ -11,7 +11,6 @@ public class Note : MonoBehaviour
     private NoteSpawner spawner;
     private GridPainter gridPainter;
 
-    // Ahora recibe el sprite al inicializar
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
         requiredKey = key;
@@ -27,7 +26,10 @@ public class Note : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (transform.position.y < -6f) Miss();
+        if (transform.position.y < -6f)
+        {
+            Miss();
+        }
     }
 
     public void Hit()
@@ -35,8 +37,8 @@ public class Note : MonoBehaviour
         if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
         {
             gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite);
+            Debug.Log("coordenadas" + gridX + gridY + paintSprite);
         }
-
         spawner?.UnregisterNote(this);
         Destroy(gameObject);
     }

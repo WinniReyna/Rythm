@@ -8,12 +8,9 @@ public class GridPainter : MonoBehaviour
     [SerializeField] private float cellSize = 1f;
 
     [Header("Prefab de celda")]
-    [SerializeField] private GameObject cellPrefab; // Debe tener SpriteRenderer
+    [SerializeField] private GameObject cellPrefab; // Debe tener SpriteRenderer y GridCell
 
-    [Header("Color inicial de las celdas")]
-    public Color defaultColor = Color.black; // editable en el inspector
-
-    private SpriteRenderer[,] gridCells;
+    private GridCell[,] gridCells;
 
     void Start()
     {
@@ -23,46 +20,45 @@ public class GridPainter : MonoBehaviour
             return;
         }
 
-        gridCells = new SpriteRenderer[width, height];
+        gridCells = new GridCell[width, height];
 
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                // Posición local, relativo al GridPainter
                 Vector3 localPos = new Vector3(x * cellSize, y * cellSize, 0);
+                GameObject cellObj = Instantiate(cellPrefab, transform);
+                cellObj.transform.localPosition = localPos;
+                cellObj.name = $"Cell_{x}_{y}";
 
-                var cell = Instantiate(cellPrefab, transform);
-                cell.transform.localPosition = localPos;
-                cell.name = $"Cell_{x}_{y}";
+                GridCell gridCell = cellObj.GetComponent<GridCell>();
+                if (gridCell == null) gridCell = cellObj.AddComponent<GridCell>();
 
-                // Asegurar que tenga SpriteRenderer
-                var sr = cell.GetComponent<SpriteRenderer>();
-                if (sr == null) sr = cell.AddComponent<SpriteRenderer>();
-
-                sr.color = defaultColor;
-
-                gridCells[x, y] = sr;
+                gridCells[x, y] = gridCell;
             }
         }
     }
 
     /// <summary>
-    /// Pinta una celda con un color (opcional)
-    /// </summary>
-    public void PaintCell(int x, int y, Color color)
-    {
-        if (IsValidCell(x, y))
-            gridCells[x, y].color = color;
-    }
-
-    /// <summary>
-    /// Pinta una celda con un sprite
+    /// Pinta la celda en la posición (x, y) con un sprite.
     /// </summary>
     public void PaintCellWithSprite(int x, int y, Sprite sprite)
     {
         if (IsValidCell(x, y) && sprite != null)
-            gridCells[x, y].sprite = sprite;
+        {
+            gridCells[x, y].SetSprite(sprite);
+        }
+    }
+
+    /// <summary>
+    /// Resetea la celda a su sprite original
+    /// </summary>
+    public void ResetCell(int x, int y)
+    {
+        if (IsValidCell(x, y))
+        {
+            gridCells[x, y].ResetCell();
+        }
     }
 
     private bool IsValidCell(int x, int y)
@@ -70,4 +66,3 @@ public class GridPainter : MonoBehaviour
         return x >= 0 && x < width && y >= 0 && y < height;
     }
 }
-
