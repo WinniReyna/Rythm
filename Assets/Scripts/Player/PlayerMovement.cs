@@ -26,8 +26,16 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isJumping = false;
     private bool isGrounded = false;
+
+    public static PlayerMovement Instance { get; private set; }
+    public bool canMove = true;
     void Awake()
     {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         inputProvider = new KeyboardInputProvider();
@@ -36,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove) return;
+
         Vector2 input = inputProvider.GetMovement();
         bool isRunning = inputProvider.IsRunning();
 

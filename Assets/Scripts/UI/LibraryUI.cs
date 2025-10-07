@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Lean.Localization;
@@ -21,12 +21,25 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
     public void Open()
     {
         gameObject.SetActive(true);
+
+        // Bloquea movimiento del jugador
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = false;
+
         RefreshUI();
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
+
+        // Reactiva movimiento del jugador
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = true;
+
+        // Limpia texto del libro mostrado
+        if (storyText != null)
+            storyText.text = "";
     }
 
     public void RefreshUI()
@@ -56,7 +69,7 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
             if (buttonText != null)
                 buttonText.text = book.bookTitle;
 
-            // Botón de leer libro
+            // BotÃ³n de leer libro
             Transform readBtnTransform = go.transform.Find("ReadButton");
             if (readBtnTransform != null)
             {
@@ -68,7 +81,7 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
                 }
             }
 
-            // Botón de eliminar libro
+            // BotÃ³n de eliminar libro
             Transform deleteBtnTransform = go.transform.Find("DeleteButton");
             if (deleteBtnTransform != null)
             {
@@ -106,4 +119,3 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
 #endif
     }
 }
-
