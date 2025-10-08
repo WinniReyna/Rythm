@@ -2590,16 +2590,23 @@ MonoBehaviour:
     key: 0
     gridX: 1
     gridY: 0
-    allowPaint: 1
+    allowPaint: 0
     paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
     isSlider: 1
   - time: 7
     key: 0
+    gridX: 1
+    gridY: 1
+    allowPaint: 0
+    paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
+    isSlider: 1
+  - time: 10
+    key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
-    isSlider: 1
+    isSlider: 0
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: ba36b7682e1bdb142845a01dd0c71dc3, type: 2}
 --- !u!4 &812214976

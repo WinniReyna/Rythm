@@ -122,12 +122,25 @@ public class NoteSpawner : MonoBehaviour
             note.speed = currentDifficulty.noteSpeed;
             RegisterSpawnedNote(note);
 
-            // Activar slider si es nota tipo slider
-            if (data.isSlider && hitSlider != null)
+            if (data.isSlider)
             {
-                currentSliderNote = note;   // Guardar referencia a la nota slider
-                hitSlider.Activate();        // Activar el slider
+                var spriteRenderer = obj.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                    spriteRenderer.enabled = false;
+
+                var collider = obj.GetComponent<CircleCollider2D>();
+                if (collider != null)
+                    collider.enabled = false;
+
+                // Activar slider si es nota tipo slider
+                if (data.isSlider && hitSlider != null)
+                {
+                    currentSliderNote = note;   // Guardar referencia a la nota slider
+                    hitSlider.Activate();        // Activar el slider
+                }
             }
+
+            
         }
         else
         {
