@@ -9,7 +9,7 @@ public class HitSlider : MonoBehaviour
     public float hitValue = 1f;
 
     private Slider slider;
-    private bool isActive = false;
+    public bool isActive = false;
 
     void Awake()
     {

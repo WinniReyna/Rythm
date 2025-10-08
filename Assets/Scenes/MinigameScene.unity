@@ -889,6 +889,7 @@ MonoBehaviour:
   - {fileID: 1341513332}
   defaultColor: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   hitColor: {r: 0.97735846, g: 0.9748238, b: 0, a: 1}
+  slider: {fileID: 1456827774}
 --- !u!61 &202783128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1894,6 +1895,7 @@ MonoBehaviour:
   - {fileID: 903526328}
   defaultColor: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   hitColor: {r: 0.97735846, g: 0.9748238, b: 0, a: 1}
+  slider: {fileID: 1456827774}
 --- !u!61 &605547129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2951,6 +2953,7 @@ MonoBehaviour:
   - {fileID: 387190656}
   defaultColor: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   hitColor: {r: 0.97735846, g: 0.9748238, b: 0, a: 1}
+  slider: {fileID: 1456827774}
 --- !u!61 &970069230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3494,6 +3497,7 @@ MonoBehaviour:
   - {fileID: 1627879666}
   defaultColor: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   hitColor: {r: 0.97735846, g: 0.9748238, b: 0, a: 1}
+  slider: {fileID: 1456827774}
 --- !u!61 &1077186385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4859,6 +4863,7 @@ MonoBehaviour:
   activeDuration: 2
   defaultValue: 0
   hitValue: 1
+  isActive: 0
 --- !u!1 &1547018800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6142,6 +6147,7 @@ MonoBehaviour:
   - {fileID: 1703334453}
   defaultColor: {r: 0.21509439, g: 0.21509439, b: 0.21509439, a: 1}
   hitColor: {r: 0.97735846, g: 0.9748238, b: 0, a: 1}
+  slider: {fileID: 1456827774}
 --- !u!61 &2140067180
 BoxCollider2D:
   m_ObjectHideFlags: 0

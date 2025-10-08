@@ -17,6 +17,8 @@ public class HitZone : MonoBehaviour
     private Note currentNote;
     private int currentActiveIndex = 0;
 
+    public HitSlider slider;
+
     void Start()
     {
         inputHandler = new UnityInputHandler();
@@ -43,11 +45,14 @@ public class HitZone : MonoBehaviour
 
     void Update()
     {
-        // ✅ Detecta la tecla solo cuando hay nota en la zona
+        // Detecta la tecla solo cuando hay nota en la zona
         if (currentNote != null && inputHandler.IsKeyPressed(keyToPress))
         {
             HandleHit(currentNote);
         }
+
+        if (!slider.isActive)
+            ResetZoneColor();
     }
 
     private void HandleHit(Note note)

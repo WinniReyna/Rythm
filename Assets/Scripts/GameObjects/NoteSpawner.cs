@@ -124,7 +124,7 @@ public class NoteSpawner : MonoBehaviour
                     data.key,
                     data.gridX,
                     data.gridY,
-                    data.paintSprite  // <-- aquí pasamos el sprite del NoteData
+                    data.paintSprite 
                 );
 
                 note.speed = currentDifficulty.noteSpeed;
