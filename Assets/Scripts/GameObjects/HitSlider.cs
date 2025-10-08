@@ -11,6 +11,7 @@ public class HitSlider : MonoBehaviour
     private Slider slider;
     public bool isActive = false;
 
+    [SerializeField] private NoteSpawner noteSpawner;
     void Awake()
     {
         slider = GetComponent<Slider>();
@@ -40,22 +41,30 @@ public class HitSlider : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            // Detectar si el jugador logró el hit
             if (slider.value >= hitValue)
             {
                 Debug.Log("Hit correcto en el slider!");
-                isActive = false;
-                gameObject.SetActive(false);
+
+                // Avisar al NoteSpawner
+                if (noteSpawner != null)
+                    noteSpawner.OnSliderCompleted();
+
+                yield return new WaitForSeconds(0.3f); // opcional
+                Deactivate();
                 yield break;
             }
 
             yield return null;
         }
 
-        // Tiempo agotado
-        isActive = false;
-        gameObject.SetActive(false);
-        slider.value = defaultValue; // reset
         Debug.Log("Tiempo agotado en el slider, no se logró hit.");
+        Deactivate();
+    }
+
+    private void Deactivate()
+    {
+        isActive = false;
+        slider.gameObject.SetActive(false);
+        slider.value = defaultValue;
     }
 }

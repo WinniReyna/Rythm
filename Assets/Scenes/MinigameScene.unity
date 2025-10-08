@@ -2583,21 +2583,21 @@ MonoBehaviour:
     key: 0
     gridX: 0
     gridY: 0
-    allowEmptyPaint: 1
+    allowPaint: 0
     paintSprite: {fileID: 21300002, guid: 4101ccb8f2386d14c843c54610af1778, type: 3}
     isSlider: 0
   - time: 2
     key: 0
-    gridX: 0
+    gridX: 1
     gridY: 0
-    allowEmptyPaint: 1
-    paintSprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+    allowPaint: 1
+    paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
     isSlider: 1
   - time: 7
     key: 0
     gridX: 0
     gridY: 0
-    allowEmptyPaint: 1
+    allowPaint: 0
     paintSprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
     isSlider: 1
   hitSlider: {fileID: 1456827774}
@@ -4892,6 +4892,7 @@ MonoBehaviour:
   defaultValue: 0
   hitValue: 1
   isActive: 0
+  noteSpawner: {fileID: 812214975}
 --- !u!1 &1547018800
 GameObject:
   m_ObjectHideFlags: 0

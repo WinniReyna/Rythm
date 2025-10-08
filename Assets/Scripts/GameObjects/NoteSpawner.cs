@@ -18,6 +18,7 @@ public class NoteSpawner : MonoBehaviour
 
     [Header("Slider Hit")]
     public HitSlider hitSlider;
+    private Note currentSliderNote;
 
     [Header("Dificultad")]
     [SerializeField] private DifficultySettings currentDifficulty;
@@ -96,14 +97,6 @@ public class NoteSpawner : MonoBehaviour
         Transform spawnPoint = null;
         GameObject prefab = notePrefab;
 
-        if (data.isSlider)
-        {
-            // Activar el slider
-            if (hitSlider != null)
-                hitSlider.Activate();
-            return; // No spawneamos nota normal
-        }
-
         switch (data.key)
         {
             case NoteKey.A: spawnPoint = spawnPointA; break;
@@ -118,22 +111,29 @@ public class NoteSpawner : MonoBehaviour
             var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             var note = obj.GetComponent<Note>();
 
-            if (note != null)
-            {
-                note.Initialize(
-                    data.key,
-                    data.gridX,
-                    data.gridY,
-                    data.paintSprite 
-                );
+            // Inicializar nota con coordenadas y sprite
+            note?.Initialize(
+                data.key,
+                data.gridX,
+                data.gridY,
+                data.paintSprite
+            );
 
-                note.speed = currentDifficulty.noteSpeed;
-                RegisterSpawnedNote(note);
+            note.speed = currentDifficulty.noteSpeed;
+            RegisterSpawnedNote(note);
+
+            // Activar slider si es nota tipo slider
+            if (data.isSlider && hitSlider != null)
+            {
+                currentSliderNote = note;   // Guardar referencia a la nota slider
+                hitSlider.Activate();        // Activar el slider
             }
         }
+        else
+        {
+            Debug.LogWarning($"No se pudo spawnear nota {data.key}, spawnPoint o prefab es null.");
+        }
     }
-
-
 
     public void RegisterSpawnedNote(Note note)
     {
@@ -154,6 +154,17 @@ public class NoteSpawner : MonoBehaviour
         if (hitSlider != null)
             hitSlider.Activate();
     }
+
+    public void OnSliderCompleted()
+    {
+        if (currentSliderNote != null)
+        {
+            currentSliderNote.Hit();
+            currentSliderNote.PaintGridOnHit();
+            currentSliderNote = null;
+        }
+    }
+
 }
 
 

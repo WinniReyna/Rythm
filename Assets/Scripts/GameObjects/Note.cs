@@ -32,13 +32,17 @@ public class Note : MonoBehaviour
         }
     }
 
-    public void Hit()
+    public void PaintGridOnHit()
     {
         if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
         {
             gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite);
             Debug.Log("coordenadas" + gridX + gridY + paintSprite);
         }
+    }
+
+    public void Hit()
+    {
         spawner?.UnregisterNote(this);
         Destroy(gameObject);
     }

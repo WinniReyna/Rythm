@@ -73,7 +73,7 @@ public class HitZone : MonoBehaviour
         }
     }
 
-    private void ResetZoneColor()
+    public void ResetZoneColor()
     {
         foreach (var sprite in zoneSprites)
         {

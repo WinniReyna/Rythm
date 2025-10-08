@@ -16,7 +16,7 @@ public class NoteData
     public int gridY = -1;
 
     [Tooltip("¿Esta nota puede pintar aunque no tenga posición/color?")]
-    public bool allowEmptyPaint = false;
+    public bool allowPaint = false;
 
     [Tooltip("Sprite que pintará al acertar (opcional)")]
     public Sprite paintSprite;
