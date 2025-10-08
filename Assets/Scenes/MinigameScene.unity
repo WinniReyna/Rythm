@@ -969,6 +969,34 @@ MonoBehaviour:
   height: 3
   cellSize: 1
   cellPrefab: {fileID: 3664980925402618554, guid: 76438a160f58ca5498cdcf3c9189a358, type: 3}
+  gridSprites:
+  - x: 0
+    y: 0
+    sprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  - x: 1
+    y: 0
+    sprite: {fileID: 5336357159514931838, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
+  - x: 2
+    y: 0
+    sprite: {fileID: -7030732730169971210, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
+  - x: 0
+    y: 1
+    sprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  - x: 1
+    y: 1
+    sprite: {fileID: 5336357159514931838, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
+  - x: 2
+    y: 1
+    sprite: {fileID: -7030732730169971210, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
+  - x: 0
+    y: 2
+    sprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  - x: 1
+    y: 2
+    sprite: {fileID: 5336357159514931838, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
+  - x: 2
+    y: 2
+    sprite: {fileID: -7030732730169971210, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
 --- !u!4 &215266668
 Transform:
   m_ObjectHideFlags: 0
@@ -2556,7 +2584,7 @@ MonoBehaviour:
     gridX: 0
     gridY: 0
     allowEmptyPaint: 1
-    paintSprite: {fileID: -8640868035401229710, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+    paintSprite: {fileID: 21300002, guid: 4101ccb8f2386d14c843c54610af1778, type: 3}
     isSlider: 0
   - time: 2
     key: 0

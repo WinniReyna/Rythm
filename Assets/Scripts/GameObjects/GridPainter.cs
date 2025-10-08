@@ -7,8 +7,12 @@ public class GridPainter : MonoBehaviour
     [SerializeField] private int height = 8;
     [SerializeField] private float cellSize = 1f;
 
-    [Header("Prefab de celda")]
-    [SerializeField] private GameObject cellPrefab; // Debe tener SpriteRenderer y GridCell
+    [Header("Prefab de celda (debe tener SpriteRenderer y GridCell)")]
+    [SerializeField] private GameObject cellPrefab;
+
+    [Header("Sprites a colocar manualmente")]
+    [Tooltip("Define qué sprite irá en qué celda (x, y).")]
+    public GridSpriteData[] gridSprites;
 
     private GridCell[,] gridCells;
 
@@ -35,6 +39,11 @@ public class GridPainter : MonoBehaviour
                 if (gridCell == null) gridCell = cellObj.AddComponent<GridCell>();
 
                 gridCells[x, y] = gridCell;
+
+                // Asigna sprite si hay uno definido para esta posición
+                Sprite sprite = GetSpriteForPosition(x, y);
+                if (sprite != null)
+                    gridCell.SetSprite(sprite);
             }
         }
     }
@@ -59,6 +68,16 @@ public class GridPainter : MonoBehaviour
         {
             gridCells[x, y].ResetCell();
         }
+    }
+
+    private Sprite GetSpriteForPosition(int x, int y)
+    {
+        foreach (var data in gridSprites)
+        {
+            if (data.x == x && data.y == y)
+                return data.sprite;
+        }
+        return null;
     }
 
     private bool IsValidCell(int x, int y)
