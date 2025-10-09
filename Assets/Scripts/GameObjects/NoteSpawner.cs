@@ -218,24 +218,26 @@ public class NoteSpawner : MonoBehaviour
 
     public void OnSliderCompleted(bool success)
     {
+        var scoreManager = FindObjectOfType<ScoreManager>();
+
+        if (success)
+        {
+            Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
+            scoreManager?.CommitPendingPoints();
+        }
+        else
+        {
+            Debug.Log("Falló el slider, puntos pendientes eliminados");
+            scoreManager?.ClearPendingPoints();
+        }
+
+        // Solo si había una nota activa
         if (currentSliderNote != null)
         {
-            var scoreManager = FindObjectOfType<ScoreManager>();
-
-            if (success)
-            {
-                Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
-                scoreManager?.CommitPendingPoints();
-            }
-            else
-            {
-                Debug.Log("Falló el slider, puntos pendientes eliminados");
-                scoreManager?.ClearPendingPoints();
-            }
-
             currentSliderNote.HitSlider();
             currentSliderNote.PaintGridOnHit();
             currentSliderNote = null;
         }
     }
+
 }

@@ -36,7 +36,6 @@ public class HitSlider : MonoBehaviour
     private IEnumerator DeactivateAfterTime()
     {
         float timer = 0f;
-        bool completed = false;
 
         while (timer < activeDuration)
         {
@@ -44,23 +43,27 @@ public class HitSlider : MonoBehaviour
 
             if (slider.value >= hitValue)
             {
-                completed = true;
-                Debug.Log("Slider completado correctamente");
-                noteSpawner?.OnSliderCompleted(true); // true = éxito
-                break;
+                Debug.Log("Hit correcto en el slider!");
+
+                if (noteSpawner != null)
+                    noteSpawner.OnSliderCompleted(true); // avisar éxito
+
+                yield return new WaitForSeconds(0.3f);
+                Deactivate();
+                yield break;
             }
 
             yield return null;
         }
 
-        if (!completed)
-        {
-            Debug.Log("Slider fallado");
-            noteSpawner?.OnSliderCompleted(false); // false = fallo
-        }
+        // Aquí llega si el tiempo se acaba sin lograr el hit
+        Debug.Log("Tiempo agotado en el slider, no se logró hit.");
+        if (noteSpawner != null)
+            noteSpawner.OnSliderCompleted(false); // avisar fallo
 
         Deactivate();
     }
+
 
     private void Deactivate()
     {
