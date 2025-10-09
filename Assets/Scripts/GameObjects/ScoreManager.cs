@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
     private int hitNotes = 0;
     private int totalNotes = 0;
 
+    private int pendingPoints = 0;
+
     public void AddHit(int amount)
     {
         hitNotes++;
@@ -29,6 +31,37 @@ public class ScoreManager : MonoBehaviour
     {
         totalNotes = total;
     }
+
+    public void AddPendingPoints(int points)
+    {
+        pendingPoints += points;
+    }
+
+    /// <summary>
+    /// Descarta los puntos pendientes de sumar al score. 
+    /// Útil si el slider falla.
+    /// </summary>
+    public void ClearPendingPoints()
+    {
+        pendingPoints = 0;
+        Debug.Log("Puntos pendientes descartados");
+    }
+
+
+    public void CommitPendingPoints()
+    {
+        score += pendingPoints;
+        pendingPoints = 0;
+        Debug.Log("Score actualizado: " + score);
+    }
+
+    public void SubtractScore(int amount)
+    {
+        score -= amount;
+        if (score < 0) score = 0; // evitar puntuación negativa
+        Debug.Log("Score restado: " + score);
+    }
+
 
     public int GetScore() => score;
 }

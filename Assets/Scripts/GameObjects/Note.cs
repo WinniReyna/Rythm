@@ -47,14 +47,20 @@ public class Note : MonoBehaviour
     public void Hit()
     {
         spawner?.UnregisterNote(this);
-        scoreManager?.AddHit(100);
+        FindObjectOfType<ScoreManager>()?.AddPendingPoints(100);
+
+        Destroy(gameObject);
+    }
+
+    public void HitSlider()
+    {
+        spawner?.UnregisterNote(this);
         Destroy(gameObject);
     }
 
     public void Miss()
     {
-        spawner?.UnregisterNote(this);
-        scoreManager?.AddMiss(0);
+        spawner?.UnregisterNote(this);        
         Destroy(gameObject);
     }
 }

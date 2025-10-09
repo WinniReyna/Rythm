@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 public class HitSlider : MonoBehaviour
 {
-    [Header("Configuración")]
-    public float activeDuration = 2f; // cuánto tiempo permanece activo
+    [Header("ConfiguraciÃ³n")]
+    public float activeDuration = 2f; // cuÃ¡nto tiempo permanece activo
     public float defaultValue = 0f;
     public float hitValue = 1f;
 
@@ -36,6 +36,7 @@ public class HitSlider : MonoBehaviour
     private IEnumerator DeactivateAfterTime()
     {
         float timer = 0f;
+        bool completed = false;
 
         while (timer < activeDuration)
         {
@@ -43,21 +44,21 @@ public class HitSlider : MonoBehaviour
 
             if (slider.value >= hitValue)
             {
-                Debug.Log("Hit correcto en el slider!");
-
-                // Avisar al NoteSpawner
-                if (noteSpawner != null)
-                    noteSpawner.OnSliderCompleted();
-
-                yield return new WaitForSeconds(0.3f); // opcional
-                Deactivate();
-                yield break;
+                completed = true;
+                Debug.Log("Slider completado correctamente");
+                noteSpawner?.OnSliderCompleted(true); // true = Ã©xito
+                break;
             }
 
             yield return null;
         }
 
-        Debug.Log("Tiempo agotado en el slider, no se logró hit.");
+        if (!completed)
+        {
+            Debug.Log("Slider fallado");
+            noteSpawner?.OnSliderCompleted(false); // false = fallo
+        }
+
         Deactivate();
     }
 

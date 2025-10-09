@@ -149,7 +149,7 @@ public class NoteSpawner : MonoBehaviour
         }
 
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-        Debug.Log($"🎵 Juego iniciado con dificultad {currentDifficulty.name}. Notas a spawnear: {activeNotes.Count}");
+        Debug.Log($"Juego iniciado con dificultad {currentDifficulty.name}. Notas a spawnear: {activeNotes.Count}");
 
         FindObjectOfType<GameManager>()?.OnGameStarted();
     }
@@ -216,11 +216,24 @@ public class NoteSpawner : MonoBehaviour
         return activeNotes.Count == 0 && notesInScene.Count == 0;
     }
 
-    public void OnSliderCompleted()
+    public void OnSliderCompleted(bool success)
     {
         if (currentSliderNote != null)
         {
-            currentSliderNote.Hit();
+            var scoreManager = FindObjectOfType<ScoreManager>();
+
+            if (success)
+            {
+                Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
+                scoreManager?.CommitPendingPoints();
+            }
+            else
+            {
+                Debug.Log("Falló el slider, puntos pendientes eliminados");
+                scoreManager?.ClearPendingPoints();
+            }
+
+            currentSliderNote.HitSlider();
             currentSliderNote.PaintGridOnHit();
             currentSliderNote = null;
         }
