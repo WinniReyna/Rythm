@@ -1,21 +1,22 @@
 using UnityEngine;
 
-public class DifficultyUI : MonoBehaviour
+public class DifficultyUI : MonoBehaviour, IMenuPanel
 {
-    [SerializeField] private NoteSpawner noteSpawner;
+    [SerializeField] private GameObject difficultyPanel;
 
-    [SerializeField] private GameObject difficultyPanel; // Panel que contiene los botones
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void ChooseDifficulty(DifficultySettings difficulty)
     {
-        noteSpawner.StartGame(difficulty);
-
-        // Apagar la UI
-        if (difficultyPanel != null)
-            difficultyPanel.SetActive(false);
-
+        DifficultyManager.Instance.SetDifficulty(difficulty);
         Debug.Log("Dificultad elegida: " + difficulty.name);
     }
 }
-
-

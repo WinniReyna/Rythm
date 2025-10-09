@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Lean.Localization;
 
 public class NoteSpawner : MonoBehaviour
 {
@@ -23,16 +26,32 @@ public class NoteSpawner : MonoBehaviour
     [Header("Dificultad")]
     [SerializeField] private DifficultySettings currentDifficulty;
 
+    [Header("Contador de inicio")]
+    [SerializeField] private TMP_Text countdownText;
+    [SerializeField] private float countdownTime = 3f;
+
     private float songTimer;
     private bool gameStarted = false;
 
-    // Notas a spawnear según dificultad
     private List<NoteData> activeNotes = new List<NoteData>();
-
-    // Notas activas en escena
     private List<Note> notesInScene = new List<Note>();
 
     public int ActiveNotesCount => activeNotes.Count;
+
+    private void Start()
+    {
+        // Obtener la dificultad guardada
+        DifficultySettings difficulty = DifficultyManager.Instance?.CurrentDifficulty;
+
+        if (difficulty == null)
+        {
+            Debug.LogWarning("No se encontró dificultad guardada, usando default");
+            difficulty = ScriptableObject.CreateInstance<DifficultySettings>();
+        }
+
+        StartGame(difficulty);
+    }
+
 
     void Update()
     {
@@ -51,9 +70,56 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
-    public void StartGame(DifficultySettings difficulty)
+    public void StartGame(DifficultySettings difficulty = null)
     {
+        // Si no se pasa dificultad, usar la actual guardada
+        if (difficulty == null)
+        {
+            difficulty = DifficultyManager.Instance?.CurrentDifficulty;
+
+            if (difficulty == null)
+            {
+                Debug.LogWarning("No se encontró dificultad en DifficultyManager. Se usará configuración por defecto.");
+                difficulty = ScriptableObject.CreateInstance<DifficultySettings>();
+            }
+        }
+
         currentDifficulty = difficulty;
+
+        // Iniciar conteo antes del juego
+        StartCoroutine(StartCountdown());
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        if (countdownText != null)
+            countdownText.gameObject.SetActive(true);
+
+        float timer = countdownTime;
+
+        while (timer > 0)
+        {
+            if (countdownText != null)
+                countdownText.text = Mathf.CeilToInt(timer).ToString();
+
+            yield return new WaitForSeconds(1f);
+            timer--;
+        }
+
+        if (countdownText != null)
+        {
+            // Usa LeanLocalization para mostrar el texto traducido
+            string goText = LeanLocalization.GetTranslationText("StartGo"); // clave de traducción
+            countdownText.text = goText != null ? goText : "GO!";
+            yield return new WaitForSeconds(0.7f);
+            countdownText.gameObject.SetActive(false);
+        }
+
+        BeginGameplay();
+    }
+
+    private void BeginGameplay()
+    {
         gameStarted = true;
         songTimer = 0f;
 
@@ -64,13 +130,11 @@ public class NoteSpawner : MonoBehaviour
 
         if (currentDifficulty.spawnRateMultiplier >= 1f)
         {
-            // Hard usar todas las notas
             activeNotes.AddRange(notes);
         }
         else
         {
-            // Semilla fija para que siempre sea el mismo subconjunto
-            int seed = difficulty.name.GetHashCode();
+            int seed = currentDifficulty.name.GetHashCode();
             Random.InitState(seed);
 
             List<NoteData> shuffled = new List<NoteData>(notes);
@@ -81,70 +145,53 @@ public class NoteSpawner : MonoBehaviour
             }
 
             for (int i = 0; i < notesToSpawn; i++)
-            {
                 activeNotes.Add(shuffled[i]);
-            }
         }
 
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-        Debug.Log($"Juego iniciado con dificultad {difficulty.name}. Notas a spawnear: {activeNotes.Count}");
+        Debug.Log($"🎵 Juego iniciado con dificultad {currentDifficulty.name}. Notas a spawnear: {activeNotes.Count}");
 
         FindObjectOfType<GameManager>()?.OnGameStarted();
     }
 
     void SpawnNote(NoteData data)
     {
-        Transform spawnPoint = null;
-        GameObject prefab = notePrefab;
-
-        switch (data.key)
+        Transform spawnPoint = data.key switch
         {
-            case NoteKey.A: spawnPoint = spawnPointA; break;
-            case NoteKey.S: spawnPoint = spawnPointS; break;
-            case NoteKey.D: spawnPoint = spawnPointD; break;
-            case NoteKey.ShiftLeft: spawnPoint = spawnPointShiftLeft; break;
-            case NoteKey.Space: spawnPoint = spawnPointSpace; break;
-        }
+            NoteKey.A => spawnPointA,
+            NoteKey.S => spawnPointS,
+            NoteKey.D => spawnPointD,
+            NoteKey.ShiftLeft => spawnPointShiftLeft,
+            NoteKey.Space => spawnPointSpace,
+            _ => null
+        };
 
-        if (spawnPoint != null && prefab != null)
-        {
-            var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-            var note = obj.GetComponent<Note>();
-
-            // Inicializar nota con coordenadas y sprite
-            note?.Initialize(
-                data.key,
-                data.gridX,
-                data.gridY,
-                data.paintSprite
-            );
-
-            note.speed = currentDifficulty.noteSpeed;
-            RegisterSpawnedNote(note);
-
-            if (data.isSlider)
-            {
-                var spriteRenderer = obj.GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
-                    spriteRenderer.enabled = false;
-
-                var collider = obj.GetComponent<CircleCollider2D>();
-                if (collider != null)
-                    collider.enabled = false;
-
-                // Activar slider si es nota tipo slider
-                if (data.isSlider && hitSlider != null)
-                {
-                    currentSliderNote = note;   // Guardar referencia a la nota slider
-                    hitSlider.Activate();        // Activar el slider
-                }
-            }
-
-            
-        }
-        else
+        if (spawnPoint == null || notePrefab == null)
         {
             Debug.LogWarning($"No se pudo spawnear nota {data.key}, spawnPoint o prefab es null.");
+            return;
+        }
+
+        var obj = Instantiate(notePrefab, spawnPoint.position, Quaternion.identity);
+        var note = obj.GetComponent<Note>();
+
+        note?.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
+        note.speed = currentDifficulty.noteSpeed;
+        RegisterSpawnedNote(note);
+
+        if (data.isSlider)
+        {
+            var spriteRenderer = obj.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
+
+            var collider = obj.GetComponent<CircleCollider2D>();
+            if (collider != null) collider.enabled = false;
+
+            if (hitSlider != null)
+            {
+                currentSliderNote = note;
+                hitSlider.Activate();
+            }
         }
     }
 
@@ -162,11 +209,6 @@ public class NoteSpawner : MonoBehaviour
     {
         return activeNotes.Count == 0 && notesInScene.Count == 0;
     }
-    public void ActivateHitSlider()
-    {
-        if (hitSlider != null)
-            hitSlider.Activate();
-    }
 
     public void OnSliderCompleted()
     {
@@ -177,11 +219,4 @@ public class NoteSpawner : MonoBehaviour
             currentSliderNote = null;
         }
     }
-
 }
-
-
-
-
-
-
