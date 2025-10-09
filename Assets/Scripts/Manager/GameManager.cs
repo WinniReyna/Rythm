@@ -13,20 +13,17 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
     }
 
-    void Update()
-    {
-        if (!gameStarted || resultsShown) return;
-
-        if (noteSpawner != null && noteSpawner.AllNotesFinished())
-        {
-            resultsShown = true;
-            resultPanelUI?.ShowResults();
-        }
-    }
-
     public void Retry()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+    public void ShowResultsPanel()
+    {
+        if (resultsShown) return;
+
+        resultsShown = true;
+        Debug.Log("Mostrando Result Panel");
+        resultPanelUI?.ShowResults();
     }
 
     public void Exit()

@@ -203,6 +203,12 @@ public class NoteSpawner : MonoBehaviour
     public void UnregisterNote(Note note)
     {
         if (note != null) notesInScene.Remove(note);
+
+        // Verificar si todas las notas terminaron
+        if (AllNotesFinished())
+        {
+            FindObjectOfType<GameManager>()?.ShowResultsPanel();
+        }
     }
 
     public bool AllNotesFinished()

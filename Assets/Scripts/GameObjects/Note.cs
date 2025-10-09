@@ -11,6 +11,8 @@ public class Note : MonoBehaviour
     private NoteSpawner spawner;
     private GridPainter gridPainter;
 
+    private ScoreManager scoreManager;
+
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
         requiredKey = key;
@@ -20,13 +22,14 @@ public class Note : MonoBehaviour
 
         spawner = FindObjectOfType<NoteSpawner>();
         gridPainter = FindObjectOfType<GridPainter>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (transform.position.y < -6f)
+        if (transform.position.x >= 1.01f)
         {
             Miss();
         }
@@ -44,12 +47,14 @@ public class Note : MonoBehaviour
     public void Hit()
     {
         spawner?.UnregisterNote(this);
+        scoreManager?.AddHit(100);
         Destroy(gameObject);
     }
 
     public void Miss()
     {
         spawner?.UnregisterNote(this);
+        scoreManager?.AddMiss(0);
         Destroy(gameObject);
     }
 }
