@@ -33,8 +33,8 @@ public class NoteSpawner : MonoBehaviour
     private float songTimer;
     private bool gameStarted = false;
 
-    private List<NoteData> activeNotes;
-    private List<Note> notesInScene;
+    private List<NoteData> activeNotes = new List<NoteData>();
+    private List<Note> notesInScene = new List<Note>();
 
     public int ActiveNotesCount => activeNotes.Count;
 

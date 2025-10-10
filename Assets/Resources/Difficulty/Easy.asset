@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b59e167e7123c6458aace543de4ed4d, type: 3}
   m_Name: Easy
   m_EditorClassIdentifier: 
-  noteSpeed: 1
+  noteSpeed: 5
   spawnRateMultiplier: 0.3
