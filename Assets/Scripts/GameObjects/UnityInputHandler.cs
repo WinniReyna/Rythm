@@ -10,6 +10,7 @@ public class UnityInputHandler : IInputHandler
             case NoteKey.S: return Input.GetKeyDown(KeyCode.S);
             case NoteKey.D: return Input.GetKeyDown(KeyCode.D);
             case NoteKey.Space: return Input.GetKeyDown(KeyCode.Space);
+            case NoteKey.Shift: return Input.GetKeyDown(KeyCode.LeftShift);
             default: return false;
         }
     }

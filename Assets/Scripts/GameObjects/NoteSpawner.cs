@@ -17,7 +17,7 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private Transform spawnPointSpace;
 
     [Header("Lista de notas (nivel)")]
-    public List<NoteData> notes = new List<NoteData>();
+    public List<NoteData> notes;
 
     [Header("Slider Hit")]
     public HitSlider hitSlider;
@@ -33,8 +33,8 @@ public class NoteSpawner : MonoBehaviour
     private float songTimer;
     private bool gameStarted = false;
 
-    private List<NoteData> activeNotes = new List<NoteData>();
-    private List<Note> notesInScene = new List<Note>();
+    private List<NoteData> activeNotes;
+    private List<Note> notesInScene;
 
     public int ActiveNotesCount => activeNotes.Count;
 
@@ -161,7 +161,7 @@ public class NoteSpawner : MonoBehaviour
             NoteKey.A => spawnPointA,
             NoteKey.S => spawnPointS,
             NoteKey.D => spawnPointD,
-            NoteKey.ShiftLeft => spawnPointShiftLeft,
+            NoteKey.Shift => spawnPointShiftLeft,
             NoteKey.Space => spawnPointSpace,
             _ => null
         };

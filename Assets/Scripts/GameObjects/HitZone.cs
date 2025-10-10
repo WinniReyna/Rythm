@@ -34,6 +34,7 @@ public class HitZone : MonoBehaviour
         var note = collision.GetComponent<Note>();
         if (note != null)
             currentNote = note;
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

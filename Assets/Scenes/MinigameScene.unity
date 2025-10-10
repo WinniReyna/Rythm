@@ -2462,33 +2462,628 @@ MonoBehaviour:
   spawnPointShiftLeft: {fileID: 1317287588}
   spawnPointSpace: {fileID: 1372008417}
   notes:
-  - time: 1
-    key: 0
+  - time: 0
+    key: 4
     gridX: 0
     gridY: 0
-    allowPaint: 1
-    paintSprite: {fileID: 21300002, guid: 4101ccb8f2386d14c843c54610af1778, type: 3}
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 0.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 1.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
     isSlider: 0
   - time: 2
     key: 0
-    gridX: 1
+    gridX: 0
     gridY: 0
     allowPaint: 0
-    paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 2.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
     isSlider: 1
-  - time: 5
-    key: 0
-    gridX: 1
+  - time: 3
+    key: 4
+    gridX: 0
     gridY: 0
     allowPaint: 0
-    paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 3.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 4.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 5
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 5.667
+    key: 5
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 6
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 6.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 7.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
     isSlider: 0
   - time: 8
-    key: 0
-    gridX: 1
-    gridY: 1
+    key: 2
+    gridX: 0
+    gridY: 0
     allowPaint: 0
-    paintSprite: {fileID: 21300002, guid: 19a622a42d9260f4ea7cb39dae2415fc, type: 3}
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 8.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 9.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 9.667
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 10.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 11
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 11.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 12.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 11.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 12
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 12.667
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 13.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 15.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 16
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 16.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 17
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 17.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 18.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 19
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 19.333
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 20
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 20.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 21.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 21.667
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 22.333
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 23
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 23.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 24.333
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 25
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 25.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 26
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 26.667
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 27.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 28
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 28.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 29
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 29.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 30.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 31
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 31.667
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 32.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 32.667
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 33.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 34
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 34.667
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 35.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 35.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 36.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 37
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 37.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 38.333
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 39
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 39.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 40
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 40.667
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 41.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 42
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 42.667
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 43
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 43.667
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 44.333
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 45
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 45.333
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 46
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 46.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 47.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 48
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 48.333
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 49
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 49.667
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 50.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 50.667
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 51.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 52
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 52.667
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 53.333
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
     isSlider: 1
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: ba36b7682e1bdb142845a01dd0c71dc3, type: 2}
