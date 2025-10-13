@@ -51,9 +51,6 @@ public class HitZone : MonoBehaviour
         {
             HandleHit(currentNote);
         }
-
-        if (!slider.isActive)
-            ResetZoneColor();
     }
 
     private void HandleHit(Note note)

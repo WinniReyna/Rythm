@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Drawing;
 public class HitSlider : MonoBehaviour
 {
     [Header("Configuración")]
@@ -70,5 +71,12 @@ public class HitSlider : MonoBehaviour
         isActive = false;
         slider.gameObject.SetActive(false);
         slider.value = defaultValue;
+
+
+        var hitZones = FindObjectsOfType<HitZone>();
+        foreach (var zone in hitZones)
+        {
+            zone.ResetZoneColor();
+        }
     }
 }
