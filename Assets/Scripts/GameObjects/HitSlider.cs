@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Drawing;
+
 public class HitSlider : MonoBehaviour
 {
     [Header("Configuración")]
@@ -13,15 +13,20 @@ public class HitSlider : MonoBehaviour
     public bool isActive = false;
 
     [SerializeField] private NoteSpawner noteSpawner;
+
+    private CanvasGroup canvasGroup;
+
     void Awake()
     {
         slider = GetComponent<Slider>();
-        if (slider == null)
-            Debug.LogError("HitSlider necesita un componente Slider.");
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
         slider.value = defaultValue;
-        gameObject.SetActive(false);
+        SetSliderVisible(false);
     }
+
 
     /// <summary>
     /// Activa el slider y lo resetea
@@ -29,7 +34,15 @@ public class HitSlider : MonoBehaviour
     public void Activate()
     {
         slider.value = defaultValue;
-        gameObject.SetActive(true);
+        StartCoroutine(ActivateNextFrame());
+    }
+
+    private IEnumerator ActivateNextFrame()
+    {
+        // Espera un frame para asegurar que el Canvas/UI se haya renderizado
+        yield return null;
+
+        SetSliderVisible(true);
         isActive = true;
         StartCoroutine(DeactivateAfterTime());
     }
@@ -57,26 +70,34 @@ public class HitSlider : MonoBehaviour
             yield return null;
         }
 
-        // Aquí llega si el tiempo se acaba sin lograr el hit
+        // Si el tiempo se acaba sin lograr hit
         Debug.Log("Tiempo agotado en el slider, no se logró hit.");
         if (noteSpawner != null)
-            noteSpawner.OnSliderCompleted(false); // avisar fallo
+            noteSpawner.OnSliderCompleted(false);
 
         Deactivate();
     }
 
-
     private void Deactivate()
     {
         isActive = false;
-        slider.gameObject.SetActive(false);
         slider.value = defaultValue;
-
+        SetSliderVisible(false);
 
         var hitZones = FindObjectsOfType<HitZone>();
         foreach (var zone in hitZones)
         {
             zone.ResetZoneColor();
         }
+    }
+
+    /// <summary>
+    /// Control seguro de visibilidad del slider
+    /// </summary>
+    private void SetSliderVisible(bool visible)
+    {
+        canvasGroup.alpha = visible ? 1f : 0f;
+        canvasGroup.interactable = visible;
+        canvasGroup.blocksRaycasts = visible;
     }
 }
