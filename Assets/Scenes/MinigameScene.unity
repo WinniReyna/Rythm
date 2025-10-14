@@ -1289,8 +1289,8 @@ Transform:
   m_GameObject: {fileID: 215266666}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -956.68, y: -541.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -958.65, y: -543.04, z: 0}
+  m_LocalScale: {x: 2.1165538, y: 2.1165538, z: 2.1165538}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1749425463}
@@ -3241,9 +3241,9 @@ MonoBehaviour:
   - time: 27
     key: 3
     gridX: 0
-    gridY: 0
+    gridY: 1
     allowPaint: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 28.2
     key: 1
@@ -3275,10 +3275,10 @@ MonoBehaviour:
     isSlider: 0
   - time: 32
     key: 3
-    gridX: 0
-    gridY: 0
+    gridX: 2
+    gridY: 1
     allowPaint: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 34.2
     key: 0
@@ -3310,10 +3310,10 @@ MonoBehaviour:
     isSlider: 0
   - time: 38
     key: 3
-    gridX: 0
-    gridY: 0
+    gridX: 3
+    gridY: 1
     allowPaint: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 40
     key: 1
@@ -3338,10 +3338,10 @@ MonoBehaviour:
     isSlider: 0
   - time: 44
     key: 3
-    gridX: 0
+    gridX: 1
     gridY: 0
     allowPaint: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
     isSlider: 1
   - time: 46
     key: 0
@@ -3380,10 +3380,10 @@ MonoBehaviour:
     isSlider: 0
   - time: 51
     key: 3
-    gridX: 0
+    gridX: 3
     gridY: 0
     allowPaint: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
     isSlider: 1
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
