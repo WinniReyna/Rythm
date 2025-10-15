@@ -6,8 +6,12 @@ using Lean.Localization;
 
 public class NoteSpawner : MonoBehaviour
 {
-    [Header("Prefabs de notas")]
-    [SerializeField] private GameObject notePrefab;
+    [Header("Prefabs de notas por tipo")]
+    [SerializeField] private GameObject prefabA;
+    [SerializeField] private GameObject prefabS;
+    [SerializeField] private GameObject prefabD;
+    [SerializeField] private GameObject prefabShift;
+    [SerializeField] private GameObject prefabSpace;
 
     [Header("Puntos de aparición")]
     [SerializeField] private Transform spawnPointA;
@@ -166,13 +170,24 @@ public class NoteSpawner : MonoBehaviour
             _ => null
         };
 
-        if (spawnPoint == null || notePrefab == null)
+        GameObject prefab = data.key switch
+        {
+            NoteKey.A => prefabA,
+            NoteKey.S => prefabS,
+            NoteKey.D => prefabD,
+            NoteKey.Shift => prefabShift,
+            NoteKey.Space => prefabSpace,
+            _ => null
+        };
+
+        if (spawnPoint == null || prefab == null)
         {
             Debug.LogWarning($"No se pudo spawnear nota {data.key}, spawnPoint o prefab es null.");
             return;
         }
 
-        var obj = Instantiate(notePrefab, spawnPoint.position, Quaternion.identity);
+        var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+
         var note = obj.GetComponent<Note>();
 
         note?.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
