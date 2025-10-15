@@ -238,6 +238,7 @@ public class NoteSpawner : MonoBehaviour
         if (success)
         {
             Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
+            currentSliderNote.PaintGridOnHit();
             scoreManager?.CommitPendingPoints();
         }
         else
@@ -250,7 +251,7 @@ public class NoteSpawner : MonoBehaviour
         if (currentSliderNote != null)
         {
             currentSliderNote.HitSlider();
-            currentSliderNote.PaintGridOnHit();
+            //currentSliderNote.PaintGridOnHit();
             currentSliderNote = null;
         }
     }
