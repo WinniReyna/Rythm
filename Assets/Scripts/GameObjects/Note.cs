@@ -46,8 +46,7 @@ public class Note : MonoBehaviour
 
     public void Hit()
     {
-        spawner?.UnregisterNote(this);
-        FindObjectOfType<ScoreManager>()?.AddPendingPoints(100);
+        spawner?.UnregisterNote(this);       
 
         Destroy(gameObject);
     }

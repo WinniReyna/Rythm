@@ -34,7 +34,20 @@ public class ResultPanelUI : MonoBehaviour
 
     private IEnumerator ShowResultsWithDelay()
     {
-        yield return new WaitForSeconds(showDelay);
+        // Espera el retraso original menos un pequeño margen
+        float saveMargin = 0.3f; // segundos antes de mostrar el panel
+        yield return new WaitForSeconds(showDelay - saveMargin);
+
+        // Guarda la imagen del grid
+        GridPainter gridPainter = FindObjectOfType<GridPainter>();
+        if (gridPainter != null)
+        {
+            gridPainter.SaveGrid(); // Esto ejecuta la captura
+            Debug.Log("Grid guardado antes de mostrar resultados.");
+        }
+
+        // Espera el margen restante para mostrar el panel
+        yield return new WaitForSeconds(saveMargin);
 
         if (scoreManager == null) yield break;
 

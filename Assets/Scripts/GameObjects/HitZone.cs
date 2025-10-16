@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HitZone : MonoBehaviour
 {
@@ -13,15 +14,22 @@ public class HitZone : MonoBehaviour
     public Color defaultColor = Color.gray;
     public Color hitColor = Color.white;
 
+    [Header("Rangos de precisión (en unidades del mundo)")]
+    public float perfectRange = 0.05f;
+    public float goodRange = 0.15f;
+
     private IInputHandler inputHandler;
     private Note currentNote;
     private int currentActiveIndex = 0;
+
+    private ScoreManager scoreManager;
 
     public HitSlider slider;
 
     void Start()
     {
         inputHandler = new UnityInputHandler();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
         if (zoneSprites.Count == 0)
             zoneSprites.AddRange(GetComponentsInChildren<SpriteRenderer>());
@@ -55,8 +63,33 @@ public class HitZone : MonoBehaviour
 
     private void HandleHit(Note note)
     {
-        note.Hit(); // Ejecuta el impacto
-        OnSuccessfulHit(); // Actualiza el sprite visual
+        float distance = Mathf.Abs(note.transform.position.x - transform.position.x);
+
+        int points = 0;
+        string hitType = "";
+
+        if (distance <= perfectRange)
+        {
+            points = 300;
+            hitType = "Perfect!";
+        }
+        else if (distance <= goodRange)
+        {
+            points = 150;
+            hitType = "Good!";
+        }
+        else
+        {
+            points = 50;
+            hitType = "Bad!";
+        }
+
+        Debug.Log($"Hit: {hitType} | Distancia: {distance:F3}");
+
+        scoreManager.AddHit(points);
+        note.Hit(); // destruye la nota
+
+        OnSuccessfulHit();
     }
 
     private void OnSuccessfulHit()

@@ -32,11 +32,6 @@ public class ScoreManager : MonoBehaviour
         totalNotes = total;
     }
 
-    public void AddPendingPoints(int points)
-    {
-        pendingPoints += points;
-    }
-
     /// <summary>
     /// Descarta los puntos pendientes de sumar al score. 
     /// Útil si el slider falla.
