@@ -15,8 +15,8 @@ public class HitZone : MonoBehaviour
     public Color hitColor = Color.white;
 
     [Header("Rangos de precisión (en unidades del mundo)")]
-    public float perfectRange = 0.05f;
-    public float goodRange = 0.15f;
+    public float perfectRange = 1.0f;
+    public float goodRange = 1.5f;
 
     private IInputHandler inputHandler;
     private Note currentNote;
