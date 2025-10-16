@@ -481,7 +481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126, y: -147.97}
+  m_AnchoredPosition: {x: 126, y: -271.97}
   m_SizeDelta: {x: 175.98, y: 77.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &100374311
@@ -1341,6 +1341,8 @@ MonoBehaviour:
   - {fileID: 1643969965}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0, g: 0.14117648, b: 0.9921569, a: 1}
+  perfectRange: 0.05
+  goodRange: 0.15
   slider: {fileID: 1456827774}
 --- !u!61 &202783128
 BoxCollider2D:
@@ -1398,7 +1400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215266668}
   - component: {fileID: 215266667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GridManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,13 +1480,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215266666}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -952, y: -542.03, z: 0}
-  m_LocalScale: {x: 1.622656, y: 1.622656, z: 1.622656}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -957.11, y: -541.27, z: 0.009983078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1749425463}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &265697096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12}
+  m_AnchoredPosition: {x: 0, y: -112}
   m_SizeDelta: {x: 283.6093, y: 109.721}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &290386640
@@ -1970,6 +1972,7 @@ RectTransform:
   - {fileID: 272953220}
   - {fileID: 1054967901}
   - {fileID: 100374310}
+  - {fileID: 918763208}
   m_Father: {fileID: 1298135142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2888,6 +2891,8 @@ MonoBehaviour:
   - {fileID: 1164676613}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.4901961, b: 0.38823533, a: 1}
+  perfectRange: 0.05
+  goodRange: 0.15
   slider: {fileID: 1456827774}
 --- !u!61 &605547129
 BoxCollider2D:
@@ -4349,7 +4354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &863335815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4555,6 +4560,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &918763205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 918763208}
+  - component: {fileID: 918763207}
+  - component: {fileID: 918763206}
+  m_Layer: 5
+  m_Name: TextilImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &918763206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918763205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &918763207
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918763205}
+  m_CullTransparentMesh: 1
+--- !u!224 &918763208
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918763205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.1102, y: 2.1102, z: 2.1102}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 298562503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 98}
+  m_SizeDelta: {x: 128, y: 128}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &938925028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4841,6 +4918,8 @@ MonoBehaviour:
   - {fileID: 715729370}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.77647066, g: 0.0627451, b: 0, a: 1}
+  perfectRange: 0.05
+  goodRange: 0.15
   slider: {fileID: 1456827774}
 --- !u!61 &970069230
 BoxCollider2D:
@@ -5336,7 +5415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -147, y: -147.97}
+  m_AnchoredPosition: {x: -147, y: -271.97}
   m_SizeDelta: {x: 175.98, y: 77.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054967902
@@ -5632,6 +5711,8 @@ MonoBehaviour:
   - {fileID: 1834264623}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.9960785, g: 0.8588236, b: 0, a: 1}
+  perfectRange: 0.05
+  goodRange: 0.15
   slider: {fileID: 1456827774}
 --- !u!61 &1077186385
 BoxCollider2D:
@@ -8554,6 +8635,8 @@ MonoBehaviour:
   percentageText: {fileID: 863335817}
   scoreText: {fileID: 272953218}
   showDelay: 0.8
+  gridPreview: {fileID: 918763206}
+  gridPainter: {fileID: 215266667}
 --- !u!1 &1785630322
 GameObject:
   m_ObjectHideFlags: 0
@@ -9422,6 +9505,8 @@ MonoBehaviour:
   - {fileID: 113141605}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.20000002, b: 0.09411766, a: 1}
+  perfectRange: 0.05
+  goodRange: 0.15
   slider: {fileID: 1456827774}
 --- !u!61 &2140067180
 BoxCollider2D:
