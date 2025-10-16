@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ResultPanelUI : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class ResultPanelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI percentageText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private float showDelay = 0.8f;
+
+    [SerializeField] private RawImage gridPreview;
+    [SerializeField] private GridPainter gridPainter; 
 
     private ScoreManager scoreManager;
 
@@ -40,11 +44,15 @@ public class ResultPanelUI : MonoBehaviour
 
         // Guarda la imagen del grid
         GridPainter gridPainter = FindObjectOfType<GridPainter>();
-        if (gridPainter != null)
+        StartCoroutine(gridPainter.GenerateGridTexture((Texture2D tex) =>
         {
-            gridPainter.SaveGrid(); // Esto ejecuta la captura
-            Debug.Log("Grid guardado antes de mostrar resultados.");
-        }
+            if (tex != null)
+            {
+                gridPreview.texture = tex;
+                gridPreview.SetNativeSize();
+                gridPreview.gameObject.SetActive(true);
+            }
+        }));
 
         // Espera el margen restante para mostrar el panel
         yield return new WaitForSeconds(saveMargin);

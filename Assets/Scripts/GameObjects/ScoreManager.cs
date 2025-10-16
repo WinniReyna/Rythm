@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public void AddHit(int amount)
     {
         hitNotes++;
-        score += amount;
+        pendingPoints += amount;
         Debug.Log("Puntuación: " + score);
     }
 

@@ -91,12 +91,7 @@ public class GridPainter : MonoBehaviour
     /// Salvar el grid en una imagen
     /// </summary>
     [ContextMenu("Guardar imagen del Grid")]
-    public void SaveGrid()
-    {
-        StartCoroutine(SaveGridCoroutine());
-    }
-
-    private IEnumerator SaveGridCoroutine()
+    public IEnumerator GenerateGridTexture(System.Action<Texture2D> callback)
     {
         yield return new WaitForEndOfFrame();
 
@@ -128,7 +123,7 @@ public class GridPainter : MonoBehaviour
 
         // Render y esperar
         gridCam.Render();
-        yield return null; // 👈 Espera un frame extra
+        yield return null; // Espera un frame extra
         RenderTexture.active = rt;
 
         // Ahora sí, leer píxeles
@@ -151,6 +146,8 @@ public class GridPainter : MonoBehaviour
         File.WriteAllBytes(fullPath, tex.EncodeToPNG());
 
         Debug.Log($"Grid guardado correctamente: {fullPath}");
+
+        callback?.Invoke(tex);
     }
 
     private void SetLayerRecursively(GameObject obj, int layer)
