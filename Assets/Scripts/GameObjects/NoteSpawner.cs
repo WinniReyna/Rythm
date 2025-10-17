@@ -21,7 +21,7 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private Transform spawnPointSpace;
 
     [Header("Lista de notas (nivel)")]
-    public List<NoteData> notes;
+    public List<NoteData> notes;   
 
     [Header("Slider Hit")]
     public HitSlider hitSlider;
@@ -41,6 +41,9 @@ public class NoteSpawner : MonoBehaviour
     private List<Note> notesInScene = new List<Note>();
 
     public int ActiveNotesCount => activeNotes.Count;
+
+    public int totalNotes = 0;       // Total generadas
+    public int notesDestroyed = 0;
 
     private void Start()
     {
@@ -186,27 +189,19 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
+        
+
         var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-
         var note = obj.GetComponent<Note>();
-
         note?.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
         note.speed = currentDifficulty.noteSpeed;
         RegisterSpawnedNote(note);
 
         if (data.isSlider)
         {
-            var spriteRenderer = obj.GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null) spriteRenderer.enabled = false;
-
-            var collider = obj.GetComponent<CircleCollider2D>();
-            if (collider != null) collider.enabled = false;
-
-            if (hitSlider != null)
-            {
-                currentSliderNote = note;
-                hitSlider.Activate();
-            }
+            currentSliderNote = note;
+            Debug.Log("Notas activas en escena antes del slider: " + GetActiveNotesCount());
+            hitSlider.Activate();
         }
     }
 
@@ -231,6 +226,11 @@ public class NoteSpawner : MonoBehaviour
         return activeNotes.Count == 0 && notesInScene.Count == 0;
     }
 
+    public int GetActiveNotesCount()
+    {
+        totalNotes = notesDestroyed;
+        return totalNotes;
+    }
     public void OnSliderCompleted(bool success)
     {
         var scoreManager = FindObjectOfType<ScoreManager>();
@@ -240,18 +240,20 @@ public class NoteSpawner : MonoBehaviour
             Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
             currentSliderNote.PaintGridOnHit();
             scoreManager?.CommitPendingPoints();
+
+            notesDestroyed = 0;
         }
         else
         {
             Debug.Log("Falló el slider, puntos pendientes eliminados");
             scoreManager?.ClearPendingPoints();
+            notesDestroyed = 0;
         }
 
         // Solo si había una nota activa
         if (currentSliderNote != null)
         {
             currentSliderNote.HitSlider();
-            //currentSliderNote.PaintGridOnHit();
             currentSliderNote = null;
         }
     }

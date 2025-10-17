@@ -8,10 +8,22 @@ public class ScoreManager : MonoBehaviour
 
     private int pendingPoints = 0;
 
-    public void AddHit(int amount)
+    private int perfectHits = 0;
+    private int goodHits = 0;
+    private int badHits = 0;
+
+    public void AddHit(int amount, string hitType)
     {
         hitNotes++;
         pendingPoints += amount;
+
+        switch (hitType)
+        {
+            case "Perfect!": perfectHits++; break;
+            case "Good!": goodHits++; break;
+            case "Bad!": badHits++; break;
+        }
+
         Debug.Log("Puntuación: " + score);
     }
 
@@ -59,6 +71,25 @@ public class ScoreManager : MonoBehaviour
 
 
     public int GetScore() => score;
+
+    //porcentajes por tipo de hit
+    public float GetPerfectPercentage()
+    {
+        if (hitNotes == 0) return 0f;
+        return (perfectHits / (float)hitNotes) * 100f;
+    }
+
+    public float GetGoodPercentage()
+    {
+        if (hitNotes == 0) return 0f;
+        return (goodHits / (float)hitNotes) * 100f;
+    }
+
+    public float GetBadPercentage()
+    {
+        if (hitNotes == 0) return 0f;
+        return (badHits / (float)hitNotes) * 100f;
+    }
 }
 
 

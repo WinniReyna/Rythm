@@ -6,6 +6,5 @@ public enum NoteKey
     S,
     D,
     Space,
-    Shift,
-    Slider
+    Shift
 }

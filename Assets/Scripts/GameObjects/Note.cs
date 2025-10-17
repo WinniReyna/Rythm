@@ -46,8 +46,8 @@ public class Note : MonoBehaviour
 
     public void Hit()
     {
-        spawner?.UnregisterNote(this);       
-
+        spawner?.UnregisterNote(this);
+        spawner.notesDestroyed++;
         Destroy(gameObject);
     }
 
@@ -59,7 +59,8 @@ public class Note : MonoBehaviour
 
     public void Miss()
     {
-        spawner?.UnregisterNote(this);        
+        spawner?.UnregisterNote(this);
+        spawner.notesDestroyed++;
         Destroy(gameObject);
     }
 }

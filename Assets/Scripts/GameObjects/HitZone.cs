@@ -86,7 +86,12 @@ public class HitZone : MonoBehaviour
 
         Debug.Log($"Hit: {hitType} | Distancia: {distance:F3}");
 
-        scoreManager.AddHit(points);
+        scoreManager.AddHit(points, hitType);
+
+        Debug.Log($"Perfect: {scoreManager.GetPerfectPercentage()}% " +
+                $"Good: {scoreManager.GetGoodPercentage()}% " +
+                $"Bad: {scoreManager.GetBadPercentage()}%");
+
         note.Hit(); // destruye la nota
 
         OnSuccessfulHit();
