@@ -200,7 +200,18 @@ public class NoteSpawner : MonoBehaviour
         if (data.isSlider)
         {
             currentSliderNote = note;
-            Debug.Log("Notas activas en escena antes del slider: " + GetActiveNotesCount());
+
+            var scoreManager = FindObjectOfType<ScoreManager>();
+
+            // Obtener total de notas spawneadas antes del slider
+            int totalNotesBeforeSlider = GetActiveNotesCount();
+
+            // Calcular promedio de hits de la tanda
+            scoreManager.CalculateHitPercentages(totalNotesBeforeSlider);
+
+            // Reiniciar contadores para la próxima tanda
+            scoreManager.ResetHitCounts();
+
             hitSlider.Activate();
         }
     }
@@ -234,11 +245,12 @@ public class NoteSpawner : MonoBehaviour
     public void OnSliderCompleted(bool success)
     {
         var scoreManager = FindObjectOfType<ScoreManager>();
+        string hitType = scoreManager.GetMostFrequentHitBeforeSlider();
 
         if (success)
         {
             Debug.Log("Sumando todos los puntos pendientes (slider exitoso)");
-            currentSliderNote.PaintGridOnHit();
+            currentSliderNote.PaintGridOnHit(hitType);
             scoreManager?.CommitPendingPoints();
 
             notesDestroyed = 0;

@@ -12,6 +12,7 @@ public class Note : MonoBehaviour
     private GridPainter gridPainter;
 
     private ScoreManager scoreManager;
+    public string lastHitType;
 
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
@@ -35,12 +36,21 @@ public class Note : MonoBehaviour
         }
     }
 
-    public void PaintGridOnHit()
+    public void PaintGridOnHit(string hitType)
     {
         if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
         {
-            gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite);
-            Debug.Log("coordenadas" + gridX + gridY + paintSprite);
+            // Crear una copia del sprite con alpha ajustado según el hit
+            Color color = Color.white;
+
+            switch (hitType)
+            {
+                case "Perfect!": color.a = 1f; break;
+                case "Good!": color.a = 0.7f; break;
+                case "Bad!": color.a = 0.3f; break;
+            }
+
+            gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite, color);
         }
     }
 

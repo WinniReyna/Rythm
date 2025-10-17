@@ -1343,7 +1343,7 @@ MonoBehaviour:
   hitColor: {r: 0, g: 0.14117648, b: 0.9921569, a: 1}
   perfectRange: 0.05
   goodRange: 0.15
-  slider: {fileID: 1456827774}
+  slider: {fileID: 0}
 --- !u!61 &202783128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2893,7 +2893,7 @@ MonoBehaviour:
   hitColor: {r: 0.38823533, g: 0.4901961, b: 0.38823533, a: 1}
   perfectRange: 0.05
   goodRange: 0.15
-  slider: {fileID: 1456827774}
+  slider: {fileID: 0}
 --- !u!61 &605547129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3927,14 +3927,14 @@ MonoBehaviour:
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 2.8
+  - time: 3
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 5
+  - time: 6
     key: 3
     gridX: 0
     gridY: 3
@@ -4225,6 +4225,8 @@ MonoBehaviour:
   currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
   countdownText: {fileID: 602199063}
   countdownTime: 3
+  totalNotes: 0
+  notesDestroyed: 0
 --- !u!4 &812214976
 Transform:
   m_ObjectHideFlags: 0
@@ -4920,7 +4922,7 @@ MonoBehaviour:
   hitColor: {r: 0.77647066, g: 0.0627451, b: 0, a: 1}
   perfectRange: 0.05
   goodRange: 0.15
-  slider: {fileID: 1456827774}
+  slider: {fileID: 0}
 --- !u!61 &970069230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5713,7 +5715,7 @@ MonoBehaviour:
   hitColor: {r: 0.9960785, g: 0.8588236, b: 0, a: 1}
   perfectRange: 0.05
   goodRange: 0.15
-  slider: {fileID: 1456827774}
+  slider: {fileID: 0}
 --- !u!61 &1077186385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9507,7 +9509,7 @@ MonoBehaviour:
   hitColor: {r: 0.38823533, g: 0.20000002, b: 0.09411766, a: 1}
   perfectRange: 0.05
   goodRange: 0.15
-  slider: {fileID: 1456827774}
+  slider: {fileID: 0}
 --- !u!61 &2140067180
 BoxCollider2D:
   m_ObjectHideFlags: 0

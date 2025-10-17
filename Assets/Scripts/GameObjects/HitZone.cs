@@ -15,16 +15,14 @@ public class HitZone : MonoBehaviour
     public Color hitColor = Color.white;
 
     [Header("Rangos de precisión (en unidades del mundo)")]
-    public float perfectRange = 1.0f;
-    public float goodRange = 1.5f;
+    private float perfectRange = 0.5f;
+    private float goodRange = 1.0f;
 
     private IInputHandler inputHandler;
     private Note currentNote;
     private int currentActiveIndex = 0;
 
     private ScoreManager scoreManager;
-
-    public HitSlider slider;
 
     void Start()
     {
@@ -63,7 +61,7 @@ public class HitZone : MonoBehaviour
 
     private void HandleHit(Note note)
     {
-        float distance = Mathf.Abs(note.transform.position.x - transform.position.x);
+        float distance = Vector2.Distance(note.transform.position, transform.position);
 
         int points = 0;
         string hitType = "";

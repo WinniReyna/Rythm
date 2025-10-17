@@ -50,11 +50,16 @@ public class GridPainter : MonoBehaviour
         }
     }
 
-    public void PaintCellWithSprite(int x, int y, Sprite sprite)
+    public void PaintCellWithSprite(int x, int y, Sprite sprite, Color color)
     {
-        if (IsValidCell(x, y) && sprite != null)
+        if (x < 0 || y < 0 || x >= width || y >= height) return;
+
+        var cell = gridCells[x, y];
+        var sr = cell.GetComponent<SpriteRenderer>();
+        if (sr != null)
         {
-            gridCells[x, y].SetSprite(sprite);
+            sr.sprite = sprite;
+            sr.color = color;
         }
     }
 
