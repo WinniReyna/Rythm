@@ -200,8 +200,13 @@ public class NoteSpawner : MonoBehaviour
         if (data.isSlider)
         {
             currentSliderNote = note;
-
+            var spriteRenderer = obj.GetComponent<SpriteRenderer>();
             var scoreManager = FindObjectOfType<ScoreManager>();
+
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
+
+            var collider = obj.GetComponent<CircleCollider2D>();
+            if (collider != null) collider.enabled = false;            
 
             // Obtener total de notas spawneadas antes del slider
             int totalNotesBeforeSlider = GetActiveNotesCount();

@@ -1341,9 +1341,6 @@ MonoBehaviour:
   - {fileID: 1643969965}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0, g: 0.14117648, b: 0.9921569, a: 1}
-  perfectRange: 0.05
-  goodRange: 0.15
-  slider: {fileID: 0}
 --- !u!61 &202783128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2891,9 +2888,6 @@ MonoBehaviour:
   - {fileID: 1164676613}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.4901961, b: 0.38823533, a: 1}
-  perfectRange: 0.05
-  goodRange: 0.15
-  slider: {fileID: 0}
 --- !u!61 &605547129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3941,217 +3935,147 @@ MonoBehaviour:
     allowPaint: 0
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
-  - time: 6.5
+  - time: 9.2
     key: 0
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 7
+  - time: 9.2
     key: 1
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 7.8
+  - time: 10
     key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 8.6
+  - time: 10.5
     key: 4
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 11
+  - time: 13
     key: 3
     gridX: 2
     gridY: 3
     allowPaint: 0
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
-  - time: 12.5
+  - time: 16.2
     key: 1
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 12.5
+  - time: 16.5
     key: 0
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 12.8
+  - time: 16.5
     key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 13.6
+  - time: 17.5
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 16
+  - time: 20.2
     key: 3
     gridX: 1
     gridY: 2
     allowPaint: 0
     paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
     isSlider: 1
-  - time: 17
+  - time: 23
     key: 4
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 17
+  - time: 23.8
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 17.8
+  - time: 24
     key: 0
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 18.6
+  - time: 24.5
     key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 21
+  - time: 27.5
     key: 3
     gridX: 3
     gridY: 2
     allowPaint: 0
     paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
     isSlider: 1
-  - time: 23
+  - time: 30.5
     key: 0
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 23.5
+  - time: 30.5
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 24
+  - time: 31.5
     key: 1
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 24
+  - time: 33
     key: 4
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 27
+  - time: 35.8
     key: 3
     gridX: 0
     gridY: 1
     allowPaint: 0
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
-  - time: 28.2
-    key: 1
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 28
-    key: 0
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 28.8
-    key: 2
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 29.6
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 32
-    key: 3
-    gridX: 2
-    gridY: 1
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 1
-  - time: 34.2
-    key: 0
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 34
-    key: 1
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 34.8
-    key: 4
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 35.6
-    key: 2
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
   - time: 38
-    key: 3
-    gridX: 3
-    gridY: 1
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 1
-  - time: 40
     key: 1
     gridX: 0
     gridY: 0
@@ -4165,56 +4089,126 @@ MonoBehaviour:
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 41.8
+  - time: 42
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 42.8
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 44
+  - time: 45
     key: 3
-    gridX: 1
-    gridY: 0
+    gridX: 2
+    gridY: 1
     allowPaint: 0
-    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
-  - time: 46
+  - time: 48.2
     key: 0
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 47
+  - time: 49.5
     key: 1
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 47.8
+  - time: 50.5
+    key: 4
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 52
     key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 48.6
+  - time: 54
+    key: 3
+    gridX: 3
+    gridY: 1
+    allowPaint: 0
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
+    isSlider: 1
+  - time: 58
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 59
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 60.8
     key: 3
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 49.8
+  - time: 63.8
+    key: 3
+    gridX: 1
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
+    isSlider: 1
+  - time: 67
+    key: 0
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 68
+    key: 1
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 68.8
     key: 2
     gridX: 0
     gridY: 0
     allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 53
+  - time: 70
+    key: 3
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 70.8
+    key: 2
+    gridX: 0
+    gridY: 0
+    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 73.8
     key: 3
     gridX: 3
     gridY: 0
@@ -4920,9 +4914,6 @@ MonoBehaviour:
   - {fileID: 715729370}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.77647066, g: 0.0627451, b: 0, a: 1}
-  perfectRange: 0.05
-  goodRange: 0.15
-  slider: {fileID: 0}
 --- !u!61 &970069230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5713,9 +5704,6 @@ MonoBehaviour:
   - {fileID: 1834264623}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.9960785, g: 0.8588236, b: 0, a: 1}
-  perfectRange: 0.05
-  goodRange: 0.15
-  slider: {fileID: 0}
 --- !u!61 &1077186385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9507,9 +9495,6 @@ MonoBehaviour:
   - {fileID: 113141605}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.20000002, b: 0.09411766, a: 1}
-  perfectRange: 0.05
-  goodRange: 0.15
-  slider: {fileID: 0}
 --- !u!61 &2140067180
 BoxCollider2D:
   m_ObjectHideFlags: 0
