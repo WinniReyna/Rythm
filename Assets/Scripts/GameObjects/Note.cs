@@ -47,7 +47,7 @@ public class Note : MonoBehaviour
             {
                 case "Perfect!": color.a = 1f; break;
                 case "Good!": color.a = 0.7f; break;
-                case "Bad!": color.a = 0.3f; break;
+                case "Bad!": color.a = 0.05f; break;
             }
 
             gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite, color);
