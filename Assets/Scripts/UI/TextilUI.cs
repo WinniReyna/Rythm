@@ -1,52 +1,51 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using Lean.Localization;
 
 public class TextilUI : MonoBehaviour, IMenuPanel
 {
     [Header("Referencias UI")]
     [SerializeField] private Transform imageContainer;
-    [SerializeField] private GameObject rawImagePrefab; // Prefab con un RawImage (y opcionalmente un TMP_Text debajo)
+    [SerializeField] private GameObject rawImagePrefab;
+    [SerializeField] private TextilDatabase database;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private RawImage previewImage;
+    [SerializeField] private GameObject infoPanel;
 
-    private void OnEnable()
-    {
-        RefreshUI();
-    }
+    private void OnEnable() => RefreshUI();
 
     public void Open()
     {
         gameObject.SetActive(true);
-
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = false;
-
         RefreshUI();
+
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
+
+        //Debug.Log("Idioma inicial: " + LeanLocalization.GetFirstCurrentLanguage());
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
-
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
     }
 
     public void RefreshUI()
     {
-        // Limpia el contenedor
         foreach (Transform child in imageContainer)
             Destroy(child.gameObject);
 
-        // Ruta donde est·n guardadas las im·genes
         string folderPath = Path.Combine(Application.persistentDataPath, "SavedGrids");
         if (!Directory.Exists(folderPath))
-        {
-            Debug.LogWarning("No se encontrÛ la carpeta de grids guardados.");
             return;
-        }
 
-        // Cargar todos los PNG
         string[] files = Directory.GetFiles(folderPath, "*.png");
         foreach (string file in files)
         {
@@ -55,18 +54,57 @@ public class TextilUI : MonoBehaviour, IMenuPanel
             tex.LoadImage(bytes);
             tex.Apply();
 
-            // Crear RawImage en el contenedor
             GameObject rawObj = Instantiate(rawImagePrefab, imageContainer);
             RawImage raw = rawObj.GetComponent<RawImage>();
             if (raw != null)
                 raw.texture = tex;
 
-            // Mostrar nombre del archivo (opcional)
+            // Suponemos que el nombre del archivo contiene el ID (ej: "textil_01.png")
+            int id = ExtractID(Path.GetFileNameWithoutExtension(file));
+
+            // Asignar evento al bot√≥n
+            Button btn = rawObj.GetComponent<Button>();
+            if (btn != null)
+                btn.onClick.AddListener(() => OnImageClicked(id));
+
             var text = rawObj.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
                 text.text = Path.GetFileNameWithoutExtension(file);
         }
+    }
 
-        Debug.Log($"Cargadas {files.Length} im·genes desde: {folderPath}");
+    private int ExtractID(string filename)
+    {
+        // Ejemplo: si el nombre es "textil_01" ‚Üí retorna 1
+        string digits = System.Text.RegularExpressions.Regex.Match(filename, @"\d+").Value;
+        return int.TryParse(digits, out int id) ? id : -1;
+    }
+
+    private void OnImageClicked(int id)
+    {
+        TextileData data = database.GetTextilByID(id);
+        string lang = LeanLocalization.GetFirstCurrentLanguage();
+        if (data != null)
+        {
+            if (infoPanel != null)
+                infoPanel.SetActive(true);
+
+            if (lang == "English")
+            {
+                titleText.text = data.titleEN;
+                descriptionText.text = data.descriptionEN;
+            }
+            else // Espa√±ol por defecto
+            {
+                titleText.text = data.titleES;
+                descriptionText.text = data.descriptionES;
+            }
+
+            previewImage.texture = data.image;
+        }
+        else
+        {
+            Debug.LogWarning($"No se encontr√≥ informaci√≥n para el ID {id}");
+        }
     }
 }
