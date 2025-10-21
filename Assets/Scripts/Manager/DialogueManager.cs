@@ -52,6 +52,10 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
         dialoguePanel.SetActive(true);
         npcNameText.text = dialogue.npcName;
+
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = false;
+
         ShowLine();
     }
 
@@ -147,6 +151,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         if (npcIcon != null) npcIcon.enabled = false;
         if (continueText != null) continueText.gameObject.SetActive(false);
+
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = true;
+
         currentDialogue = null;
     }
 }

@@ -1943,7 +1943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 0}
 --- !u!1 &307013581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,7 +6777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cc1a24edeb4da544f810c5ea5e6d87c8, type: 2}
 --- !u!136 &873310062
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6835,7 +6833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 0}
 --- !u!1 &883905494
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,7 +8266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: 33da65fa59fe4ba4ea327aef5326d326, type: 2}
 --- !u!136 &1041298828
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8625,7 +8621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1105960803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9014,7 +9010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Spanish
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -10805,7 +10801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 0}
 --- !u!1 &1463096646
 GameObject:
   m_ObjectHideFlags: 0
@@ -15958,6 +15953,7 @@ GameObject:
   - component: {fileID: 2024506108}
   - component: {fileID: 2024506110}
   - component: {fileID: 2024506111}
+  - component: {fileID: 2024506112}
   m_Layer: 5
   m_Name: LibraryTextil
   m_TagString: Untagged
@@ -16013,6 +16009,34 @@ MonoBehaviour:
   titleText: {fileID: 786806636}
   descriptionText: {fileID: 1686674289}
   previewImage: {fileID: 2125928897}
+  infoPanel: {fileID: 1105960802}
+--- !u!114 &2024506112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024506107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!4 &2024924457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1527055450098318974, guid: d723c6557bd6de145a2fad37a6fe8229, type: 3}
@@ -16265,7 +16289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f136a2be56b812a4ab48c55085035b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: f9179caa1d9e9fe42bc7dd10815231f2, type: 2}
 --- !u!136 &2075338031
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16835,7 +16858,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 250, y: 250}

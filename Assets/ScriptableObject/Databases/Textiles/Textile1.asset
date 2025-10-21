@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea68eb0145c35ca4ba6e16f6e7ce65e7, type: 3}
   m_Name: Textile1
   m_EditorClassIdentifier: 
-  id: 0
-  title: 
-  description: 
-  image: {fileID: 0}
+  id: 1
+  titleES: Hola
+  descriptionES: Textil de filomena
+  titleEN: Helo
+  descriptionEN: Filomenas textile
+  image: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
