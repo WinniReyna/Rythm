@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine.UI;
 using Lean.Localization;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class DialogueManager : MonoBehaviour
     public AudioSource audioSource;
 
     private DialogueData currentDialogue;
+    private IInputProvider inputProvider;
     private int currentLineIndex = 0;
+
+    private Action onDialogueEnd;
 
     private void Awake()
     {
+
+        inputProvider = new KeyboardInputProvider();
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -35,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         // Avanzar con tecla Space
-        if (dialoguePanel.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if (dialoguePanel.activeSelf && inputProvider.DialogueLine())
         {
             if (currentDialogue != null)
             {
@@ -145,6 +152,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void SetPostDialogueAction(Action action)
+    {
+        onDialogueEnd = action;
+    }
+
     public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
@@ -156,6 +168,9 @@ public class DialogueManager : MonoBehaviour
             PlayerMovement.Instance.canMove = true;
 
         currentDialogue = null;
+
+        onDialogueEnd?.Invoke();
+        onDialogueEnd = null; // Limpiar para no repetir
     }
 }
 

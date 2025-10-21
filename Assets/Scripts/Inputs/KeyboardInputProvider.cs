@@ -8,4 +8,5 @@ public class KeyboardInputProvider : IInputProvider
     public bool InteractPressed() => Input.GetKeyDown(KeyCode.E);
     public bool InventoryPanel() => Input.GetKeyDown(KeyCode.I);
     public bool PausePressed() => Input.GetKeyDown(KeyCode.Escape);
+    public bool DialogueLine() => Input.GetKeyDown(KeyCode.Space);
 }

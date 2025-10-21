@@ -7,4 +7,6 @@ public interface IInputProvider
     bool InteractPressed();
     bool InventoryPanel();
     bool PausePressed();
+
+    bool DialogueLine();
 }
