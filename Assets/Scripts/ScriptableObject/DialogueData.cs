@@ -5,6 +5,7 @@ public class DialogueData : ScriptableObject
 {
     public string npcName;
     public DialogueLine[] lines;
+
 }
 
 [System.Serializable]

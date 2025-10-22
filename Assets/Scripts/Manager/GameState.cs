@@ -6,6 +6,8 @@ public class GameState : MonoBehaviour
     public static GameState Instance { get; private set; }
 
     [HideInInspector] public NPCSceneData currentNPCSceneData;
+    [HideInInspector] public Vector3 playerPosition;
+    [HideInInspector] public string lastNPCName;
     [HideInInspector] public bool returningFromEvent = false;
 
     private void Awake()
@@ -15,16 +17,19 @@ public class GameState : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-    // Llamado para iniciar cinemática o minijuego
-    public void TriggerScene(NPCSceneData sceneData)
+    public void TriggerScene(NPCSceneData sceneData, Transform player, string npcName)
     {
         currentNPCSceneData = sceneData;
         returningFromEvent = false;
+
+        if (player != null)
+            playerPosition = player.position;
+
+        lastNPCName = npcName;
 
         if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
             SceneManager.LoadScene(sceneData.cinematicSceneName);
@@ -32,7 +37,6 @@ public class GameState : MonoBehaviour
             SceneManager.LoadScene(sceneData.minigameSceneName);
     }
 
-    // Llamado desde cinemática o minijuego al terminar
     public void ReturnToMainScene(string mainSceneName)
     {
         returningFromEvent = true;

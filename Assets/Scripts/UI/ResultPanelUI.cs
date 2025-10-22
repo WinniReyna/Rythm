@@ -64,6 +64,19 @@ public class ResultPanelUI : MonoBehaviour
 
         resultPanel.SetActive(true);
     }
+
+    public void ReturnToMainLevel()
+    {
+        if (GameState.Instance != null)
+        {
+            GameState.Instance.ReturnToMainScene("GameScene");
+        }
+        else
+        {
+            // fallback por si el GameState no existe
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+        }
+    }
 }
 
 

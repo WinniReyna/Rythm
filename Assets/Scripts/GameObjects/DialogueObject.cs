@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class DialogueObject : MonoBehaviour, IInteractable
 {
@@ -9,48 +10,60 @@ public class DialogueObject : MonoBehaviour, IInteractable
     [Header("Opcional: escenas y minijuego")]
     [SerializeField] private NPCSceneData sceneData;
 
+    public DialogueData DialogueData => dialogueData;
+
     public void Interact()
     {
-        DialogueManager manager = FindObjectOfType<DialogueManager>();
+        var manager = DialogueManager.Instance;
         if (manager != null && dialogueData != null)
         {
             manager.StartDialogue(dialogueData);
 
-            // Si el NPC tiene escenas asociadas, registrarlas para después del diálogo
             if (sceneData != null)
             {
-                // Guardamos en GameState o en el DialogueManager qué hacer al finalizar
-                DialogueManager.Instance.SetPostDialogueAction(() =>
+                manager.SetPostDialogueAction(() =>
                 {
-                    TriggerSceneData();
+                    var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
+                    string npcName = dialogueData != null ? dialogueData.npcName : gameObject.name;
+                    GameState.Instance.TriggerScene(sceneData, player, npcName);
                 });
             }
         }
     }
 
+    /// <summary>
+    /// Cambiar a cinemática o minijuego usando GameState
+    /// </summary>
     private void TriggerSceneData()
     {
-        if (sceneData == null) return;
-
-        // Primero, si hay cinemática
-        if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
-        {
-            SceneManager.LoadScene(sceneData.cinematicSceneName);
+        if (sceneData == null)
             return;
+
+        // Usamos GameState si existe
+        if (GameState.Instance != null)
+        {
+            Transform playerTransform = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
+            string npcName = dialogueData != null ? dialogueData.npcName : gameObject.name;
+
+            GameState.Instance.TriggerScene(sceneData, playerTransform, npcName);
+        }
+        else
+        {
+            Debug.LogWarning("No existe GameState en la escena. Cargando escena directamente.");
+
+            if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
+                SceneManager.LoadScene(sceneData.cinematicSceneName);
+            else if (!string.IsNullOrEmpty(sceneData.minigameSceneName))
+                SceneManager.LoadScene(sceneData.minigameSceneName);
         }
 
-        // Si no hay cinemática pero sí minijuego
-        if (!string.IsNullOrEmpty(sceneData.minigameSceneName))
-        {
-            SceneManager.LoadScene(sceneData.minigameSceneName);
-            return;
-        }
-
-        // Aquí podrías manejar recompensas o eventos adicionales
+        // Opcional: manejar recompensas o eventos
         if (sceneData.grantsReward)
         {
             Debug.Log($"Otorgando recompensa: {sceneData.rewardID}");
+            // Aquí podrías llamar a tu sistema de inventario o logros
         }
     }
 }
+
 

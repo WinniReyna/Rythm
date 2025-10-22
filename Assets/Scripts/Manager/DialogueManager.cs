@@ -24,11 +24,11 @@ public class DialogueManager : MonoBehaviour
     private IInputProvider inputProvider;
     private int currentLineIndex = 0;
 
+    // Acción que se ejecuta al terminar el diálogo (post-diálogo)
     private Action onDialogueEnd;
 
     private void Awake()
     {
-
         inputProvider = new KeyboardInputProvider();
 
         if (Instance != null && Instance != this)
@@ -77,10 +77,8 @@ public class DialogueManager : MonoBehaviour
         DialogueLine line = currentDialogue.lines[currentLineIndex];
 
         // Texto con Lean Localization
-        if (!string.IsNullOrEmpty(line.localizedKey))
-            dialogueText.text = LeanLocalization.GetTranslationText(line.localizedKey);
-        else
-            dialogueText.text = "";
+        dialogueText.text = !string.IsNullOrEmpty(line.localizedKey) ?
+            LeanLocalization.GetTranslationText(line.localizedKey) : "";
 
         // Icono opcional
         if (npcIcon != null)
@@ -126,12 +124,7 @@ public class DialogueManager : MonoBehaviour
 
         // Mostrar aviso de "continuar" si hay más líneas y no hay respuestas
         if (continueText != null)
-        {
-            if (HasMoreLines() && (line.responses == null || line.responses.Length == 0))
-                continueText.gameObject.SetActive(true);
-            else
-                continueText.gameObject.SetActive(false);
-        }
+            continueText.gameObject.SetActive(HasMoreLines() && (line.responses == null || line.responses.Length == 0));
     }
 
     private bool HasMoreLines()
@@ -152,6 +145,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Registrar una acción que se ejecutará al terminar el diálogo (post-diálogo)
+    /// </summary>
     public void SetPostDialogueAction(Action action)
     {
         onDialogueEnd = action;
@@ -169,10 +165,16 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = null;
 
-        onDialogueEnd?.Invoke();
-        onDialogueEnd = null; // Limpiar para no repetir
+        // Ejecutar acción post-diálogo
+        if (onDialogueEnd != null)
+        {
+            var actionToRun = onDialogueEnd;
+            onDialogueEnd = null; // limpiar para no repetir
+            actionToRun.Invoke();
+        }
     }
 }
+
 
 
 
