@@ -7,6 +7,18 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventorySO inventorySO;
     [SerializeField] private ItemDatabase itemDatabase;
 
+    private void OnEnable()
+    {
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = false;
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = true;
+    }
+
     public void RefreshUI()
     {
         foreach (Transform child in itemsParent)

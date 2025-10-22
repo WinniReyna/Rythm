@@ -38,6 +38,7 @@ public class InventoryManager : MonoBehaviour
         if (inventoryPanel != null)
             inventoryPanel.SetActive(isOpen);
 
+
         if (isOpen)
             RefreshUI();
     }
