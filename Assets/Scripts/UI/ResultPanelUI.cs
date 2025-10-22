@@ -71,11 +71,19 @@ public class ResultPanelUI : MonoBehaviour
         {
             GameState.Instance.ReturnToMainScene("GameScene");
         }
-        else
+        /*else
         {
-            // fallback por si el GameState no existe
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
-        }
+            // fallback si por algún motivo no hay GameState
+            if (LoadingManager.Instance != null)
+            {
+                LoadingManager.Instance.LoadScene("GameScene");
+            }
+            else
+            {
+                // último recurso: carga directa
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+            }
+        }*/
     }
 }
 

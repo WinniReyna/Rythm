@@ -32,14 +32,25 @@ public class GameState : MonoBehaviour
         lastNPCName = npcName;
 
         if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
-            SceneManager.LoadScene(sceneData.cinematicSceneName);
+            LoadingManager.Instance.LoadScene(sceneData.cinematicSceneName);
         else if (!string.IsNullOrEmpty(sceneData.minigameSceneName))
-            SceneManager.LoadScene(sceneData.minigameSceneName);
+            LoadingManager.Instance.LoadScene(sceneData.minigameSceneName);
     }
 
     public void ReturnToMainScene(string mainSceneName)
     {
         returningFromEvent = true;
-        SceneManager.LoadScene(mainSceneName);
+
+        if (!string.IsNullOrEmpty(mainSceneName) && LoadingManager.Instance != null)
+        {
+            // Usamos el LoadingManager para mostrar la UI y cargar la escena
+            LoadingManager.Instance.LoadScene(mainSceneName);
+        }
+        else
+        {
+            // fallback directo si no hay LoadingManager
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainSceneName);
+        }
     }
+
 }

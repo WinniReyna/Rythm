@@ -18,7 +18,7 @@ public class CinematicEndTrigger : MonoBehaviour
         // Si hay minijuego definido, lo cargamos
         if (!string.IsNullOrEmpty(sceneData.minigameSceneName))
         {
-            SceneManager.LoadScene(sceneData.minigameSceneName);
+            LoadingManager.Instance.LoadScene(sceneData.minigameSceneName);
             return;
         }
 
