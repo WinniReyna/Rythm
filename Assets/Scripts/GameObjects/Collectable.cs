@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour, IInteractable
 {
-    public ItemSO itemData;
-    public int quantity = 1;
+    [SerializeField] private ItemSO itemData;
+    [SerializeField] private int quantity = 1;
 
     public void Interact()
     {

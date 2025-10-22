@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory
 {
-    public List<InventoryItem> items = new List<InventoryItem>();
+    private List<InventoryItem> items = new List<InventoryItem>();
 
-    public void AddItem(string itemID, int quantity)
+    private void AddItem(string itemID, int quantity)
     {
         InventoryItem existingItem = items.Find(i => i.itemID == itemID);
 

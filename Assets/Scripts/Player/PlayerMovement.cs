@@ -4,18 +4,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Velocidades")]
-    public float walkSpeed = 2f;
-    public float runMultiplier = 2f;
-    public float turnSmoothTime = 0.1f;
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float runMultiplier = 2f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
 
     [Header("Salto")]
-    public float jumpForce = 5f;
-    public float fallMultiplier = 2.5f;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float fallMultiplier = 2.5f;
 
     [Header("Chequeos")]
-    public Transform groundCheck;
-    public float groundRadius = 0.3f;
-    public LayerMask groundLayer;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundRadius = 0.3f;
+    [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody rb;
     private float turnSmoothVelocity;

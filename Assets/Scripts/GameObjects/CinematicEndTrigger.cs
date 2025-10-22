@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class CinematicEndTrigger : MonoBehaviour
 {
-    [Tooltip("NPCSceneData que inició esta cinemática")]
+    [Tooltip("NPCSceneData que inicio esta cinemática")]
     [SerializeField] private NPCSceneData sceneData;
 
     // Este método se llama al terminar la cinemática
@@ -23,7 +23,7 @@ public class CinematicEndTrigger : MonoBehaviour
         }
 
         // Si no hay minijuego, volvemos a la escena principal
-        GameState.Instance.ReturnToMainScene("MainScene"); // Cambia por tu nombre real de la escena
+        GameState.Instance.ReturnToMainScene("MainScene");
     }
 }
 

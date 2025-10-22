@@ -9,16 +9,16 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     [Header("UI")]
-    public GameObject dialoguePanel;
-    public TMP_Text npcNameText;
-    public TMP_Text dialogueText;
-    public RawImage npcIcon;
-    public Transform responseContainer;
-    public GameObject responseButtonPrefab;
-    public TMP_Text continueText; // Texto que indica "Presiona Space para continuar"
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private TMP_Text npcNameText;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private RawImage npcIcon;
+    [SerializeField] private Transform responseContainer;
+    [SerializeField] private GameObject responseButtonPrefab;
+    [SerializeField] private TMP_Text continueText; // Texto que indica "Presiona Space para continuar"
 
     [Header("Audio")]
-    public AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
     private DialogueData currentDialogue;
     private IInputProvider inputProvider;

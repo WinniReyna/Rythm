@@ -4,9 +4,9 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    public GameObject inventoryPanel;
-    public InventoryUI inventoryUI;
-    public InventorySO inventorySO;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private InventoryUI inventoryUI;
+    [SerializeField] private InventorySO inventorySO;
     private InventorySaveLoad saveLoad;
 
     private IInputProvider inputProvider;

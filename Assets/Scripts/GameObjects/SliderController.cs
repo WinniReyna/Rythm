@@ -3,7 +3,7 @@ using UnityEngine;
 public class SliderController : MonoBehaviour
 {
     [Range(0, 1)]
-    public int CurrentValue = 0;
+    [SerializeField] private int CurrentValue = 0;
 
     public void SetValue(int value)
     {

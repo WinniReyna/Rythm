@@ -6,12 +6,12 @@ using Lean.Localization;
 public class LibraryUI : MonoBehaviour, IMenuPanel
 {
     [Header("Referencias UI")]
-    public Transform booksParent;
-    public GameObject bookButtonPrefab;
-    public TMP_Text storyText;
+    [SerializeField] private Transform booksParent;
+    [SerializeField] private GameObject bookButtonPrefab;
+    [SerializeField] private TMP_Text storyText;
 
     [Header("Sistema de guardado")]
-    public LibrarySaveLoad librarySaveLoad;
+    [SerializeField] private LibrarySaveLoad librarySaveLoad;
 
     private void OnEnable()
     {

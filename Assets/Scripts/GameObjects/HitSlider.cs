@@ -5,12 +5,12 @@ using System.Collections;
 public class HitSlider : MonoBehaviour
 {
     [Header("Configuración")]
-    public float activeDuration = 2f; // cuánto tiempo permanece activo
-    public float defaultValue = 0f;
-    public float hitValue = 1f;
+    [SerializeField] private float activeDuration = 2f; // cuánto tiempo permanece activo
+    [SerializeField] private float defaultValue = 0f;
+    [SerializeField] private float hitValue = 1f;
 
     private Slider slider;
-    public bool isActive = false;
+    [SerializeField] private bool isActive = false;
 
     [SerializeField] private NoteSpawner noteSpawner;
 

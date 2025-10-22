@@ -24,7 +24,7 @@ public class NoteSpawner : MonoBehaviour
     public List<NoteData> notes;   
 
     [Header("Slider Hit")]
-    public HitSlider hitSlider;
+    [SerializeField] private HitSlider hitSlider;
     private Note currentSliderNote;
 
     [Header("Dificultad")]
@@ -42,7 +42,7 @@ public class NoteSpawner : MonoBehaviour
 
     public int ActiveNotesCount => activeNotes.Count;
 
-    public int totalNotes = 0;       // Total generadas
+    [SerializeField] private int totalNotes = 0;       // Total generadas
     public int notesDestroyed = 0;
 
     private void Start()

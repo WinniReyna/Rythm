@@ -12,7 +12,7 @@ public class Note : MonoBehaviour
     private GridPainter gridPainter;
 
     private ScoreManager scoreManager;
-    public string lastHitType;
+    private string lastHitType;
 
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {

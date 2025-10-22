@@ -2,10 +2,10 @@
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
-    public GameObject itemPrefab;
-    public InventorySO inventorySO;
-    public ItemDatabase itemDatabase;
+    [SerializeField] private Transform itemsParent;
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private InventorySO inventorySO;
+    [SerializeField] private ItemDatabase itemDatabase;
 
     public void RefreshUI()
     {

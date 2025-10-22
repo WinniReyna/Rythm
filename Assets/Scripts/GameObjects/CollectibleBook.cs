@@ -22,7 +22,7 @@ public class CollectibleBook : MonoBehaviour, IInteractable
         // Esperar a que los datos se carguen
         library.LoadLibrary();
 
-        // Si ya existe el libro en la lista, lo ocultamos
+        // Si ya existe el libro en la lista lo ocultamos
         if (library.foundBooks.Contains(book))
         {
             Debug.Log($" Libro '{book.bookTitle}' ya fue recolectado. Ocultando objeto...");

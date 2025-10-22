@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 public class HitZone : MonoBehaviour
 {
     [Tooltip("Tecla que se debe presionar cuando una nota está dentro de la zona")]
-    public NoteKey keyToPress;
+    [SerializeField] private NoteKey keyToPress;
 
     [Header("Sprites visuales de la zona (en orden)")]
-    public List<SpriteRenderer> zoneSprites = new List<SpriteRenderer>();
+    [SerializeField] private List<SpriteRenderer> zoneSprites = new List<SpriteRenderer>();
 
     [Header("Colores")]
-    public Color defaultColor = Color.gray;
-    public Color hitColor = Color.white;
+    [SerializeField] private Color defaultColor = Color.gray;
+    [SerializeField] private Color hitColor = Color.white;
 
     [Header("Rangos de precisión (en unidades del mundo)")]
-    private float perfectRange = 0.5f;
+    [SerializeField] private float perfectRange = 0.5f;
     private float goodRange = 1.0f;
 
     private IInputHandler inputHandler;

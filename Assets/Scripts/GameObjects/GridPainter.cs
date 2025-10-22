@@ -14,7 +14,7 @@ public class GridPainter : MonoBehaviour
 
     [Header("Sprites a colocar manualmente")]
     [Tooltip("Define qué sprite irá en qué celda (x, y).")]
-    public GridSpriteData[] gridSprites;
+    [SerializeField] private GridSpriteData[] gridSprites;
 
     private GridCell[,] gridCells;
 
