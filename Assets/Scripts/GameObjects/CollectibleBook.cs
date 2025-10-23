@@ -25,7 +25,7 @@ public class CollectibleBook : MonoBehaviour, IInteractable
         // Si ya existe el libro en la lista lo ocultamos
         if (library.foundBooks.Contains(book))
         {
-            Debug.Log($" Libro '{book.bookTitle}' ya fue recolectado. Ocultando objeto...");
+            //Debug.Log($" Libro '{book.bookTitle}' ya fue recolectado. Ocultando objeto...");
             gameObject.SetActive(false);
         }
     }
@@ -43,11 +43,11 @@ public class CollectibleBook : MonoBehaviour, IInteractable
                 AudioSource.PlayClipAtPoint(book.pickupSound, transform.position);
 
             Destroy(gameObject);
-            Debug.Log($" Libro recogido: {book.bookTitle}");
+            //Debug.Log($" Libro recogido: {book.bookTitle}");
         }
         else
         {
-            Debug.Log($" El libro '{book.bookTitle}' ya fue recogido.");
+            //Debug.Log($" El libro '{book.bookTitle}' ya fue recogido.");
         }
     }
 }

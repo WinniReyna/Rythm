@@ -56,18 +56,21 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
             return;
         }
 
+        // Limpiar botones antiguos
         foreach (Transform child in booksParent)
             Destroy(child.gameObject);
 
+        // Crear botones para cada libro encontrado
         foreach (BookSO book in librarySaveLoad.foundBooks)
         {
             if (book == null) continue;
 
             GameObject go = Instantiate(bookButtonPrefab, booksParent);
 
+            // Configurar texto del botón
             TMP_Text buttonText = go.GetComponentInChildren<TMP_Text>();
             if (buttonText != null)
-                buttonText.text = book.bookTitle;
+                buttonText.text = book.GetTitle();
 
             // Botón de leer libro
             Transform readBtnTransform = go.transform.Find("ReadButton");
@@ -81,31 +84,41 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
                 }
             }
 
-            // Botón de eliminar libro
+            // Botón de eliminar libro (solo en Editor)
             Transform deleteBtnTransform = go.transform.Find("DeleteButton");
             if (deleteBtnTransform != null)
             {
                 Button deleteBtn = deleteBtnTransform.GetComponent<Button>();
-#if UNITY_EDITOR
-                deleteBtn.gameObject.SetActive(Application.isPlaying && Application.isEditor);
-#else
-                deleteBtn.gameObject.SetActive(false);
-#endif
                 if (deleteBtn != null)
                 {
+#if UNITY_EDITOR
+                    deleteBtn.gameObject.SetActive(Application.isPlaying && Application.isEditor);
                     deleteBtn.onClick.RemoveAllListeners();
                     deleteBtn.onClick.AddListener(() => RemoveBook(book));
+#else
+                    deleteBtn.gameObject.SetActive(false);
+#endif
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Muestra el título y contenido del libro seleccionado
+    /// </summary>
+    /// <param name="book">Libro a mostrar</param>
     public void ShowBook(BookSO book)
     {
-        if (book == null) return;
-        storyText.text = LeanLocalization.GetTranslationText(book.storyTextKey);
+        if (book == null || storyText == null) return;
+
+        // Mostrar título y contenido según idioma actual
+        storyText.text = $"<b>{book.GetTitle()}</b>\n\n{book.GetContent()}";
     }
 
+    /// <summary>
+    /// Elimina un libro de la biblioteca (solo en Editor)
+    /// </summary>
+    /// <param name="book">Libro a eliminar</param>
     private void RemoveBook(BookSO book)
     {
 #if UNITY_EDITOR
@@ -114,7 +127,7 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
             librarySaveLoad.RemoveBook(book);
             librarySaveLoad.SaveLibrary();
             RefreshUI();
-            Debug.Log($"Libro '{book.bookTitle}' eliminado de la biblioteca (modo Editor).");
+            Debug.Log($"Libro '{book.GetTitle()}' eliminado de la biblioteca (modo Editor).");
         }
 #endif
     }

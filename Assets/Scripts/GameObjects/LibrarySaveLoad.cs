@@ -34,7 +34,7 @@ public class LibrarySaveLoad : MonoBehaviour
 
         foundBooks.Remove(book);
         SaveLibrary();
-        Debug.Log($"Libro eliminado: {book.bookTitle}");
+        //Debug.Log($"Libro eliminado: {book.bookTitle}");
     }
 
     public void SaveLibrary()
