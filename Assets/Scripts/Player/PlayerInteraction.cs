@@ -29,8 +29,29 @@ public class PlayerInteraction : MonoBehaviour
             Debug.Log($"Jugador puede interactuar con {other.name}");
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (nearbyInteractable != null && other.GetComponent<IInteractable>() == nearbyInteractable)
+        {
+            nearbyInteractable = null;
+            Debug.Log($"Jugador salió del rango de {other.name}");
 
-    
+            // Aquí podemos cerrar el panel de examineObject
+            ExamineObject examineObj = other.GetComponent<ExamineObject>();
+            if (examineObj != null)
+            {
+                examineObj.EndExamine();
+            }
+
+            // Si tenías diálogo
+            if (dialogueManager != null)
+            {
+                DialogueManager.Instance.EndDialogue();
+            }
+        }
+    }
+
+
 
 }
 
