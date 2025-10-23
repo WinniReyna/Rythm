@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Flower
   m_EditorClassIdentifier: 
   objectTexture: {fileID: 2800000, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
-  localizationKey: Flower
+  titleES: Florecita
+  descriptionES: "qu\xE9 bonita flor"
+  titleEN: Flower
+  descriptionEN: what a beatiful flower

@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ExamineObject : MonoBehaviour, IInteractable
 {
+    [Tooltip("Debemos colocar aquí el ScriptableObject que se utilizará. Se encuentra en el mení de Examine/ExamineData.")]
     [SerializeField] private ExamineData data;
     private IExamineUI uiManager;
     private bool isExamining = false;
@@ -37,11 +38,12 @@ public class ExamineObject : MonoBehaviour, IInteractable
 
         if (uiManager == null || data == null) return;
 
-        // Obtener texto traducido usando Lean Localization
-        string localizedText = LeanLocalization.GetTranslationText(data.localizationKey);
+        // Obtener título y descripción según el idioma actual
+        string localizedTitle = data.GetTitle();
+        string localizedDescription = data.GetDescription();
 
         // Mostrar la textura y el texto en la UI
-        uiManager.Show(data.objectTexture, localizedText);
+        uiManager.Show(data.objectTexture, localizedTitle + "\n\n" + localizedDescription);
 
         // Bloquear movimiento del jugador mientras examina
         if (PlayerMovement.Instance != null)
