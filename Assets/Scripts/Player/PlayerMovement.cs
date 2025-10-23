@@ -89,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
     #region Salto
     private void HandleJump()
     {
+        if (!canMove) return;
+
         if (isGrounded && inputProvider.JumpPressed())
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
