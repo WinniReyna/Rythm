@@ -42,8 +42,8 @@ public class NoteSpawner : MonoBehaviour
 
     public int ActiveNotesCount => activeNotes.Count;
 
-    [SerializeField] private int totalNotes = 0;       // Total generadas
-    public int notesDestroyed = 0;
+    [HideInInspector] private int totalNotes = 0;     
+    [HideInInspector] public int notesDestroyed = 0;
 
     private void Start()
     {
