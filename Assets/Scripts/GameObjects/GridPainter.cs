@@ -140,7 +140,7 @@ public class GridPainter : MonoBehaviour
         if (!Directory.Exists(folderPath))
             Directory.CreateDirectory(folderPath);
 
-        string fileName = $"{gameObject.name}_Grid.png";
+        string fileName = $"{gameObject.name}.png";
         string fullPath = Path.Combine(folderPath, fileName);
 
         File.WriteAllBytes(fullPath, tex.EncodeToPNG());

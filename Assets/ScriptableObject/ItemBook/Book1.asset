@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Book1
   m_EditorClassIdentifier: 
   bookID: 1
-  bookTitle: Inicio de una historia
-  storyTextKey: Flower
+  titleES: Libro 1
+  titleEN: Book 1
+  contentES: esto es un libro
+  contentEN: this is a book
   order: 1
   pickupSound: {fileID: 0}

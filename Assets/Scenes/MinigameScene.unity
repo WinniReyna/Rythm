@@ -1341,6 +1341,7 @@ MonoBehaviour:
   - {fileID: 1643969965}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0, g: 0.14117648, b: 0.9921569, a: 1}
+  perfectRange: 0.5
 --- !u!61 &202783128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1398,7 +1399,7 @@ GameObject:
   - component: {fileID: 215266668}
   - component: {fileID: 215266667}
   m_Layer: 10
-  m_Name: GridManager
+  m_Name: textil_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2889,6 +2890,7 @@ MonoBehaviour:
   - {fileID: 1164676613}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.4901961, b: 0.38823533, a: 1}
+  perfectRange: 0.5
 --- !u!61 &605547129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5184,6 +5186,7 @@ MonoBehaviour:
   - {fileID: 715729370}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.77647066, g: 0.0627451, b: 0, a: 1}
+  perfectRange: 0.5
 --- !u!61 &970069230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5974,6 +5977,7 @@ MonoBehaviour:
   - {fileID: 1834264623}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.9960785, g: 0.8588236, b: 0, a: 1}
+  perfectRange: 0.5
 --- !u!61 &1077186385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9765,6 +9769,7 @@ MonoBehaviour:
   - {fileID: 113141605}
   defaultColor: {r: 0, g: 0, b: 0, a: 1}
   hitColor: {r: 0.38823533, g: 0.20000002, b: 0.09411766, a: 1}
+  perfectRange: 0.5
 --- !u!61 &2140067180
 BoxCollider2D:
   m_ObjectHideFlags: 0
