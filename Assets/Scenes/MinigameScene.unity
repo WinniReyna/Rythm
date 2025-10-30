@@ -3448,7 +3448,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -180, y: 0}
+  m_SizeDelta: {x: 0, y: -180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654344075
 MonoBehaviour:
@@ -3898,7 +3898,7 @@ Transform:
   m_GameObject: {fileID: 762153357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8945456, y: 1.7933532, z: -0.009983078}
+  m_LocalPosition: {x: -1.8945456, y: 2.18, z: -0.009983078}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4087,332 +4087,435 @@ MonoBehaviour:
   spawnPointSpace: {fileID: 1372008417}
   notes:
   - time: 0
-    key: 0
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 0.8
     key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 1.6
-    key: 2
+  - time: 2
+    key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 2.4
-    key: 4
+  - time: 4
+    key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 3
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 6
-    key: 3
-    gridX: 0
-    gridY: 3
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 1
-  - time: 9.2
-    key: 0
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 9.2
     key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 8
+    key: 0
+    gridX: 0
+    gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 10
-    key: 2
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 10.5
-    key: 4
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 13
-    key: 3
-    gridX: 2
-    gridY: 3
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 1
-  - time: 16.2
-    key: 1
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 16.5
     key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 16.5
-    key: 2
+  - time: 12
+    key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 17.5
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 20.2
-    key: 3
-    gridX: 1
-    gridY: 2
-    allowPaint: 0
-    paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
     isSlider: 1
-  - time: 23
-    key: 4
+  - time: 14
+    key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 23.8
-    key: 3
+  - time: 16
+    key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 18
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 20
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 22
+    key: 0
+    gridX: 0
+    gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 24
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 26
     key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 24.5
+  - time: 28
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 30
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 32
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 34
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 36
     key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 27.5
-    key: 3
-    gridX: 3
-    gridY: 2
-    allowPaint: 0
-    paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
-    isSlider: 1
-  - time: 30.5
-    key: 0
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 30.5
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 31.5
-    key: 1
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 33
-    key: 4
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 35.8
-    key: 3
-    gridX: 0
-    gridY: 1
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 1
   - time: 38
-    key: 1
+    key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 41
-    key: 0
+  - time: 40
+    key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 42
     key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 42.8
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 45
-    key: 3
-    gridX: 2
-    gridY: 1
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
-  - time: 48.2
+  - time: 44
     key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 49.5
-    key: 1
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 50.5
+  - time: 46
     key: 4
     gridX: 0
     gridY: 0
-    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 48
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 50
+    key: 4
+    gridX: 0
+    gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 52
-    key: 2
+    key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 54
-    key: 3
-    gridX: 3
-    gridY: 1
-    allowPaint: 0
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 56
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
     isSlider: 1
   - time: 58
-    key: 1
+    key: 4
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 59
+  - time: 60
     key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 60.8
-    key: 3
+  - time: 62
+    key: 4
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 63.8
-    key: 3
-    gridX: 1
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
-    isSlider: 1
-  - time: 67
+  - time: 64
     key: 0
     gridX: 0
     gridY: 0
-    allowPaint: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 66
+    key: 0
+    gridX: 0
+    gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
   - time: 68
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 70
+    key: 4
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 72
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 74
+    key: 4
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 76
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 78
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 80
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 82
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 84
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 86
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 88
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 90
+    key: 2
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 92
     key: 1
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 68.8
+  - time: 94
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 96
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 98
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 100
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 102
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 104
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 106
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 108
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 110
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 112
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 114
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 116
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 118
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 120
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 122
+    key: 0
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 124
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 126
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 128
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 1
+  - time: 130
     key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 70
-    key: 3
-    gridX: 0
-    gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-  - time: 70.8
+  - time: 132
     key: 2
     gridX: 0
     gridY: 0
-    allowPaint: 0
     paintSprite: {fileID: 0}
     isSlider: 0
-  - time: 73.8
-    key: 3
-    gridX: 3
+  - time: 134
+    key: 2
+    gridX: 0
     gridY: 0
-    allowPaint: 0
-    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 136
+    key: 3
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 138
+    key: 3
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  - time: 140
+    key: 3
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
     isSlider: 1
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
   countdownText: {fileID: 602199063}
   countdownTime: 3
-  totalNotes: 0
   notesDestroyed: 0
 --- !u!4 &812214976
 Transform:
@@ -6858,7 +6961,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -180, y: 0}
+  m_SizeDelta: {x: 0, y: -180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336478982
 MonoBehaviour:
@@ -7225,8 +7328,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 56.706}
-  m_Pivot: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 56.706, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1442054473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7480,8 +7583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147.06299, y: 42.752625}
-  m_SizeDelta: {x: 188.6178, y: 636.8348}
+  m_AnchoredPosition: {x: -52, y: -409}
+  m_SizeDelta: {x: 636.8348, y: 188.6178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1456827773
 MonoBehaviour:
@@ -7526,7 +7629,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1442054473}
   m_FillRect: {fileID: 1336478981}
   m_HandleRect: {fileID: 1442054472}
-  m_Direction: 2
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -7843,8 +7946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -26.968506}
-  m_SizeDelta: {x: 0, y: -53.937}
+  m_AnchoredPosition: {x: -26.968506, y: 0}
+  m_SizeDelta: {x: -53.937, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1563481065
 GameObject:

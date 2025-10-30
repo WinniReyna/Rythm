@@ -38,7 +38,8 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 
-        currentPanel.Close();
+        if (currentPanel != null)
+            currentPanel.Close();
     }
 
     public void OpenPanel(GameObject panelObject)
