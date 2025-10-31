@@ -1442,7 +1442,7 @@ MonoBehaviour:
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 1
     y: 3
-    sprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 2
     y: 3
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
@@ -1475,7 +1475,7 @@ MonoBehaviour:
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 0
     y: 0
-    sprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 1
     y: 0
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
@@ -1723,6 +1723,72 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -112}
   m_SizeDelta: {x: 283.6093, y: 109.721}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &281687956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281687957}
+  - component: {fileID: 281687958}
+  m_Layer: 0
+  m_Name: Note spawner Manager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &281687957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281687956}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960.01, y: -532.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1749425463}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &281687958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281687956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a70b1796ac0649becffba1eec5238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabA: {fileID: 4919462284070083648, guid: 5fbec0388189bcf4782305a3c60b4ec9, type: 3}
+  prefabS: {fileID: 1756219208097354087, guid: 8c72df296e97dc944a6168ab70e1d24c, type: 3}
+  prefabD: {fileID: 9180093177836376460, guid: 33a12e1d13391264b931be4366eb2ff0, type: 3}
+  prefabShift: {fileID: 821605287409214, guid: f49f44f2ac7244f4298256de0762d53a, type: 3}
+  prefabSpace: {fileID: 7571959856294256244, guid: 711170f7c48e5754ba57da4be83a5698, type: 3}
+  spawnPointA: {fileID: 361935626}
+  spawnPointS: {fileID: 122032186}
+  spawnPointD: {fileID: 67612765}
+  spawnPointShiftLeft: {fileID: 1317287588}
+  spawnPointSpace: {fileID: 1372008417}
+  notes:
+  - time: 0
+    key: 1
+    gridX: 0
+    gridY: 0
+    paintSprite: {fileID: 0}
+    isSlider: 0
+  hitSlider: {fileID: 1456827774}
+  currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
+  countdownText: {fileID: 602199063}
+  countdownTime: 3
+  notesDestroyed: 0
 --- !u!1 &290386640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4223,8 +4289,8 @@ MonoBehaviour:
   - time: 0
     key: 1
     gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridY: 3
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 0
   - time: 2
     key: 1
@@ -4259,8 +4325,8 @@ MonoBehaviour:
   - time: 12
     key: 1
     gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridY: 3
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 14
     key: 0
@@ -4312,9 +4378,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 30
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 1
+    gridY: 3
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 32
     key: 1
@@ -4348,9 +4414,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 42
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 2
+    gridY: 3
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 44
     key: 0
@@ -4390,9 +4456,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 56
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 1
+    gridY: 2
+    paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
     isSlider: 1
   - time: 58
     key: 4
@@ -4426,9 +4492,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 68
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 3
+    gridY: 2
+    paintSprite: {fileID: -3462946693000102488, guid: 60c69fc5f4f9f474e825ca7762afe2d7, type: 3}
     isSlider: 1
   - time: 70
     key: 4
@@ -4457,8 +4523,8 @@ MonoBehaviour:
   - time: 78
     key: 0
     gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridY: 1
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 80
     key: 2
@@ -4492,9 +4558,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 90
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 2
+    gridY: 1
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 92
     key: 1
@@ -4528,9 +4594,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 102
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    gridX: 3
+    gridY: 1
+    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 1
   - time: 104
     key: 0
@@ -4566,7 +4632,7 @@ MonoBehaviour:
     key: 1
     gridX: 0
     gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
     isSlider: 1
   - time: 116
     key: 0
@@ -4606,9 +4672,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 128
     key: 1
-    gridX: 0
+    gridX: 1
     gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
     isSlider: 1
   - time: 130
     key: 2
@@ -4642,9 +4708,9 @@ MonoBehaviour:
     isSlider: 0
   - time: 140
     key: 3
-    gridX: 0
+    gridX: 3
     gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprite: {fileID: -3476229125227898794, guid: 651abce70026f224898a4c336db5545e, type: 3}
     isSlider: 1
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
@@ -9072,6 +9138,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 812214976}
+  - {fileID: 281687957}
   - {fileID: 104740866}
   - {fileID: 1978711760}
   - {fileID: 1756925873}

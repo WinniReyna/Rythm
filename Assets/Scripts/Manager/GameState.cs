@@ -17,6 +17,8 @@ public class GameState : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -28,6 +30,7 @@ public class GameState : MonoBehaviour
 
         if (player != null)
             playerPosition = player.position;
+
 
         lastNPCName = npcName;
 
