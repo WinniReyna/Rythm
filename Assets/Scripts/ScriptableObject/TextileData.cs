@@ -5,6 +5,9 @@ public class TextileData : ScriptableObject
 {
     public int id;
 
+    [Header("Escena asociada (opcional)")]
+    public string sceneName;
+
     [Header("Información en Español")]
     public string titleES;
     [TextArea] public string descriptionES;
@@ -14,6 +17,8 @@ public class TextileData : ScriptableObject
     [TextArea] public string descriptionEN;
 
     public Texture2D image;
+
+    
 
     // Método para obtener el texto según el idioma actual
     public string GetTitle()

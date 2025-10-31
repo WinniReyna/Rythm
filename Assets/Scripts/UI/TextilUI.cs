@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 using Lean.Localization;
+using UnityEngine.SceneManagement;
 
 public class TextilUI : MonoBehaviour, IMenuPanel
 {
@@ -14,6 +15,9 @@ public class TextilUI : MonoBehaviour, IMenuPanel
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private RawImage previewImage;
     [SerializeField] private GameObject infoPanel;
+
+    private Button openSceneButton;
+    private TextileData selectedTextile;
 
     private void OnEnable() => RefreshUI();
 
@@ -46,6 +50,8 @@ public class TextilUI : MonoBehaviour, IMenuPanel
         if (!Directory.Exists(folderPath))
             return;
 
+        
+
         string[] files = Directory.GetFiles(folderPath, "*.png");
         foreach (string file in files)
         {
@@ -73,6 +79,23 @@ public class TextilUI : MonoBehaviour, IMenuPanel
         }
     }
 
+    /// <summary>
+    /// Carga la escena asociada al libro (si tiene alguna)
+    /// </summary>
+    private void LoadBookScene(TextileData textile)
+    {
+        if (textile == null || string.IsNullOrEmpty(textile.sceneName))
+        {
+            Debug.LogWarning("El textil no tiene una escena asociada.");
+            return;
+        }
+
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = false;
+
+        LoadingManager.Instance.LoadScene(textile.sceneName);
+    }
+
     private int ExtractID(string filename)
     {
         // Ejemplo: si el nombre es "textil_01" → retorna 1
@@ -83,6 +106,8 @@ public class TextilUI : MonoBehaviour, IMenuPanel
     private void OnImageClicked(int id)
     {
         TextileData data = database.GetTextilByID(id);
+        selectedTextile = data; // Guardamos el textil seleccionado
+
         string lang = LeanLocalization.GetFirstCurrentLanguage();
         if (data != null)
         {
@@ -94,17 +119,31 @@ public class TextilUI : MonoBehaviour, IMenuPanel
                 titleText.text = data.titleEN;
                 descriptionText.text = data.descriptionEN;
             }
-            else // Español por defecto
+            else
             {
                 titleText.text = data.titleES;
                 descriptionText.text = data.descriptionES;
             }
 
             previewImage.texture = data.image;
+
+            openSceneButton = GameObject.Find("OpenSceneButton")?.GetComponent<Button>();
+            if (openSceneButton == null)
+                Debug.LogWarning("No se encontró un botón llamado 'OpenSceneButton' en la escena.");
+
+            // Configuramos el botón global **al seleccionar el textil**
+            if (openSceneButton != null)
+            {
+                openSceneButton.onClick.RemoveAllListeners();
+                openSceneButton.onClick.AddListener(() => LoadBookScene(selectedTextile));
+                openSceneButton.gameObject.SetActive(!string.IsNullOrEmpty(selectedTextile.sceneName));
+            }
         }
         else
         {
             Debug.LogWarning($"No se encontró información para el ID {id}");
+            if (openSceneButton != null)
+                openSceneButton.gameObject.SetActive(false);
         }
     }
 }

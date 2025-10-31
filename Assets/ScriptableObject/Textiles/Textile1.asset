@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Textile1
   m_EditorClassIdentifier: 
   id: 1
+  sceneName: MinigameScene
   titleES: Hola
   descriptionES: Textil de filomena
   titleEN: Helo
