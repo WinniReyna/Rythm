@@ -8,6 +8,8 @@ public class PlayerPosition : MonoBehaviour
         {
             var action = collision.gameObject.GetComponent<ICollisionAction>();
             action?.OnCollide(gameObject);
+
+            
         }
     }
 }

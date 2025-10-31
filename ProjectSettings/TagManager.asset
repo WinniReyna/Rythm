@@ -8,6 +8,7 @@ TagManager:
   - HitZone
   - ClimbFinish
   - MissNote
+  - Teleport
   layers:
   - Default
   - TransparentFX
