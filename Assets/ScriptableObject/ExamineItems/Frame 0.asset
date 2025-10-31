@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a96ab0b27c82e245b5139c94db9ebd7, type: 3}
+  m_Name: Frame 0
+  m_EditorClassIdentifier: 
+  objectTexture: {fileID: 2800000, guid: a6283eedb3b9dda41be076033e8592ab, type: 3}
+  titleES: Marco
+  descriptionES: "Mi hermana y su esposo. \xC8l nunca me gust\xF2 para ella, era
+    demasiado serio y nunca me cay\xF2 bien\r"
+  titleEN: Frame
+  descriptionEN: My sister and her husband. I never liked him for her; he was too
+    serious and I never got along with him.

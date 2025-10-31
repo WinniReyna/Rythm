@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a96ab0b27c82e245b5139c94db9ebd7, type: 3}
+  m_Name: Trunk 1
+  m_EditorClassIdentifier: 
+  objectTexture: {fileID: 2800000, guid: 34f047de340745046ba99750a99cdf90, type: 3}
+  titleES: Mesita de noche
+  descriptionES: "Hay telares aqu\xEC sin terminar. Mi hermana jam\xE0s dejar\xECa
+    un trabajo a medias, ella siempre le dedic\xF2 el tiempo suficiente a su trabajo
+    para terminarlo. Algo raro pas\xF2 aqu\xEC\r"
+  titleEN: Nightstand
+  descriptionEN: There are unfinished looms here. My sister would never leave a job
+    half-finished; she always dedicated enough time to her work to complete it. Something
+    strange happened here.
