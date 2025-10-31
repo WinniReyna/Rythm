@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
 {
     [Header("Destino y Transición")]
-    [SerializeField] private Vector2 destination; // punto al que se moverá el jugador
+    [SerializeField] private Vector3 destination; // punto al que se moverá el jugador
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private float fadeOutDuration = 1f; // duración del fade a negro
     [SerializeField] private float fadeInDuration = 1f;  // duración del fade desde negro
 
     [SerializeField] private RawImage fadeImage;
 
-    public Vector2 GetTargetPosition() => destination;
+    public Vector3 GetTargetPosition() => destination;
 
     private void Awake()
     {
