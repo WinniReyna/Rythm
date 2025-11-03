@@ -5,24 +5,28 @@ using UnityEngine.UI;
 public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
 {
     [Header("Destino y Transición")]
-    [SerializeField] private Vector3 destination; // punto al que se moverá el jugador
+    [SerializeField] private Vector3 destination;
     [SerializeField] private Animator fadeAnimator;
-    [SerializeField] private float fadeOutDuration = 1f; // duración del fade a negro
-    [SerializeField] private float fadeInDuration = 1f;  // duración del fade desde negro
-
+    [SerializeField] private float fadeOutDuration = 1f;
+    [SerializeField] private float fadeInDuration = 1f;
     [SerializeField] private RawImage fadeImage;
+
+    [Header("Objetos a gestionar")]
+    [SerializeField] private GameObject objectToActivate; // el objeto que queremos prender
+    [SerializeField] private GameObject[] allObjects;     // todos los objetos posibles para esta puerta
 
     public Vector3 GetTargetPosition() => destination;
 
     private void Awake()
     {
+        // Inicializar fade
         if (fadeImage == null)
             fadeImage = GetComponent<RawImage>();
 
         if (fadeImage != null)
         {
             Color c = fadeImage.color;
-            c.a = 0f; // completamente transparente al inicio
+            c.a = 0f;
             fadeImage.color = c;
         }
     }
@@ -34,20 +38,19 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
 
     private IEnumerator TeleportRoutine(GameObject player)
     {
-        // 🔹 Bloquear movimiento antes de empezar el fade
+        // Bloquear movimiento
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = false;
 
-        // 🔹 Fade a negro
+        // Fade a negro
         fadeAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(fadeOutDuration);
 
-        // Reinicia velocidad para que no se vea caminando
+        // Reiniciar velocidad y Animator
         Rigidbody rb2d = player.GetComponent<Rigidbody>();
         if (rb2d != null)
             rb2d.linearVelocity = Vector2.zero;
 
-        // Reinicia Animator para que deje de mostrar caminar/correr
         PlayerAnimator playerAnim = player.GetComponent<PlayerAnimator>();
         if (playerAnim != null)
         {
@@ -55,21 +58,31 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
             playerAnim.SetRunning(false);
         }
 
-        // 🔹 Teletransportar al jugador
+        // Teletransportar
         player.transform.position = destination;
 
-        // 🔹 Mantener la pantalla negra un momento opcional
+        // 🔹 Activar el objeto deseado
+        if (objectToActivate != null)
+            objectToActivate.SetActive(true);
+
+        // 🔹 Apagar todos los demás
+        if (allObjects != null)
+        {
+            foreach (var obj in allObjects)
+            {
+                if (obj != null && obj != objectToActivate)
+                    obj.SetActive(false);
+            }
+        }
+
+        // Pequeña espera para mantener pantalla negra
         yield return new WaitForSeconds(0.1f);
 
-        
-
-        // 🔹 Volver a mostrar la escena
+        // Fade out
         fadeAnimator.SetTrigger("FadeOut");
-
-        // ⏳ Esperar hasta que termine el fade in (la pantalla vuelve a verse)
         yield return new WaitForSeconds(fadeInDuration);
 
-        // 🔹 Reactivar movimiento solo después de que termine el fade
+        // Reactivar movimiento
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
     }
