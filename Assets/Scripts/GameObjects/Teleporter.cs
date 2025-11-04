@@ -76,7 +76,7 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
         }
 
         // Pequeña espera para mantener pantalla negra
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1.5f);
 
         // Fade out
         fadeAnimator.SetTrigger("FadeOut");
