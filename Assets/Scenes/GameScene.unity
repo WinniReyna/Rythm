@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 35353187}
   - component: {fileID: 35353189}
   m_Layer: 0
-  m_Name: House
+  m_Name: My house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2720,7 +2720,7 @@ Transform:
   m_GameObject: {fileID: 153767285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -744.4916, y: -501.87616, z: 14.852501}
+  m_LocalPosition: {x: -744.4916, y: -498.81, z: 17.1}
   m_LocalScale: {x: 21.112722, y: -0.00015928404, z: 16.423525}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4510,7 +4510,7 @@ Transform:
   m_GameObject: {fileID: 251991407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -169.3, y: 1.5, z: 72.06}
+  m_LocalPosition: {x: -169.3, y: 1.5, z: -54.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4530,7 +4530,7 @@ GameObject:
   - component: {fileID: 252318786}
   - component: {fileID: 252318785}
   m_Layer: 0
-  m_Name: House (6)
+  m_Name: Hector House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7524,7 +7524,7 @@ Transform:
   m_GameObject: {fileID: 374875270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -581.15704, y: -501.33615, z: -64.685104}
+  m_LocalPosition: {x: -581.15704, y: -501.33615, z: 62.01489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11268,8 +11268,11 @@ MonoBehaviour:
   fadeImage: {fileID: 652112082}
   objectToActivate: {fileID: 567684667}
   allObjects:
-  - {fileID: 168789276}
   - {fileID: 1760683071}
+  - {fileID: 168789276}
+  - {fileID: 251991407}
+  - {fileID: 744133317}
+  - {fileID: 1325780887}
 --- !u!65 &615259714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12924,7 +12927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: -17.05, y: 4.76, z: 30.04}
+  destination: {x: -110.79, y: 1.58, z: 50.66}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
@@ -12933,6 +12936,9 @@ MonoBehaviour:
   allObjects:
   - {fileID: 1760683071}
   - {fileID: 567684667}
+  - {fileID: 251991407}
+  - {fileID: 744133317}
+  - {fileID: 1325780887}
 --- !u!65 &712042643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13780,7 +13786,7 @@ Transform:
   m_GameObject: {fileID: 744133317}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -169.3, y: 1.5, z: 72.06}
+  m_LocalPosition: {x: -213.8, y: -0.8, z: 23.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22396,7 +22402,7 @@ GameObject:
   - component: {fileID: 1186064004}
   - component: {fileID: 1186064003}
   m_Layer: 0
-  m_Name: House (5)
+  m_Name: Penelope House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23461,13 +23467,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 92.6, y: -0.13, z: 11.3}
+  destination: {x: -118.2, y: 1.46, z: 49.09}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
   fadeImage: {fileID: 652112082}
-  objectToActivate: {fileID: 1760683071}
+  objectToActivate: {fileID: 744133317}
   allObjects:
+  - {fileID: 1760683071}
+  - {fileID: 567684667}
+  - {fileID: 251991407}
+  - {fileID: 1325780887}
   - {fileID: 168789276}
 --- !u!65 &1259580954
 BoxCollider:
@@ -24397,7 +24407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: -17.05, y: 4.76, z: 30.04}
+  destination: {x: 23.01, y: -3.45, z: -17.89}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
@@ -24406,6 +24416,9 @@ MonoBehaviour:
   allObjects:
   - {fileID: 1760683071}
   - {fileID: 567684667}
+  - {fileID: 251991407}
+  - {fileID: 744133317}
+  - {fileID: 1325780887}
 --- !u!65 &1310738627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25078,7 +25091,7 @@ GameObject:
   - component: {fileID: 1343837518}
   - component: {fileID: 1343837517}
   m_Layer: 0
-  m_Name: House (4)
+  m_Name: Lucia House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25190,7 +25203,7 @@ GameObject:
   - component: {fileID: 1347627229}
   - component: {fileID: 1347627228}
   m_Layer: 0
-  m_Name: Door (1)
+  m_Name: Door
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25290,14 +25303,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 92.6, y: -0.13, z: 11.3}
+  destination: {x: -69.9, y: 0.186, z: -33.88}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
   fadeImage: {fileID: 652112082}
-  objectToActivate: {fileID: 1760683071}
+  objectToActivate: {fileID: 251991407}
   allObjects:
+  - {fileID: 1760683071}
+  - {fileID: 567684667}
   - {fileID: 168789276}
+  - {fileID: 744133317}
+  - {fileID: 1325780887}
 --- !u!65 &1347627231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26417,7 +26434,7 @@ GameObject:
   - component: {fileID: 1423654539}
   - component: {fileID: 1423654538}
   m_Layer: 0
-  m_Name: House (7)
+  m_Name: Teodora House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31329,7 +31346,7 @@ GameObject:
   m_Layer: 0
   m_Name: "---- Penelope\xB4s House ----"
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -33500,7 +33517,7 @@ Transform:
   m_GameObject: {fileID: 1799245637}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -581.15704, y: -501.33615, z: -64.685104}
+  m_LocalPosition: {x: -536.65704, y: -499.03616, z: -16.52511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
