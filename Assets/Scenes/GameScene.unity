@@ -12927,7 +12927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: -110.79, y: 1.58, z: 50.66}
+  destination: {x: 0.75, y: -5, z: -27.45}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
