@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a96ab0b27c82e245b5139c94db9ebd7, type: 3}
+  m_Name: House 1
+  m_EditorClassIdentifier: 
+  objectTexture: {fileID: 2800000, guid: 8149f1e88903af64cbfa7233244c0cac, type: 3}
+  titleES: Casa de Britney
+  descriptionES: "Parece ser que Filomena no esta en casa, creo que debes venir m\xE1s
+    tarde"
+  titleEN: Britney's house
+  descriptionEN: It seems Filomena isn't home, I think you should come later
