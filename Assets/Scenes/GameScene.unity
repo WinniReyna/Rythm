@@ -2982,6 +2982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168789277}
+  - component: {fileID: 168789278}
   m_Layer: 0
   m_Name: CityCameras
   m_TagString: Untagged
@@ -3006,6 +3007,19 @@ Transform:
   - {fileID: 418892962}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &168789278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168789276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: CityCameras
 --- !u!1 &170775078
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,6 +4508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251991408}
+  - component: {fileID: 251991409}
   m_Layer: 0
   m_Name: HectorCameras
   m_TagString: Untagged
@@ -4518,6 +4533,19 @@ Transform:
   - {fileID: 1304594863}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251991409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251991407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: HectorCameras
 --- !u!1 &252318783
 GameObject:
   m_ObjectHideFlags: 0
@@ -10538,6 +10566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567684668}
+  - component: {fileID: 567684669}
   m_Layer: 0
   m_Name: TeodoraCameras
   m_TagString: Untagged
@@ -10562,6 +10591,19 @@ Transform:
   - {fileID: 1883488982}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567684669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567684667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: TeodoraCameras
 --- !u!1 &572482798
 GameObject:
   m_ObjectHideFlags: 0
@@ -13770,6 +13812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 744133318}
+  - component: {fileID: 744133319}
   m_Layer: 0
   m_Name: PenelopeCameras
   m_TagString: Untagged
@@ -13794,6 +13837,19 @@ Transform:
   - {fileID: 153767286}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744133319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744133317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: PenelopeCameras
 --- !u!1 &760661596
 GameObject:
   m_ObjectHideFlags: 0
@@ -24672,6 +24728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325780888}
+  - component: {fileID: 1325780889}
   m_Layer: 0
   m_Name: LuciaCameras
   m_TagString: Untagged
@@ -24696,6 +24753,19 @@ Transform:
   - {fileID: 224257393}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1325780889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325780887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: LuciaCameras
 --- !u!1 &1329663547
 GameObject:
   m_ObjectHideFlags: 0
@@ -32679,6 +32749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760683072}
+  - component: {fileID: 1760683073}
   m_Layer: 0
   m_Name: HomeCameras
   m_TagString: Untagged
@@ -32703,6 +32774,19 @@ Transform:
   - {fileID: 1705522116}
   m_Father: {fileID: 989803343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760683073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760683071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70f94875adf48d4c87ddfe06e011d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: HomeCameras
 --- !u!1001 &1772493220
 PrefabInstance:
   m_ObjectHideFlags: 0

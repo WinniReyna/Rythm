@@ -61,11 +61,11 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
         // Teletransportar
         player.transform.position = destination;
 
-        // 🔹 Activar el objeto deseado
+        // Activar el objeto deseado
         if (objectToActivate != null)
             objectToActivate.SetActive(true);
 
-        // 🔹 Apagar todos los demás
+        // Apagar todos los demás
         if (allObjects != null)
         {
             foreach (var obj in allObjects)
