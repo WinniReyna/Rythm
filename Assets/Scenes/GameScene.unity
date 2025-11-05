@@ -16939,6 +16939,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3853268898807207900, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e18b6162c0e47f049b9d9dc9ea7daaa0, type: 2}
     - target: {fileID: 3882815353823017779, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -22785,6 +22789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4703a63ed6b3ec54e9775e9673fb0fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoSaveInterval: 30
 --- !u!1 &1200597659
 GameObject:
   m_ObjectHideFlags: 0
