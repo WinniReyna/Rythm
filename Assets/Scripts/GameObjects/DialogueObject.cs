@@ -24,13 +24,14 @@ public class DialogueObject : MonoBehaviour, IInteractable
                 manager.SetPostDialogueAction(() =>
                 {
                     // Guardar estado antes de cambiar de escena
-                    var sceneStateManager = FindObjectOfType<SceneStateManager>();
-                    if (sceneStateManager != null)
+                    var returnPointHandler = FindObjectOfType<ReturnPointHandler>();
+                    if (returnPointHandler != null)
                     {
-                        sceneStateManager.SaveState();
-                        Debug.Log("Estado de la escena guardado antes de cambiar de escena.");
+                        returnPointHandler.SaveGameState(); // guarda posición y objetos
+                        Debug.Log("Estado del juego guardado antes de cambiar de escena.");
                     }
 
+                    // Obtener jugador para pasar a GameState
                     var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
                     string npcName = dialogueData != null ? dialogueData.npcName : gameObject.name;
 
