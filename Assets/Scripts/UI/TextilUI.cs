@@ -98,7 +98,7 @@ public class TextilUI : MonoBehaviour, IMenuPanel
 
     private int ExtractID(string filename)
     {
-        // Ejemplo: si el nombre es "textil_01" → retorna 1
+        // si el nombre es "textil_01" → retorna 1
         string digits = System.Text.RegularExpressions.Regex.Match(filename, @"\d+").Value;
         return int.TryParse(digits, out int id) ? id : -1;
     }

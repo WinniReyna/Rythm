@@ -66,7 +66,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
                 SceneManager.LoadScene(sceneData.minigameSceneName);
         }
 
-        // Opcional: manejar recompensas o eventos
+        // manejar recompensas o eventos
         if (sceneData.grantsReward)
         {
             Debug.Log($"Otorgando recompensa: {sceneData.rewardID}");

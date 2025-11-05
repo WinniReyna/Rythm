@@ -18,7 +18,7 @@ public class SceneStateManager : MonoBehaviour
             if (obj.activeSelf)
             {
                 activeObj = obj;
-                break; // solo consideramos 1 objeto activo
+                break; 
             }
         }
 
@@ -46,7 +46,7 @@ public class SceneStateManager : MonoBehaviour
         Debug.Log("Estado cargado. Objeto activo: " + activeName);
     }
 
-    // Opcional: cargar automáticamente al iniciar
+    // cargar automáticamente al iniciar
     private void Awake()
     {
         LoadState();
