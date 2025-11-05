@@ -2988,7 +2988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &168789277
 Transform:
   m_ObjectHideFlags: 0
@@ -4500,7 +4500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &251991408
 Transform:
   m_ObjectHideFlags: 0
@@ -10544,7 +10544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &567684668
 Transform:
   m_ObjectHideFlags: 0
@@ -13776,7 +13776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &744133318
 Transform:
   m_ObjectHideFlags: 0
@@ -16593,7 +16593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.56
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16981,7 +16981,7 @@ Transform:
   m_GameObject: {fileID: 873310060}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -25.76, y: 1.91, z: 19.7}
+  m_LocalPosition: {x: 19.9, y: 1.91, z: 17.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22649,7 +22649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1198199134
 Transform:
   m_ObjectHideFlags: 0
@@ -24678,7 +24678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1325780888
 Transform:
   m_ObjectHideFlags: 0
@@ -30055,6 +30055,10 @@ MonoBehaviour:
   fadeImage: {fileID: 652112082}
   objectToActivate: {fileID: 1760683071}
   allObjects:
+  - {fileID: 567684667}
+  - {fileID: 251991407}
+  - {fileID: 744133317}
+  - {fileID: 1325780887}
   - {fileID: 168789276}
 --- !u!65 &1610306187
 BoxCollider:
@@ -30283,7 +30287,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624410444}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 97ee4953fd28df14585f7b8c8cf9fcb7, type: 3}
   m_Controller: {fileID: 9100000, guid: f60288239358fda44b8258fbe1d4426c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
