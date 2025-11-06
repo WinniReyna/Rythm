@@ -4,40 +4,36 @@ using UnityEngine;
 public class KeyItemSO : ItemSO, IUsableItem
 {
     [Header("ID de la puerta que abre")]
-    public string doorID;
+    [Tooltip("Debe coincidir con el RequiredKeyID de la puerta")]
+    public string keyID;
 
-    public void Use(PlayerInteraction user)
+    public bool Use(PlayerInteraction player)
     {
-        var interaction = user.GetComponent<PlayerInteraction>();
-        if (interaction == null)
-        {
-            Debug.Log("No se encontró PlayerInteraction en el jugador.");
-            return;
-        }
-
-        var interactable = interaction.GetNearbyInteractable();
+        var interactable = player.GetNearbyInteractable();
         if (interactable == null)
         {
             Debug.Log("No hay nada cercano para usar la llave.");
-            return;
+            return false;
         }
 
-        // Revisamos si es un Teleporter bloqueado
+        // Revisar si es un Teleporter
         if (interactable is Teleporter teleporter)
         {
-            if (teleporter.IsLocked && teleporter.RequiredKeyID == doorID)
+            if (teleporter.IsLocked && teleporter.RequiredKeyID == keyID)
             {
                 teleporter.Unlock();
                 Debug.Log($"Puerta desbloqueada con {itemName}");
+                return true; // consumido
             }
             else
             {
-                Debug.Log("La llave no coincide o la puerta ya está abierta.");
+                Debug.Log("La llave no encaja aquí.");
+                return false;
             }
         }
-        else
-        {
-            Debug.Log("Este objeto no puede desbloquearse con una llave.");
-        }
+
+        Debug.Log("No se puede usar la llave aquí.");
+        return false;
     }
 }
+

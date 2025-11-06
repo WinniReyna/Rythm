@@ -42,16 +42,16 @@ public class InventoryUIItem : MonoBehaviour
         // Verificar si implementa IUsableItem
         if (itemSO is IUsableItem usable)
         {
-            // Obtener el PlayerInteraction del jugador
             var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerInteraction>();
             if (player != null)
             {
-                usable.Use(player);
-                Debug.Log($"Se usó el ítem {itemID}");
-            }
-            else
-            {
-                Debug.LogWarning("No se encontró PlayerInteraction en el jugador.");
+                bool consumed = usable.Use(player);
+                if (consumed)
+                {
+                    inventorySO.RemoveItem(itemID, 1);
+                    InventoryManager.Instance.RefreshUI();
+                    FindObjectOfType<InventorySaveLoad>().SaveInventory();
+                }
             }
         }
         else

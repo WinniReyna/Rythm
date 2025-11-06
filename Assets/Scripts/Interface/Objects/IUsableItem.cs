@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IUsableItem
 {
-    void Use(PlayerInteraction player);
+    bool Use(PlayerInteraction player);
 }
