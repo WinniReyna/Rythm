@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PlayerPosition : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Teleport")
+        if (other.gameObject.tag == "Teleport")
         {
-            var action = collision.gameObject.GetComponent<ICollisionAction>();
+            var action = other.gameObject.GetComponent<ICollisionAction>();
             action?.OnCollide(gameObject);
-
-            
         }
     }
 }
