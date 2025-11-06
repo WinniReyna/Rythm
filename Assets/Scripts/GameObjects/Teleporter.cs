@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
+public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, IInteractable
 {
     [Header("Destino y Transición")]
     [SerializeField] private Vector3 destination;
@@ -12,14 +12,20 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
     [SerializeField] private RawImage fadeImage;
 
     [Header("Objetos a gestionar")]
-    [SerializeField] private GameObject objectToActivate; // el objeto que queremos prender
-    [SerializeField] private GameObject[] allObjects;     // todos los objetos posibles para esta puerta
+    [SerializeField] private GameObject objectToActivate;
+    [SerializeField] private GameObject[] allObjects;
+
+    [Header("Opcional: Llave requerida")]
+    [Tooltip("Si está vacío, la puerta no requiere llave.")]
+    [SerializeField] private string requiredKeyID;
+    [SerializeField] private bool isLocked = false;
 
     public Vector3 GetTargetPosition() => destination;
+    public bool IsLocked => isLocked;
+    public string RequiredKeyID => requiredKeyID;
 
     private void Awake()
     {
-        // Inicializar fade
         if (fadeImage == null)
             fadeImage = GetComponent<RawImage>();
 
@@ -29,24 +35,44 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
             c.a = 0f;
             fadeImage.color = c;
         }
+
+        if (!string.IsNullOrEmpty(requiredKeyID))
+            isLocked = true;
+    }
+
+    public void Interact()
+    {
+        OnCollide(GameObject.FindWithTag("Player"));
     }
 
     public void OnCollide(GameObject player)
     {
+        if (isLocked)
+        {
+            Debug.Log("Esta puerta está cerrada con llave.");
+            return;
+        }
+
         StartCoroutine(TeleportRoutine(player));
+    }
+
+    public void Unlock()
+    {
+        if (isLocked)
+        {
+            isLocked = false;
+            Debug.Log($"Puerta desbloqueada ({requiredKeyID})");
+        }
     }
 
     private IEnumerator TeleportRoutine(GameObject player)
     {
-        // Bloquear movimiento
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = false;
 
-        // Fade a negro
         fadeAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(fadeOutDuration);
 
-        // Reiniciar velocidad y Animator
         Rigidbody rb2d = player.GetComponent<Rigidbody>();
         if (rb2d != null)
             rb2d.linearVelocity = Vector2.zero;
@@ -58,14 +84,11 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
             playerAnim.SetRunning(false);
         }
 
-        // Teletransportar
         player.transform.position = destination;
 
-        // Activar el objeto deseado
         if (objectToActivate != null)
             objectToActivate.SetActive(true);
 
-        // Apagar todos los demás
         if (allObjects != null)
         {
             foreach (var obj in allObjects)
@@ -75,14 +98,11 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider
             }
         }
 
-        // Pequeña espera para mantener pantalla negra
         yield return new WaitForSeconds(1.5f);
 
-        // Fade out
         fadeAnimator.SetTrigger("FadeOut");
         yield return new WaitForSeconds(fadeInDuration);
 
-        // Reactivar movimiento
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
     }

@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class InventoryUIItem : MonoBehaviour
 {
-    public RawImage icon;
-    public TMP_Text itemNameText;
-    public TMP_Text descriptionText;
-    public TMP_Text quantityText;
+    [SerializeField] private RawImage icon;
+    [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text quantityText;
 
     private string itemID;
     private InventorySO inventorySO;
@@ -29,7 +29,35 @@ public class InventoryUIItem : MonoBehaviour
 
     public void OnUseButton()
     {
-        Debug.Log($"Usaste {itemID}");
+        if (itemDatabase == null) return;
+
+        // Buscar el ScriptableObject del ítem
+        ItemSO itemSO = itemDatabase.GetItemByID(itemID);
+        if (itemSO == null)
+        {
+            Debug.LogWarning($"No se encontró el item con ID {itemID}");
+            return;
+        }
+
+        // Verificar si implementa IUsableItem
+        if (itemSO is IUsableItem usable)
+        {
+            // Obtener el PlayerInteraction del jugador
+            var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerInteraction>();
+            if (player != null)
+            {
+                usable.Use(player);
+                Debug.Log($"Se usó el ítem {itemID}");
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró PlayerInteraction en el jugador.");
+            }
+        }
+        else
+        {
+            Debug.Log($"El ítem {itemID} no es usable.");
+        }
     }
 
     public void OnDeleteButton()

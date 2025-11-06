@@ -19,6 +19,11 @@ public class PlayerInteraction : MonoBehaviour
             nearbyInteractable.Interact();
         }
     }
+    public IInteractable GetNearbyInteractable()
+    {
+        return nearbyInteractable;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

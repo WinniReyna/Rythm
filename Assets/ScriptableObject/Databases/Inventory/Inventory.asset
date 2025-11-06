@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - itemID: Map
-    quantity: 1
+    quantity: 5
   - itemID: Potion
     quantity: 2
-  - itemID: Shoe
+  - itemID: Key
     quantity: 1
