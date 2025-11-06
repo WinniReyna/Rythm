@@ -111,16 +111,15 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
     }
-
-    public void SaveState()
+    // Asigna el estado desde el cargador JSON
+    public void SetLocked(bool locked)
     {
-        if (!string.IsNullOrEmpty(doorID))
-            PlayerPrefs.SetInt($"Door_{doorID}", isLocked ? 1 : 0);
+        isLocked = locked;
     }
 
-    public void LoadState()
+    // Devuelve el estado para que el JsonSaveManager pueda leerlo
+    public bool GetLockedState()
     {
-        if (!string.IsNullOrEmpty(doorID) && PlayerPrefs.HasKey($"Door_{doorID}"))
-            isLocked = PlayerPrefs.GetInt($"Door_{doorID}") == 1;
+        return isLocked;
     }
 }
