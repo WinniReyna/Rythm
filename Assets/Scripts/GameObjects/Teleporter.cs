@@ -20,8 +20,13 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [SerializeField] private string requiredKeyID;
     [SerializeField] private bool isLocked = false;
 
+    [Header("Estado único para guardado")]
+    [SerializeField] private string doorID;
+
+
     public Vector3 GetTargetPosition() => destination;
     public bool IsLocked => isLocked;
+    public string DoorID => doorID;
     public string RequiredKeyID => requiredKeyID;
 
     private void Awake()
@@ -105,5 +110,17 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
 
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
+    }
+
+    public void SaveState()
+    {
+        if (!string.IsNullOrEmpty(doorID))
+            PlayerPrefs.SetInt($"Door_{doorID}", isLocked ? 1 : 0);
+    }
+
+    public void LoadState()
+    {
+        if (!string.IsNullOrEmpty(doorID) && PlayerPrefs.HasKey($"Door_{doorID}"))
+            isLocked = PlayerPrefs.GetInt($"Door_{doorID}") == 1;
     }
 }
