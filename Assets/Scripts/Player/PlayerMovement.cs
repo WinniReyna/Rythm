@@ -50,10 +50,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = inputProvider.GetMovement();
         bool isRunning = inputProvider.IsRunning();
 
-        CheckGrounded();
+        //CheckGrounded();
 
         HandleMove(input, isRunning);
-        HandleJump();
+        //HandleJump();
     }
 
     #region Movimiento
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Salto
-    private void HandleJump()
+    /*private void HandleJump()
     {
         if (!canMove) return;
 
@@ -117,6 +117,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
             isJumping = false;
-    }
+    }*/
     #endregion  
 }
