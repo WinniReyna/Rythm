@@ -50,6 +50,15 @@ public class InventoryManager : MonoBehaviour
             inventoryUI.RefreshUI();
     }
 
+    public bool HasItem(string itemID, int requiredAmount = 1)
+    {
+        if (inventorySO == null || inventorySO.items == null)
+            return false;
+
+        var item = inventorySO.items.Find(i => i.itemID == itemID);
+        return item != null && item.quantity >= requiredAmount;
+    }
+
     public void AddItem(string itemID, int amount = 1)
     {
         inventorySO.AddItem(itemID, amount);

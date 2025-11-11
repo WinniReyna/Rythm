@@ -5,7 +5,7 @@ using System;
 public class DialogueObject : MonoBehaviour, IInteractable
 {
     [Header("Diálogo")]
-    [SerializeField] private DialogueData dialogueData;
+    [SerializeField] protected DialogueData dialogueData;
 
     [Header("Opcional: escenas y minijuego")]
     [SerializeField] private NPCSceneData sceneData;

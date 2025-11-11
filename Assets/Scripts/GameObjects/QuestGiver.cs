@@ -7,47 +7,65 @@ public class QuestGiver : DialogueObject
 
     public override void Interact()
     {
-        var manager = DialogueManager.Instance;
-        if (manager == null)
+        var dialogueManager = DialogueManager.Instance;
+        var questManager = QuestManager.Instance;
+        if (dialogueManager == null || questManager == null)
             return;
 
-        // Si no hay misión, comportamiento normal de diálogo
+        // Si no hay misión, usa el comportamiento de diálogo base
         if (quest == null)
         {
             base.Interact();
             return;
         }
 
-        // Ya completada
-        if (QuestManager.Instance.IsQuestCompleted(quest.questID))
+        // Si la misión ya fue completada
+        if (questManager.IsQuestCompleted(quest.questID))
         {
-            manager.StartDialogue(quest.dialogueComplete);
+            dialogueManager.StartDialogue(quest.dialogueComplete);
             return;
         }
 
-        // --- MISIÓN DE ENTREGAR ITEM ---
+        // Si la misión es de entregar un ítem
         if (quest.questType == QuestType.DeliverItem)
         {
             if (HasItem(quest.requiredItemID))
             {
                 RemoveItem(quest.requiredItemID, 1);
-                CompleteQuest(manager);
+                CompleteQuest(dialogueManager);
             }
             else
             {
-                manager.StartDialogue(quest.dialogueInProgress);
+                dialogueManager.StartDialogue(quest.dialogueInProgress);
             }
             return;
         }
 
-        // --- MISIÓN DE IR O HABLAR ---
+        // Si la misión es de hablar con un NPC
+        if (quest.questType == QuestType.TalkToNPC)
+        {
+            // Reportamos al QuestManager que el jugador habló con este NPC
+            questManager.CheckQuestProgress(quest, dialogueData.npcName);
+            dialogueManager.StartDialogue(quest.dialogueStart);
+            return;
+        }
+
+        // Si la misión es de ir a un lugar, se inicia y luego se completará desde el trigger
+        if (quest.questType == QuestType.GoToLocation)
+        {
+            dialogueManager.StartDialogue(quest.dialogueStart);
+            questManager.StartQuest(quest.questID);
+            return;
+        }
+
+        // Si ya está completada pero no marcada aún
         if (quest.isCompleted)
         {
-            CompleteQuest(manager);
+            CompleteQuest(dialogueManager);
         }
         else
         {
-            manager.StartDialogue(quest.dialogueStart);
+            dialogueManager.StartDialogue(quest.dialogueStart);
             StartQuest();
         }
     }
@@ -55,6 +73,7 @@ public class QuestGiver : DialogueObject
     private void StartQuest()
     {
         Debug.Log($"Misión iniciada: {quest.questName}");
+        QuestManager.Instance.StartQuest(quest.questID);
     }
 
     private void CompleteQuest(DialogueManager manager)
@@ -76,10 +95,8 @@ public class QuestGiver : DialogueObject
     {
         var inv = InventoryManager.Instance;
         if (inv == null) return false;
-
         return inv.InventorySO.items.Exists(i => i.itemID == itemID && i.quantity > 0);
     }
-
 
     private void RemoveItem(string itemID, int amount)
     {

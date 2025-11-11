@@ -24,9 +24,36 @@ public class QuestManager : MonoBehaviour
         LoadQuestData();
     }
 
-    // -------------------------
-    // --- MÉTODOS PÚBLICOS ---
-    // -------------------------
+    public void CheckQuestProgress(QuestData quest, string npcName = null, string currentLocation = null)
+    {
+        switch (quest.questType)
+        {
+            case QuestType.CollectItem:
+                if (InventoryManager.Instance.HasItem(quest.requiredItemID))
+                    CompleteQuest(quest.questID);
+                break;
+
+            case QuestType.TalkToNPC:
+                // Se completa si hablas con el NPC correcto
+                if (!string.IsNullOrEmpty(npcName) && quest.targetNPC == npcName)
+                    CompleteQuest(quest.questID);
+                break;
+
+            case QuestType.GoToLocation:
+                // Se completa si entras a la ubicación correcta
+                if (!string.IsNullOrEmpty(currentLocation) && quest.targetLocationName == currentLocation)
+                    CompleteQuest(quest.questID);
+                break;
+
+            case QuestType.DeliverItem:
+                if (InventoryManager.Instance.HasItem(quest.requiredItemID))
+                {
+                    InventoryManager.Instance.RemoveItem(quest.requiredItemID);
+                    CompleteQuest(quest.questID);
+                }
+                break;
+        }
+    }
 
     public QuestStatus GetQuestStatus(string questID)
     {
@@ -87,10 +114,6 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Todos los datos de misiones fueron reiniciados.");
     }
 
-    // -------------------------
-    // --- GUARDADO / CARGA ---
-    // -------------------------
-
     private void SaveQuestData()
     {
         QuestSaveWrapper wrapper = new QuestSaveWrapper(questStates);
@@ -114,10 +137,6 @@ public class QuestManager : MonoBehaviour
         questStates = wrapper != null ? wrapper.ToDictionary() : new Dictionary<string, QuestState>();
         Debug.Log("Misiones cargadas desde JSON.");
     }
-
-    // -------------------------
-    // --- SERIALIZACIÓN ---
-    // -------------------------
 
     [System.Serializable]
     private class QuestSaveWrapper
