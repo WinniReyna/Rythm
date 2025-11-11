@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      everytexture.com-stock-fabric-texture-00100_0: 2777085941790614288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

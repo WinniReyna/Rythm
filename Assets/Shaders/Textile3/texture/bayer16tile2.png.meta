@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bayer16tile2_0: 1016253096624514299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

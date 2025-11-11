@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TelarTool1_0: -4064727791287302244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
