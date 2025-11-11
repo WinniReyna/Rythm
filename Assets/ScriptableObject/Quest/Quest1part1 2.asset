@@ -15,8 +15,11 @@ MonoBehaviour:
   npcNameES: Winni
   npcNameEN: Winnie
   lines:
-  - textES: "Esta la misi\xF3n en proceso"
-    textEN: This is the mission in progress
-    icon: {fileID: 0}
+  - textES: "Ya est\xE1 completo"
+    textEN: It's already complete
+    icon: {fileID: 2800000, guid: 6036c11035fba4d44b0835fb8ca15149, type: 3}
     npcVoice: {fileID: 0}
-    responses: []
+    responses:
+    - textES: Gracias
+      textEN: Thanks
+      nextDialogue: {fileID: 0}

@@ -17,10 +17,10 @@ MonoBehaviour:
   questType: 1
   targetNPC: Marianne
   targetLocationName: 
-  requiredItemID: Shovel
+  requiredItemID: Potion
   dialogueStart: {fileID: 11400000, guid: 0bb5701855238cc488274ccf89174ddf, type: 2}
   dialogueInProgress: {fileID: 11400000, guid: f9523635b6ae5d349a16ebf58b10de15, type: 2}
-  dialogueComplete: {fileID: 11400000, guid: 33da65fa59fe4ba4ea327aef5326d326, type: 2}
+  dialogueComplete: {fileID: 11400000, guid: 9c6db2fb991082541a0d072d468249cf, type: 2}
   givesReward: 1
-  rewardItemID: Potion
+  rewardItemID: Shovel
   rewardQuantity: 1
