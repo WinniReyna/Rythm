@@ -12,7 +12,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
 
     public DialogueData DialogueData => dialogueData;
 
-    public void Interact()
+    public virtual void Interact()
     {
         var manager = DialogueManager.Instance;
         if (manager != null && dialogueData != null)

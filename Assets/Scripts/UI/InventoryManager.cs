@@ -10,8 +10,9 @@ public class InventoryManager : MonoBehaviour
     private InventorySaveLoad saveLoad;
 
     private IInputProvider inputProvider;
-
     private bool isOpen = false;
+
+    public InventorySO InventorySO => inventorySO;
 
     private void Awake()
     {
