@@ -9,88 +9,117 @@ public class QuestGiver : DialogueObject
     {
         var dialogueManager = DialogueManager.Instance;
         var questManager = QuestManager.Instance;
+
         if (dialogueManager == null || questManager == null)
             return;
 
-        // Si no hay misión, usa el comportamiento de diálogo base
+        // Si no hay misión, usamos el diálogo base
         if (quest == null)
         {
             base.Interact();
             return;
         }
 
-        // Si la misión ya fue completada
-        if (questManager.IsQuestCompleted(quest.questID))
-        {
-            dialogueManager.StartDialogue(quest.dialogueComplete);
-            return;
-        }
+        // Estado actual de la misión
+        var status = questManager.GetQuestStatus(quest.questID);
 
-        // Si la misión es de entregar un ítem
-        if (quest.questType == QuestType.DeliverItem)
+        switch (status)
         {
-            if (HasItem(quest.requiredItemID))
-            {
-                RemoveItem(quest.requiredItemID, 1);
-                CompleteQuest(dialogueManager);
-            }
-            else
-            {
+            // Misión completada
+            case QuestStatus.Completed:
+                dialogueManager.StartDialogue(quest.dialogueComplete);
+                return;
+
+            // Misión en progreso
+            case QuestStatus.InProgress:
+                if (quest.questType == QuestType.DeliverItem)
+                {
+                    HandleDeliverItemQuest(); // Se maneja por separado
+                    return;
+                }
                 dialogueManager.StartDialogue(quest.dialogueInProgress);
-            }
-            return;
-        }
+                return;
 
-        // Si la misión es de hablar con un NPC
-        if (quest.questType == QuestType.TalkToNPC)
+            // Misión no iniciada
+            case QuestStatus.NotStarted:
+                HandleQuestStart(dialogueManager, questManager);
+                return;
+        }
+    }
+
+    // Inicio de misión según tipo
+    private void HandleQuestStart(DialogueManager dialogueManager, QuestManager questManager)
+    {
+        switch (quest.questType)
         {
-            // Reportamos al QuestManager que el jugador habló con este NPC
-            questManager.CheckQuestProgress(quest, dialogueData.npcName);
-            dialogueManager.StartDialogue(quest.dialogueStart);
-            return;
-        }
+            case QuestType.DeliverItem:
+                HandleDeliverItemQuest(startingQuest: true);
+                break;
 
-        // Si la misión es de ir a un lugar, se inicia y luego se completará desde el trigger
-        if (quest.questType == QuestType.GoToLocation)
+            case QuestType.CollectItem:
+            case QuestType.GoToLocation:
+            case QuestType.TalkToNPC:
+                dialogueManager.StartDialogue(quest.dialogueStart);
+                questManager.StartQuest(quest.questID);
+                Debug.Log($"Misión '{quest.questName}' iniciada correctamente.");
+                break;
+
+            default:
+                dialogueManager.StartDialogue(quest.dialogueStart);
+                break;
+        }
+    }
+
+    // Lógica separada para misiones de entrega
+    private void HandleDeliverItemQuest(bool startingQuest = false)
+    {
+        var dialogueManager = DialogueManager.Instance;
+        var questManager = QuestManager.Instance;
+        var inv = InventoryManager.Instance;
+
+        if (inv == null || dialogueManager == null || questManager == null)
+            return;
+
+        bool hasItem = HasItem(quest.requiredItemID);
+
+        // Caso 1: Ya tiene el ítem entregar y completar
+        if (hasItem)
+        {
+            RemoveItem(quest.requiredItemID, 1);
+            CompleteQuest(dialogueManager);
+            Debug.Log($"Misión '{quest.questName}' completada. Se entregó {quest.requiredItemID}.");
+        }
+        // Caso 2: No lo tiene y recién empieza
+        else if (startingQuest)
         {
             dialogueManager.StartDialogue(quest.dialogueStart);
             questManager.StartQuest(quest.questID);
-            return;
+            Debug.Log($"Misión '{quest.questName}' iniciada. Se requiere {quest.requiredItemID}.");
         }
-
-        // Si ya está completada pero no marcada aún
-        if (quest.isCompleted)
-        {
-            CompleteQuest(dialogueManager);
-        }
+        // Caso 3: No lo tiene y ya estaba en progreso
         else
         {
-            dialogueManager.StartDialogue(quest.dialogueStart);
-            StartQuest();
+            dialogueManager.StartDialogue(quest.dialogueInProgress);
+            Debug.Log($"Aún no tienes el ítem '{quest.requiredItemID}' para la misión '{quest.questName}'.");
         }
     }
 
-    private void StartQuest()
-    {
-        Debug.Log($"Misión iniciada: {quest.questName}");
-        QuestManager.Instance.StartQuest(quest.questID);
-    }
-
+    // Completar misión y dar recompensa
     private void CompleteQuest(DialogueManager manager)
     {
-        manager.StartDialogue(quest.dialogueComplete);
-        quest.isCompleted = true;
         QuestManager.Instance.CompleteQuest(quest.questID);
+        quest.isCompleted = true;
+        manager.StartDialogue(quest.dialogueComplete);
 
         // Recompensa
         if (quest.givesReward && !string.IsNullOrEmpty(quest.rewardItemID))
         {
             AddItem(quest.rewardItemID, quest.rewardQuantity);
-            Debug.Log($"Recompensa añadida: {quest.rewardItemID} x{quest.rewardQuantity}");
+            Debug.Log($"Recompensa obtenida: {quest.rewardItemID} x{quest.rewardQuantity}");
         }
     }
 
-    // Métodos conectados al InventoryManager real
+    // Métodos auxiliares para inventario
     private bool HasItem(string itemID)
     {
         var inv = InventoryManager.Instance;
@@ -101,14 +130,12 @@ public class QuestGiver : DialogueObject
     private void RemoveItem(string itemID, int amount)
     {
         var inv = InventoryManager.Instance;
-        if (inv != null)
-            inv.RemoveItem(itemID, amount);
+        inv?.RemoveItem(itemID, amount);
     }
 
     private void AddItem(string itemID, int amount)
     {
         var inv = InventoryManager.Instance;
-        if (inv != null)
-            inv.AddItem(itemID, amount);
+        inv?.AddItem(itemID, amount);
     }
 }

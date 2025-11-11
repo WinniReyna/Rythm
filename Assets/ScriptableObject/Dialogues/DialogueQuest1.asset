@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
+  m_Name: DialogueQuest1
+  m_EditorClassIdentifier: 
+  npcNameES: Winni
+  npcNameEN: Winnie
+  lines:
+  - textES: "Hola, c\xF3mo est\xE1s?"
+    textEN: Hey, how re u?
+    icon: {fileID: 2800000, guid: de315feef991b4e499979630a2b101c9, type: 3}
+    npcVoice: {fileID: 0}
+    responses:
+    - textES: 'Bien '
+      textEN: Gud
+      nextDialogue: {fileID: 0}
+    - textES: Mal
+      textEN: Bad
+      nextDialogue: {fileID: 0}

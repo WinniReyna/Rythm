@@ -3,26 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue/DialogueData")]
 public class DialogueData : ScriptableObject
 {
-    public string npcName;
+    [Header("Identificación del NPC")]
+    public string npcNameES;
+    public string npcNameEN;
+
+    [Header("Líneas de diálogo")]
     public DialogueLine[] lines;
 
-}
-
-[System.Serializable]
-public class DialogueLine
-{
-    [Tooltip("ID de Lean Localization")]
-    public string localizedKey;        // Para Lean Localization
-    public Texture2D icon;             // Icono opcional
-    public AudioClip npcVoice;         // Audio opcional
-    public DialogueResponse[] responses;
-}
-
-[System.Serializable]
-public class DialogueResponse
-{
-    public string localizedKey;        // Texto de la respuesta
-    public DialogueData nextDialogue;  // Siguiente diálogo si se selecciona
+    public string GetNpcName()
+    {
+        string lang = Lean.Localization.LeanLocalization.GetFirstCurrentLanguage();
+        if (lang == "English") return npcNameEN;
+        return npcNameES;
+    }
 }
 
 

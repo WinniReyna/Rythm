@@ -27,13 +27,13 @@ public class DialogueObject : MonoBehaviour, IInteractable
                     var returnPointHandler = FindObjectOfType<ReturnPointHandler>();
                     if (returnPointHandler != null)
                     {
-                        returnPointHandler.SaveGameState(); // guarda posición y objetos
+                        returnPointHandler.SaveGameState();
                         Debug.Log("Estado del juego guardado antes de cambiar de escena.");
                     }
 
                     // Obtener jugador para pasar a GameState
                     var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
-                    string npcName = dialogueData != null ? dialogueData.npcName : gameObject.name;
+                    string npcName = dialogueData != null ? dialogueData.GetNpcName() : gameObject.name;
 
                     GameState.Instance.TriggerScene(sceneData, player, npcName);
                 });
@@ -42,18 +42,17 @@ public class DialogueObject : MonoBehaviour, IInteractable
     }
 
     /// <summary>
-    /// Cambiar a cinemática o minijuego usando GameState
+    /// Cambiar a cinemática o minijuego usando GameState o SceneManager
     /// </summary>
     private void TriggerSceneData()
     {
         if (sceneData == null)
             return;
 
-        // Usamos GameState si existe
         if (GameState.Instance != null)
         {
             Transform playerTransform = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
-            string npcName = dialogueData != null ? dialogueData.npcName : gameObject.name;
+            string npcName = dialogueData != null ? dialogueData.GetNpcName() : gameObject.name;
 
             GameState.Instance.TriggerScene(sceneData, playerTransform, npcName);
         }
@@ -75,5 +74,6 @@ public class DialogueObject : MonoBehaviour, IInteractable
         }
     }
 }
+
 
 

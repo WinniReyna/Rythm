@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questID: Winni
   questName: Inicio
-  questType: 2
-  targetNPC: 
+  questType: 1
+  targetNPC: Marianne
   targetLocationName: 
   requiredItemID: Shovel
-  dialogueStart: {fileID: 0}
-  dialogueInProgress: {fileID: 0}
-  dialogueComplete: {fileID: 0}
-  givesReward: 0
-  rewardItemID: 
+  dialogueStart: {fileID: 11400000, guid: 0bb5701855238cc488274ccf89174ddf, type: 2}
+  dialogueInProgress: {fileID: 11400000, guid: f9523635b6ae5d349a16ebf58b10de15, type: 2}
+  dialogueComplete: {fileID: 11400000, guid: 33da65fa59fe4ba4ea327aef5326d326, type: 2}
+  givesReward: 1
+  rewardItemID: Potion
   rewardQuantity: 1

@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private RawImage npcIcon;
     [SerializeField] private Transform responseContainer;
     [SerializeField] private GameObject responseButtonPrefab;
-    [SerializeField] private TMP_Text continueText; // Texto que indica "Presiona Space para continuar"
+    [SerializeField] private TMP_Text continueText; // "Presiona Space para continuar"
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -23,8 +23,6 @@ public class DialogueManager : MonoBehaviour
     private DialogueData currentDialogue;
     private IInputProvider inputProvider;
     private int currentLineIndex = 0;
-
-    // Acción que se ejecuta al terminar el diálogo (post-diálogo)
     private Action onDialogueEnd;
 
     private void Awake()
@@ -41,24 +39,31 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        // Avanzar con tecla Space
         if (dialoguePanel.activeSelf && inputProvider.DialogueLine())
         {
-            if (currentDialogue != null)
+            if (currentDialogue == null)
+                return;
+
+            if (HasMoreLines())
             {
-                if (HasMoreLines())
-                    Debug.Log("Hay más líneas de diálogo...");
                 NextLine();
+            }
+            else
+            {
+
+                EndDialogue();
             }
         }
     }
+
 
     public void StartDialogue(DialogueData dialogue)
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
         dialoguePanel.SetActive(true);
-        npcNameText.text = dialogue.npcName;
+
+        npcNameText.text = dialogue.GetNpcName();
 
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = false;
@@ -76,11 +81,10 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine line = currentDialogue.lines[currentLineIndex];
 
-        // Texto con Lean Localization
-        dialogueText.text = !string.IsNullOrEmpty(line.localizedKey) ?
-            LeanLocalization.GetTranslationText(line.localizedKey) : "";
+        // Texto según idioma actual
+        dialogueText.text = line.GetText();
 
-        // Icono opcional
+        // Icono del NPC (opcional)
         if (npcIcon != null)
         {
             if (line.icon != null)
@@ -94,23 +98,22 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Audio opcional
+        // Audio de voz (opcional)
         if (audioSource != null && line.npcVoice != null)
             audioSource.PlayOneShot(line.npcVoice);
 
-        // Limpiar botones de respuesta
+        // Limpiar respuestas anteriores
         foreach (Transform child in responseContainer)
             Destroy(child.gameObject);
 
-        // Crear botones si hay respuestas
+        // Crear nuevas respuestas si las hay
         if (line.responses != null && line.responses.Length > 0)
         {
             foreach (DialogueResponse response in line.responses)
             {
                 GameObject btnObj = Instantiate(responseButtonPrefab, responseContainer);
                 TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
-                if (!string.IsNullOrEmpty(response.localizedKey))
-                    btnText.text = LeanLocalization.GetTranslationText(response.localizedKey);
+                btnText.text = response.GetText();
 
                 btnObj.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -122,7 +125,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Mostrar aviso de "continuar" si hay más líneas y no hay respuestas
+        // Mostrar "presiona continuar" si no hay respuestas
         if (continueText != null)
             continueText.gameObject.SetActive(HasMoreLines() && (line.responses == null || line.responses.Length == 0));
     }
@@ -137,7 +140,7 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex++;
         if (currentLineIndex >= currentDialogue.lines.Length)
         {
-            EndDialogue(); // Apaga panel, texto e icono
+            EndDialogue();
         }
         else
         {
@@ -145,9 +148,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Registrar una acción que se ejecutará al terminar el diálogo (post-diálogo)
-    /// </summary>
     public void SetPostDialogueAction(Action action)
     {
         onDialogueEnd = action;
@@ -165,16 +165,11 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = null;
 
-        // Ejecutar acción post-diálogo
         if (onDialogueEnd != null)
         {
             var actionToRun = onDialogueEnd;
-            onDialogueEnd = null; // limpiar para no repetir
+            onDialogueEnd = null;
             actionToRun.Invoke();
         }
     }
 }
-
-
-
-
