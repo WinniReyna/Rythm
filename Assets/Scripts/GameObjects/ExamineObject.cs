@@ -19,7 +19,7 @@ public class ExamineObject : MonoBehaviour, IInteractable
             inputProvider = new KeyboardInputProvider();
             if (uiManager == null)
             {
-                Debug.LogError("ExamineUIManager not found in the scene!");
+                //Debug.LogError("ExamineUIManager not found in the scene!");
             }
         }
     }
