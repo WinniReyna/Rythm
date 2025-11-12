@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
   m_Name: NPC2
   m_EditorClassIdentifier: 
-  npcName: Ernesto
+  npcNameES: Maya
+  npcNameEN: Maya
   lines:
-  - localizedKey: NPC4
+  - textES: Como va todo
+    textEN: How s it going
     icon: {fileID: 2800000, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
     npcVoice: {fileID: 0}
-    responses: []
+    responses:
+    - textES: Hola
+      textEN: Hey
+      nextDialogue: {fileID: 0}
+    - textES: Adios
+      textEN: Bye
+      nextDialogue: {fileID: 0}

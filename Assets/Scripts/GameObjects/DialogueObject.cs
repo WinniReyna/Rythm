@@ -21,7 +21,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
 
             if (sceneData != null)
             {
-                manager.SetPostDialogueAction(() =>
+                manager.OnDialogueEnded += () =>
                 {
                     // Guardar estado antes de cambiar de escena
                     var returnPointHandler = FindObjectOfType<ReturnPointHandler>();
@@ -36,7 +36,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
                     string npcName = dialogueData != null ? dialogueData.GetNpcName() : gameObject.name;
 
                     GameState.Instance.TriggerScene(sceneData, player, npcName);
-                });
+                };
             }
         }
     }
