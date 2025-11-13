@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed686ac0feef1b4599d73d0c1809b02, type: 3}
+  m_Name: DialogueReward_Hector
+  m_EditorClassIdentifier: 
+  npcNameES: "H\xE9ctor"
+  npcNameEN: Hector
+  lines:
+  - textES: "Ah, la hermana de Marta. No pens\xE9 volver a verte por aqu\xED."
+    textEN: Ah, Marta's sister. I didn't think I'd see you around here again.
+    icon: {fileID: 2800000, guid: de315feef991b4e499979630a2b101c9, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "Puedes tomar una sola cosa\u2026"
+    textEN: "You can take just one thing\u2026"
+    icon: {fileID: 2800000, guid: de315feef991b4e499979630a2b101c9, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  rewardOptions:
+  - {fileID: 11400000, guid: a5042d621983dde4b98aa83f0287e6ff, type: 2}
+  - {fileID: 11400000, guid: f62a7eb5f861dba40ab3312a56e717dd, type: 2}
+  - {fileID: 11400000, guid: 05ef8c530c28a5a4ea1af816bba55f52, type: 2}
+  onlyOnce: 1
+  afterChoiceDialogue: {fileID: 11400000, guid: b0d4e40e6aa3aba4ea5edfc2969996e5, type: 2}

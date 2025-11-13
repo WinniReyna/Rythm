@@ -10,19 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: NPC2
+  m_Name: NPC_Ximena
   m_EditorClassIdentifier: 
-  npcNameES: Maya
-  npcNameEN: Maya
+  npcNameES: Ximena
+  npcNameEN: Ximena
   lines:
-  - textES: Como va todo
-    textEN: How s it going
-    icon: {fileID: 2800000, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
+  - textES: "\xBFBuscas una figurita? Ja, ja\u2026 creo que fue a nadar al pozo."
+    textEN: "Are you looking for a figurine? Ha ha\u2026 I think it went swimming
+      in the well."
+    icon: {fileID: 0}
     npcVoice: {fileID: 0}
-    responses:
-    - textES: Hola
-      textEN: Hey
-      nextDialogue: {fileID: 0}
-    - textES: Adios
-      textEN: Bye
-      nextDialogue: {fileID: 0}
+    responses: []

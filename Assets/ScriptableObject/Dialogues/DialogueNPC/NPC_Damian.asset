@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
+  m_Name: NPC_Damian
+  m_EditorClassIdentifier: 
+  npcNameES: "Dami\xE1n"
+  npcNameEN: Damian
+  lines:
+  - textES: "Si crees que regresar aqu\xED ser\xE1 como volver a casa, est\xE1s equivocada."
+    textEN: If you think coming back here will be like coming home, you're wrong.
+    icon: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "Hay ojos en cada ventana, o\xEDdos en cada esquina, y nosotros sabemos
+      m\xE1s de lo que decimos. La curiosidad puede ser peligrosa, y tu hermana lo
+      aprendi\xF3 de la peor manera."
+    textEN: There are eyes in every window, ears on every corner, and we know more
+      than we let on. Curiosity can be dangerous, and your sister learned that the
+      hard way.
+    icon: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: Piensa bien cada paso que das, porque algunos secretos no son para los
+      vivos, y hay cosas que se mantienen mejor enterradas en silencio.
+    textEN: Think carefully about every step you take, because some secrets are not
+      for the living, and some things are better left buried in silence.
+    icon: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []

@@ -10,19 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: DialogueQuest1
+  m_Name: NPC_Citlali
   m_EditorClassIdentifier: 
-  npcNameES: Winni
-  npcNameEN: Winnie
+  npcNameES: Citlali
+  npcNameEN: Citlali
   lines:
-  - textES: "Hola, c\xF3mo est\xE1s?"
-    textEN: Hey, how re u?
-    icon: {fileID: 2800000, guid: de315feef991b4e499979630a2b101c9, type: 3}
+  - textES: "Dicen que si miras dentro, ves lo que perdiste\u2026 o lo que te va
+      a llevar."
+    textEN: They say that if you look inside, you see what you lost... or what will
+      take you away.
+    icon: {fileID: 0}
     npcVoice: {fileID: 0}
-    responses:
-    - textES: 'Bien '
-      textEN: Gud
-      nextDialogue: {fileID: 0}
-    - textES: Mal
-      textEN: Bad
-      nextDialogue: {fileID: 0}
+    responses: []

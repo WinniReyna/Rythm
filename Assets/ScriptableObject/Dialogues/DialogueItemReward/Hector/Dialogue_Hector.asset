@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: NPC1
+  m_Name: Dialogue_Hector
   m_EditorClassIdentifier: 
-  npcNameES: Ernesto
-  npcNameEN: Ernesto
+  npcNameES: "H\xE9ctor"
+  npcNameEN: Hector
   lines:
-  - textES: Ya tomaste algo
-    textEN: you already had something
-    icon: {fileID: 2800000, guid: 7eea3ac57ed9df04180cf7c619901322, type: 3}
+  - textES: Si vas a escarbar, hazlo con cuidado. Hay secretos que prefieren seguir
+      enterrados.
+    textEN: If you're going to dig, do it carefully. Some secrets are better off
+      buried.
+    icon: {fileID: 0}
     npcVoice: {fileID: 0}
     responses: []

@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: NPC3
+  m_Name: NPC_Metzli
   m_EditorClassIdentifier: 
-  npcName: Britney
+  npcNameES: Metzli
+  npcNameEN: Metzli
   lines:
-  - localizedKey: Answer2
-    icon: {fileID: 2800000, guid: ce81b8601b2bdd84585b9ec3e3756369, type: 3}
-    npcVoice: {fileID: 0}
-    responses: []
-  - localizedKey: Answer3
+  - textES: "No sabes en lo que te est\xE1s metiendo si vuelves a pisar este pueblo."
+    textEN: You don't know what you're getting yourself into if you ever set foot
+      in this town again.
     icon: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
     npcVoice: {fileID: 0}
     responses: []

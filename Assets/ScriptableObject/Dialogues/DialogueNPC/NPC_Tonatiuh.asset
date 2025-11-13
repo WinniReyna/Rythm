@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
+  m_Name: NPC_Tonatiuh
+  m_EditorClassIdentifier: 
+  npcNameES: Tonatiuh
+  npcNameEN: Tonatiuh
+  lines:
+  - textES: Nosotros cuidamos lo nuestro, y no nos gusta que otros husmeen.
+    textEN: We take care of our own things, and we don't like others snooping around.
+    icon: {fileID: 2800000, guid: 54b583e2c80b43d43a6ae8c36c9d7271, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []

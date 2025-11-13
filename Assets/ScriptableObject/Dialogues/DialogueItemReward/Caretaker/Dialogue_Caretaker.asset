@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed686ac0feef1b4599d73d0c1809b02, type: 3}
+  m_Name: Dialogue_Caretaker
+  m_EditorClassIdentifier: 
+  npcNameES: Velador
+  npcNameEN: Caretaker
+  lines:
+  - textES: "No deber\xEDas estar aqu\xED. Tu familia ya trajo suficiente desgracia"
+    textEN: You shouldn't be here. Your family has already brought enough misfortune.
+    icon: {fileID: 0}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "Si se cay\xF3 algo al pozo, d\xE9jalo ah\xED. Hay cosas que es mejor
+      no sacar."
+    textEN: If something fell into the well, leave it there. There are some things
+      that are better left untaken.
+    icon: {fileID: 0}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "Est\xE1 bien, sacar\xE9 la figura, pero luego no digas que no te advert\xED."
+    textEN: Okay, I'll take the figure out, but don't say I didn't warn you.
+    icon: {fileID: 0}
+    npcVoice: {fileID: 0}
+    responses: []
+  rewardOptions:
+  - {fileID: 11400000, guid: a7fcb5c22135be64baf922d89ee94867, type: 2}
+  onlyOnce: 1
+  afterChoiceDialogue: {fileID: 11400000, guid: 71cc6ae4416816b45bc219b6b4fa5e18, type: 2}

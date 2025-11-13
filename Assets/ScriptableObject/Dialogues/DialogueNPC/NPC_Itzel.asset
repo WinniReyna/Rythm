@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
+  m_Name: NPC_Itzel
+  m_EditorClassIdentifier: 
+  npcNameES: Itzel
+  npcNameEN: Itzel
+  lines:
+  - textES: "\xBFVienes a buscar lo que ella dej\xF3, verdad?\u2026 Hay cosas que
+      es mejor no volver a tocar.\r\nTu hermana se meti\xF3 en lo que no deb\xEDa.
+      La deidad no perdona a los curiosos."
+    textEN: "You've come looking for what she left behind, haven't you?\u2026 There
+      are some things best left untouched.\r\nYour sister meddled where she shouldn't
+      have. The deity doesn't forgive the nosy."
+    icon: {fileID: 0}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "\xBFQu\xE9 esperas encontrar? Aqu\xED ya nadie habla de Marta\u2026
+      ni siquiera su sombra."
+    textEN: "What do you expect to find? Nobody talks about Marta here anymore\u2026
+      not even her shadow."
+    icon: {fileID: 0}
+    npcVoice: {fileID: 0}
+    responses: []

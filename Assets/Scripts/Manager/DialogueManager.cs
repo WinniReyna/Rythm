@@ -6,7 +6,7 @@ using System;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
-    public System.Action OnDialogueEnded; 
+    public System.Action OnDialogueEnded;
 
     [Header("UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -20,10 +20,13 @@ public class DialogueManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
 
+    private bool waitingForRewardClick = false; 
     private DialogueData currentDialogue;
     private IInputProvider inputProvider;
     private int currentLineIndex = 0;
     private Action onDialogueEnd;
+
+    private bool rewardShown = false;
 
     private void Awake()
     {
@@ -39,18 +42,12 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (dialoguePanel.activeSelf && inputProvider.DialogueLine())
+        if (!dialoguePanel.activeSelf) return;
+
+        if (waitingForRewardClick) return; 
+
+        if (inputProvider.DialogueLine())
         {
-            if (currentDialogue == null) return;
-
-            // si es un diálogo de recompensa, no avanzamos con espacio si hay botones
-            if (currentDialogue is ChoiceRewardDialogueData choiceDialogue)
-            {
-                // si estamos en la última línea, esperamos que el jugador elija
-                if (!HasMoreLines())
-                    return;
-            }
-
             if (HasMoreLines())
                 NextLine();
             else
@@ -58,10 +55,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+
     public void StartDialogue(DialogueData dialogue)
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
+        rewardShown = false; 
         dialoguePanel.SetActive(true);
 
         npcNameText.text = dialogue.GetNpcName();
@@ -83,33 +82,23 @@ public class DialogueManager : MonoBehaviour
         DialogueLine line = currentDialogue.lines[currentLineIndex];
         dialogueText.text = line.GetText();
 
-        // Icono
-        if (npcIcon != null)
-        {
-            if (line.icon != null)
-            {
-                npcIcon.texture = line.icon;
-                npcIcon.enabled = true;
-            }
-            else npcIcon.enabled = false;
-        }
+        if (npcIcon != null) npcIcon.enabled = line.icon != null ? true : false;
+        if (line.icon != null) npcIcon.texture = line.icon;
+        if (audioSource != null && line.npcVoice != null) audioSource.PlayOneShot(line.npcVoice);
 
-        // Audio
-        if (audioSource != null && line.npcVoice != null)
-            audioSource.PlayOneShot(line.npcVoice);
-
-        // Limpiar respuestas anteriores
         foreach (Transform child in responseContainer)
             Destroy(child.gameObject);
 
-        // Si este diálogo tiene recompensas y es la última línea
         if (currentDialogue is ChoiceRewardDialogueData choiceDialogue &&
-            currentLineIndex == currentDialogue.lines.Length - 1)
+            currentLineIndex == currentDialogue.lines.Length - 1 &&
+            !rewardShown)
         {
             string npcID = choiceDialogue.name;
 
             if (!choiceDialogue.onlyOnce || !QuestManager.Instance.HasNpcEventCompleted(npcID))
             {
+                rewardShown = true;
+                waitingForRewardClick = true; 
                 ShowRewardChoices(choiceDialogue);
                 return;
             }
@@ -120,7 +109,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Respuestas normales
+        // --- Respuestas normales ---
         if (line.responses != null && line.responses.Length > 0)
         {
             foreach (DialogueResponse response in line.responses)
@@ -139,15 +128,13 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Mostrar "presiona continuar"
         if (continueText != null)
-            continueText.gameObject.SetActive(HasMoreLines() && (line.responses == null || line.responses.Length == 0));
+            continueText.gameObject.SetActive(responseContainer.childCount == 0 && HasMoreLines());
     }
+
 
     private void ShowRewardChoices(ChoiceRewardDialogueData dialogue)
     {
-        dialogueText.text = "Elige un objeto:";
-
         foreach (Transform child in responseContainer)
             Destroy(child.gameObject);
 
@@ -159,24 +146,32 @@ public class DialogueManager : MonoBehaviour
 
             btnObj.GetComponent<Button>().onClick.AddListener(() =>
             {
+                if (!waitingForRewardClick) return;
+                waitingForRewardClick = false; 
+
                 InventoryManager.Instance.AddItem(item.itemID);
                 QuestManager.Instance.MarkNpcEventCompleted(dialogue.name);
 
-                // Limpia botones
                 foreach (Transform c in responseContainer)
                     Destroy(c.gameObject);
 
-                // Si hay diálogo post-elección
+                // Si hay diálogo posterior, lo mostramos
                 if (dialogue.afterChoiceDialogue != null)
+                {
                     StartDialogue(dialogue.afterChoiceDialogue);
+                }
                 else
+                {
+                    // Si no hay diálogo posterior, simplemente avanzamos al final del current
                     EndDialogue();
+                }
             });
         }
 
         if (continueText != null)
             continueText.gameObject.SetActive(false);
     }
+
 
     private bool HasMoreLines() =>
         currentDialogue != null && currentLineIndex < currentDialogue.lines.Length - 1;
@@ -203,8 +198,5 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = null;
         onDialogueEnd?.Invoke();
         onDialogueEnd = null;
-
     }
 }
-
-

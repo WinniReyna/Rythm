@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
-  m_Name: Answer2
+  m_Name: Dialogue_C2
   m_EditorClassIdentifier: 
-  npcName: Marianne
+  npcNameES: Velador
+  npcNameEN: Caretaker
   lines:
-  - localizedKey: Answer1
-    icon: {fileID: 2800000, guid: 078f1823bb3456941bfe1abf8fc9db2c, type: 3}
+  - textES: "Tu hermana tambi\xE9n vino a pedirme favores\u2026 y mira c\xF3mo termin\xF3."
+    textEN: "Your sister also came to ask me for favors\u2026 and look how it ended."
+    icon: {fileID: 0}
     npcVoice: {fileID: 0}
     responses: []

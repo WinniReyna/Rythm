@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a52699cfd6a66f43b745d7d92eadb0a, type: 3}
+  m_Name: InesDialogueFirst
+  m_EditorClassIdentifier: 
+  npcNameES: "In\xE9s"
+  npcNameEN: Ines
+  lines:
+  - textES: "Hola, Elena. \xA1Hac\xEDa tanto que no pod\xEDa verte! \xBFQu\xE9 te
+      trae por ac\xE1? Parece que fue ayer cuando \xE9ramos unas ni\xF1as y nos gustaba
+      jugar a las escondidas."
+    textEN: "Hi, Elena! It\u2019s been so long since I last saw you. What brings
+      you here? It feels like just yesterday when we were little girls playing hide
+      and seek."
+    icon: {fileID: 2800000, guid: fb8f9420ad549e549bc86178fbe14d32, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "\xBFQuieres hablar con Don H\xE9ctor? \xC9l est\xE1 en el jard\xEDn
+      haciendo una venta de garaje, pero la entrada est\xE1 cerrada por este lado
+      de la isla. Puedo darte la llave, pero quisiera que me ayudaras primero con
+      algo."
+    textEN: "Do you want to talk to Don H\xE9ctor? He\u2019s in the garden having
+      a garage sale, but the entrance on this side of the island is closed. I can
+      give you the key, but I\u2019d like you to help me with something first."
+    icon: {fileID: 2800000, guid: fb8f9420ad549e549bc86178fbe14d32, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
+  - textES: "Estoy buscando una estatuilla que lleva varios d\xEDas perdida y quisiera
+      encontrarla. Si t\xFA me traes la estatuilla, puedo darte la llave para acceder
+      al jard\xEDn."
+    textEN: I'm looking for a statuette that's been missing for several days and
+      I'd like to find it. If you bring me the statuette, I can give you the key
+      to access the garden.
+    icon: {fileID: 2800000, guid: fb8f9420ad549e549bc86178fbe14d32, type: 3}
+    npcVoice: {fileID: 0}
+    responses: []
