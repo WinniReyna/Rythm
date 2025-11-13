@@ -9,6 +9,8 @@ public class QuestManager : MonoBehaviour
     private string questSavePath;
     private Dictionary<string, QuestState> questStates = new Dictionary<string, QuestState>();
 
+    private Dictionary<string, bool> npcDialogueStates = new Dictionary<string, bool>();
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -34,13 +36,11 @@ public class QuestManager : MonoBehaviour
                 break;
 
             case QuestType.TalkToNPC:
-                // Se completa si hablas con el NPC correcto
                 if (!string.IsNullOrEmpty(npcName) && quest.targetNPC == npcName)
                     CompleteQuest(quest.questID);
                 break;
 
             case QuestType.GoToLocation:
-                // Se completa si entras a la ubicación correcta
                 if (!string.IsNullOrEmpty(currentLocation) && quest.targetLocationName == currentLocation)
                     CompleteQuest(quest.questID);
                 break;
@@ -71,7 +71,6 @@ public class QuestManager : MonoBehaviour
             questStates[questID].status = QuestStatus.InProgress;
 
         SaveQuestData();
-        Debug.Log($"Misión iniciada: {questID}");
     }
 
     public void CompleteQuest(string questID)
@@ -80,8 +79,6 @@ public class QuestManager : MonoBehaviour
 
         questStates[questID] = new QuestState(questID, QuestStatus.Completed);
         SaveQuestData();
-
-        Debug.Log($"Misión completada: {questID}");
     }
 
     public void FailQuest(string questID)
@@ -90,8 +87,6 @@ public class QuestManager : MonoBehaviour
 
         questStates[questID] = new QuestState(questID, QuestStatus.Failed);
         SaveQuestData();
-
-        Debug.Log($"Misión fallida: {questID}");
     }
 
     public void ResetQuest(string questID)
@@ -100,7 +95,6 @@ public class QuestManager : MonoBehaviour
         {
             questStates[questID].status = QuestStatus.NotStarted;
             SaveQuestData();
-            Debug.Log($"Misión reiniciada: {questID}");
         }
     }
 
@@ -108,34 +102,40 @@ public class QuestManager : MonoBehaviour
     public void ResetAllQuests()
     {
         questStates.Clear();
+        npcDialogueStates.Clear();
         if (File.Exists(questSavePath))
             File.Delete(questSavePath);
-
-        Debug.Log("Todos los datos de misiones fueron reiniciados.");
     }
 
     private void SaveQuestData()
     {
-        QuestSaveWrapper wrapper = new QuestSaveWrapper(questStates);
+        QuestSaveWrapper wrapper = new QuestSaveWrapper(questStates, npcDialogueStates);
         string json = JsonUtility.ToJson(wrapper, true);
         File.WriteAllText(questSavePath, json);
-
-        Debug.Log($"Misiones guardadas en {questSavePath}");
     }
 
     private void LoadQuestData()
     {
         if (!File.Exists(questSavePath))
-        {
-            Debug.Log("No hay archivo de misiones, comenzando vacío.");
             return;
-        }
 
         string json = File.ReadAllText(questSavePath);
         QuestSaveWrapper wrapper = JsonUtility.FromJson<QuestSaveWrapper>(json);
 
-        questStates = wrapper != null ? wrapper.ToDictionary() : new Dictionary<string, QuestState>();
-        Debug.Log("Misiones cargadas desde JSON.");
+        questStates = wrapper != null ? wrapper.ToQuestDictionary() : new Dictionary<string, QuestState>();
+        npcDialogueStates = wrapper != null ? wrapper.ToNpcDictionary() : new Dictionary<string, bool>();
+    }
+
+    public bool HasNpcEventCompleted(string npcID)
+    {
+        return npcDialogueStates.ContainsKey(npcID) && npcDialogueStates[npcID];
+    }
+
+    public void MarkNpcEventCompleted(string npcID)
+    {
+        if (string.IsNullOrEmpty(npcID)) return;
+        npcDialogueStates[npcID] = true;
+        SaveQuestData();
     }
 
     [System.Serializable]
@@ -143,42 +143,42 @@ public class QuestManager : MonoBehaviour
     {
         public List<string> questIDs = new List<string>();
         public List<QuestStatus> statuses = new List<QuestStatus>();
+        public List<string> npcIDs = new List<string>();
+        public List<bool> npcCompleted = new List<bool>();
 
-        public QuestSaveWrapper(Dictionary<string, QuestState> dict)
+        public QuestSaveWrapper(Dictionary<string, QuestState> questDict, Dictionary<string, bool> npcDict)
         {
-            foreach (var kvp in dict)
+            foreach (var kvp in questDict)
             {
                 questIDs.Add(kvp.Key);
                 statuses.Add(kvp.Value.status);
             }
+
+            foreach (var kvp in npcDict)
+            {
+                npcIDs.Add(kvp.Key);
+                npcCompleted.Add(kvp.Value);
+            }
         }
 
-        public Dictionary<string, QuestState> ToDictionary()
+        public Dictionary<string, QuestState> ToQuestDictionary()
         {
             var dict = new Dictionary<string, QuestState>();
             for (int i = 0; i < questIDs.Count; i++)
-            {
                 if (i < statuses.Count)
                     dict[questIDs[i]] = new QuestState(questIDs[i], statuses[i]);
-            }
+            return dict;
+        }
+
+        public Dictionary<string, bool> ToNpcDictionary()
+        {
+            var dict = new Dictionary<string, bool>();
+            for (int i = 0; i < npcIDs.Count; i++)
+                if (i < npcCompleted.Count)
+                    dict[npcIDs[i]] = npcCompleted[i];
             return dict;
         }
     }
-
-    // Métodos auxiliares
-    public bool IsQuestCompleted(string questID)
-    {
-        return GetQuestStatus(questID) == QuestStatus.Completed;
-    }
-
-    public bool IsQuestInProgress(string questID)
-    {
-        return GetQuestStatus(questID) == QuestStatus.InProgress;
-    }
-
-    public bool IsQuestNotStarted(string questID)
-    {
-        return GetQuestStatus(questID) == QuestStatus.NotStarted;
-    }
 }
+
 

@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Lean.Localization;
 using System;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
+    public System.Action OnDialogueEnded; 
 
     [Header("UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private RawImage npcIcon;
     [SerializeField] private Transform responseContainer;
     [SerializeField] private GameObject responseButtonPrefab;
-    [SerializeField] private TMP_Text continueText; // "Presiona Space para continuar"
+    [SerializeField] private TMP_Text continueText;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -41,21 +41,22 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialoguePanel.activeSelf && inputProvider.DialogueLine())
         {
-            if (currentDialogue == null)
-                return;
+            if (currentDialogue == null) return;
+
+            // si es un diálogo de recompensa, no avanzamos con espacio si hay botones
+            if (currentDialogue is ChoiceRewardDialogueData choiceDialogue)
+            {
+                // si estamos en la última línea, esperamos que el jugador elija
+                if (!HasMoreLines())
+                    return;
+            }
 
             if (HasMoreLines())
-            {
                 NextLine();
-            }
             else
-            {
-
                 EndDialogue();
-            }
         }
     }
-
 
     public void StartDialogue(DialogueData dialogue)
     {
@@ -80,11 +81,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueLine line = currentDialogue.lines[currentLineIndex];
-
-        // Texto según idioma actual
         dialogueText.text = line.GetText();
 
-        // Icono del NPC (opcional)
+        // Icono
         if (npcIcon != null)
         {
             if (line.icon != null)
@@ -92,13 +91,10 @@ public class DialogueManager : MonoBehaviour
                 npcIcon.texture = line.icon;
                 npcIcon.enabled = true;
             }
-            else
-            {
-                npcIcon.enabled = false;
-            }
+            else npcIcon.enabled = false;
         }
 
-        // Audio de voz (opcional)
+        // Audio
         if (audioSource != null && line.npcVoice != null)
             audioSource.PlayOneShot(line.npcVoice);
 
@@ -106,7 +102,25 @@ public class DialogueManager : MonoBehaviour
         foreach (Transform child in responseContainer)
             Destroy(child.gameObject);
 
-        // Crear nuevas respuestas si las hay
+        // Si este diálogo tiene recompensas y es la última línea
+        if (currentDialogue is ChoiceRewardDialogueData choiceDialogue &&
+            currentLineIndex == currentDialogue.lines.Length - 1)
+        {
+            string npcID = choiceDialogue.name;
+
+            if (!choiceDialogue.onlyOnce || !QuestManager.Instance.HasNpcEventCompleted(npcID))
+            {
+                ShowRewardChoices(choiceDialogue);
+                return;
+            }
+            else if (choiceDialogue.afterChoiceDialogue != null)
+            {
+                StartDialogue(choiceDialogue.afterChoiceDialogue);
+                return;
+            }
+        }
+
+        // Respuestas normales
         if (line.responses != null && line.responses.Length > 0)
         {
             foreach (DialogueResponse response in line.responses)
@@ -125,32 +139,55 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Mostrar "presiona continuar" si no hay respuestas
+        // Mostrar "presiona continuar"
         if (continueText != null)
             continueText.gameObject.SetActive(HasMoreLines() && (line.responses == null || line.responses.Length == 0));
     }
 
-    private bool HasMoreLines()
+    private void ShowRewardChoices(ChoiceRewardDialogueData dialogue)
     {
-        return currentDialogue != null && currentLineIndex < currentDialogue.lines.Length - 1;
+        dialogueText.text = "Elige un objeto:";
+
+        foreach (Transform child in responseContainer)
+            Destroy(child.gameObject);
+
+        foreach (var item in dialogue.rewardOptions)
+        {
+            GameObject btnObj = Instantiate(responseButtonPrefab, responseContainer);
+            TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
+            btnText.text = item.itemName;
+
+            btnObj.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                InventoryManager.Instance.AddItem(item.itemID);
+                QuestManager.Instance.MarkNpcEventCompleted(dialogue.name);
+
+                // Limpia botones
+                foreach (Transform c in responseContainer)
+                    Destroy(c.gameObject);
+
+                // Si hay diálogo post-elección
+                if (dialogue.afterChoiceDialogue != null)
+                    StartDialogue(dialogue.afterChoiceDialogue);
+                else
+                    EndDialogue();
+            });
+        }
+
+        if (continueText != null)
+            continueText.gameObject.SetActive(false);
     }
+
+    private bool HasMoreLines() =>
+        currentDialogue != null && currentLineIndex < currentDialogue.lines.Length - 1;
 
     public void NextLine()
     {
         currentLineIndex++;
         if (currentLineIndex >= currentDialogue.lines.Length)
-        {
             EndDialogue();
-        }
         else
-        {
             ShowLine();
-        }
-    }
-
-    public void SetPostDialogueAction(Action action)
-    {
-        onDialogueEnd = action;
     }
 
     public void EndDialogue()
@@ -164,12 +201,10 @@ public class DialogueManager : MonoBehaviour
             PlayerMovement.Instance.canMove = true;
 
         currentDialogue = null;
+        onDialogueEnd?.Invoke();
+        onDialogueEnd = null;
 
-        if (onDialogueEnd != null)
-        {
-            var actionToRun = onDialogueEnd;
-            onDialogueEnd = null;
-            actionToRun.Invoke();
-        }
     }
 }
+
+
