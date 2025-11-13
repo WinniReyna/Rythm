@@ -1844,6 +1844,12 @@ MonoBehaviour:
     gridY: 2
     paintSprite: {fileID: 0}
     isSlider: 0
+  - time: 5.15
+    key: 3
+    gridX: 1
+    gridY: 2
+    paintSprite: {fileID: 0}
+    isSlider: 0
   hitSlider: {fileID: 1456827774}
   currentDifficulty: {fileID: 11400000, guid: 15709ec1c1b2a5b439d1725b85f60797, type: 2}
   countdownText: {fileID: 602199063}
