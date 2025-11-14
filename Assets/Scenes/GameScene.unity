@@ -1101,6 +1101,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43906953}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &58667787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1924471918395143190, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21d667b93b05aef42aa198d22d04dd86, type: 2}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 455.99332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5456772
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.935284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304558126504065397, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554246775161566790, guid: da8244f6ead34a2469438ea391639016, type: 3}
+      propertyPath: m_Name
+      value: Textile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da8244f6ead34a2469438ea391639016, type: 3}
 --- !u!1 &60433744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7882376022164389543, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
@@ -4446,6 +4507,7 @@ GameObject:
   - component: {fileID: 212413589}
   - component: {fileID: 212413588}
   - component: {fileID: 212413587}
+  - component: {fileID: 212413590}
   m_Layer: 0
   m_Name: TelarTool
   m_TagString: Untagged
@@ -4543,6 +4605,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212413584}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &212413590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212413584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64e3b4884770d3409705c6948a46ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  telarName: MinigameScene
 --- !u!1 &216688174
 GameObject:
   m_ObjectHideFlags: 0
@@ -47430,3 +47505,4 @@ SceneRoots:
   - {fileID: 1280396874}
   - {fileID: 907262083}
   - {fileID: 522340489}
+  - {fileID: 58667787}

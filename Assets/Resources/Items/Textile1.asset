@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8efedd603f5654eba1c50246449dda, type: 3}
+  m_Name: Textile1
+  m_EditorClassIdentifier: 
+  itemID: Textile01
+  itemName: Textile01
+  description: Parte de un bordado que debemos aprender
+  icon: {fileID: 2800000, guid: 668d76d8e6d077f48bae1bf3d47a45f4, type: 3}
+  prefab: {fileID: 7554246775161566790, guid: da8244f6ead34a2469438ea391639016, type: 3}
+  pickupSound: {fileID: 0}
+  targetSceneName: MinigameScene
