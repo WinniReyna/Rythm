@@ -20,5 +20,8 @@ public class NoteData
 
     [Tooltip("Activar el slider")]
     public bool isSlider = false;
+
+    [HideInInspector]
+    public double spawnDspTime;
 }
 

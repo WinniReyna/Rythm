@@ -45,6 +45,8 @@ public class NoteSpawner : MonoBehaviour
     [HideInInspector] private int totalNotes = 0;     
     [HideInInspector] public int notesDestroyed = 0;
 
+    private BeatNoteSpawner beatSpawner;
+
     private void Start()
     {
         // Obtener la dificultad guardada
@@ -63,12 +65,21 @@ public class NoteSpawner : MonoBehaviour
     void Update()
     {
         if (!gameStarted) return;
+        if (beatSpawner != null)
+        {
+            // No spawnear antes de que empiece la canción
+            if (AudioSettings.dspTime < beatSpawner.songStartDspTime)
+                return;
 
-        songTimer += Time.deltaTime;
+            // Tiempo exacto desde que empezó la música
+            songTimer = (float)(AudioSettings.dspTime - beatSpawner.songStartDspTime);
+        }
+
+
 
         for (int i = 0; i < activeNotes.Count; i++)
         {
-            if (songTimer >= activeNotes[i].time)
+            if (AudioSettings.dspTime >= activeNotes[i].spawnDspTime)
             {
                 SpawnNote(activeNotes[i]);
                 activeNotes.RemoveAt(i);
@@ -127,40 +138,69 @@ public class NoteSpawner : MonoBehaviour
 
     private void BeginGameplay()
     {
+        // Obtener BeatNoteSpawner
+        beatSpawner = FindObjectOfType<BeatNoteSpawner>();
+
+        // Inicializar variables
         gameStarted = true;
         songTimer = 0f;
-
         activeNotes.Clear();
 
-        int notesToSpawn = Mathf.CeilToInt(notes.Count * currentDifficulty.spawnRateMultiplier);
-        notesToSpawn = Mathf.Clamp(notesToSpawn, 1, notes.Count);
+        // Usar solo las notas definidas en la lista (del inspector)
+        activeNotes.AddRange(notes);
 
-        if (currentDifficulty.spawnRateMultiplier >= 1f)
+        // Iniciar canción primero
+        if (beatSpawner != null)
         {
-            activeNotes.AddRange(notes);
-        }
-        else
-        {
-            int seed = currentDifficulty.name.GetHashCode();
-            Random.InitState(seed);
-
-            List<NoteData> shuffled = new List<NoteData>(notes);
-            for (int i = 0; i < shuffled.Count; i++)
-            {
-                int randomIndex = Random.Range(i, shuffled.Count);
-                (shuffled[i], shuffled[randomIndex]) = (shuffled[randomIndex], shuffled[i]);
-            }
-
-            for (int i = 0; i < notesToSpawn; i++)
-                activeNotes.Add(shuffled[i]);
+            double dsp = AudioSettings.dspTime + 0.1;
+            beatSpawner.audioSource.PlayScheduled(dsp);
+            beatSpawner.songStartDspTime = dsp;
         }
 
+        // Ajustar tiempos de las notas
+        float countdownOffset = countdownTime + 0.7f;
+        float hitX = 1.39f; // posición del hit
+
+        for (int i = 0; i < activeNotes.Count; i++)
+        {
+            NoteData nd = activeNotes[i];
+
+            // Obtener spawnPoint según la key de la nota
+            Transform spawnPoint = GetSpawnPoint(nd.key);
+
+            // Distancia real desde spawn hasta hit
+            Vector3 hitPos = new Vector3(hitX, spawnPoint.position.y, spawnPoint.position.z);
+            float distance = Vector3.Distance(spawnPoint.position, hitPos);
+
+            float noteTravelTime = distance / currentDifficulty.noteSpeed;
+
+            // Calcular spawnDspTime exacto
+            nd.spawnDspTime = beatSpawner.songStartDspTime + nd.time + countdownOffset - noteTravelTime;
+
+            if (nd.spawnDspTime < 0)
+                nd.spawnDspTime = 0; // evitar negativos
+        }
+
+        // Actualizar ScoreManager
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-        Debug.Log($"Juego iniciado con dificultad {currentDifficulty.name}. Notas a spawnear: {activeNotes.Count}");
+        Debug.Log($"Juego iniciado con {activeNotes.Count} notas definidas en la lista.");
 
         FindObjectOfType<GameManager>()?.OnGameStarted();
     }
 
+
+    private Transform GetSpawnPoint(NoteKey key)
+    {
+        return key switch
+        {
+            NoteKey.A => spawnPointA,
+            NoteKey.S => spawnPointS,
+            NoteKey.D => spawnPointD,
+            NoteKey.Shift => spawnPointShiftLeft,
+            NoteKey.Space => spawnPointSpace,
+            _ => spawnPointA // fallback por si acaso
+        };
+    }
     void SpawnNote(NoteData data)
     {
         Transform spawnPoint = data.key switch
