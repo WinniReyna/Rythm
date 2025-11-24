@@ -5,21 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PersistentScene.unity
     guid: 78392330f5be2e24a899a32e2ed6195e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 00b5ea456bb4ff144ba861e30bb3b88f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: cc9402e6322787d4aa7190015ec481b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cinematic.unity
     guid: a8b3f61a60089914f8aa81c432bdc0f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MinigameScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MinigameScene 1.unity
+    guid: ee733a0a4c3c49a4f8549e463164b19c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

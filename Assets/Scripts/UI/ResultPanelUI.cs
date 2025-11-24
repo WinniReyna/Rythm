@@ -11,7 +11,9 @@ public class ResultPanelUI : MonoBehaviour
     [SerializeField] private float showDelay = 0.8f;
 
     [SerializeField] private RawImage gridPreview;
-    [SerializeField] private GridPainter gridPainter; 
+    [SerializeField] private GridPainter gridPainter;
+
+    [SerializeField] private AudioSource songAudio;
 
     private ScoreManager scoreManager;
 
@@ -63,6 +65,9 @@ public class ResultPanelUI : MonoBehaviour
         scoreText.text = $"Puntuación: {scoreManager.GetScore()}";
 
         resultPanel.SetActive(true);
+
+        if (songAudio != null && songAudio.isPlaying)
+            songAudio.Stop();
     }
 
     public void ReturnToMainLevel()

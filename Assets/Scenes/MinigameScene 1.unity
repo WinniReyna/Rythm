@@ -4365,7 +4365,7 @@ MonoBehaviour:
   spawnPointSpace: {fileID: 1372008417}
   notes:
   - time: 0
-    key: 0
+    key: 4
     gridX: 0
     gridY: 3
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
@@ -4379,21 +4379,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 4
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 6
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 8
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4407,84 +4407,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 12
-    key: 0
+    key: 1
     gridX: 0
     gridY: 3
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
     isSlider: 0
     spawnDspTime: 0
   - time: 14
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 16
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4498,21 +4435,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4526,28 +4463,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4561,21 +4498,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4589,28 +4526,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4624,21 +4561,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4652,21 +4589,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4680,21 +4617,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4708,28 +4645,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4743,14 +4680,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4764,21 +4701,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4792,21 +4729,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4820,28 +4757,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4855,28 +4792,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4890,14 +4827,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4911,7 +4848,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4925,14 +4862,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4946,7 +4883,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4960,14 +4897,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -4981,21 +4918,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5009,21 +4946,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5037,14 +4974,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5058,7 +4995,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5072,21 +5009,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5107,7 +5044,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5121,28 +5058,28 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 3
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5156,21 +5093,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5184,21 +5121,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5212,21 +5149,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5240,7 +5177,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5254,21 +5191,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5282,14 +5219,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5303,7 +5240,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5317,7 +5254,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5331,14 +5268,14 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5352,7 +5289,7 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5366,21 +5303,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 4
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -5394,21 +5331,21 @@ MonoBehaviour:
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 1
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
     isSlider: 0
     spawnDspTime: 0
   - time: 18
-    key: 0
+    key: 2
     gridX: 0
     gridY: 0
     paintSprite: {fileID: 0}
@@ -10079,6 +10016,7 @@ MonoBehaviour:
   showDelay: 0.8
   gridPreview: {fileID: 918763206}
   gridPainter: {fileID: 215266667}
+  songAudio: {fileID: 864925135}
 --- !u!1 &1785630322
 GameObject:
   m_ObjectHideFlags: 0
