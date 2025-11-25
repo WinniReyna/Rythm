@@ -167,3 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   paintSprite: {fileID: 0}
+  spawnPos: {x: -9.37, y: 0, z: 0}
+  hitPos: {x: 0.4300001, y: 0, z: 0}

@@ -14,6 +14,12 @@ public class Note : MonoBehaviour
     private ScoreManager scoreManager;
     private string lastHitType;
 
+    public Vector3 spawnPos;
+    public Vector3 hitPos;
+    private double spawnDspTime;
+    private float travelDistance;
+    private bool initializedMovement = false;
+
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
         requiredKey = key;
@@ -28,13 +34,28 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (!initializedMovement) return;
 
-        if (transform.position.x >= 1.01f)
-        {
+        double dspNow = AudioSettings.dspTime;
+        float t = (float)(dspNow - spawnDspTime);
+        float journey = Mathf.Clamp01(t * speed / travelDistance);
+
+        transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
+
+        if (journey >= 1f)
             Miss();
-        }
     }
+
+
+    public void InitializeMovement(double dspSpawn, Vector3 hitPosition)
+    {
+        spawnPos = transform.position;   // posición actual de spawn
+        hitPos = hitPosition;            // posición del hit point
+        spawnDspTime = dspSpawn;
+        travelDistance = Vector3.Distance(spawnPos, hitPos);
+        initializedMovement = true;
+    }
+
 
     public void PaintGridOnHit(string hitType)
     {

@@ -229,12 +229,16 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
-        
+
 
         var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         var note = obj.GetComponent<Note>();
         note?.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
         note.speed = currentDifficulty.noteSpeed;
+
+        // Inicializar movimiento basado en DSP
+        note.InitializeMovement(data.spawnDspTime, new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z));
+
         RegisterSpawnedNote(note);
 
         if (data.isSlider)

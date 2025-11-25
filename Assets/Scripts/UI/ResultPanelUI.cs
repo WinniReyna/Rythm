@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ResultPanelUI : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class ResultPanelUI : MonoBehaviour
 
     public void OnRetryButton()
     {
-        FindObjectOfType<GameManager>()?.Retry();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnExitButton()
