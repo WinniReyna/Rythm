@@ -39,8 +39,6 @@ public class BeatNoteSpawner : MonoBehaviour
 
         convertedNotes.Clear();
 
-        convertedNotes.Clear();
-
         for (int i = 0; i < noteSpawner.notes.Count && i < beatData.beats.Count; i++)
         {
             NoteData nd = noteSpawner.notes[i]; // toma la nota del inspector

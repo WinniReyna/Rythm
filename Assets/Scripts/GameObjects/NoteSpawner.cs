@@ -66,9 +66,8 @@ public class NoteSpawner : MonoBehaviour
     {
         foreach (var nd in activeNotes)
         {
-            double waitTime = nd.spawnDspTime - AudioSettings.dspTime;
-            if (waitTime > 0)
-                yield return new WaitForSecondsRealtime((float)waitTime);
+            while (AudioSettings.dspTime < nd.spawnDspTime)
+                yield return null;
 
             SpawnNote(nd);
         }
@@ -154,28 +153,24 @@ public class NoteSpawner : MonoBehaviour
         {
             NoteData nd = activeNotes[i];
 
-            // Obtener spawnPoint según la key de la nota
             Transform spawnPoint = GetSpawnPoint(nd.key);
 
-            // Distancia real desde spawn hasta hit
             Vector3 hitPos = new Vector3(hitX, spawnPoint.position.y, spawnPoint.position.z);
             float distance = Vector3.Distance(spawnPoint.position, hitPos);
 
             float noteTravelTime = distance / currentDifficulty.noteSpeed;
 
-            // Calcular spawnDspTime exacto
             nd.spawnDspTime = beatSpawner.songStartDspTime + nd.time + countdownOffset - noteTravelTime;
 
             if (nd.spawnDspTime < 0)
-                nd.spawnDspTime = 0; // evitar negativos
-
-            // Iniciar coroutine que spawnea notas
-            if (spawnCoroutine != null)
-                StopCoroutine(spawnCoroutine);
-
-            spawnCoroutine = StartCoroutine(SpawnNotesCoroutine());
-
+                nd.spawnDspTime = 0;
         }
+        
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+
+        spawnCoroutine = StartCoroutine(SpawnNotesCoroutine());
+
 
         // Actualizar ScoreManager
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);

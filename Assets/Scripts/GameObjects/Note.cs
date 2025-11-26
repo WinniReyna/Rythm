@@ -44,7 +44,8 @@ public class Note : MonoBehaviour
         // Esperar hasta el momento de spawn
         double waitTime = spawnDspTime - AudioSettings.dspTime;
         if (waitTime > 0)
-            yield return new WaitForSecondsRealtime((float)waitTime);
+            while (AudioSettings.dspTime < spawnDspTime)
+                yield return null;
 
         // Calcular duración real del viaje
         float movementDuration = travelDistance / speed;
