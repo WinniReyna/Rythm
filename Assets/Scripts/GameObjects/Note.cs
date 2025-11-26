@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Note : MonoBehaviour
 {
@@ -32,18 +33,36 @@ public class Note : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
     }
 
-    void Update()
+    public void StartMovement()
     {
         if (!initializedMovement) return;
+        StartCoroutine(MoveNoteCoroutine());
+    }
 
-        double dspNow = AudioSettings.dspTime;
-        float t = (float)(dspNow - spawnDspTime);
-        float journey = Mathf.Clamp01(t * speed / travelDistance);
+    private IEnumerator MoveNoteCoroutine()
+    {
+        // Esperar hasta el momento de spawn
+        double waitTime = spawnDspTime - AudioSettings.dspTime;
+        if (waitTime > 0)
+            yield return new WaitForSecondsRealtime((float)waitTime);
 
-        transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
+        // Calcular duración real del viaje
+        float movementDuration = travelDistance / speed;
+        double movementStartTime = AudioSettings.dspTime;
 
-        if (journey >= 1f)
-            Miss();
+        // Mover la nota
+        float journey = 0f;
+        while (journey < 1f)
+        {
+            double elapsed = AudioSettings.dspTime - movementStartTime;
+            journey = Mathf.Clamp01((float)(elapsed / movementDuration));
+            transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
+            yield return null;
+        }
+
+        // Llegó al hit → Miss
+        transform.position = hitPos;
+        Miss();
     }
 
 

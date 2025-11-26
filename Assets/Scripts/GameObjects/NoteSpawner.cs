@@ -46,6 +46,7 @@ public class NoteSpawner : MonoBehaviour
     [HideInInspector] public int notesDestroyed = 0;
 
     private BeatNoteSpawner beatSpawner;
+    private Coroutine spawnCoroutine;
 
     private void Start()
     {
@@ -59,33 +60,21 @@ public class NoteSpawner : MonoBehaviour
         }
 
         StartGame(difficulty);
-    }
+    }    
 
-
-    void Update()
+    private IEnumerator SpawnNotesCoroutine()
     {
-        if (!gameStarted) return;
-        if (beatSpawner != null)
+        foreach (var nd in activeNotes)
         {
-            // No spawnear antes de que empiece la canción
-            if (AudioSettings.dspTime < beatSpawner.songStartDspTime)
-                return;
+            double waitTime = nd.spawnDspTime - AudioSettings.dspTime;
+            if (waitTime > 0)
+                yield return new WaitForSecondsRealtime((float)waitTime);
 
-            // Tiempo exacto desde que empezó la música
-            songTimer = (float)(AudioSettings.dspTime - beatSpawner.songStartDspTime);
+            SpawnNote(nd);
         }
 
-
-
-        for (int i = 0; i < activeNotes.Count; i++)
-        {
-            if (AudioSettings.dspTime >= activeNotes[i].spawnDspTime)
-            {
-                SpawnNote(activeNotes[i]);
-                activeNotes.RemoveAt(i);
-                i--;
-            }
-        }
+        // Una vez que todas las notas fueron spawneadas, limpiar lista activa
+        activeNotes.Clear();
     }
 
     public void StartGame(DifficultySettings difficulty = null)
@@ -179,6 +168,13 @@ public class NoteSpawner : MonoBehaviour
 
             if (nd.spawnDspTime < 0)
                 nd.spawnDspTime = 0; // evitar negativos
+
+            // Iniciar coroutine que spawnea notas
+            if (spawnCoroutine != null)
+                StopCoroutine(spawnCoroutine);
+
+            spawnCoroutine = StartCoroutine(SpawnNotesCoroutine());
+
         }
 
         // Actualizar ScoreManager
@@ -229,15 +225,16 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
-
-
         var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         var note = obj.GetComponent<Note>();
         note?.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
         note.speed = currentDifficulty.noteSpeed;
 
-        // Inicializar movimiento basado en DSP
+        // Primero inicializar posición y DSP
         note.InitializeMovement(data.spawnDspTime, new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z));
+
+        // Luego iniciar el movimiento
+        note.StartMovement();
 
         RegisterSpawnedNote(note);
 

@@ -4369,7 +4369,7 @@ MonoBehaviour:
     gridX: 0
     gridY: 3
     paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
-    isSlider: 0
+    isSlider: 1
     spawnDspTime: 0
   - time: 2
     key: 0
