@@ -23,6 +23,9 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [Header("Estado único para guardado")]
     [SerializeField] private string doorID;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioSource audioSource;
 
     public Vector3 GetTargetPosition() => destination;
     public bool IsLocked => isLocked;
@@ -31,18 +34,16 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
 
     private void Awake()
     {
-        if (fadeImage == null)
-            fadeImage = GetComponent<RawImage>();
+        if (fadeImage == null) fadeImage = GetComponent<RawImage>();
+        if (!string.IsNullOrEmpty(requiredKeyID)) isLocked = true;
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
 
         if (fadeImage != null)
         {
             Color c = fadeImage.color;
             c.a = 0f;
             fadeImage.color = c;
-        }
-
-        if (!string.IsNullOrEmpty(requiredKeyID))
-            isLocked = true;
+        }        
     }
 
     public void Interact()
@@ -57,6 +58,8 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
             Debug.Log("Esta puerta está cerrada con llave.");
             return;
         }
+
+        if (doorSound != null && audioSource != null) audioSource.PlayOneShot(doorSound);
 
         StartCoroutine(TeleportRoutine(player));
     }
