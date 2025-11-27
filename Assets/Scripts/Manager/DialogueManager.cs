@@ -142,7 +142,7 @@ public class DialogueManager : MonoBehaviour
         {
             GameObject btnObj = Instantiate(responseButtonPrefab, responseContainer);
             TMP_Text btnText = btnObj.GetComponentInChildren<TMP_Text>();
-            btnText.text = item.itemName;
+            btnText.text = item.GetItemName();
 
             btnObj.GetComponent<Button>().onClick.AddListener(() =>
             {

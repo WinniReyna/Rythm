@@ -33,7 +33,8 @@ public class InventoryUI : MonoBehaviour
             InventoryUIItem uiItem = go.GetComponent<InventoryUIItem>();
             uiItem.Setup(itemSO, invItem.quantity, inventorySO, itemDatabase);
         }
-    }
+    }   
+
 }
 
 

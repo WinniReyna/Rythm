@@ -7,19 +7,37 @@ public class ItemSO : ScriptableObject
     [Tooltip("Puede ser el nombre del item.")]
     public string itemID;
 
-    [Header("Datos visuales")]
-    [Tooltip("Nombre que aparecerá en la UI.")]
-    public string itemName;
-    [Tooltip("Descripción del item.")]
-    [TextArea] public string description;
-    [Tooltip("Imagen del item.")]
+    [Header("Description ES")]
+    public string itemNameES;
+    [TextArea] public string descriptionES;
+
+    [Header("Description EN")]
+    public string itemNameEN;
+    [TextArea] public string descriptionEN;
+
+    [Header("Imagen del item")]
     public Texture2D icon;
 
     [Header("Instancia para tirar")]
-    [Tooltip("El ítem en escena debe ser un prefab para poder instanciarlo nuevamente al sacarlo del inventario.")]
     public GameObject prefab;
 
-    [Header("Opcional")]
-    [Tooltip("Si quieren que tenga un sonido el objeto al recoger. Por el momento puede estar vacío.")]
+    [Header("Audios")]
     public AudioClip pickupSound;
+    public AudioClip dropSound;
+    public AudioClip useSound;
+    public AudioClip deleteSound;
+
+    public string GetItemName()
+    {
+        string lang = Lean.Localization.LeanLocalization.GetFirstCurrentLanguage();
+        if (lang == "English") return itemNameEN;
+        return itemNameES;
+    }
+
+    public string GetDescription()
+    {
+        string lang = Lean.Localization.LeanLocalization.GetFirstCurrentLanguage();
+        if (lang == "English") return descriptionEN;
+        return descriptionES;
+    }
 }

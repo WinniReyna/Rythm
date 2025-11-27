@@ -18,8 +18,8 @@ public class ShovelItemSO : ItemSO, IUsableItem
         if (interactable is DiggableSpot diggable)
         {
             diggable.Dig(digDuration);
-            Debug.Log($"Usaste {itemName} para cavar aquí.");
-            return false; // ❌ No se consume la pala
+            Debug.Log($"Usaste {GetItemName()} para cavar aquí.");
+            return false; // No se consume la pala
         }
 
         Debug.Log("No se puede cavar en este lugar.");

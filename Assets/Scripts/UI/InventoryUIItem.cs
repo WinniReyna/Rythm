@@ -22,8 +22,10 @@ public class InventoryUIItem : MonoBehaviour
         itemDatabase = db;
 
         icon.texture = itemSO.icon;
-        itemNameText.text = itemSO.itemName;
-        descriptionText.text = itemSO.description;
+
+        itemNameText.text = itemSO.GetItemName();
+        descriptionText.text = itemSO.GetDescription();
+
         quantityText.text = quantity.ToString();
     }
 
@@ -31,7 +33,6 @@ public class InventoryUIItem : MonoBehaviour
     {
         if (itemDatabase == null) return;
 
-        // Buscar el ScriptableObject del ítem
         ItemSO itemSO = itemDatabase.GetItemByID(itemID);
         if (itemSO == null)
         {
@@ -39,7 +40,6 @@ public class InventoryUIItem : MonoBehaviour
             return;
         }
 
-        // Verificar si implementa IUsableItem
         if (itemSO is IUsableItem usable)
         {
             var player = GameObject.FindWithTag("Player")?.GetComponent<PlayerInteraction>();
@@ -58,16 +58,25 @@ public class InventoryUIItem : MonoBehaviour
         {
             Debug.Log($"El ítem {itemID} no es usable.");
         }
+
+        //usar item sound
+        if (itemSO.useSound != null) AudioSource.PlayClipAtPoint(itemSO.useSound, Camera.main.transform.position);
+        
     }
 
     public void OnDeleteButton()
     {
+        ItemSO itemSO = itemDatabase.GetItemByID(itemID);
+
         if (inventorySO != null)
         {
             inventorySO.RemoveItem(itemID, 1);
             InventoryManager.Instance.RefreshUI();
             FindObjectOfType<InventorySaveLoad>().SaveInventory();
         }
+
+        if (itemSO.deleteSound != null) AudioSource.PlayClipAtPoint(itemSO.deleteSound, Camera.main.transform.position);      
+
     }
 
     public void OnDropButton()
@@ -85,8 +94,14 @@ public class InventoryUIItem : MonoBehaviour
             InventoryManager.Instance.RefreshUI();
             FindObjectOfType<InventorySaveLoad>().SaveInventory();
         }
+
+        //usar drop sound item
+        if (itemSO.dropSound != null) AudioSource.PlayClipAtPoint(itemSO.dropSound, Camera.main.transform.position);
+        
+
     }
 }
+
 
 
 

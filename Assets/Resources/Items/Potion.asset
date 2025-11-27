@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   itemID: Potion
-  itemName: Potion
-  description: bonita bebida para curar
+  itemNameES: Pocion
+  descriptionES: Una pocion sabrosa
+  itemNameEN: Potion
+  descriptionEN: an delicious potion
   icon: {fileID: 2800000, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
   prefab: {fileID: 5926994943893053183, guid: 6db88993bbee6d9439456e9818beca09, type: 3}
   pickupSound: {fileID: 0}

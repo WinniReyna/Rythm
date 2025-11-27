@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Shovel
   m_EditorClassIdentifier: 
   itemID: Shovel
-  itemName: Shovel
-  description: Pala para escarvar
+  itemNameES: Pala
+  descriptionES: una bonita pala
+  itemNameEN: Shovel
+  descriptionEN: precious shovel
   icon: {fileID: 2800000, guid: 45f3c2fe090fb56438574652d7ccd3dd, type: 3}
   prefab: {fileID: 3244370083887825939, guid: 1284a672c5c8e7f4eb5a4cbe1269289a, type: 3}
   pickupSound: {fileID: 0}

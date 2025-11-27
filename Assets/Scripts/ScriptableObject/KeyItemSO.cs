@@ -22,7 +22,7 @@ public class KeyItemSO : ItemSO, IUsableItem
             if (teleporter.IsLocked && teleporter.RequiredKeyID == keyID)
             {
                 teleporter.Unlock();
-                Debug.Log($"Puerta desbloqueada con {itemName}");
+                Debug.Log($"Puerta desbloqueada con {GetItemName()}");
                 return true; // consumido
             }
             else
