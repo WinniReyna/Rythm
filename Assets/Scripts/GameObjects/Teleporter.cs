@@ -24,9 +24,15 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [SerializeField] private string doorID;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioClip doorSound; 
+    [SerializeField] private AudioClip closeSound;
     [SerializeField] private AudioSource audioSource;
 
+    [Header("Messages UI")]
+    [SerializeField] private string lockedMessageSP= "La puerta está cerrada.";
+    [SerializeField] private string lockedMessageEN = "The door is closed.";
+    [SerializeField] private MonoBehaviour messageDisplayComponent;
+    private IMessageDisplay messageDisplay;
     public Vector3 GetTargetPosition() => destination;
     public bool IsLocked => isLocked;
     public string DoorID => doorID;
@@ -37,6 +43,8 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         if (fadeImage == null) fadeImage = GetComponent<RawImage>();
         if (!string.IsNullOrEmpty(requiredKeyID)) isLocked = true;
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+
+        messageDisplay = messageDisplayComponent as IMessageDisplay;
 
         if (fadeImage != null)
         {
@@ -53,13 +61,22 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
 
     public void OnCollide(GameObject player)
     {
+        string lang = Lean.Localization.LeanLocalization.GetFirstCurrentLanguage();
+
         if (isLocked)
         {
-            Debug.Log("Esta puerta está cerrada con llave.");
+            Debug.Log("Puerta cerrada (requiere llave)");
+
+            audioSource.PlayOneShot(closeSound);
+
+            if (lang == "Spanish") messageDisplay?.ShowMessage(lockedMessageSP, 2f);
+            if (lang == "English") messageDisplay?.ShowMessage(lockedMessageEN, 2f);
+
             return;
         }
 
-        if (doorSound != null && audioSource != null) audioSource.PlayOneShot(doorSound);
+        if (doorSound != null && audioSource != null)
+            audioSource.PlayOneShot(doorSound);
 
         StartCoroutine(TeleportRoutine(player));
     }
