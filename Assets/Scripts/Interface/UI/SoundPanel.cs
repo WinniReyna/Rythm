@@ -1,9 +1,66 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
+using FMODUnity;
+using FMOD.Studio;
 
 public class SoundPanel : MonoBehaviour, IMenuPanel
 {
+    [Header("UI Sliders")]
+    //[SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    //[SerializeField] private Slider sfxSlider;
+    //[SerializeField] private Slider videoSlider;
+
+    [Header("FMOD Buses")]
+    private Bus masterBus;
+    private Bus musicBus;
+    private Bus sfxBus;
+    private Bus videoBus;
+
+    private void Awake()
+    {
+        //masterBus = RuntimeManager.GetBus("bus:/Master");
+        musicBus = RuntimeManager.GetBus("bus:/Master/Music");
+        //sfxBus = RuntimeManager.GetBus("bus:/Master/SFX");
+        //videoBus = RuntimeManager.GetBus("bus:/Master/Video");
+
+        musicSlider.onValueChanged.AddListener(val => Debug.Log("onValueChanged! " + val));
+
+    }
+
+    private void Start()
+    {
+        // Cargar valores sin eventos
+        //masterSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MasterBus", 1f));
+        musicSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("MusicBus", 1f));
+        //sfxSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("SFXBus", 1f));
+        //videoSlider.SetValueWithoutNotify(PlayerPrefs.GetFloat("VideoBus", 1f));
+
+        // Aplicar volumen al iniciar
+        //ApplyBusVolume(masterBus, masterSlider.value);
+        ApplyBusVolume(musicBus, musicSlider.value);
+        //ApplyBusVolume(sfxBus, sfxSlider.value);
+        //ApplyBusVolume(videoBus, videoSlider.value);
+
+        // Listeners
+        //masterSlider.onValueChanged.AddListener(v => OnSlider(masterBus, "MasterBus", v));
+        musicSlider.onValueChanged.AddListener(v => OnSlider(musicBus, "MusicBus", v));
+        //sfxSlider.onValueChanged.AddListener(v => OnSlider(sfxBus, "SFXBus", v));
+        //videoSlider.onValueChanged.AddListener(v => OnSlider(videoBus, "VideoBus", v));
+    }
+
+    private void OnSlider(Bus bus, string key, float value)
+    {
+        ApplyBusVolume(bus, value);
+        PlayerPrefs.SetFloat(key, value);
+    }
+
+    private void ApplyBusVolume(Bus bus, float value)
+    {
+        if (bus.isValid())
+            bus.setVolume(value);
+    }
+
     public void Open()
     {
         gameObject.SetActive(true);
@@ -12,82 +69,11 @@ public class SoundPanel : MonoBehaviour, IMenuPanel
     public void Close()
     {
         gameObject.SetActive(false);
-    }
-
-    [Header("Audio Mixer")]
-    [SerializeField] private AudioMixer audioMixer;
-
-    [Header("Audio Sliders")]
-    [SerializeField] private Slider masterSlider;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider effectsSlider;
-    [SerializeField] private Slider videoSlider;
-
-    private void Start()
-    {
-
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", GetLinearVolume("MasterVolume"));
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", GetLinearVolume("MusicVolume"));
-        effectsSlider.value = PlayerPrefs.GetFloat("SFXVolume", GetLinearVolume("SFXVolume"));
-        videoSlider.value = PlayerPrefs.GetFloat("VideoVolume", GetLinearVolume("VideoVolume"));
-
-
-        SetMasterVolume(masterSlider.value);
-        SetMusicVolume(musicSlider.value);
-        SetEffectsVolume(effectsSlider.value);
-        SetVideoVolume(videoSlider.value);
-
-
-        masterSlider.onValueChanged.AddListener(SetMasterVolume);
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        effectsSlider.onValueChanged.AddListener(SetEffectsVolume);
-        videoSlider.onValueChanged.AddListener(SetVideoVolume);
-    }
-
-    public void SetMasterVolume(float value)
-    {
-        SetVolume("MasterVolume", value);
-        PlayerPrefs.SetFloat("MasterVolume", value);
-    }
-
-    public void SetMusicVolume(float value)
-    {
-        SetVolume("MusicVolume", value);
-        PlayerPrefs.SetFloat("MusicVolume", value);
-    }
-
-    public void SetEffectsVolume(float value)
-    {
-        SetVolume("SFXVolume", value);
-        PlayerPrefs.SetFloat("SFXVolume", value);
-    }
-
-    public void SetVideoVolume(float value)
-    {
-        SetVolume("VideoVolume", value);
-        PlayerPrefs.SetFloat("VideoVolume", value);
-    }
-
-
-    private void SetVolume(string parameter, float value)
-    {
-
-        float dB = Mathf.Log10(Mathf.Clamp(value, 0.001f, 1f)) * 20f;
-        audioMixer.SetFloat(parameter, dB);
-    }
-
-    private float GetLinearVolume(string parameter)
-    {
-        if (audioMixer.GetFloat(parameter, out float dB))
-        {
-            return Mathf.Pow(10, dB / 20f);
-        }
-        return 1f;
+        PlayerPrefs.Save();
     }
 
     private void OnDisable()
     {
-
         PlayerPrefs.Save();
     }
 }

@@ -1,30 +1,46 @@
 using UnityEngine;
-using UnityEngine.Audio;
+using FMODUnity;
+using FMOD.Studio;
 using System.Collections;
 
-public class AudioSettingsLoader : MonoBehaviour
+public class AudioSettingsLoader: MonoBehaviour
 {
-    [SerializeField] private AudioMixer audioMixer;
+    private EventInstance musicInstance;
+    private Bus musicBus;
+
+    private void Awake()
+    {
+        // Obtén el Bus de música
+        musicBus = RuntimeManager.GetBus("bus:/Master/Music");
+    }
 
     private void Start()
     {
-        StartCoroutine(ApplySavedVolumesNextFrame());
+        StartCoroutine(StartMusicNextFrame());
+        StartCoroutine(ApplySavedBusVolumeNextFrame());
     }
 
-    private IEnumerator ApplySavedVolumesNextFrame()
+    private IEnumerator StartMusicNextFrame()
     {
         yield return null;
 
-        ApplySavedVolume("MasterVolume");
-        ApplySavedVolume("MusicVolume");
-        ApplySavedVolume("SFXVolume");
-        ApplySavedVolume("VideoVolume");
+        // Cambia la ruta a tu evento real de música
+        musicInstance = RuntimeManager.CreateInstance("event:/Song_SuperTrack 2");
+        musicInstance.start();
     }
 
-    private void ApplySavedVolume(string parameter)
+    private IEnumerator ApplySavedBusVolumeNextFrame()
     {
-        float savedValue = PlayerPrefs.GetFloat(parameter, 1f);
-        float dB = Mathf.Log10(Mathf.Clamp(savedValue, 0.001f, 1f)) * 20f;
-        audioMixer.SetFloat(parameter, dB);
+        yield return null;
+
+        // Aplica el volumen guardado del Music Bus
+        float savedVolume = PlayerPrefs.GetFloat("MusicBus", 1f); 
+        if (musicBus.isValid())
+        {
+            musicBus.setVolume(savedVolume);
+            Debug.Log("Bus Music volumen inicial: " + savedVolume);
+        }
     }
 }
+
+
