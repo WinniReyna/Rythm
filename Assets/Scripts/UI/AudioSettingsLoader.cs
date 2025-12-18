@@ -25,7 +25,7 @@ public class AudioSettingsLoader: MonoBehaviour
         yield return null;
 
         // Cambia la ruta a tu evento real de música
-        musicInstance = RuntimeManager.CreateInstance("event:/Song_SuperTrack 2");
+        musicInstance = RuntimeManager.CreateInstance("event:/Music/Song_SuperTrack 2");
         musicInstance.start();
     }
 

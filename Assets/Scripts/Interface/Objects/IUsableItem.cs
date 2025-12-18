@@ -1,4 +1,3 @@
-// IUsableItem.cs
 using UnityEngine;
 
 public interface IUsableItem

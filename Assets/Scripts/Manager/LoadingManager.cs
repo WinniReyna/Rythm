@@ -9,9 +9,9 @@ public class LoadingManager : MonoBehaviour
     public static LoadingManager Instance { get; private set; }
 
     [Header("UI de carga")]
-    [Tooltip("Arrastramos nuestro menú de panel.")]
+    [Tooltip("Arrastramos nuestro menú de panel")]
     [SerializeField] private GameObject loadingScreen;
-    [Tooltip("Arrastramos nuestro slider.")]
+    [Tooltip("Arrastramos nuestro slider")]
     [SerializeField] private Slider progressBar;
     [Tooltip("Arrastramos nuestro texto de tipo TMPro")]
     [SerializeField] private TMP_Text progressText;
