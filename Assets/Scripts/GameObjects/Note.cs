@@ -21,6 +21,9 @@ public class Note : MonoBehaviour
     private float travelDistance;
     private bool initializedMovement = false;
 
+    [HideInInspector] public BeatNoteSpawner beatSpawner;
+
+
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
         requiredKey = key;
@@ -42,29 +45,33 @@ public class Note : MonoBehaviour
     private IEnumerator MoveNoteCoroutine()
     {
         // Esperar hasta el momento de spawn
-        double waitTime = spawnDspTime - AudioSettings.dspTime;
-        if (waitTime > 0)
-            while (AudioSettings.dspTime < spawnDspTime)
-                yield return null;
+        while (GetSongTime() < spawnDspTime)
+            yield return null;
 
-        // Calcular duración real del viaje
-        float movementDuration = travelDistance / speed;
-        double movementStartTime = AudioSettings.dspTime;
-
-        // Mover la nota
         float journey = 0f;
+        double movementStartTime = GetSongTime();
+        float movementDuration = travelDistance / speed;
+
         while (journey < 1f)
         {
-            double elapsed = AudioSettings.dspTime - movementStartTime;
+            double elapsed = GetSongTime() - movementStartTime;
             journey = Mathf.Clamp01((float)(elapsed / movementDuration));
             transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
             yield return null;
         }
 
-        // Llegó al hit → Miss
         transform.position = hitPos;
         Miss();
     }
+
+    public double GetSongTime()
+    {
+        if (spawner != null)
+            return spawner.GetMusicTime(); // llama al método público de NoteSpawner
+        return AudioSettings.dspTime;      // fallback
+    }
+
+
 
 
     public void InitializeMovement(double dspSpawn, Vector3 hitPosition)

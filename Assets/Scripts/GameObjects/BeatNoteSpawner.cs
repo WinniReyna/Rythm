@@ -1,10 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using FMODUnity;
+using FMOD.Studio;
 
 public class BeatNoteSpawner : MonoBehaviour
 {
-    public AudioSource audioSource;
+    [Header("FMOD Event")]
+    public EventReference musicEvent; // Evento de FMOD
+    private EventInstance musicInstance;
+
     public string beatmapFileName = ""; // archivo en StreamingAssets
 
     private BeatData beatData;
@@ -13,10 +18,15 @@ public class BeatNoteSpawner : MonoBehaviour
     private float travelTime;
 
     [Header("Referencia al NoteSpawner principal")]
-    public NoteSpawner noteSpawner;     // LE PASAMOS LA LISTA DE NOTES
-    public Note notesPrefab;           // solo para obtener speed
+    public NoteSpawner noteSpawner;
+    public Note notesPrefab;
     public Transform spawnPoint;
     public Transform hitPoint;
+
+    public EventInstance MusicInstance
+    {
+        get { return musicInstance; }
+    }
 
 
     void Start()
@@ -29,44 +39,34 @@ public class BeatNoteSpawner : MonoBehaviour
 
         LoadBeatmap();
 
-        // calcular travelTime igual que antes
         float distance = Vector3.Distance(spawnPoint.position, hitPoint.position);
         float noteSpeed = notesPrefab.speed;
         travelTime = distance / noteSpeed;
 
-        // convertir beats NoteData con su tiempo exacto
         List<NoteData> convertedNotes = new List<NoteData>();
-
-        convertedNotes.Clear();
 
         for (int i = 0; i < noteSpawner.notes.Count && i < beatData.beats.Count; i++)
         {
-            NoteData nd = noteSpawner.notes[i]; // toma la nota del inspector
+            NoteData nd = noteSpawner.notes[i];
 
             nd.time = (float)beatData.beats[i] - travelTime;
-
             if (nd.time < 0)
                 nd.time = 0;
 
             convertedNotes.Add(nd);
         }
 
-        // Asignamos la lista al NoteSpawner principal
         noteSpawner.notes = convertedNotes;
-
-        Debug.Log($"BeatNoteSpawner generó {convertedNotes.Count} notas y se las pasó a NoteSpawner.");        
+        Debug.Log($"BeatNoteSpawner generó {convertedNotes.Count} notas y se las pasó a NoteSpawner.");
     }
 
     void LoadBeatmap()
     {
         string path = Path.Combine(Application.streamingAssetsPath, beatmapFileName);
-
         string json;
 
         if (File.Exists(path))
-        {
             json = File.ReadAllText(path);
-        }
         else
         {
             Debug.LogError("Beatmap NO encontrado: " + path);
@@ -75,6 +75,24 @@ public class BeatNoteSpawner : MonoBehaviour
 
         beatData = JsonUtility.FromJson<BeatData>(json);
     }
+
+    public void PlayMusic(double dspDelay = 0.1)
+    {
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+
+        double dspTime = AudioSettings.dspTime + dspDelay;
+        musicInstance.start(); // FMOD no tiene PlayScheduled como AudioSource
+        songStartDspTime = dspTime;
+    }
+
+    public void StopMusic()
+    {
+        if (musicInstance.isValid())
+        {
+            musicInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicInstance.release();
+        }
+    }
 }
 
 [System.Serializable]
@@ -82,3 +100,4 @@ public class BeatData
 {
     public List<double> beats;
 }
+
