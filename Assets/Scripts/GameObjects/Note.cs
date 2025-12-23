@@ -19,10 +19,8 @@ public class Note : MonoBehaviour
     public Vector3 hitPos;
     private double spawnDspTime;
     private float travelDistance;
+    private float movementDuration;
     private bool initializedMovement = false;
-
-    [HideInInspector] public BeatNoteSpawner beatSpawner;
-
 
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
@@ -44,19 +42,23 @@ public class Note : MonoBehaviour
 
     private IEnumerator MoveNoteCoroutine()
     {
-        // Esperar hasta el momento de spawn
-        while (GetSongTime() < spawnDspTime)
-            yield return null;
-
+        
+        // el tiempo de inicio es el spawnDspTime,
+        // no el tiempo actual del frame
+        double startTime = spawnDspTime;
         float journey = 0f;
-        double movementStartTime = GetSongTime();
-        float movementDuration = travelDistance / speed;
 
         while (journey < 1f)
         {
-            double elapsed = GetSongTime() - movementStartTime;
+            double elapsed = spawner.GetMusicTime() - startTime;
             journey = Mathf.Clamp01((float)(elapsed / movementDuration));
-            transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
+
+            transform.position = new Vector3(
+                Mathf.Lerp(spawnPos.x, hitPos.x, journey),
+                spawnPos.y,
+                spawnPos.z
+            );
+
             yield return null;
         }
 
@@ -64,33 +66,32 @@ public class Note : MonoBehaviour
         Miss();
     }
 
-    public double GetSongTime()
+
+    public void InitializeMovement(double dspSpawn, Vector3 hitPosition, float speedOverride = -1f)
     {
-        if (spawner != null)
-            return spawner.GetMusicTime(); // llama al método público de NoteSpawner
-        return AudioSettings.dspTime;      // fallback
-    }
+        // Fijar posiciones spawn y hit
+        spawnPos = transform.position;
+        hitPos = hitPosition;
 
+        // Distancia solo en X
+        travelDistance = Mathf.Abs(hitPos.x - spawnPos.x);
 
+        // Aplicar speedOverride si existe
+        if (speedOverride > 0)
+            speed = speedOverride;
 
+        // Calcular duración exacta del movimiento
+        movementDuration = travelDistance / speed;
 
-    public void InitializeMovement(double dspSpawn, Vector3 hitPosition)
-    {
-        spawnPos = transform.position;   // posición actual de spawn
-        hitPos = hitPosition;            // posición del hit point
         spawnDspTime = dspSpawn;
-        travelDistance = Vector3.Distance(spawnPos, hitPos);
         initializedMovement = true;
     }
-
 
     public void PaintGridOnHit(string hitType)
     {
         if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
         {
-            // Crear una copia del sprite con alpha ajustado según el hit
             Color color = Color.white;
-
             switch (hitType)
             {
                 case "Perfect!": color.a = 1f; break;
@@ -105,7 +106,6 @@ public class Note : MonoBehaviour
     public void Hit()
     {
         spawner?.UnregisterNote(this);
-        spawner.notesDestroyed++;
         Destroy(gameObject);
     }
 
@@ -118,10 +118,10 @@ public class Note : MonoBehaviour
     public void Miss()
     {
         spawner?.UnregisterNote(this);
-        spawner.notesDestroyed++;
         Destroy(gameObject);
     }
 }
+
 
 
 

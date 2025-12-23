@@ -59,25 +59,29 @@ public class NoteSpawner : MonoBehaviour
         }
 
         StartGame(difficulty);
+
+        
     }
 
     private IEnumerator SpawnNotesCoroutine()
     {
         if (activeNotes.Count == 0)
+        {
             Debug.LogWarning("SpawnNotesCoroutine: activeNotes está vacío!");
+            yield break;
+        }
 
         foreach (var nd in activeNotes)
         {
-            Debug.Log($"[DEBUG] Nota {nd.key} programada para dspTime={nd.spawnDspTime}, AudioSettings.dspTime={AudioSettings.dspTime}");
-
+            // Esperar hasta que FMOD alcance el tiempo de spawn
             while (GetMusicTime() < nd.spawnDspTime)
                 yield return null;
 
             SpawnNote(nd);
         }
 
-        Debug.Log("[DEBUG] Todas las notas procesadas por SpawnNotesCoroutine");
         activeNotes.Clear();
+        Debug.Log("[DEBUG] Todas las notas procesadas por SpawnNotesCoroutine");
     }
 
     public void StartGame(DifficultySettings difficulty = null)
@@ -99,15 +103,23 @@ public class NoteSpawner : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
+       
         if (countdownText != null)
             countdownText.gameObject.SetActive(true);
 
         float timer = countdownTime;
-
         while (timer > 0)
         {
             if (countdownText != null)
                 countdownText.text = Mathf.CeilToInt(timer).ToString();
+
+            //tiempo FMOD durante countdown
+            if (beatSpawner != null && beatSpawner.MusicInstance.isValid())
+            {
+                beatSpawner.MusicInstance.getTimelinePosition(out int ms);
+                double fmodTime = ms / 1000.0;
+                Debug.Log($" FMOD timeline = {fmodTime:F3}s, countdown = {timer}");
+            }
 
             yield return new WaitForSeconds(1f);
             timer--;
@@ -121,14 +133,15 @@ public class NoteSpawner : MonoBehaviour
             countdownText.gameObject.SetActive(false);
         }
 
+        //Ahora calculamos spawnDspTime y empezamos a spawnear notas
         BeginGameplay();
     }
+
 
     private void BeginGameplay()
     {
         // Obtener BeatNoteSpawner
         beatSpawner = FindObjectOfType<BeatNoteSpawner>();
-
         if (beatSpawner == null)
         {
             Debug.LogError("No se encontró BeatNoteSpawner en la escena.");
@@ -139,41 +152,90 @@ public class NoteSpawner : MonoBehaviour
         gameStarted = true;
         songTimer = 0f;
         activeNotes.Clear();
-
-        // Usar solo las notas definidas en la lista (del inspector)
         activeNotes.AddRange(notes);
 
-        // Iniciar canción primero
-        beatSpawner.PlayMusic(0.05); // dspDelay de 50ms FMOD
+        // Iniciar la música FMOD
+        beatSpawner.PlayMusic(); // la canción empieza ahora
 
-        // Calcular spawnDspTime para cada nota
-        for (int i = 0; i < activeNotes.Count; i++)
+        float spawnX = -16f;  // tu spawn point
+        float hitX = -1.44f;  // hit point fijo
+        float travelDistance = Mathf.Abs(hitX - spawnX);
+        float travelTime = travelDistance / currentDifficulty.noteSpeed;
+
+        // Calcular spawnDspTime de cada nota
+        for (int i = 0; i < activeNotes.Count && i < beatSpawner.beatData.beats.Count; i++)
         {
             NoteData nd = activeNotes[i];
+            double beatTime = beatSpawner.beatData.beats[i]; // tiempo de llegada al hit
+            nd.time = (float)beatTime;
 
-            // nd.time = momento (en segundos) en que la nota debe llegar al hit point
-            // spawnDspTime = momento absoluto DSP en que la nota debe aparecer
-            nd.spawnDspTime = beatSpawner.songStartDspTime + nd.time;
+            // spawnDspTime absoluto usando FMOD + offset
+            nd.spawnDspTime = beatSpawner.songStartDspTime + beatTime - travelTime;
 
-            Debug.Log($"[DEBUG] Nota {nd.key} spawnDspTime={nd.spawnDspTime}, tiempo actual DSP={AudioSettings.dspTime}");
+            // Asegurar que spawnDspTime no sea menor que songStartDspTime
+            if (nd.spawnDspTime < beatSpawner.songStartDspTime)
+                nd.spawnDspTime = beatSpawner.songStartDspTime;
+
+            double minSpawnTime = beatSpawner.songStartDspTime + 0.1;
+            if (nd.spawnDspTime < minSpawnTime)
+                nd.spawnDspTime = minSpawnTime;
+
+            Debug.Log($"[DEBUG] Nota {nd.key} spawnDspTime={nd.spawnDspTime}, llegada={nd.time}, travelTime={travelTime}");
         }
 
-        // Detener coroutine anterior si existía
+        // Ajustar automáticamente primeras 3 notas según delay real de Unity
+        StartCoroutine(AdjustFirstNotesDelay());
+
+        // Asegurar que las notas estén ordenadas por spawnDspTime
+        activeNotes.Sort((a, b) => a.spawnDspTime.CompareTo(b.spawnDspTime));
+
+        // Iniciar coroutine de spawn de notas
         if (spawnCoroutine != null)
             StopCoroutine(spawnCoroutine);
 
-        // Iniciar coroutine para spawnear notas
         spawnCoroutine = StartCoroutine(SpawnNotesCoroutine());
 
         // Actualizar ScoreManager
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-        Debug.Log($"Juego iniciado con {activeNotes.Count} notas definidas en la lista.");
 
         // Notificar a GameManager que el juego comenzó
         FindObjectOfType<GameManager>()?.OnGameStarted();
     }
 
+    private IEnumerator AdjustFirstNotesDelay()
+    {
+        // Esperar 1 frame para que Unity procese spawn y coroutines
+        yield return null;
 
+        for (int i = 0; i < Mathf.Min(3, activeNotes.Count); i++)
+        {
+            NoteData nd = activeNotes[i];
+            double delta = GetMusicTime() - nd.spawnDspTime;
+            Debug.Log($"[DEBUG AUTO-ADJUST] Nota {nd.key} delta={delta:F4}s");
+
+            // Si hay delay positivo, adelantar spawn
+            if (delta > 0)
+            {
+                nd.spawnDspTime += delta;
+                Debug.Log($"[DEBUG AUTO-ADJUST] Nota {nd.key} spawnDspTime ajustado a {nd.spawnDspTime:F4}");
+            }
+        }
+    }
+
+
+
+
+
+
+    // Método para obtener tiempo actual de la canción FMOD
+    public double GetMusicTime()
+    {
+        if (beatSpawner == null || !beatSpawner.MusicInstance.isValid())
+            return 0;
+
+        beatSpawner.MusicInstance.getTimelinePosition(out int ms);
+        return ms / 1000.0; // convertir ms a segundos
+    }
 
     private Transform GetSpawnPoint(NoteKey key)
     {
@@ -190,7 +252,6 @@ public class NoteSpawner : MonoBehaviour
 
     void SpawnNote(NoteData data)
     {
-        // Obtener spawn point según la tecla
         Transform spawnPoint = GetSpawnPoint(data.key);
         GameObject prefab = data.key switch
         {
@@ -206,18 +267,13 @@ public class NoteSpawner : MonoBehaviour
         Debug.Log($"[DEBUG] spawnPoint={spawnPoint}, prefab={prefab}");
 
         if (spawnPoint == null)
-        {
             Debug.LogWarning($"SpawnNote: spawnPoint es null para {data.key}");
-            return;
-        }
-
         if (prefab == null)
-        {
             Debug.LogWarning($"SpawnNote: prefab es null para {data.key}");
-            return;
-        }
 
-        // Instanciar la nota
+        if (spawnPoint == null || prefab == null)
+            return;
+
         var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         var note = obj.GetComponent<Note>();
         if (note == null)
@@ -226,25 +282,16 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
-        // Inicializar nota
         note.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
         note.speed = currentDifficulty.noteSpeed;
-
-        // Calcular posición del hit point (puedes ajustarlo según tu layout)
-        Vector3 hitPosition = new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z);
-
-        // Inicializar movimiento sincronizado con FMOD
-        note.InitializeMovement(data.spawnDspTime, hitPosition);
+        note.InitializeMovement(data.spawnDspTime, new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z));
         note.StartMovement();
 
-        // Registrar nota para control de destrucción
         RegisterSpawnedNote(note);
 
-        // Si la nota es un slider
         if (data.isSlider)
         {
             currentSliderNote = note;
-
             var spriteRenderer = obj.GetComponent<SpriteRenderer>();
             if (spriteRenderer != null) spriteRenderer.enabled = false;
 
@@ -257,7 +304,6 @@ public class NoteSpawner : MonoBehaviour
             hitSlider.Activate();
         }
     }
-
 
     public void RegisterSpawnedNote(Note note)
     {
@@ -308,15 +354,5 @@ public class NoteSpawner : MonoBehaviour
             currentSliderNote = null;
         }
     }
-
-    public double GetMusicTime()
-    {
-        if (beatSpawner == null || !beatSpawner.MusicInstance.isValid())
-            return AudioSettings.dspTime; // fallback
-
-        beatSpawner.MusicInstance.getTimelinePosition(out int ms);
-        return ms / 1000.0; // convertir ms a segundos
-    }
-
 }
 
