@@ -115,14 +115,18 @@ public class NoteSpawner : MonoBehaviour
 
         if (countdownText != null)
         {
-            string goText = LeanLocalization.GetTranslationText("StartGo");
-            countdownText.text = goText != null ? goText : "GO!";
-            yield return new WaitForSeconds(0.7f);
-            countdownText.gameObject.SetActive(false);
+            if (countdownText != null)
+            {
+                string goText = LeanLocalization.GetTranslationText("StartGo");
+                countdownText.text = goText != null ? goText : "GO!";
+                yield return new WaitForSeconds(0.7f);
+                countdownText.gameObject.SetActive(false);
+            }
+            BeginGameplay();
         }
-
-        BeginGameplay();
+        
     }
+
 
     private void BeginGameplay()
     {
@@ -143,19 +147,28 @@ public class NoteSpawner : MonoBehaviour
         // Usar solo las notas definidas en la lista (del inspector)
         activeNotes.AddRange(notes);
 
-        // Iniciar canción primero
-        beatSpawner.PlayMusic(0.05); // dspDelay de 50ms FMOD
+        
 
-        // Calcular spawnDspTime para cada nota
-        for (int i = 0; i < activeNotes.Count; i++)
+        float spawnX = -16f;  // tu spawn point
+        float hitX = -1.44f;  // hit point fijo
+        float travelDistance = Mathf.Abs(hitX - spawnX);
+        float travelTime = travelDistance / currentDifficulty.noteSpeed;
+
+        // Calcular spawnDspTime de cada nota
+        for (int i = 0; i < activeNotes.Count && i < beatSpawner.beatData.beats.Count; i++)
         {
             NoteData nd = activeNotes[i];
+            double beatTime = beatSpawner.beatData.beats[i]; // tiempo de llegada al hit
+            nd.time = (float)beatTime;
 
-            // nd.time = momento (en segundos) en que la nota debe llegar al hit point
-            // spawnDspTime = momento absoluto DSP en que la nota debe aparecer
-            nd.spawnDspTime = beatSpawner.songStartDspTime + nd.time;
+            // spawnDspTime absoluto usando FMOD + offset
+            nd.spawnDspTime = beatSpawner.songStartDspTime + beatTime - travelTime;
 
-            Debug.Log($"[DEBUG] Nota {nd.key} spawnDspTime={nd.spawnDspTime}, tiempo actual DSP={AudioSettings.dspTime}");
+            // Asegurarse de que spawnDspTime no sea menor que songStartDspTime
+            if (nd.spawnDspTime < beatSpawner.songStartDspTime)
+                nd.spawnDspTime = beatSpawner.songStartDspTime;
+
+            Debug.Log($"[DEBUG] Nota {nd.key} spawnDspTime={nd.spawnDspTime}, llegada={nd.time}, travelTime={travelTime}");
         }
 
         // Detener coroutine anterior si existía
@@ -164,6 +177,9 @@ public class NoteSpawner : MonoBehaviour
 
         // Iniciar coroutine para spawnear notas
         spawnCoroutine = StartCoroutine(SpawnNotesCoroutine());
+
+        // Iniciar canción primero
+        beatSpawner.PlayMusic(); 
 
         // Actualizar ScoreManager
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
@@ -234,7 +250,7 @@ public class NoteSpawner : MonoBehaviour
         Vector3 hitPosition = new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z);
 
         // Inicializar movimiento sincronizado con FMOD
-        note.InitializeMovement(data.spawnDspTime, hitPosition);
+        note.InitializeMovement(spawnPoint.position, hitPosition, data.spawnDspTime);
         note.StartMovement();
 
         // Registrar nota para control de destrucción

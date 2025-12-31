@@ -12,7 +12,7 @@ public class BeatNoteSpawner : MonoBehaviour
 
     public string beatmapFileName = ""; // archivo en StreamingAssets
 
-    private BeatData beatData;
+    public BeatData beatData;
 
     [HideInInspector] public double songStartDspTime;
     private float travelTime;
@@ -76,11 +76,11 @@ public class BeatNoteSpawner : MonoBehaviour
         beatData = JsonUtility.FromJson<BeatData>(json);
     }
 
-    public void PlayMusic(double dspDelay = 0.1)
+    public void PlayMusic()
     {
         musicInstance = RuntimeManager.CreateInstance(musicEvent);
 
-        double dspTime = AudioSettings.dspTime + dspDelay;
+        double dspTime = AudioSettings.dspTime;
         musicInstance.start(); // FMOD no tiene PlayScheduled como AudioSource
         songStartDspTime = dspTime;
     }

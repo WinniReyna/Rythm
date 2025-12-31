@@ -44,10 +44,6 @@ public class Note : MonoBehaviour
 
     private IEnumerator MoveNoteCoroutine()
     {
-        // Esperar hasta el momento de spawn
-        while (GetSongTime() < spawnDspTime)
-            yield return null;
-
         float journey = 0f;
         double movementStartTime = GetSongTime();
         float movementDuration = travelDistance / speed;
@@ -74,15 +70,18 @@ public class Note : MonoBehaviour
 
 
 
-    public void InitializeMovement(double dspSpawn, Vector3 hitPosition)
+
+    public void InitializeMovement(Vector3 spawnPosition, Vector3 hitPosition, double dspSpawn)
     {
-        spawnPos = transform.position;   // posición actual de spawn
-        hitPos = hitPosition;            // posición del hit point
+        spawnPos = spawnPosition;      // posición real del spawn
+        hitPos = hitPosition;          // hit point
         spawnDspTime = dspSpawn;
         travelDistance = Vector3.Distance(spawnPos, hitPos);
         initializedMovement = true;
-    }
 
+        // Forzar posición inicial
+        transform.position = spawnPos;
+    }
 
     public void PaintGridOnHit(string hitType)
     {
