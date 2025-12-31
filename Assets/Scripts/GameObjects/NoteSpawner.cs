@@ -315,8 +315,10 @@ public class NoteSpawner : MonoBehaviour
         {
             Debug.Log("Falló el slider, puntos pendientes eliminados");
             scoreManager?.ClearPendingPoints();
+            FindObjectOfType<GameManager>()?.RegisterFailedSlider(); 
             notesDestroyed = 0;
         }
+
 
         if (currentSliderNote != null)
         {
