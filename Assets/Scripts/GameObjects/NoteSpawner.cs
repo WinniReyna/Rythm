@@ -74,7 +74,7 @@ public class NoteSpawner : MonoBehaviour
 
         foreach (var nd in activeNotes)
         {
-            Debug.Log($"[DEBUG] Nota {nd.key} programada para dspTime={nd.spawnDspTime}, AudioSettings.dspTime={AudioSettings.dspTime}");
+            Debug.Log($"Nota {nd.key} programada para dspTime={nd.spawnDspTime}, AudioSettings.dspTime={AudioSettings.dspTime}");
 
             while (GetMusicTime() < nd.spawnDspTime)
                 yield return null;
@@ -82,7 +82,7 @@ public class NoteSpawner : MonoBehaviour
             SpawnNote(nd);
         }
 
-        Debug.Log("[DEBUG] Todas las notas procesadas por SpawnNotesCoroutine");
+        Debug.Log("Todas las notas procesadas por SpawnNotesCoroutine");
         activeNotes.Clear();
     }
 
@@ -225,7 +225,7 @@ public class NoteSpawner : MonoBehaviour
         };
 
         // Debug adicional
-        Debug.Log($"[DEBUG] spawnPoint={spawnPoint}, prefab={prefab}");
+        Debug.Log($"spawnPoint={spawnPoint}, prefab={prefab}");
 
         if (spawnPoint == null)
         {

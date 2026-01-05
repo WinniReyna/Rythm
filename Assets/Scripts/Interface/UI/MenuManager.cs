@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     private IMenuPanel currentPanel;
+    [SerializeField] private string cinematicID = "Cinematic0";
+
+    private void Awake()
+    {
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
+    }
 
     public void OpenPanel(GameObject panelObject)
     {
@@ -19,7 +26,16 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        LoadingManager.Instance.LoadScene("GameScene");
+        if (PlayerPrefs.GetInt(cinematicID, 0) == 1)
+        {
+            // Ya se vio vamos directo al juego
+            LoadingManager.Instance.LoadScene("GameScene");
+        }
+        else
+        {
+            // No se ha visto cargamos la cinemática
+            LoadingManager.Instance.LoadScene(cinematicID);
+        }
     }
 
     public void ExitGame()
