@@ -3,27 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class CinematicEndTrigger : MonoBehaviour
 {
-    [Tooltip("NPCSceneData que inicio esta cinemática")]
-    [SerializeField] private NPCSceneData sceneData;
+    // Usamos el nombre de la escena actual como ID único
+    private string cinematicID => SceneManager.GetActiveScene().name;
 
-    // Este método se llama al terminar la cinemática
+    // Se llama al terminar la cinemática
     public void OnCinematicFinished()
     {
-        if (sceneData == null)
-        {
-            Debug.LogError("No hay NPCSceneData asignado.");
-            return;
-        }
+        // Marcar la cinemática como vista
+        PlayerPrefs.SetInt(cinematicID, 1);
+        PlayerPrefs.Save();
 
-        // Si hay minijuego definido, lo cargamos
-        if (!string.IsNullOrEmpty(sceneData.minigameSceneName))
-        {
-            LoadingManager.Instance.LoadScene(sceneData.minigameSceneName);
-            return;
-        }
-
-        // Si no hay minijuego, volvemos a la escena principal
-        GameState.Instance.ReturnToMainScene("MainScene");
+        // Regresar al nivel principal
+        GameState.Instance.ReturnToMainScene("GameScene");
     }
 }
+
 

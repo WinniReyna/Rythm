@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ReturnPointHandler : MonoBehaviour
 {
@@ -55,9 +56,11 @@ public class ReturnPointHandler : MonoBehaviour
     {
         if (saveManager != null)
         {
-            saveManager.ResetSave();
+            saveManager.ResetSave();            
             Debug.Log("Archivo de guardado eliminado mediante ReturnPointHandler.");
-        }
+        }        
     }
+
+
 }
 

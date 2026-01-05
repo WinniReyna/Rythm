@@ -5,8 +5,14 @@ public class TextileData : ScriptableObject
 {
     public int id;
 
-    [Header("Escena asociada (opcional)")]
+    [Header("Escena asociada minijuego")]
     public string sceneName;
+
+    [Tooltip("Escena de la cinemática")]
+    public string cinematicScene;
+
+    [Tooltip("Escena del juego")]
+    public string gameScene;
 
     [Header("Información en Español")]
     public string titleES;

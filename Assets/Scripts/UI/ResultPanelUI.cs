@@ -73,24 +73,49 @@ public class ResultPanelUI : MonoBehaviour
 
     public void ReturnToMainLevel()
     {
+        if (GameManager.Instance != null &&
+            GameManager.Instance.currentTextile != null &&
+            !string.IsNullOrEmpty(GameManager.Instance.currentTextile.cinematicScene))
+        {
+            string cinematicID = GameManager.Instance.currentTextile.cinematicScene;
+
+            // Revisamos si ya se vio la cinemática
+            if (PlayerPrefs.GetInt(cinematicID, 0) == 1)
+            {
+                // Ya se vio regresamos directo al nivel normal
+                LoadMainSceneFallback();
+            }
+            else
+            {
+                // No se ha visto la cargamos
+                GameManager.Instance.LoadCinematic();
+                return;
+            }
+        }
+        else
+        {
+            // No hay cinemática volvemos directo al nivel principal
+            LoadMainSceneFallback();
+        }
+    }
+
+    private void LoadMainSceneFallback()
+    {
         if (GameState.Instance != null)
         {
             GameState.Instance.ReturnToMainScene("GameScene");
         }
+        else if (LoadingManager.Instance != null)
+        {
+            LoadingManager.Instance.LoadScene("GameScene");
+        }
         else
         {
-            // fallback si por algún motivo no hay GameState
-            if (LoadingManager.Instance != null)
-            {
-                LoadingManager.Instance.LoadScene("GameScene");
-            }
-            else
-            {
-                // último recurso: carga directa
-                LoadingManager.Instance.LoadScene("GameScene");
-            }
+            SceneManager.LoadScene("GameScene");
         }
     }
+
+
 }
 
 

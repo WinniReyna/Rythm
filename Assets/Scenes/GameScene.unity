@@ -28346,19 +28346,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1148641736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 829733631}
-        m_TargetAssemblyTypeName: JsonSaveManager, Assembly-CSharp
-        m_MethodName: SaveGameState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1148641736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42530,9 +42518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ed78d4ae45bb8469b6f4c7834f8c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentNPCSceneData: {fileID: 0}
   playerPosition: {x: 0, y: 0, z: 0}
-  lastNPCName: 
   returningFromEvent: 0
 --- !u!1 &1814934036
 GameObject:

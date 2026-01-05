@@ -5,9 +5,9 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
 
-    [HideInInspector] public NPCSceneData currentNPCSceneData;
+    //[HideInInspector] public NPCSceneData currentNPCSceneData;
     [HideInInspector] public Vector3 playerPosition;
-    [HideInInspector] public string lastNPCName;
+    //[HideInInspector] public string lastNPCName;
     [HideInInspector] public bool returningFromEvent = false;
 
     private void Awake()
@@ -25,14 +25,14 @@ public class GameState : MonoBehaviour
 
     public void TriggerScene(NPCSceneData sceneData, Transform player, string npcName)
     {
-        currentNPCSceneData = sceneData;
+        //currentNPCSceneData = sceneData;
         returningFromEvent = false;
 
         if (player != null)
             playerPosition = player.position;
 
 
-        lastNPCName = npcName;
+        //lastNPCName = npcName;
 
         if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
             LoadingManager.Instance.LoadScene(sceneData.cinematicSceneName);
@@ -43,6 +43,7 @@ public class GameState : MonoBehaviour
     public void ReturnToMainScene(string mainSceneName)
     {
         returningFromEvent = true;
+
 
         if (!string.IsNullOrEmpty(mainSceneName) && LoadingManager.Instance != null)
         {

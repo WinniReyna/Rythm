@@ -48,6 +48,12 @@ public class NoteSpawner : MonoBehaviour
     private BeatNoteSpawner beatSpawner;
     private Coroutine spawnCoroutine;
 
+    private void Awake()
+    {
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
+    }
+
     private void Start()
     {
         DifficultySettings difficulty = DifficultyManager.Instance?.CurrentDifficulty;
