@@ -7,15 +7,20 @@ public class HitZone : MonoBehaviour
     [Tooltip("Tecla que se debe presionar cuando una nota está dentro de la zona")]
     [SerializeField] private NoteKey keyToPress;
 
-    [Header("Sprites visuales de la zona (en orden)")]
+    [Tooltip("Feedback")]
+    [SerializeField] private HitFeedbackUI hitFeedbackUI;
+    public NoteKey keyToHandle;
+
+    [Header("Sprites visuales de la zona")]
     [SerializeField] private List<SpriteRenderer> zoneSprites = new List<SpriteRenderer>();
 
     [Header("Colores")]
     [SerializeField] private Color defaultColor = Color.gray;
     [SerializeField] private Color hitColor = Color.white;
 
-    [Header("Rangos de precisión (en unidades del mundo)")]
+    [Header("Rangos de precisión")]
     [SerializeField] private float perfectRange = 0.5f;
+    [SerializeField] private float badRange = 1.5f;
     private float goodRange = 1.0f;
 
     private IInputHandler inputHandler;
@@ -23,6 +28,7 @@ public class HitZone : MonoBehaviour
     private int currentActiveIndex = 0;
 
     private ScoreManager scoreManager;
+
 
     void Start()
     {
@@ -39,16 +45,38 @@ public class HitZone : MonoBehaviour
     {
         var note = collision.GetComponent<Note>();
         if (note != null)
+        {
             currentNote = note;
-
+            note.OnMissed += HandleNoteMissed;
+        }
     }
+
+    public void SubscribeNote(Note note)
+    {
+        note.OnMissed += HandleNoteMissed;
+    }
+
+    private void HandleNoteMissed(Note note)
+    {
+        if (!note.WasHit)
+        {
+            scoreManager.AddHit(50, "Bad!");
+            hitFeedbackUI.Show("Bad!", Color.red);
+            note.PaintGridOnHit("Bad!");
+        }
+    }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         var note = collision.GetComponent<Note>();
         if (note != null && note == currentNote)
+        {
+            note.OnMissed -= HandleNoteMissed;
             currentNote = null;
+        }
     }
+
 
     void Update()
     {
@@ -65,35 +93,41 @@ public class HitZone : MonoBehaviour
 
         int points = 0;
         string hitType = "";
+        Color feedbackColor = Color.white;
 
         if (distance <= perfectRange)
         {
             points = 300;
             hitType = "Perfect!";
+            feedbackColor = Color.yellow;
         }
         else if (distance <= goodRange)
         {
             points = 150;
             hitType = "Good!";
+            feedbackColor = Color.green;
         }
-        else
+        else if (distance <= badRange)
         {
             points = 50;
             hitType = "Bad!";
+            feedbackColor = Color.red;
+        }
+        else
+        {
+            // Demasiado lejos no cuenta como hit
+            return;
         }
 
-        Debug.Log($"Hit: {hitType} | Distancia: {distance:F3}");
 
         scoreManager.AddHit(points, hitType);
 
-        Debug.Log($"Perfect: {scoreManager.GetPerfectPercentage()}% " +
-                $"Good: {scoreManager.GetGoodPercentage()}% " +
-                $"Bad: {scoreManager.GetBadPercentage()}%");
+        hitFeedbackUI.Show(hitType, feedbackColor);
 
-        note.Hit(); // destruye la nota
-
+        note.Hit();
         OnSuccessfulHit();
     }
+
 
     private void OnSuccessfulHit()
     {

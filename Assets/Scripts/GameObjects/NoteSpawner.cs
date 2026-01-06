@@ -259,6 +259,13 @@ public class NoteSpawner : MonoBehaviour
         note.InitializeMovement(spawnPoint.position, hitPosition, data.spawnDspTime);
         note.StartMovement();
 
+        var hitZones = FindObjectsOfType<HitZone>();
+        foreach (var hz in hitZones)
+        {
+            if (hz.keyToHandle == data.key) // Compara la tecla de la nota con el carril
+                hz.SubscribeNote(note);
+        }
+
         // Registrar nota para control de destrucción
         RegisterSpawnedNote(note);
 

@@ -20,9 +20,12 @@ public class Note : MonoBehaviour
     private double spawnDspTime;
     private float travelDistance;
     private bool initializedMovement = false;
+    private HitFeedbackUI hitFeedbackUI;
 
     [HideInInspector] public BeatNoteSpawner beatSpawner;
+    public System.Action<Note> OnMissed;
 
+    public bool WasHit { get; private set; }
 
     public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
     {
@@ -31,9 +34,11 @@ public class Note : MonoBehaviour
         gridY = y;
         paintSprite = sprite;
 
+        hitFeedbackUI = FindObjectOfType<HitFeedbackUI>();
         spawner = FindObjectOfType<NoteSpawner>();
         gridPainter = FindObjectOfType<GridPainter>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        
     }
 
     public void StartMovement()
@@ -56,9 +61,18 @@ public class Note : MonoBehaviour
             yield return null;
         }
 
+        // Llegó al punto final
         transform.position = hitPos;
+
+        if (!WasHit)
+        {
+            OnMissed?.Invoke(this);
+        }
+
         Miss();
+
     }
+
 
     public double GetSongTime()
     {
@@ -103,6 +117,7 @@ public class Note : MonoBehaviour
 
     public void Hit()
     {
+        WasHit = true;
         spawner?.UnregisterNote(this);
         spawner.notesDestroyed++;
         Destroy(gameObject);
