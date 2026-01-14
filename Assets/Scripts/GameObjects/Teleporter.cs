@@ -33,6 +33,8 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [SerializeField] private string lockedMessageEN = "The door is closed.";
     [SerializeField] private MonoBehaviour messageDisplayComponent;
     private IMessageDisplay messageDisplay;
+
+    private ReturnPointHandler returnPointHandler;
     public Vector3 GetTargetPosition() => destination;
     public bool IsLocked => isLocked;
     public string DoorID => doorID;
@@ -40,6 +42,11 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
 
     private void Awake()
     {
+        returnPointHandler = FindObjectOfType<ReturnPointHandler>();
+
+        if (returnPointHandler == null)
+            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta.");
+
         if (fadeImage == null) fadeImage = GetComponent<RawImage>();
         if (!string.IsNullOrEmpty(requiredKeyID)) isLocked = true;
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
@@ -121,6 +128,12 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
                 if (obj != null && obj != objectToActivate)
                     obj.SetActive(false);
             }
+        }
+
+        if (returnPointHandler != null)
+        {
+            returnPointHandler.SaveGameState();
+            Debug.Log("Juego guardado automáticamente tras usar la puerta.");
         }
 
         yield return new WaitForSeconds(1.5f);

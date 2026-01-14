@@ -13,6 +13,15 @@ public class InventoryUIItem : MonoBehaviour
     private InventorySO inventorySO;
     private ItemDatabase itemDatabase;
 
+    private ReturnPointHandler returnPointHandler;
+
+    private void Awake()
+    {
+        returnPointHandler = FindObjectOfType<ReturnPointHandler>();
+        if (returnPointHandler == null)
+            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems.");
+    }
+
     public void Setup(ItemSO itemSO, int quantity, InventorySO inventory, ItemDatabase db)
     {
         if (itemSO == null) return;
@@ -51,6 +60,8 @@ public class InventoryUIItem : MonoBehaviour
                     inventorySO.RemoveItem(itemID, 1);
                     InventoryManager.Instance.RefreshUI();
                     FindObjectOfType<InventorySaveLoad>().SaveInventory();
+
+                    returnPointHandler?.SaveGameState();
                 }
             }
         }
@@ -73,6 +84,8 @@ public class InventoryUIItem : MonoBehaviour
             inventorySO.RemoveItem(itemID, 1);
             InventoryManager.Instance.RefreshUI();
             FindObjectOfType<InventorySaveLoad>().SaveInventory();
+
+            returnPointHandler?.SaveGameState();
         }
 
         if (itemSO.deleteSound != null) AudioSource.PlayClipAtPoint(itemSO.deleteSound, Camera.main.transform.position);      
@@ -93,6 +106,8 @@ public class InventoryUIItem : MonoBehaviour
             inventorySO.RemoveItem(itemID, 1);
             InventoryManager.Instance.RefreshUI();
             FindObjectOfType<InventorySaveLoad>().SaveInventory();
+
+            returnPointHandler?.SaveGameState();
         }
 
         //usar drop sound item

@@ -6,10 +6,16 @@ public class PlayerInteraction : MonoBehaviour
     private DialogueManager dialogueManager;
     private IInputProvider inputProvider;
 
+    private ReturnPointHandler returnPointHandler;
+
     void Start()
     {
         dialogueManager = FindObjectOfType<DialogueManager>();
+        returnPointHandler = FindObjectOfType<ReturnPointHandler>();
         inputProvider = new KeyboardInputProvider();
+
+        if (returnPointHandler == null)
+            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems.");
     }
 
     void Update()
@@ -32,6 +38,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             nearbyInteractable = interactable;
             Debug.Log($"Jugador puede interactuar con {other.name}");
+
+            returnPointHandler?.SaveGameState();
 
             // mostrar UI
             InteractPrompt prompt = other.GetComponent<InteractPrompt>();

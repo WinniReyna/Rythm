@@ -4,13 +4,17 @@ using System.IO;
 public class InventorySaveLoad : MonoBehaviour
 {
     [SerializeField] private InventorySO inventorySO;
-
+    private ReturnPointHandler returnPointHandler;
     private string savePath;
 
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
         LoadInventory();
+
+        returnPointHandler = FindObjectOfType<ReturnPointHandler>();
+        if (returnPointHandler == null)
+            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta.");
     }
 
     public void SaveInventory()
@@ -24,6 +28,13 @@ public class InventorySaveLoad : MonoBehaviour
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Inventario guardado en: " + savePath);
+
+        if (returnPointHandler != null)
+        {
+            returnPointHandler.SaveGameState();
+            Debug.Log("Juego guardado automáticamente tras usar la puerta.");
+        }
+        
     }
 
     public void LoadInventory()
