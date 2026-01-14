@@ -41,10 +41,10 @@ public class PlayerInteraction : MonoBehaviour
 
             returnPointHandler?.SaveGameState();
 
-            // mostrar UI
-            InteractPrompt prompt = other.GetComponent<InteractPrompt>();
-            if (prompt != null)
-                prompt.Show();
+            //Mostrar outliner
+            SpriteOutline outline = other.GetComponentInChildren<SpriteOutline>();
+            if (outline != null)
+                outline.EnableOutline(true);
         }
     }
 
@@ -54,10 +54,10 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log($"Jugador salió del rango de {other.name}");
 
-            // ocultar UI
-            InteractPrompt prompt = other.GetComponent<InteractPrompt>();
-            if (prompt != null)
-                prompt.Hide();
+            //Ocultar outliner
+            SpriteOutline outline = other.GetComponentInChildren<SpriteOutline>();
+            if (outline != null)
+                outline.EnableOutline(false);
 
             nearbyInteractable = null;
 
@@ -71,9 +71,5 @@ public class PlayerInteraction : MonoBehaviour
                 DialogueManager.Instance.EndDialogue();
         }
     }
-
-
-
-
 }
 
