@@ -79,25 +79,25 @@ public class ResultPanelUI : MonoBehaviour
         {
             string cinematicID = GameManager.Instance.currentTextile.cinematicScene;
 
-            // Revisamos si ya se vio la cinemática
             if (PlayerPrefs.GetInt(cinematicID, 0) == 1)
             {
-                // Ya se vio regresamos directo al nivel normal
-                LoadMainSceneFallback();
+                // Ya se vio volvemos al nivel normal con loading
+                LoadingManager.Instance.LoadScene("GameScene");
             }
             else
             {
-                // No se ha visto la cargamos
-                GameManager.Instance.LoadCinematic();
+                // NO se ha visto cargar la cinemática PASANDO por la loading
+                LoadingManager.Instance.LoadScene(cinematicID);
                 return;
             }
         }
         else
         {
-            // No hay cinemática volvemos directo al nivel principal
-            LoadMainSceneFallback();
+            LoadingManager.Instance.LoadScene("GameScene");
         }
     }
+
+
 
     private void LoadMainSceneFallback()
     {
