@@ -50,8 +50,8 @@ public class NoteSpawner : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
     }
 
     private void Start()
