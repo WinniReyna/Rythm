@@ -4,13 +4,12 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private InventoryUI inventoryUI;
+    [SerializeField] private GameObject inventoryPanel; 
+    [SerializeField] private InventoryUI inventoryUI; 
     [SerializeField] private InventorySO inventorySO;
     private InventorySaveLoad saveLoad;
 
     private IInputProvider inputProvider;
-    private bool isOpen = false;
 
     public InventorySO InventorySO => inventorySO;
 
@@ -20,28 +19,43 @@ public class InventoryManager : MonoBehaviour
         else Instance = this;
 
         if (inventoryPanel != null)
-            inventoryPanel.SetActive(isOpen);
+            inventoryPanel.SetActive(false);
 
         saveLoad = FindObjectOfType<InventorySaveLoad>();
-
         inputProvider = new KeyboardInputProvider();
     }
 
     private void Update()
     {
         if (inputProvider.InventoryPanel())
-            ToggleInventory();
+        {
+            if (PauseManager.Instance != null && inventoryPanel != null)
+            {
+                // Si el panel ya es currentPanel, ciérralo
+                if (PauseManager.Instance.CurrentPanel == inventoryPanel.GetComponent<IMenuPanel>()) PauseManager.Instance.CloseCurrentPanel();
+                else PauseManager.Instance.OpenPanel(inventoryPanel);
+                
+            }
+        }
     }
-
-    public void ToggleInventory()
+    private void OpenInventory()
     {
-        isOpen = !isOpen;
-        if (inventoryPanel != null)
-            inventoryPanel.SetActive(isOpen);
+        if (inventoryPanel == null)
+        {
+            Debug.LogWarning("InventoryPanel no asignado!");
+            return;
+        }
 
+        if (PauseManager.Instance == null)
+        {
+            Debug.LogWarning("PauseManager.Instance es null!");
+            return;
+        }
 
-        if (isOpen)
-            RefreshUI();
+        PauseManager.Instance.OpenPanel(inventoryPanel);
+
+        // Actualizamos la UI después de abrirlo
+        RefreshUI();
     }
 
     public void RefreshUI()

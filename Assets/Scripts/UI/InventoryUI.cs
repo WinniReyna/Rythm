@@ -1,29 +1,32 @@
 ﻿using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour, IMenuPanel
 {
     [SerializeField] private Transform itemsParent;
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private InventorySO inventorySO;
     [SerializeField] private ItemDatabase itemDatabase;
 
-    private void OnEnable()
+    public void Open()
     {
-        if (PlayerMovement.Instance != null)
-            PlayerMovement.Instance.canMove = false;
+        gameObject.SetActive(true);
+        RefreshUI();
     }
 
-    private void OnDisable()
+    public void Close()
     {
-        if (PlayerMovement.Instance != null)
-            PlayerMovement.Instance.canMove = true;
+        gameObject.SetActive(false);
     }
 
     public void RefreshUI()
     {
+        if (itemsParent == null || inventorySO == null || itemDatabase == null) return;
+
+        // Limpiar items antiguos
         foreach (Transform child in itemsParent)
             Destroy(child.gameObject);
 
+        // Crear UI de cada item
         foreach (var invItem in inventorySO.items)
         {
             ItemSO itemSO = itemDatabase.GetItemByID(invItem.itemID);
@@ -33,10 +36,8 @@ public class InventoryUI : MonoBehaviour
             InventoryUIItem uiItem = go.GetComponent<InventoryUIItem>();
             uiItem.Setup(itemSO, invItem.quantity, inventorySO, itemDatabase);
         }
-    }   
-
+    }
 }
-
 
 
 
