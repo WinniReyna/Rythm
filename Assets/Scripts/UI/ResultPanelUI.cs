@@ -67,8 +67,12 @@ public class ResultPanelUI : MonoBehaviour
 
         resultPanel.SetActive(true);
 
-        if (songAudio != null && songAudio.isPlaying)
-            songAudio.Stop();
+        // Detener la música FMOD
+        BeatNoteSpawner spawner = FindObjectOfType<BeatNoteSpawner>();
+        if (spawner != null)
+        {
+            spawner.StopMusic(); // Esto detiene y libera la instancia de FMOD
+        }
     }
 
     public void ReturnToMainLevel()
