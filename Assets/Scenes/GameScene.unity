@@ -3608,8 +3608,8 @@ Transform:
   m_GameObject: {fileID: 153767285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -744.4916, y: -498.81, z: 17.1}
-  m_LocalScale: {x: 21.112722, y: -0.00015928404, z: 16.423525}
+  m_LocalPosition: {x: -744.4916, y: -498.81, z: 23.7}
+  m_LocalScale: {x: 15.630171, y: -0.00015928404, z: 11.036281}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 744133318}
@@ -4061,7 +4061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 457.68, y: 1.6, z: 18.06}
+  destination: {x: 456.45, y: 1.9, z: 19.42}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
@@ -9255,7 +9255,7 @@ Transform:
   m_GameObject: {fileID: 374875270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -581.15704, y: -501.33615, z: 62.01489}
+  m_LocalPosition: {x: -577.05707, y: -499.45618, z: 62.78489}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9319,8 +9319,8 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 3.86
-    NearClipPlane: 0.01
+    OrthographicSize: 5.98
+    NearClipPlane: -5
     FarClipPlane: 500
     Dutch: 0
     ModeOverride: 0
@@ -12473,7 +12473,7 @@ Transform:
   m_GameObject: {fileID: 528761657}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -581.15704, y: -501.33615, z: -64.685104}
+  m_LocalPosition: {x: -577.05707, y: -499.45618, z: -63.915108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12537,8 +12537,8 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 3.86
-    NearClipPlane: 0.01
+    OrthographicSize: 4.99
+    NearClipPlane: -5
     FarClipPlane: 500
     Dutch: 0
     ModeOverride: 0
@@ -15244,7 +15244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: -63.57, y: 0.354, z: 90.64}
+  destination: {x: -86.18004, y: 0.3471344, z: 90.63744}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
@@ -31918,8 +31918,8 @@ Transform:
   m_GameObject: {fileID: 1304594862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -744.4916, y: -501.87616, z: 14.852501}
-  m_LocalScale: {x: 21.112722, y: -0.00015928404, z: 16.423525}
+  m_LocalPosition: {x: -744.21, y: -501.87616, z: 14.852501}
+  m_LocalScale: {x: 13.411961, y: -0.00015928404, z: 1.6976998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 251991408}
@@ -37228,7 +37228,7 @@ Transform:
   m_GameObject: {fileID: 1555465402}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3998239, y: 0, z: 0, w: 0.916592}
-  m_LocalPosition: {x: -746.35706, y: -498.5905, z: 8.374275}
+  m_LocalPosition: {x: -733.9352, y: -496.9917, z: 12.796055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37813,15 +37813,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96
+      value: 456.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.78
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.27
+      value: 19.42
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c8d05cd3ad96ea4ab1b5d04d425d3e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39352,7 +39352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5053780e4e01e554da0571550bf4a968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 92.6, y: -0.13, z: 11.3}
+  destination: {x: 81.98, y: 1.78, z: 13.27}
   fadeAnimator: {fileID: 652112084}
   fadeOutDuration: 1
   fadeInDuration: 1
@@ -45951,8 +45951,8 @@ Transform:
   m_GameObject: {fileID: 1883488981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -744.4916, y: -501.87616, z: 14.852501}
-  m_LocalScale: {x: 21.112722, y: -0.00015928404, z: 16.423525}
+  m_LocalPosition: {x: -744.4916, y: -501.87616, z: 15.2}
+  m_LocalScale: {x: 17.37356, y: -0.00015928404, z: 11.071426}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567684668}
@@ -51739,7 +51739,7 @@ Transform:
   m_GameObject: {fileID: 2075296043}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -746.35706, y: -497.76328, z: 9.916351}
+  m_LocalPosition: {x: -385.90704, y: -495.8237, z: 15.753738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
