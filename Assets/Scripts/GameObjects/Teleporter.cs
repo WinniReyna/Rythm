@@ -89,14 +89,16 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     }
 
 
-    public void Unlock()
+    public void Unlock(GameObject player)
     {
-        if (isLocked)
-        {
-            isLocked = false;
-            Debug.Log($"Puerta desbloqueada ({requiredKeyID})");
-        }
+        if (!isLocked) return;
+
+        isLocked = false;
+        Debug.Log($"Puerta desbloqueada ({requiredKeyID})");
+
+        TeleportPlayer(player);
     }
+
 
     private IEnumerator TeleportRoutine(GameObject player)
     {
@@ -156,4 +158,15 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     {
         return isLocked;
     }
+
+    public void TeleportPlayer(GameObject player)
+    {
+        if (isLocked) return;
+
+        if (doorSound != null && audioSource != null)
+            audioSource.PlayOneShot(doorSound);
+
+        StartCoroutine(TeleportRoutine(player));
+    }
+
 }

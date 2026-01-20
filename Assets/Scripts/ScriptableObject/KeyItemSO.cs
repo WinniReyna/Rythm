@@ -16,14 +16,14 @@ public class KeyItemSO : ItemSO, IUsableItem
             return false;
         }
 
-        // Revisar si es un Teleporter
         if (interactable is Teleporter teleporter)
         {
             if (teleporter.IsLocked && teleporter.RequiredKeyID == keyID)
             {
-                teleporter.Unlock();
+                teleporter.Unlock(player.gameObject);
+
                 Debug.Log($"Puerta desbloqueada con {GetItemName()}");
-                return true; // consumido
+                return true; // consumir llave
             }
             else
             {
@@ -35,5 +35,6 @@ public class KeyItemSO : ItemSO, IUsableItem
         Debug.Log("No se puede usar la llave aquí.");
         return false;
     }
+
 }
 
