@@ -85,6 +85,23 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
+
+    public void SetFrozen(bool frozen)
+    {
+        canMove = !frozen;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+            rb.linearVelocity = Vector3.zero;
+
+        PlayerAnimator anim = GetComponent<PlayerAnimator>();
+        if (anim != null)
+        {
+            anim.SetSpeed(0f);
+            anim.SetRunning(false);
+        }
+    }
+
     #endregion
 
     #region Salto

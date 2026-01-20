@@ -15,31 +15,31 @@ public class DialogueObject : MonoBehaviour, IInteractable
     public virtual void Interact()
     {
         var manager = DialogueManager.Instance;
-        if (manager != null && dialogueData != null)
+        if (manager == null || dialogueData == null)
+            return;
+
+        manager.OnDialogueEnded = null;
+        manager.StartDialogue(dialogueData);
+
+        if (sceneData != null)
         {
-            manager.StartDialogue(dialogueData);
-
-            if (sceneData != null)
+            manager.OnDialogueEnded += () =>
             {
-                manager.OnDialogueEnded += () =>
+                var returnPointHandler = FindObjectOfType<ReturnPointHandler>();
+                if (returnPointHandler != null)
                 {
-                    // Guardar estado antes de cambiar de escena
-                    var returnPointHandler = FindObjectOfType<ReturnPointHandler>();
-                    if (returnPointHandler != null)
-                    {
-                        returnPointHandler.SaveGameState();
-                        Debug.Log("Estado del juego guardado antes de cambiar de escena.");
-                    }
+                    returnPointHandler.SaveGameState();
+                    Debug.Log("Estado del juego guardado antes de cambiar de escena.");
+                }
 
-                    // Obtener jugador para pasar a GameState
-                    var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
-                    string npcName = dialogueData != null ? dialogueData.GetNpcName() : gameObject.name;
+                var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
+                string npcName = dialogueData != null ? dialogueData.GetNpcName() : gameObject.name;
 
-                    GameState.Instance.TriggerScene(sceneData, player, npcName);
-                };
-            }
+                GameState.Instance.TriggerScene(sceneData, player, npcName);
+            };
         }
     }
+
 
     /// <summary>
     /// Cambiar a cinemática o minijuego usando GameState o SceneManager

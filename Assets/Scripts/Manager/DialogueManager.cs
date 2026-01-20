@@ -24,7 +24,6 @@ public class DialogueManager : MonoBehaviour
     private DialogueData currentDialogue;
     private IInputProvider inputProvider;
     private int currentLineIndex = 0;
-    private Action onDialogueEnd;
 
     private bool rewardShown = false;
 
@@ -60,16 +59,17 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogue = dialogue;
         currentLineIndex = 0;
-        rewardShown = false; 
+        rewardShown = false;
         dialoguePanel.SetActive(true);
 
         npcNameText.text = dialogue.GetNpcName();
 
         if (PlayerMovement.Instance != null)
-            PlayerMovement.Instance.canMove = false;
+            PlayerMovement.Instance.SetFrozen(true);
 
         ShowLine();
     }
+
 
     private void ShowLine()
     {
@@ -193,10 +193,12 @@ public class DialogueManager : MonoBehaviour
         if (continueText != null) continueText.gameObject.SetActive(false);
 
         if (PlayerMovement.Instance != null)
-            PlayerMovement.Instance.canMove = true;
+            PlayerMovement.Instance.SetFrozen(false);
 
         currentDialogue = null;
-        onDialogueEnd?.Invoke();
-        onDialogueEnd = null;
+
+        OnDialogueEnded?.Invoke();
+        OnDialogueEnded = null;
     }
+
 }

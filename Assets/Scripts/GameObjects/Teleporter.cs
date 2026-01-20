@@ -88,6 +88,7 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         StartCoroutine(TeleportRoutine(player));
     }
 
+
     public void Unlock()
     {
         if (isLocked)
