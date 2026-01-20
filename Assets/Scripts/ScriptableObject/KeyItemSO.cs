@@ -19,22 +19,20 @@ public class KeyItemSO : ItemSO, IUsableItem
         if (interactable is Teleporter teleporter)
         {
             if (teleporter.IsLocked && teleporter.RequiredKeyID == keyID)
-            {
+            {                
+                PauseManager.Instance?.CloseCurrentPanel();
+
                 teleporter.Unlock(player.gameObject);
 
                 Debug.Log($"Puerta desbloqueada con {GetItemName()}");
-                return true; // consumir llave
-            }
-            else
-            {
-                Debug.Log("La llave no encaja aquí.");
-                return false;
+                return true;
             }
         }
 
-        Debug.Log("No se puede usar la llave aquí.");
+        Debug.Log("No se puede usar la llave aqui.");
         return false;
     }
+
 
 }
 
