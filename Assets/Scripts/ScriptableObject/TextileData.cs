@@ -24,8 +24,6 @@ public class TextileData : ScriptableObject
 
     public Texture2D image;
 
-    
-
     // Método para obtener el texto según el idioma actual
     public string GetTitle()
     {

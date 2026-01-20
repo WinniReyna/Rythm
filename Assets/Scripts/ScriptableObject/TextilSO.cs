@@ -23,7 +23,7 @@ public class TextilSO : ItemSO, IUsableItem
             if (!string.IsNullOrEmpty(targetSceneName))
             {
                 Debug.Log($"Usando {GetItemName()} en el telar, cambiando a escena {targetSceneName}");
-                SceneManager.LoadScene(targetSceneName);
+                LoadingManager.Instance.LoadScene(targetSceneName);
                 return true; // objeto consumido
             }
             else
