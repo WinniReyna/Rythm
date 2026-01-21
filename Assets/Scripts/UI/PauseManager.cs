@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject mapPanel;
 
     private IMenuPanel currentPanel;
     private bool isPaused = false;
@@ -31,12 +32,22 @@ public class PauseManager : MonoBehaviour
     {
         if (inputProvider.PausePressed())
         {
-           
             IMenuPanel pausePanel = pauseMenuPanel.GetComponent<IMenuPanel>();
 
-            if (currentPanel == pausePanel) CloseCurrentPanel();
-            else OpenPanel(pauseMenuPanel);
-            
+            if (currentPanel == pausePanel)
+                CloseCurrentPanel();
+            else
+                OpenPanel(pauseMenuPanel);
+        }
+
+        if (inputProvider.MapPressed())
+        {
+            IMenuPanel mapMenu = mapPanel.GetComponent<IMenuPanel>();
+
+            if (currentPanel == mapMenu)
+                CloseCurrentPanel();
+            else
+                OpenPanel(mapPanel);
         }
     }
 

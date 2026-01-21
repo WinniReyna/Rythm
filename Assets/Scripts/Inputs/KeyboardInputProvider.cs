@@ -9,4 +9,5 @@ public class KeyboardInputProvider : IInputProvider
     public bool InventoryPanel() => Input.GetKeyDown(KeyCode.I);
     public bool PausePressed() => Input.GetKeyDown(KeyCode.Escape);
     public bool DialogueLine() => Input.GetKeyDown(KeyCode.Space);
+    public bool MapPressed() => Input.GetKeyDown(KeyCode.M);
 }

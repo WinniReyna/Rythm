@@ -9,4 +9,6 @@ public interface IInputProvider
     bool PausePressed();
 
     bool DialogueLine();
+
+    bool MapPressed();
 }

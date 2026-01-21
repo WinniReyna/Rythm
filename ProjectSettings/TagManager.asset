@@ -22,9 +22,9 @@ TagManager:
   - Player
   - GridCapture
   - PigArea
-  - 
-  - 
-  - 
+  - House
+  - Enviroment
+  - Teleporter
   - 
   - 
   - 
@@ -45,6 +45,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: House
+    uniqueID: 4252496303
+    locked: 0
+  - name: Enviroment
+    uniqueID: 3847168771
+    locked: 0
+  - name: Teleporter
+    uniqueID: 3524065583
     locked: 0
   m_RenderingLayers:
   - Default
