@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +7,9 @@ public class PauseManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject mapPanel;
+
+    [Header("Panels que no deben cerrar la pausa")]
+    [SerializeField] private GameObject[] internalUIPanels;
 
     private IMenuPanel currentPanel;
     private bool isPaused = false;
@@ -28,22 +31,32 @@ public class PauseManager : MonoBehaviour
         inputProvider = new KeyboardInputProvider();
     }
 
-    void Update()
+    private void Update()
     {
+        // ESC pressed
         if (inputProvider.PausePressed())
         {
             IMenuPanel pausePanel = pauseMenuPanel.GetComponent<IMenuPanel>();
 
-            if (currentPanel == pausePanel)
-                CloseCurrentPanel();
+            // Si el current panel es un panel interno cerrar TODO
+            if (currentPanel != null && IsInternalUIPanel(currentPanel))
+            {
+                CloseAllPanels();
+            }
             else
-                OpenPanel(pauseMenuPanel);
+            {
+                // Abrir/cerrar pausa normal
+                if (currentPanel == pausePanel)
+                    CloseCurrentPanel();
+                else
+                    OpenPanel(pauseMenuPanel);
+            }
         }
 
+        // Map 
         if (inputProvider.MapPressed())
         {
             IMenuPanel mapMenu = mapPanel.GetComponent<IMenuPanel>();
-
             if (currentPanel == mapMenu)
                 CloseCurrentPanel();
             else
@@ -61,6 +74,16 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
     }
 
+    private bool IsInternalUIPanel(IMenuPanel panel)
+    {
+        foreach (var go in internalUIPanels)
+        {
+            if (go == null) continue;
+            if (go.GetComponent<IMenuPanel>() == panel)
+                return true;
+        }
+        return false;
+    }
 
     public IMenuPanel CurrentPanel => currentPanel;
 
@@ -78,13 +101,13 @@ public class PauseManager : MonoBehaviour
         if (panelObject == null) return;
 
         IMenuPanel panel = panelObject.GetComponent<IMenuPanel>();
-        if (panel == null)
-        {
-            Debug.LogWarning($"El GameObject {panelObject.name} no implementa IMenuPanel");
-            return;
-        }
+        if (panel == null) return;
 
-        if (currentPanel != null && currentPanel != panel) CloseCurrentPanel();
+        if (currentPanel != null && currentPanel != panel)
+        {
+            if (!(currentPanel == pauseMenuPanel.GetComponent<IMenuPanel>() && IsInternalUIPanel(panel)))
+                CloseCurrentPanel();
+        }
 
         currentPanel = panel;
         panelStack.Push(panel);
@@ -93,6 +116,8 @@ public class PauseManager : MonoBehaviour
             PlayerMovement.Instance.canMove = false;
 
         currentPanel.Open();
+
+        Time.timeScale = panelStack.Contains(pauseMenuPanel.GetComponent<IMenuPanel>()) ? 0f : 1f;
     }
 
     public void CloseCurrentPanel()
@@ -106,13 +131,37 @@ public class PauseManager : MonoBehaviour
 
         if (panelStack.Count == 0)
         {
-            isPaused = false;
-            Time.timeScale = 1f;
-
             if (PlayerMovement.Instance != null)
                 PlayerMovement.Instance.canMove = true;
+
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            if (PlayerMovement.Instance != null)
+                PlayerMovement.Instance.canMove = false;
+
+            Time.timeScale = panelStack.Contains(pauseMenuPanel.GetComponent<IMenuPanel>()) ? 0f : 1f;
         }
     }
+
+    // cerrar todos los paneles abiertos.
+    public void CloseAllPanels()
+    {
+        while (panelStack.Count > 0)
+        {
+            IMenuPanel panel = panelStack.Pop();
+            panel.Close();
+        }
+
+        currentPanel = null;
+
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = true;
+
+        Time.timeScale = 1f;
+    }
+
 
     public void ExitToMainMenu()
     {

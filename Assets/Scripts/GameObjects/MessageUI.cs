@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-public class MessageUI : MonoBehaviour, IMessageDisplay, IMenuPanel
+public class MessageUI : MonoBehaviour, IMessageDisplay
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text messageText;
@@ -15,17 +15,6 @@ public class MessageUI : MonoBehaviour, IMessageDisplay, IMenuPanel
             panel.SetActive(false);
     }
 
-    public void Open()
-    {
-        if (panel != null)
-            panel.SetActive(true);
-    }
-
-    public void Close()
-    {
-        HideMessage();
-    }
-
     public void ShowMessage(string text, float duration = 2f)
     {
         if (panel == null || messageText == null)
@@ -34,8 +23,7 @@ public class MessageUI : MonoBehaviour, IMessageDisplay, IMenuPanel
         if (hideRoutine != null)
             StopCoroutine(hideRoutine);
 
-        PauseManager.Instance.OpenPanel(gameObject);
-
+        panel.SetActive(true);
         messageText.text = text;
 
         if (duration > 0f)
@@ -56,16 +44,7 @@ public class MessageUI : MonoBehaviour, IMessageDisplay, IMenuPanel
 
     private IEnumerator HideAfterTime(float time)
     {
-        yield return new WaitForSeconds(time);
-
-        if (PauseManager.Instance != null &&
-            PauseManager.Instance.CurrentPanel == this)
-        {
-            PauseManager.Instance.CloseCurrentPanel();
-        }
-        else
-        {
-            HideMessage();
-        }
+        yield return new WaitForSecondsRealtime(time);
+        HideMessage();
     }
 }
