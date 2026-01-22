@@ -61,7 +61,7 @@ public class QuestGiver : DialogueObject
             case QuestType.TalkToNPC:
                 dialogueManager.StartDialogue(quest.dialogueStart);
                 questManager.StartQuest(quest.questID);
-                Debug.Log($"Misión '{quest.questName}' iniciada correctamente.");
+                Debug.Log($"Misión '{quest.questName}' iniciada correctamente");
                 break;
 
             default:

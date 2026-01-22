@@ -109,7 +109,6 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // --- Respuestas normales ---
         if (line.responses != null && line.responses.Length > 0)
         {
             foreach (DialogueResponse response in line.responses)

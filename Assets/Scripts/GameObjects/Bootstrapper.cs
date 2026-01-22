@@ -8,11 +8,8 @@ public class Bootstrapper : MonoBehaviour
 
     private void Start()
     {
-        // Cargar la primera escena del juego después de PersistentScene
-        if (!string.IsNullOrEmpty(firstScene))
-        {
-            // Usamos Additive para no cerrar PersistentScene
+        if (!string.IsNullOrEmpty(firstScene))        
             SceneManager.LoadScene(firstScene, LoadSceneMode.Additive);
-        }
+        
     }
 }

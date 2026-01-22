@@ -11,7 +11,7 @@ public class DialogueLine
     public Texture2D icon;
     public AudioClip npcVoice;
 
-    [Header("Respuestas del jugador (opcional)")]
+    [Header("Respuestas del jugador opcional")]
     public DialogueResponse[] responses;
 
     public string GetText()

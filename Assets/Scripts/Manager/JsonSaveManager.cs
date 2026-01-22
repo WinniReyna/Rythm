@@ -60,7 +60,7 @@ public class JsonSaveManager : MonoBehaviour
     {
         if (!File.Exists(saveFilePath))
         {
-            Debug.Log("No se encontró archivo de guardado. Se cargará estado por defecto.");
+            Debug.Log("No se encontró archivo de guardado. Se cargará estado por defecto");
             return;
         }
 
@@ -84,7 +84,7 @@ public class JsonSaveManager : MonoBehaviour
                 door.SetLocked(savedDoor.isLocked); // Necesitamos método público SetLocked
         }
 
-        Debug.Log("Juego cargado desde JSON.");
+        Debug.Log("Juego cargado desde JSON");
     }
     #endregion
 
@@ -106,7 +106,7 @@ public class JsonSaveManager : MonoBehaviour
         if (File.Exists(saveFilePath))
             File.Delete(saveFilePath);
 
-        Debug.Log("Archivo de guardado eliminado.");
+        Debug.Log("Archivo de guardado eliminado");
     }
     #endregion
 }

@@ -19,22 +19,16 @@ public class CollectibleBook : MonoBehaviour, IInteractable
     {
         if (library == null || book == null) return;
 
-        // Esperar a que los datos se carguen
         library.LoadLibrary();
 
-        // Si ya existe el libro en la lista lo ocultamos
-        if (library.foundBooks.Contains(book))
-        {
-            //Debug.Log($" Libro '{book.bookTitle}' ya fue recolectado. Ocultando objeto...");
-            gameObject.SetActive(false);
-        }
+        if (library.foundBooks.Contains(book)) gameObject.SetActive(false);
+        
     }
 
     public void Interact()
     {
         if (book == null || library == null) return;
 
-        // Agregar libro solo si no está en la lista
         if (!library.foundBooks.Contains(book))
         {
             library.AddBook(book);
@@ -43,7 +37,6 @@ public class CollectibleBook : MonoBehaviour, IInteractable
                 AudioSource.PlayClipAtPoint(book.pickupSound, transform.position);
 
             Destroy(gameObject);
-            //Debug.Log($" Libro recogido: {book.bookTitle}");
         }
         else
         {

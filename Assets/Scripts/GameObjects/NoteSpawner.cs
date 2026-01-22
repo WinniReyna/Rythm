@@ -20,7 +20,7 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private Transform spawnPointShiftLeft;
     [SerializeField] private Transform spawnPointSpace;
 
-    [Header("Lista de notas (nivel)")]
+    [Header("Lista de notas")]
     public List<NoteData> notes;
 
     [Header("Slider Hit")]
@@ -94,7 +94,7 @@ public class NoteSpawner : MonoBehaviour
 
             if (difficulty == null)
             {
-                Debug.LogWarning("No se encontró dificultad en DifficultyManager. Se usará configuración por defecto.");
+                Debug.LogWarning("No se encontró dificultad en DifficultyManager. Se usará configuración por defecto");
                 difficulty = ScriptableObject.CreateInstance<DifficultySettings>();
             }
         }
@@ -141,7 +141,7 @@ public class NoteSpawner : MonoBehaviour
 
         if (beatSpawner == null)
         {
-            Debug.LogError("No se encontró BeatNoteSpawner en la escena.");
+            Debug.LogError("No se encontró BeatNoteSpawner en la escena");
             return;
         }
 
@@ -174,7 +174,7 @@ public class NoteSpawner : MonoBehaviour
             if (nd.spawnDspTime < beatSpawner.songStartDspTime)
                 nd.spawnDspTime = beatSpawner.songStartDspTime;
 
-            Debug.Log($"[DEBUG] Nota {nd.key} spawnDspTime={nd.spawnDspTime}, llegada={nd.time}, travelTime={travelTime}");
+            Debug.Log($"Nota {nd.key} spawnDspTime={nd.spawnDspTime}, llegada={nd.time}, travelTime={travelTime}");
         }
 
         // Detener coroutine anterior si existía
@@ -189,7 +189,7 @@ public class NoteSpawner : MonoBehaviour
 
         // Actualizar ScoreManager
         FindObjectOfType<ScoreManager>()?.SetTotalNotes(activeNotes.Count);
-        Debug.Log($"Juego iniciado con {activeNotes.Count} notas definidas en la lista.");
+        Debug.Log($"Juego iniciado con {activeNotes.Count} notas definidas en la lista");
 
         // Notificar a GameManager que el juego comenzó
         FindObjectOfType<GameManager>()?.OnGameStarted();
@@ -239,7 +239,6 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
-        // Instanciar la nota
         var obj = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         var note = obj.GetComponent<Note>();
         if (note == null)

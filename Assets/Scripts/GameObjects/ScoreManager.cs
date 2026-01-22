@@ -47,8 +47,8 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Descarta los puntos pendientes de sumar al score. 
-    /// Útil si el slider falla.
+    /// Descarta los puntos pendientes de sumar al score
+    /// Útil si el slider falla
     /// </summary>
     public void ClearPendingPoints()
     {

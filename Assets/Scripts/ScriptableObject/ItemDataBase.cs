@@ -22,7 +22,7 @@ public class ItemDatabase : ScriptableObject
         if (itemDict != null && itemDict.TryGetValue(id, out ItemSO item))
             return item;
 
-        Debug.LogWarning($"Item con ID {id} no encontrado.");
+        Debug.LogWarning($"Item con ID {id} no encontrado");
         return null;
     }
 }

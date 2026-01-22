@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class TextilSO : ItemSO, IUsableItem
 {
     [Header("Escena a cargar")]
-    [Tooltip("Nombre de la escena a cargar cuando se use el objeto.")]
+    [Tooltip("Nombre de la escena a cargar cuando se use el objeto")]
     public string targetSceneName;
 
     public bool Use(PlayerInteraction player)
@@ -13,7 +13,7 @@ public class TextilSO : ItemSO, IUsableItem
         var interactable = player.GetNearbyInteractable();
         if (interactable == null)
         {
-            Debug.Log("No hay ningún objeto cercano con el que interactuar.");
+            Debug.Log("No hay ningún objeto cercano con el que interactuar");
             return false;
         }
 
@@ -28,12 +28,12 @@ public class TextilSO : ItemSO, IUsableItem
             }
             else
             {
-                Debug.LogWarning("No se definió la escena de destino en el TextilSO.");
+                Debug.LogWarning("No se definió la escena de destino en el TextilSO");
                 return false;
             }
         }
 
-        Debug.Log("Este objeto solo puede usarse en un telar.");
+        Debug.Log("Este objeto solo puede usarse en un telar");
         return false;
     }
 }

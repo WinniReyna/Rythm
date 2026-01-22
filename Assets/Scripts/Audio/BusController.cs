@@ -16,7 +16,7 @@ public class BusController : MonoBehaviour
 
     private void Update()
     {
-        if (bus.isValid()) // chequeo por si el bus no se encuentra
+        if (bus.isValid())
         {
             bus.setVolume(busVolume);
         }

@@ -12,7 +12,7 @@ public class KeyItemSO : ItemSO, IUsableItem
         var interactable = player.GetNearbyInteractable();
         if (interactable == null)
         {
-            Debug.Log("No hay nada cercano para usar la llave.");
+            Debug.Log("No hay nada cercano para usar la llave");
             return false;
         }
 
@@ -29,7 +29,7 @@ public class KeyItemSO : ItemSO, IUsableItem
             }
         }
 
-        Debug.Log("No se puede usar la llave aqui.");
+        Debug.Log("No se puede usar la llave aqui");
         return false;
     }
 

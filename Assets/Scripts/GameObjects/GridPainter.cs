@@ -13,7 +13,7 @@ public class GridPainter : MonoBehaviour
     [SerializeField] private GameObject cellPrefab;
 
     [Header("Sprites a colocar manualmente")]
-    [Tooltip("Define qué sprite irá en qué celda (x, y).")]
+    [Tooltip("Define qué sprite irá en qué celda (x, y)")]
     [SerializeField] private GridSpriteData[] gridSprites;
 
     private GridCell[,] gridCells;
@@ -164,7 +164,7 @@ public class GridPainter : MonoBehaviour
         string folderPath = Path.Combine(Application.persistentDataPath, "SavedGrids");
         if (!Directory.Exists(folderPath))
         {
-            Debug.LogWarning("Aún no hay grids guardados.");
+            Debug.LogWarning("Aún no hay grids guardados");
             return;
         }
 

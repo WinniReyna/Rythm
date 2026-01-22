@@ -128,7 +128,7 @@ public class LibraryUI : MonoBehaviour, IMenuPanel
             librarySaveLoad.RemoveBook(book);
             librarySaveLoad.SaveLibrary();
             RefreshUI();
-            Debug.Log($"Libro '{book.GetTitle()}' eliminado de la biblioteca (modo Editor).");
+            Debug.Log($"Libro '{book.GetTitle()}' eliminado de la biblioteca (modo Editor)");
         }
 #endif
     }

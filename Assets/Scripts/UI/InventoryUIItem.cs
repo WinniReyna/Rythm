@@ -19,7 +19,7 @@ public class InventoryUIItem : MonoBehaviour
     {
         returnPointHandler = FindObjectOfType<ReturnPointHandler>();
         if (returnPointHandler == null)
-            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems.");
+            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems");
     }
 
     public void Setup(ItemSO itemSO, int quantity, InventorySO inventory, ItemDatabase db)
@@ -67,7 +67,7 @@ public class InventoryUIItem : MonoBehaviour
         }
         else
         {
-            Debug.Log($"El ítem {itemID} no es usable.");
+            Debug.Log($"El ítem {itemID} no es usable");
         }
 
         //usar item sound

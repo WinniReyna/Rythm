@@ -82,9 +82,8 @@ public class HitZone : MonoBehaviour
     {
         // Detecta la tecla solo cuando hay nota en la zona
         if (currentNote != null && inputHandler.IsKeyPressed(keyToPress))
-        {
             HandleHit(currentNote);
-        }
+        
     }
 
     private void HandleHit(Note note)
@@ -115,7 +114,6 @@ public class HitZone : MonoBehaviour
         }
         else
         {
-            // Demasiado lejos no cuenta como hit
             return;
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     [Header("Identificador único")]
-    [Tooltip("Puede ser el nombre del item.")]
+    [Tooltip("Puede ser el nombre del item")]
     public string itemID;
 
     [Header("Description ES")]

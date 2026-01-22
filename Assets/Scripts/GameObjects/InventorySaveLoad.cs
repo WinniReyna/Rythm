@@ -14,7 +14,7 @@ public class InventorySaveLoad : MonoBehaviour
 
         returnPointHandler = FindObjectOfType<ReturnPointHandler>();
         if (returnPointHandler == null)
-            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta.");
+            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta");
     }
 
     public void SaveInventory()
@@ -32,7 +32,7 @@ public class InventorySaveLoad : MonoBehaviour
         if (returnPointHandler != null)
         {
             returnPointHandler.SaveGameState();
-            Debug.Log("Juego guardado automáticamente tras usar la puerta.");
+            Debug.Log("Juego guardado automáticamente tras usar la puerta");
         }
         
     }
@@ -54,7 +54,7 @@ public class InventorySaveLoad : MonoBehaviour
         }
         else
         {
-            Debug.Log("No hay guardado previo, inventario vacío.");
+            Debug.Log("No hay guardado previo, inventario vacío");
         }
     }
 }

@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
         inputProvider = new KeyboardInputProvider();
 
         if (returnPointHandler == null)
-            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems.");
+            Debug.LogWarning("No se encontró ReturnPointHandler. El juego no se guardará automáticamente al usar/dropear/borrar ítems");
     }
 
     void Update()

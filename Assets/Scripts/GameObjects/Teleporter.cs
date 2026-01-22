@@ -16,7 +16,7 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [SerializeField] private GameObject[] allObjects;
 
     [Header("Opcional: Llave requerida")]
-    [Tooltip("Si está vacío, la puerta no requiere llave.")]
+    [Tooltip("Si está vacío, la puerta no requiere llave")]
     [SerializeField] private string requiredKeyID;
     [SerializeField] private bool isLocked = false;
 
@@ -29,8 +29,8 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
     [SerializeField] private AudioSource audioSource;
 
     [Header("Messages UI")]
-    [SerializeField] private string lockedMessageSP= "La puerta está cerrada.";
-    [SerializeField] private string lockedMessageEN = "The door is closed.";
+    [SerializeField] private string lockedMessageSP= "La puerta está cerrada";
+    [SerializeField] private string lockedMessageEN = "The door is closed";
     [SerializeField] private MonoBehaviour messageDisplayComponent;
     private IMessageDisplay messageDisplay;
 
@@ -45,7 +45,7 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         returnPointHandler = FindObjectOfType<ReturnPointHandler>();
 
         if (returnPointHandler == null)
-            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta.");
+            Debug.LogWarning("No se encontró ReturnPointHandler en la escena. El juego no se guardará al usar la puerta");
 
         if (fadeImage == null) fadeImage = GetComponent<RawImage>();
         if (!string.IsNullOrEmpty(requiredKeyID)) isLocked = true;
@@ -136,7 +136,7 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         if (returnPointHandler != null)
         {
             returnPointHandler.SaveGameState();
-            Debug.Log("Juego guardado automáticamente tras usar la puerta.");
+            Debug.Log("Juego guardado automáticamente tras usar la puerta");
         }
 
         yield return new WaitForSeconds(1.5f);
@@ -147,13 +147,12 @@ public class Teleporter : MonoBehaviour, ICollisionAction, IPositionProvider, II
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
     }
-    // Asigna el estado desde el cargador JSON
+
     public void SetLocked(bool locked)
     {
         isLocked = locked;
     }
 
-    // Devuelve el estado para que el JsonSaveManager pueda leerlo
     public bool GetLockedState()
     {
         return isLocked;

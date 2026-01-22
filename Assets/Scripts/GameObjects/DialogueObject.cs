@@ -7,7 +7,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
     [Header("Diálogo")]
     [SerializeField] protected DialogueData dialogueData;
 
-    [Header("Opcional: escenas y minijuego")]
+    [Header("Opcional escenas y minijuego")]
     [SerializeField] private NPCSceneData sceneData;
 
     public DialogueData DialogueData => dialogueData;
@@ -29,7 +29,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
                 if (returnPointHandler != null)
                 {
                     returnPointHandler.SaveGameState();
-                    Debug.Log("Estado del juego guardado antes de cambiar de escena.");
+                    Debug.Log("Estado del juego guardado antes de cambiar de escena");
                 }
 
                 var player = PlayerMovement.Instance != null ? PlayerMovement.Instance.transform : null;
@@ -40,10 +40,6 @@ public class DialogueObject : MonoBehaviour, IInteractable
         }
     }
 
-
-    /// <summary>
-    /// Cambiar a cinemática o minijuego usando GameState o SceneManager
-    /// </summary>
     private void TriggerSceneData()
     {
         if (sceneData == null)
@@ -58,7 +54,7 @@ public class DialogueObject : MonoBehaviour, IInteractable
         }
         else
         {
-            Debug.LogWarning("No existe GameState en la escena. Cargando escena directamente.");
+            Debug.LogWarning("No existe GameState en la escena. Cargando escena directamente");
 
             if (!string.IsNullOrEmpty(sceneData.cinematicSceneName))
                 SceneManager.LoadScene(sceneData.cinematicSceneName);
@@ -66,12 +62,9 @@ public class DialogueObject : MonoBehaviour, IInteractable
                 SceneManager.LoadScene(sceneData.minigameSceneName);
         }
 
-        // manejar recompensas o eventos
         if (sceneData.grantsReward)
-        {
             Debug.Log($"Otorgando recompensa: {sceneData.rewardID}");
-            // Aquí podrías llamar a tu sistema de inventario o logros
-        }
+        
     }
 }
 

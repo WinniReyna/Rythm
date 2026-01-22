@@ -5,8 +5,8 @@ using FMOD.Studio;
 public class PauseAudioManager : MonoBehaviour
 {
     [Header("FMOD Events")]
-    //[SerializeField] private EventReference pauseUISound;        // Sonido UI
-    [SerializeField] private EventReference pauseMenuMusic;      // Música del menú de pausa
+    //[SerializeField] private EventReference pauseUISound;        
+    [SerializeField] private EventReference pauseMenuMusic;      
 
     [Header("Music Bus Control")]
     [Range(0f, 1f)]

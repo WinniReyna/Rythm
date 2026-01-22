@@ -145,7 +145,7 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    // cerrar todos los paneles abiertos.
+    // cerrar todos los paneles abiertos
     public void CloseAllPanels()
     {
         while (panelStack.Count > 0)

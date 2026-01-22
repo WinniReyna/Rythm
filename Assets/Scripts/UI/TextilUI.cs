@@ -86,7 +86,7 @@ public class TextilUI : MonoBehaviour, IMenuPanel
     {
         if (textile == null || string.IsNullOrEmpty(textile.sceneName))
         {
-            Debug.LogWarning("El textil no tiene una escena asociada.");
+            Debug.LogWarning("El textil no tiene una escena asociada");
             return;
         }
 

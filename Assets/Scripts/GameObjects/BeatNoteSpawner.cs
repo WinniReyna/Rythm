@@ -7,10 +7,10 @@ using FMOD.Studio;
 public class BeatNoteSpawner : MonoBehaviour
 {
     [Header("FMOD Event")]
-    public EventReference musicEvent; // Evento de FMOD
+    public EventReference musicEvent; 
     private EventInstance musicInstance;
 
-    public string beatmapFileName = ""; // archivo en StreamingAssets
+    public string beatmapFileName = ""; 
 
     public BeatData beatData;
 
@@ -81,7 +81,7 @@ public class BeatNoteSpawner : MonoBehaviour
         musicInstance = RuntimeManager.CreateInstance(musicEvent);
 
         double dspTime = AudioSettings.dspTime;
-        musicInstance.start(); // FMOD no tiene PlayScheduled como AudioSource
+        musicInstance.start(); 
         songStartDspTime = dspTime;
     }
 

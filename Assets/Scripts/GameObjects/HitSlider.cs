@@ -60,7 +60,7 @@ public class HitSlider : MonoBehaviour
                 Debug.Log("Hit correcto en el slider!");
 
                 if (noteSpawner != null)
-                    noteSpawner.OnSliderCompleted(true); // avisar éxito
+                    noteSpawner.OnSliderCompleted(true);
 
                 yield return new WaitForSeconds(0.3f);
                 Deactivate();
@@ -71,7 +71,7 @@ public class HitSlider : MonoBehaviour
         }
 
         // Si el tiempo se acaba sin lograr hit
-        Debug.Log("Tiempo agotado en el slider, no se logró hit.");
+        Debug.Log("Tiempo agotado en el slider, no se logró hit");
         if (noteSpawner != null)
             noteSpawner.OnSliderCompleted(false);
 

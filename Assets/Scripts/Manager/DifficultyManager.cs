@@ -39,7 +39,6 @@ public class DifficultyManager : MonoBehaviour
         string savedName = PlayerPrefs.GetString(DifficultyKey, "");
         if (!string.IsNullOrEmpty(savedName))
         {
-            // Busca en todos los assets del proyecto
             DifficultySettings[] allDifficulties = Resources.LoadAll<DifficultySettings>("");
             foreach (var diff in allDifficulties)
             {
@@ -52,7 +51,6 @@ public class DifficultyManager : MonoBehaviour
             }
         }
 
-        // Si no había una guardada, usar la predeterminada
         currentDifficulty = defaultDifficulty;
         Debug.Log("Dificultad por defecto usada: " + defaultDifficulty.name);
     }

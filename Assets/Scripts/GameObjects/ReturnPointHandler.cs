@@ -14,14 +14,11 @@ public class ReturnPointHandler : MonoBehaviour
         saveManager = FindObjectOfType<JsonSaveManager>();
         if (saveManager == null)
         {
-            Debug.LogError("No se encontró JsonSaveManager en la escena.");
+            Debug.LogError("No se encontró JsonSaveManager en la escena");
             return;
         }
 
-        // Restaurar estado al iniciar
         saveManager.LoadGameState();
-
-        // Iniciar corrutina de guardado automático
         StartCoroutine(AutoSaveCoroutine());
     }
 
@@ -39,7 +36,7 @@ public class ReturnPointHandler : MonoBehaviour
         if (saveManager != null)
         {
             saveManager.SaveGameState();
-            Debug.Log("Juego guardado mediante ReturnPointHandler.");
+            Debug.Log("Juego guardado mediante ReturnPointHandler");
         }
     }
 
@@ -48,7 +45,7 @@ public class ReturnPointHandler : MonoBehaviour
         if (saveManager != null)
         {
             saveManager.LoadGameState();
-            Debug.Log("Juego cargado mediante ReturnPointHandler.");
+            Debug.Log("Juego cargado mediante ReturnPointHandler");
         }
     }
 
@@ -57,7 +54,7 @@ public class ReturnPointHandler : MonoBehaviour
         if (saveManager != null)
         {
             saveManager.ResetSave();            
-            Debug.Log("Archivo de guardado eliminado mediante ReturnPointHandler.");
+            Debug.Log("Archivo de guardado eliminado mediante ReturnPointHandler");
         }        
     }
 

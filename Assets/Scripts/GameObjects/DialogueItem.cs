@@ -10,11 +10,10 @@ public class DialogueItem : MonoBehaviour, IInteractable
     {
         if (firstDialogue == null)
         {
-            Debug.LogWarning($"{name} no tiene asignado un primer DialogueData.");
+            Debug.LogWarning($"{name} no tiene asignado un primer DialogueData");
             return;
         }
 
-        // Si ya hablamos antes con este NPC mostrar diálogo posterior
         if (!string.IsNullOrEmpty(npcID) &&
             QuestManager.Instance.HasNpcEventCompleted(npcID))
         {
@@ -22,10 +21,8 @@ public class DialogueItem : MonoBehaviour, IInteractable
             return;
         }
 
-        // Primera vez hablando
         DialogueManager.Instance.StartDialogue(firstDialogue);
 
-        // Marcar que ya hablamos una vez
         if (!string.IsNullOrEmpty(npcID))
             QuestManager.Instance.MarkNpcEventCompleted(npcID);
     }
