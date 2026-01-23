@@ -21,6 +21,7 @@ public class Note : MonoBehaviour
     private float travelDistance;
     private bool initializedMovement = false;
     private HitFeedbackUI hitFeedbackUI;
+    public Vector3 endPos;
 
     [HideInInspector] public BeatNoteSpawner beatSpawner;
     public System.Action<Note> OnMissed;
@@ -49,29 +50,47 @@ public class Note : MonoBehaviour
 
     private IEnumerator MoveNoteCoroutine()
     {
-        float journey = 0f;
         double movementStartTime = GetSongTime();
-        float movementDuration = travelDistance / speed;
 
-        while (journey < 1f)
+        float totalDistance =
+            Vector3.Distance(spawnPos, hitPos) +
+            Vector3.Distance(hitPos, endPos);
+
+        float movementDuration = totalDistance / speed;
+
+        while (true)
         {
             double elapsed = GetSongTime() - movementStartTime;
-            journey = Mathf.Clamp01((float)(elapsed / movementDuration));
-            transform.position = Vector3.Lerp(spawnPos, hitPos, journey);
+            float t = Mathf.Clamp01((float)(elapsed / movementDuration));
+
+            if (t < Vector3.Distance(spawnPos, hitPos) / totalDistance)
+            {
+                // Antes del hit
+                float localT = t / (Vector3.Distance(spawnPos, hitPos) / totalDistance);
+                transform.position = Vector3.Lerp(spawnPos, hitPos, localT);
+            }
+            else
+            {
+                // Después del hit
+                float localT = (t - (Vector3.Distance(spawnPos, hitPos) / totalDistance))
+                             / (Vector3.Distance(hitPos, endPos) / totalDistance);
+
+                transform.position = Vector3.Lerp(hitPos, endPos, localT);
+            }
+
+            if (t >= 1f)
+                break;
+
             yield return null;
         }
 
-        // Llegó al punto final
-        transform.position = hitPos;
-
+        // SOLO aquí es Miss
         if (!WasHit)
-        {
             OnMissed?.Invoke(this);
-        }
 
         Miss();
-
     }
+
 
 
     public double GetSongTime()

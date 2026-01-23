@@ -6,7 +6,7 @@ using System.Collections;
 
 public class AudioSettingsLoader : MonoBehaviour
 {
-    public static AudioSettingsLoader Instance; // Singleton
+    public static AudioSettingsLoader Instance; 
     private EventInstance musicInstance;
     private Bus musicBus;
     private string currentEventPath = "";

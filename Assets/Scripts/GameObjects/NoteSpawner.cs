@@ -155,8 +155,8 @@ public class NoteSpawner : MonoBehaviour
 
         
 
-        float spawnX = -16f;  // tu spawn point
-        float hitX = -1.44f;  // hit point fijo
+        float spawnX = -19f;  // tu spawn point
+        float hitX = -8.97f;  // hit point fijo
         float travelDistance = Mathf.Abs(hitX - spawnX);
         float travelTime = travelDistance / currentDifficulty.noteSpeed;
 
@@ -251,12 +251,15 @@ public class NoteSpawner : MonoBehaviour
         note.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
         note.speed = currentDifficulty.noteSpeed;
 
-        // Calcular posición del hit point (puedes ajustarlo según tu layout)
-        Vector3 hitPosition = new Vector3(1.39f, spawnPoint.position.y, spawnPoint.position.z);
+        // Calcular posición del hit point 
+        Vector3 hitPosition = new Vector3(4.22f, spawnPoint.position.y, spawnPoint.position.z);
+        Vector3 endPosition = new Vector3(6.5f, spawnPoint.position.y, spawnPoint.position.z);
 
         // Inicializar movimiento sincronizado con FMOD
         note.InitializeMovement(spawnPoint.position, hitPosition, data.spawnDspTime);
+        note.endPos = endPosition;
         note.StartMovement();
+
 
         var hitZones = FindObjectsOfType<HitZone>();
         foreach (var hz in hitZones)
