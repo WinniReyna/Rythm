@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Totem
   m_EditorClassIdentifier: 
   itemID: Totem
-  itemName: Totem
-  description: "Figurita para invocar esp\xEDritus del m\xE1s all\xE1"
-  icon: {fileID: 2800000, guid: 7165e9d41e0d93d4bbd8b3ec09e80019, type: 3}
+  itemNameES: 
+  descriptionES: 
+  itemNameEN: 
+  descriptionEN: 
+  icon: {fileID: 2800000, guid: 2933dfd2305419a4f8aa025f2d9b8968, type: 3}
   prefab: {fileID: 3244370083887825939, guid: 1284a672c5c8e7f4eb5a4cbe1269289a, type: 3}
   pickupSound: {fileID: 0}
+  dropSound: {fileID: 0}
+  useSound: {fileID: 0}
+  deleteSound: {fileID: 0}
   digDuration: 1.5

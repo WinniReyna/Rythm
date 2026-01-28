@@ -17,6 +17,9 @@ MonoBehaviour:
   descriptionES: Una pocion sabrosa
   itemNameEN: Potion
   descriptionEN: an delicious potion
-  icon: {fileID: 2800000, guid: ace475011b7d9894da022de04a3aa7e2, type: 3}
+  icon: {fileID: 2800000, guid: 76bf7b58ec98661428f1a1da639ee13b, type: 3}
   prefab: {fileID: 5926994943893053183, guid: 6db88993bbee6d9439456e9818beca09, type: 3}
   pickupSound: {fileID: 0}
+  dropSound: {fileID: 0}
+  useSound: {fileID: 0}
+  deleteSound: {fileID: 0}

@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   itemID: Key
-  itemName: Key
-  description: LLave para abrir la puerta
-  icon: {fileID: 2800000, guid: 362ef70461c31004eacef9d811118164, type: 3}
+  itemNameES: 
+  descriptionES: 
+  itemNameEN: 
+  descriptionEN: 
+  icon: {fileID: 2800000, guid: 58fa2bb28a3e0934594a6694fc31d95f, type: 3}
   prefab: {fileID: 5909697239906072487, guid: a4bb1803c2f3d1a4e9a658c040b6f457, type: 3}
   pickupSound: {fileID: 0}
+  dropSound: {fileID: 0}
+  useSound: {fileID: 0}
+  deleteSound: {fileID: 0}
   keyID: Garden
