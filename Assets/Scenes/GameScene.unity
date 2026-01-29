@@ -4663,7 +4663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 146061475}
-  player: {fileID: 1153516093}
+  player: {fileID: 0}
   randomWalkRadius: 15
   followDistance: 5
   waitTimeAtPoint: 2
@@ -14956,7 +14956,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -16421,7 +16421,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -20636,7 +20636,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -28648,7 +28648,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -38234,7 +38234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1029003494}
-  player: {fileID: 1153516093}
+  player: {fileID: 0}
   randomWalkRadius: 15
   followDistance: 5
   waitTimeAtPoint: 2
@@ -43396,11 +43396,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148641733}
   m_CullTransparentMesh: 1
---- !u!4 &1153516093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7522117936813004945, guid: a37d4208bf5f9154c834874896975023, type: 3}
-  m_PrefabInstance: {fileID: 8983824259386813848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1157625447
 GameObject:
   m_ObjectHideFlags: 0
@@ -43655,7 +43650,7 @@ Transform:
   m_GameObject: {fileID: 1161031083}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25774506, y: -0, z: -0, w: 0.966213}
-  m_LocalPosition: {x: -335.35706, y: -9.356171, z: 6.28489}
+  m_LocalPosition: {x: -327.86707, y: -10.096161, z: 5.7148895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43714,13 +43709,13 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
     OrthographicSize: 7.2
-    NearClipPlane: -15
+    NearClipPlane: 0.01
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -51756,7 +51751,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -53019,7 +53014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1426420975}
-  player: {fileID: 1153516093}
+  player: {fileID: 0}
   randomWalkRadius: 15
   followDistance: 5
   waitTimeAtPoint: 2
@@ -56076,7 +56071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1534983706}
-  player: {fileID: 1153516093}
+  player: {fileID: 0}
   randomWalkRadius: 15
   followDistance: 5
   waitTimeAtPoint: 2
@@ -56599,11 +56594,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: -15
   far clip plane: 500
   field of view: 40
   orthographic: 1
-  orthographic size: 3.86
+  orthographic size: 4.53
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -56627,8 +56622,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555465402}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3998239, y: 0, z: 0, w: 0.916592}
-  m_LocalPosition: {x: -738.86707, y: -498.85837, z: 7.633542}
+  m_LocalRotation: {x: 0.25774506, y: 0, z: 0, w: 0.966213}
+  m_LocalPosition: {x: -829.9057, y: -504.36548, z: 45.777336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60722,7 +60717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1681949272}
-  player: {fileID: 1153516093}
+  player: {fileID: 0}
   randomWalkRadius: 15
   followDistance: 5
   waitTimeAtPoint: 2
@@ -65308,7 +65303,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -77644,7 +77639,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1153516093}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
