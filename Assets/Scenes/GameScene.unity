@@ -5723,12 +5723,12 @@ MonoBehaviour:
   objectToActivate: {fileID: 168789276}
   allObjects:
   - {fileID: 1760683071}
+  - {fileID: 936994268}
+  - {fileID: 2088042019}
   - {fileID: 567684667}
   - {fileID: 251991407}
   - {fileID: 744133317}
   - {fileID: 1325780887}
-  - {fileID: 1325780887}
-  - {fileID: 2088042019}
   requiredKeyID: 
   isLocked: 0
   doorID: 
@@ -23551,12 +23551,12 @@ MonoBehaviour:
   objectToActivate: {fileID: 567684667}
   allObjects:
   - {fileID: 1760683071}
-  - {fileID: 168789276}
+  - {fileID: 936994268}
+  - {fileID: 2088042019}
   - {fileID: 251991407}
   - {fileID: 744133317}
   - {fileID: 1325780887}
-  - {fileID: 1325780887}
-  - {fileID: 2088042019}
+  - {fileID: 168789276}
   requiredKeyID: Filomena
   isLocked: 1
   doorID: Filomena
@@ -23860,12 +23860,12 @@ MonoBehaviour:
   objectToActivate: {fileID: 168789276}
   allObjects:
   - {fileID: 1760683071}
+  - {fileID: 936994268}
+  - {fileID: 2088042019}
   - {fileID: 567684667}
   - {fileID: 251991407}
   - {fileID: 744133317}
   - {fileID: 1325780887}
-  - {fileID: 936994268}
-  - {fileID: 2088042019}
   requiredKeyID: 
   isLocked: 0
   doorID: 
@@ -31273,13 +31273,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToManage:
   - {fileID: 1760683071}
+  - {fileID: 936994268}
+  - {fileID: 2088042019}
   - {fileID: 567684667}
   - {fileID: 251991407}
   - {fileID: 744133317}
   - {fileID: 1325780887}
   - {fileID: 168789276}
-  - {fileID: 936994268}
-  - {fileID: 2088042019}
   doorsToManage:
   - {fileID: 615259713}
   - {fileID: 824898741}
@@ -79921,10 +79921,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1899967990376386924, guid: a37d4208bf5f9154c834874896975023, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3794285655227912571, guid: a37d4208bf5f9154c834874896975023, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271567577771238943, guid: a37d4208bf5f9154c834874896975023, type: 3}
