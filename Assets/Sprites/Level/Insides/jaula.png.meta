@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jaula_0: -2548443216469170514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

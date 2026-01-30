@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cajonera_0: -3392880775873317335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
