@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   items:
-  - itemID: Map
-    quantity: 5
-  - itemID: Potion
+  - itemID: Garden
+    quantity: 1
+  - itemID: Shovel
     quantity: 2
-  - itemID: Key
+  - itemID: Map
+    quantity: 1
+  - itemID: Garden
+    quantity: 1
+  - itemID: Garden
+    quantity: 1
+  - itemID: Hola
     quantity: 1
