@@ -124,7 +124,7 @@ public class NoteSpawner : MonoBehaviour
             if (countdownText != null)
             {
                 string goText = LeanLocalization.GetTranslationText("StartGo");
-                countdownText.text = goText != null ? goText : "GO!";
+                countdownText.text = goText != null ? goText : "¡Teje!";
                 yield return new WaitForSeconds(0.7f);
                 countdownText.gameObject.SetActive(false);
             }
