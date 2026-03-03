@@ -8,6 +8,7 @@ public class HitSlider : MonoBehaviour
     [SerializeField] private float activeDuration = 2f; // cuánto tiempo permanece activo
     [SerializeField] private float defaultValue = 0f;
     [SerializeField] private float hitValue = 1f;
+    [SerializeField] private float joystickSpeed = 3f;
 
     private Slider slider;
     [SerializeField] private bool isActive = false;
@@ -27,6 +28,20 @@ public class HitSlider : MonoBehaviour
         SetSliderVisible(false);
     }
 
+    void Update()
+    {
+        if (!isActive) return;
+
+        //Joystick
+        float joystickInput = Input.GetAxis("Horizontal");
+
+        if (Mathf.Abs(joystickInput) > 0.2f)
+        {
+            slider.value += joystickInput * joystickSpeed * Time.deltaTime;
+        }        
+
+        slider.value = Mathf.Clamp01(slider.value);
+    }
 
     /// <summary>
     /// Activa el slider y lo resetea
