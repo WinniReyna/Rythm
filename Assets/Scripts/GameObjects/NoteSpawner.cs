@@ -248,7 +248,7 @@ public class NoteSpawner : MonoBehaviour
         }
 
         // Inicializar nota
-        note.Initialize(data.key, data.gridX, data.gridY, data.paintSprite);
+        note.Initialize(data.key, data.paintPositions, data.paintSprites);
         note.speed = currentDifficulty.noteSpeed;
 
         // Calcular posición del hit point 
@@ -352,4 +352,3 @@ public class NoteSpawner : MonoBehaviour
     }
 
 }
-

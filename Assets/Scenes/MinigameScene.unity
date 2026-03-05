@@ -2013,52 +2013,52 @@ MonoBehaviour:
   gridSprites:
   - x: 0
     y: 3
-    sprite: {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 1
     y: 3
-    sprite: {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 2
     y: 3
-    sprite: {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 3
     y: 3
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 0
     y: 2
-    sprite: {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 1
     y: 2
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 2
     y: 2
-    sprite: {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 3
     y: 2
-    sprite: {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
-  - x: 0
-    y: 1
-    sprite: {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
-  - x: 1
-    y: 1
-    sprite: {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
-  - x: 2
-    y: 1
-    sprite: {fileID: 1262820091987847112, guid: d151a960366939a49a5b169194017dec, type: 3}
-  - x: 3
-    y: 1
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 0
+    y: 1
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
+  - x: 1
+    y: 1
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
+  - x: 2
+    y: 1
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
+  - x: 3
+    y: 1
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
+  - x: 0
     y: 0
     sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 1
     y: 0
-    sprite: {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 2
     y: 0
-    sprite: {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
   - x: 3
     y: 0
-    sprite: {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    sprite: {fileID: 2063826154672905881, guid: 687b43c059778b04b88517b4b0757375, type: 3}
 --- !u!4 &215266668
 Transform:
   m_ObjectHideFlags: 0
@@ -2067,13 +2067,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215266666}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -955.04, y: -541.29, z: 0.009983078}
-  m_LocalScale: {x: 0.85151, y: 0.85151, z: 0.85151}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -952.48, y: -541.32, z: 0.009983078}
+  m_LocalScale: {x: 0.8727854, y: 0.8727854, z: 0.8727854}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1749425463}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &250943343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,6 +3288,254 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 6
   m_TargetDisplay: 0
+--- !u!1 &443957387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443957388}
+  - component: {fileID: 443957391}
+  - component: {fileID: 443957390}
+  - component: {fileID: 443957389}
+  m_Layer: 0
+  m_Name: item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443957388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443957387}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.079306, y: -0.4954288, z: 0.00237534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642909873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &443957389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443957387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3117903fc673eb544aec73a0c85a631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatSpawner: {fileID: 1700994792}
+--- !u!95 &443957390
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443957387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57bf1b887ab646b4e80cf556fd605e90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &443957391
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443957387}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -734688128931022665, guid: e8f15bd44355aab48b2921ea53520e86, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.34, y: 1.17}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &457830163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457830164}
+  - component: {fileID: 457830167}
+  - component: {fileID: 457830166}
+  - component: {fileID: 457830165}
+  m_Layer: 0
+  m_Name: d12_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457830164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457830163}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.07, y: 8.175239, z: 0.00237534}
+  m_LocalScale: {x: 0.95726514, y: 0.95726514, z: 0.95726514}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642909873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457830165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457830163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3117903fc673eb544aec73a0c85a631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatSpawner: {fileID: 1700994792}
+--- !u!95 &457830166
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457830163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58f5444029dde4c4e84f8467d882a14b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &457830167
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457830163}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 3021919702532664750, guid: f9fc1686cbba69643a5b3cafac7db635, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.6, y: 1.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &474089687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4697,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626706778}
   m_CullTransparentMesh: 1
+--- !u!1 &642909872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642909873}
+  m_Layer: 0
+  m_Name: ---- Level Items ----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642909873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642909872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.3206935, y: -3.9045713, z: -0.00237534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 443957388}
+  - {fileID: 1508265915}
+  - {fileID: 457830164}
+  - {fileID: 1891235756}
+  - {fileID: 955706275}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644846847
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,772 +5627,746 @@ MonoBehaviour:
   notes:
   - time: 0
     key: 4
-    gridX: 0
-    gridY: 3
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 2
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 4
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 6
     key: 3
-    gridX: 3
-    gridY: 3
-    paintSprite: {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
+    paintSprites:
+    - {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
+    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
+    - {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
+    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
+    paintPositions:
+    - x: 0
+      y: 3
+    - x: 1
+      y: 3
+    - x: 2
+      y: 3
+    - x: 3
+      y: 3
     isSlider: 1
     spawnDspTime: 0
   - time: 8
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 10
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 12
     key: 1
-    gridX: 0
-    gridY: 3
-    paintSprite: {fileID: 841404882672414011, guid: 25cc3c80e9809b34e9b76754e308e855, type: 3}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 14
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 16
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 3
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 1
-    gridY: 2
-    paintSprite: {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
+    paintSprites:
+    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
+    - {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
+    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
+    - {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
+    paintPositions:
+    - x: 0
+      y: 2
+    - x: 1
+      y: 2
+    - x: 2
+      y: 2
+    - x: 3
+      y: 2
     isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 3
-    gridY: 1
-    paintSprite: {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    paintSprites:
+    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    - {fileID: 1262820091987847112, guid: d151a960366939a49a5b169194017dec, type: 3}
+    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    - {fileID: 1262820091987847112, guid: d151a960366939a49a5b169194017dec, type: 3}
+    paintPositions:
+    - x: 0
+      y: 1
+    - x: 1
+      y: 1
+    - x: 2
+      y: 1
+    - x: 3
+      y: 1
     isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 3
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
+    paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    paintPositions:
+    - x: 0
+      y: 0
+    - x: 1
+      y: 0
+    - x: 2
+      y: 0
+    - x: 3
+      y: 0
+    isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 3
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 3
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
+    paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    paintPositions:
+    - x: 0
+      y: 0
+    - x: 0
+      y: 1
+    - x: 0
+      y: 2
+    - x: 0
+      y: 3
+    isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
+    paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    paintPositions:
+    - x: 0
+      y: 0
+    - x: 0
+      y: 1
+    - x: 0
+      y: 2
+    - x: 0
+      y: 3
+    isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 3
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
+    paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    paintPositions:
+    - x: 0
+      y: 0
+    - x: 0
+      y: 1
+    - x: 0
+      y: 2
+    - x: 0
+      y: 3
+    isSlider: 1
     spawnDspTime: 0
   - time: 18
     key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 4
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 18
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 1
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
-    isSlider: 0
-    spawnDspTime: 0
-  - time: 18
-    key: 2
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    paintPositions:
+    - x: 0
+      y: 0
+    - x: 0
+      y: 1
+    - x: 0
+      y: 2
+    - x: 0
+      y: 3
     isSlider: 1
     spawnDspTime: 0
   hitSlider: {fileID: 1456827774}
@@ -6654,6 +6912,130 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &955706274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955706275}
+  - component: {fileID: 955706278}
+  - component: {fileID: 955706277}
+  - component: {fileID: 955706276}
+  m_Layer: 0
+  m_Name: d13_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &955706275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955706274}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.95, y: -0.4, z: 0.00237534}
+  m_LocalScale: {x: 0.9939768, y: 0.9939768, z: 0.9939768}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642909873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &955706276
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955706274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 727b75efa4832994fa846de9845bf6a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &955706277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955706274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3117903fc673eb544aec73a0c85a631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatSpawner: {fileID: 1700994792}
+--- !u!212 &955706278
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955706274}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -6644445388255351261, guid: 6e1861a1c2a5a6e49abee8ee7239fbbc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.48, y: 1.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9140,7 +9522,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 498848357, guid: 0cbaa0001cb9b20419a2c60b972c2630, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9575,352 +9957,302 @@ MonoBehaviour:
   notes:
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   - time: 0
     key: 0
-    gridX: 0
-    gridY: 0
-    paintSprite: {fileID: 0}
+    paintSprites: []
+    paintPositions: []
     isSlider: 0
     spawnDspTime: 0
   hitSlider: {fileID: 1456827774}
@@ -10444,6 +10776,7 @@ MonoBehaviour:
   activeDuration: 3
   defaultValue: 0
   hitValue: 1
+  joystickSpeed: 3
   isActive: 0
   noteSpawner: {fileID: 812214975}
 --- !u!1 &1479358953
@@ -10700,6 +11033,130 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1508265914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508265915}
+  - component: {fileID: 1508265918}
+  - component: {fileID: 1508265917}
+  - component: {fileID: 1508265916}
+  m_Layer: 0
+  m_Name: d10_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508265915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508265914}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.67, y: 8.33, z: 0.00237534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642909873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508265916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508265914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3117903fc673eb544aec73a0c85a631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatSpawner: {fileID: 1700994792}
+--- !u!95 &1508265917
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508265914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa85f346a4f82eb4eafd088f0a9dfa0a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1508265918
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508265914}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -390693640854421214, guid: 3e80f2c2723a1c0418d278d30837816d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.14, y: 1.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -12905,6 +13362,130 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1527055450098318974, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
   m_PrefabInstance: {fileID: 1078767762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1891235755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891235756}
+  - component: {fileID: 1891235759}
+  - component: {fileID: 1891235758}
+  - component: {fileID: 1891235757}
+  m_Layer: 0
+  m_Name: d11_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891235756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891235755}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.21, y: 6.23, z: 0.00237534}
+  m_LocalScale: {x: 0.93636, y: 0.93636, z: 0.93636}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642909873}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891235757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891235755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3117903fc673eb544aec73a0c85a631a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatSpawner: {fileID: 1700994792}
+--- !u!95 &1891235758
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891235755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a137692282f42d47912df63fb3d9f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1891235759
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891235755}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -585780932013345330, guid: 936cd9567deb5ab46bd47279e1371231, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.67, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1902720050
 GameObject:
   m_ObjectHideFlags: 0
@@ -13558,3 +14139,4 @@ SceneRoots:
   - {fileID: 1490317258}
   - {fileID: 864925136}
   - {fileID: 332120992}
+  - {fileID: 642909873}

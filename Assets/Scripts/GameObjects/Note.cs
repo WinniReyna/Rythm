@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Note : MonoBehaviour
 {
     public float speed = 5f;
-    public Sprite paintSprite;
+    private Sprite[] paintSprites;
+    private GridPosition[] paintPositions;
 
     private NoteKey requiredKey;
-    private int gridX;
-    private int gridY;
     private NoteSpawner spawner;
     private GridPainter gridPainter;
 
@@ -28,12 +28,11 @@ public class Note : MonoBehaviour
 
     public bool WasHit { get; private set; }
 
-    public void Initialize(NoteKey key, int x = -1, int y = -1, Sprite sprite = null)
+    public void Initialize(NoteKey key, GridPosition[] positions, Sprite[] sprites = null)
     {
         requiredKey = key;
-        gridX = x;
-        gridY = y;
-        paintSprite = sprite;
+        paintSprites = sprites;
+        paintPositions = positions;
 
         hitFeedbackUI = FindObjectOfType<HitFeedbackUI>();
         spawner = FindObjectOfType<NoteSpawner>();
@@ -118,19 +117,31 @@ public class Note : MonoBehaviour
 
     public void PaintGridOnHit(string hitType)
     {
-        if (gridPainter != null && gridX >= 0 && gridY >= 0 && paintSprite != null)
+        if (gridPainter == null)
+            return;
+
+        if (paintSprites == null || paintPositions == null)
+            return;
+
+        Color color = Color.white;
+
+        switch (hitType)
         {
-            // Crear una copia del sprite con alpha ajustado según el hit
-            Color color = Color.white;
+            case "Perfect!": color.a = 1f; break;
+            case "Good!": color.a = 0.75f; break;
+            case "Bad!": color.a = 0.6f; break;
+        }
 
-            switch (hitType)
-            {
-                case "Perfect!": color.a = 1f; break;
-                case "Good!": color.a = 0.7f; break;
-                case "Bad!": color.a = 0.05f; break;
-            }
+        int length = Mathf.Min(paintSprites.Length, paintPositions.Length);
 
-            gridPainter.PaintCellWithSprite(gridX, gridY, paintSprite, color);
+        for (int i = 0; i < length; i++)
+        {
+            gridPainter.PaintCellWithSprite(
+                paintPositions[i].x,
+                paintPositions[i].y,
+                paintSprites[i],
+                color
+            );
         }
     }
 
