@@ -22,7 +22,7 @@ public class GridPainter : MonoBehaviour
     {
         if (cellPrefab == null)
         {
-            Debug.LogError("GridPainter: No se ha asignado el prefab de celda!");
+            Debug.LogError("No se ha asignado el prefab de celda");
             return;
         }
 
@@ -157,7 +157,6 @@ public class GridPainter : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    // Agrega esta función para abrir la carpeta desde el menú contextual del componente
     [ContextMenu("Abrir carpeta de grids guardados")]
     private void OpenSavedGridsFolder()
     {

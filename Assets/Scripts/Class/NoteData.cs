@@ -1,6 +1,13 @@
 using UnityEngine;
 
 [System.Serializable]
+public struct GridPosition
+{
+    public int x;
+    public int y;
+}
+
+[System.Serializable]
 public class NoteData
 {
     [Tooltip("Tiempo en segundos cuando debe aparecer la nota")]
@@ -9,14 +16,11 @@ public class NoteData
     [Tooltip("Tecla que el jugador debe presionar (A, S o D, Space, shiftLeft)")]
     public NoteKey key;
 
-    [Tooltip("Coordenada X en el grid (si aplica)")]
-    public int gridX = -1;
+    [Tooltip("Sprites que pintará al acertar (opcional)")]
+    public Sprite[] paintSprites;
 
-    [Tooltip("Coordenada Y en el grid (si aplica)")]
-    public int gridY = -1;
-
-    [Tooltip("Sprite que pintará al acertar (opcional)")]
-    public Sprite paintSprite;
+    [Tooltip("Posiciones donde se pintará cada sprite")]
+    public GridPosition[] paintPositions; 
 
     [Tooltip("Activar el slider")]
     public bool isSlider = false;
@@ -24,4 +28,3 @@ public class NoteData
     [HideInInspector]
     public double spawnDspTime;
 }
-
