@@ -2067,13 +2067,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215266666}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -952.48, y: -541.32, z: 0.009983078}
-  m_LocalScale: {x: 0.8727854, y: 0.8727854, z: 0.8727854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -954.96, y: -541.68, z: 0.009983078}
+  m_LocalScale: {x: 1.0282807, y: 1.0282807, z: 1.0282807}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1749425463}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250943343
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,18 +5646,18 @@ MonoBehaviour:
   - time: 6
     key: 3
     paintSprites:
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
+    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
     - {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
-    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
-    - {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
-    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
     paintPositions:
     - x: 0
-      y: 3
-    - x: 1
-      y: 3
-    - x: 2
-      y: 3
-    - x: 3
+      y: 0
+    - x: 0
+      y: 1
+    - x: 0
+      y: 2
+    - x: 0
       y: 3
     isSlider: 1
     spawnDspTime: 0
@@ -5748,19 +5748,19 @@ MonoBehaviour:
   - time: 18
     key: 0
     paintSprites:
-    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
+    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
     - {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
-    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
-    - {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
+    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
     paintPositions:
-    - x: 0
-      y: 2
+    - x: 1
+      y: 0
+    - x: 1
+      y: 1
     - x: 1
       y: 2
-    - x: 2
-      y: 2
-    - x: 3
-      y: 2
+    - x: 1
+      y: 3
     isSlider: 1
     spawnDspTime: 0
   - time: 18
@@ -5796,19 +5796,19 @@ MonoBehaviour:
   - time: 18
     key: 2
     paintSprites:
-    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    - {fileID: -2884978224816021742, guid: 263b984b50b8bfe40a4c65040f84dd41, type: 3}
+    - {fileID: 405328792272636709, guid: b47ad5fcdb0f86b4896ae039d933d4fd, type: 3}
     - {fileID: 1262820091987847112, guid: d151a960366939a49a5b169194017dec, type: 3}
-    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
-    - {fileID: 1262820091987847112, guid: d151a960366939a49a5b169194017dec, type: 3}
+    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
     paintPositions:
-    - x: 0
-      y: 1
-    - x: 1
-      y: 1
+    - x: 2
+      y: 3
+    - x: 2
+      y: 2
     - x: 2
       y: 1
-    - x: 3
-      y: 1
+    - x: 2
+      y: 0
     isSlider: 1
     spawnDspTime: 0
   - time: 18
@@ -5874,19 +5874,19 @@ MonoBehaviour:
   - time: 18
     key: 0
     paintSprites:
-    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
     - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
-    - {fileID: -8550481062184881220, guid: 829fc727ebf60734397a5cdbc6586c52, type: 3}
-    - {fileID: -3077180020905857263, guid: 7f3b0e04ad83e74469eb494c3b9515ed, type: 3}
+    - {fileID: 4278139090440032061, guid: 0967c55359af3844c8a17936672570dd, type: 3}
+    - {fileID: -8094124731890184337, guid: e358964bc269a6f4facad78cf2e0bf56, type: 3}
+    - {fileID: -6958202323910562327, guid: e8f80b46ed0ff124d8a2ff24551134ae, type: 3}
     paintPositions:
-    - x: 0
-      y: 0
-    - x: 1
-      y: 0
-    - x: 2
-      y: 0
     - x: 3
       y: 0
+    - x: 3
+      y: 1
+    - x: 3
+      y: 2
+    - x: 3
+      y: 3
     isSlider: 1
     spawnDspTime: 0
   - time: 18
